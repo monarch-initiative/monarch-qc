@@ -78,7 +78,7 @@ yarn install
 yarn create vite
 ```
 
-Follow the prompts to choose a setup with Vue and Typescript with a project name of monarch-ingest-dashboard.
+Follow the prompts to choose a setup with Vue and Typescript with a project name of monarch-qc-dashboard.
 
 Finish Vue + Vite setup and test preview
 
