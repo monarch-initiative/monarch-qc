@@ -20,13 +20,15 @@ yarn build
 
 cd dist
 
-# if deploying to custom domain
-# echo 'my.domain.org' > CNAME
+# remove .git if it exists
+rm -rf .git
 
+# initialize new git environment and commit changes
 git init
 git add -A
 git commit -m 'deploy to gh-pages'
 
+# add remote and force push new updated to gh-pages
 git remote add ${REMOTENAME} ${REMOTE}
 git push --force ${REMOTENAME} main:gh-pages
 
