@@ -4,12 +4,13 @@
 <template>
   <main>
     {{ globalData }}
+    {{ allNamespaces }}
   </main>
 </template>
 
 
 <script setup lang="ts">
-import { globalData } from "./data";
+import { allNamespaces, globalData } from "./data";
 import TheBanner from "./components/TheBanner.vue"
 </script>
 

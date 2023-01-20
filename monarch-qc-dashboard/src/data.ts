@@ -1,46 +1,71 @@
 import { ref } from "vue";
-import YAML from "yaml";
-//const jsyaml = require('js-yaml');
-//const YAML = require('yaml')
+import yaml from "yaml";
 
 export const globalData = ref<string>("")
+export const allNamespaces = ["TEST"]
+
+
+export class QCReport {
+    dangling_edges: [] = []
+    edges: [] = [];
+    missing_nodes: [] = [];
+    nodes: [] = []
+    constructor(source: Partial<QCReport>) {
+        Object.assign(this, source);
+    }
+}
+
+
+export class QCPart {
+    categories: [] = [];
+    missing: number | undefined;
+    name: string = "";
+    namespaces: [] = [];
+    node_types: [] = [];
+    predicates: [] = [];
+    taxon: [] | undefined;
+    total_number: number | undefined;
+    constructor(source: Partial<QCPart>) {
+        Object.assign(this, source)
+    }
+}
+
 
 const files = ["https://data.monarchinitiative.org/monarch-kg-dev/latest/qc_report.yaml"];
-      
-// fetch(file).then(data => data.text()).then(text=> {
-//     console.log(text)
 
-//     // let data = yamlparse(text);
-//     // data = { kgversion: 1 }
-//     // data.genes = data.genes.map(gene=> gene.id + "!")
-
-//     globalData.value = text;
-// })
 
 async function fetchData(url = "") {
     const response = await fetch(url);
     const text = await response.text();
-    const yaml = await YAML.parse(text);
-    return yaml;
+    const parsed = await yaml.parse(text);
+    return parsed;
 }
 
 
 export async function fetchAllData() {
     const arrayofpromises = files.map(fetchData);
     const allresults = await Promise.all(arrayofpromises);
-    // globalData.value = allresults[0].toString();
     console.log(allresults)
+    globalData.value = allresults[0].toString();
     const allreports = allresults.map(processReport);
+    console.log(allreports)
 }
 
 
-export function processReport(report) {
-    console.log(report)
-    const dangling_namespaces = getNamespaces(report.dangling_edges)
-    return report
+export function processReport(report: any) {
+    const qc_report = new QCReport(report)
+    console.log(qc_report)
+    getNamespaces(qc_report.dangling_edges)
+    return qc_report
 }
 
 
-export function getNamespaces(report_part) {
+export function getNamespaces(report_part: any) {
     console.log(report_part)
+    for (const item in report_part) {
+        // console.log(item)
+        const qc_part = new QCPart(report_part[item])
+        console.log(qc_part)
+        // allNamespaces.join(item.)
+    }
 }
