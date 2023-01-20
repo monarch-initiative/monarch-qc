@@ -2,7 +2,7 @@ import { ref } from "vue";
 import yaml from "yaml";
 
 export const globalData = ref<string>("")
-export const allNamespaces = ["TEST"]
+export const allNamespaces = ref<Array<string>>([])
 
 
 export interface QCReport {
@@ -54,12 +54,15 @@ export function processReport(report: any) {
 }
 
 
+export function uniq(arr: string[]) {
+    return arr.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]);
+}
+
+
 export function getNamespaces(report_part: any) {
     console.log(report_part)
-    for (const item in report_part) {
-        // console.log(item)
-        const qc_part = <QCPart> report_part[item]
-        console.log(qc_part)
-        // allNamespaces.join(item.)
+    for (const item of report_part) {
+        const qc_part = <QCPart> item
+        allNamespaces.value = uniq(allNamespaces.value.concat(item.namespaces))
     }
 }
