@@ -20,15 +20,27 @@ const files = ["https://data.monarchinitiative.org/monarch-kg-dev/latest/qc_repo
 async function fetchData(url = "") {
     const response = await fetch(url);
     const text = await response.text();
-//    const yaml = await jsyaml.load(text);
     const yaml = await YAML.parse(text);
-    console.log(yaml)
-    return text;
+    return yaml;
 }
 
 
 export async function fetchAllData() {
     const arrayofpromises = files.map(fetchData);
     const allresults = await Promise.all(arrayofpromises);
-    globalData.value = allresults[0];
+    // globalData.value = allresults[0].toString();
+    console.log(allresults)
+    const allreports = allresults.map(processReport);
+}
+
+
+export function processReport(report) {
+    console.log(report)
+    const dangling_namespaces = getNamespaces(report.dangling_edges)
+    return report
+}
+
+
+export function getNamespaces(report_part) {
+    console.log(report_part)
 }
