@@ -5,29 +5,23 @@ export const globalData = ref<string>("")
 export const allNamespaces = ["TEST"]
 
 
-export class QCReport {
-    dangling_edges: [] = []
-    edges: [] = [];
-    missing_nodes: [] = [];
-    nodes: [] = []
-    constructor(source: Partial<QCReport>) {
-        Object.assign(this, source);
-    }
+export interface QCReport {
+    dangling_edges: [];
+    edges: [];
+    missing_nodes: [];
+    nodes: [];
 }
 
 
-export class QCPart {
-    categories: [] = [];
-    missing: number | undefined;
-    name: string = "";
-    namespaces: [] = [];
-    node_types: [] = [];
-    predicates: [] = [];
-    taxon: [] | undefined;
-    total_number: number | undefined;
-    constructor(source: Partial<QCPart>) {
-        Object.assign(this, source)
-    }
+export interface QCPart {
+    categories: [];
+    missing: number;
+    name: string;
+    namespaces: [];
+    node_types: [];
+    predicates: [];
+    taxon: [];
+    total_number: number;
 }
 
 
@@ -53,7 +47,7 @@ export async function fetchAllData() {
 
 
 export function processReport(report: any) {
-    const qc_report = new QCReport(report)
+    const qc_report = <QCReport> report
     console.log(qc_report)
     getNamespaces(qc_report.dangling_edges)
     return qc_report
@@ -64,7 +58,7 @@ export function getNamespaces(report_part: any) {
     console.log(report_part)
     for (const item in report_part) {
         // console.log(item)
-        const qc_part = new QCPart(report_part[item])
+        const qc_part = <QCPart> report_part[item]
         console.log(qc_part)
         // allNamespaces.join(item.)
     }
