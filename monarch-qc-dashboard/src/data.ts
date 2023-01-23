@@ -54,15 +54,20 @@ export function processReport(report: any) {
 }
 
 
-export function uniq(arr: string[]) {
-    return arr.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]);
-}
+// export function uniq(arr: string[]) {
+//     return arr.reduce(
+//       function(a: string[], b: string){
+//         if(a.indexOf(b)<0)a.push(b);
+//         return a;
+//       },[]);
+// }
 
 
 export function getNamespaces(report_part: any) {
     console.log(report_part)
     for (const item of report_part) {
         const qc_part = <QCPart> item
-        allNamespaces.value = uniq(allNamespaces.value.concat(item.namespaces))
+        // allNamespaces.value = uniq(allNamespaces.value.concat(item.namespaces))
+        allNamespaces.value = allNamespaces.value.concat(item.namespaces)
     }
 }
