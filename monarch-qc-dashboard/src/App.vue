@@ -7,11 +7,17 @@
       <img src="./global/monarch.png" class="logo" alt="Monarch Logo" />
     </div>
     <MonarchQCTest msg="Monarch QC Testing" />
+    <div>
+      {{ globalData }}
+    </div>
+    <div>
+      {{ allNamespaces }}
+    </div>
   </main>
 </template>
 
 <script setup lang="ts">
-  import { allNamespaces, globalData } from "data";
+  import { allNamespaces, globalData } from "./data";
   import MonarchQCTest from './components/MonarchQCTest.vue'
 </script>
 

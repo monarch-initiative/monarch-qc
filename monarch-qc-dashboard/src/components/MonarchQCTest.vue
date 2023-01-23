@@ -9,7 +9,6 @@
   <h1>{{ msg }}</h1>
   <p>
     This is an initial test framework for creating the Monarch QC Dashboard.
-    {{ allNamespaces }}
   </p>
 
   <div class="card">
