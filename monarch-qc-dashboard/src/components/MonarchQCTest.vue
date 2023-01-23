@@ -3,7 +3,6 @@
   defineProps<{ msg: string }>()
   const count = ref(0)
 
-  import { allNamespaces, globalData } from "../data";
 </script>
 
 <template>

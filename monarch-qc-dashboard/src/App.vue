@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-  import { allNamespaces, globalData } from "./data";
+  import { allNamespaces, globalData } from "data";
   import MonarchQCTest from './components/MonarchQCTest.vue'
 </script>
 
