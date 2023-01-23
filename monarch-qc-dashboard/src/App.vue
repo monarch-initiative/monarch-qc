@@ -3,15 +3,18 @@
 -->
 <template>
   <main>
+    <div>
+      <img src="./global/monarch.png" class="logo" alt="Monarch Logo" />
+    </div>
+    <MonarchQCTest msg="Monarch QC Testing" />
     {{ globalData }}
     {{ allNamespaces }}
   </main>
 </template>
 
-
 <script setup lang="ts">
-import { allNamespaces, globalData } from "./data";
-import TheBanner from "./components/TheBanner.vue"
+  import { allNamespaces, globalData } from "./data";
+  import MonarchQCTest from './components/MonarchQCTest.vue'
 </script>
 
 <style scoped>
