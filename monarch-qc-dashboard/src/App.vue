@@ -7,8 +7,6 @@
       <img src="./global/monarch.png" class="logo" alt="Monarch Logo" />
     </div>
     <MonarchQCTest msg="Monarch QC Testing" />
-    {{ globalData }}
-    {{ allNamespaces }}
   </main>
 </template>
 
