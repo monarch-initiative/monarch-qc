@@ -2,6 +2,7 @@
   entry point for entire app
 -->
 <template>
+  <WIPBanner />
   <main>
     <div>
       <img src="./global/monarch.png" class="logo" alt="Monarch Logo" />
@@ -13,6 +14,7 @@
 <script setup lang="ts">
   import { allNamespaces, globalData } from "./data";
   import MonarchQCTest from './components/MonarchQCTest.vue'
+  import WIPBanner from "./components/WIPBanner.vue";
 </script>
 
 <style scoped>
