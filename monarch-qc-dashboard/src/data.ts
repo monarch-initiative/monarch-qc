@@ -1,6 +1,5 @@
 import { ref } from "vue";
 import YAML from "yaml";
-import AXIOS, { AxiosError } from 'axios';
 import DOMPurify from 'isomorphic-dompurify';
 
 export const globalData = ref<string>("")
@@ -39,71 +38,73 @@ const qcsite = "https://data.monarchinitiative.org/monarch-kg-dev/"
 const files = ["https://data.monarchinitiative.org/monarch-kg-dev/latest/qc_report.yaml"];
 
 
-function fetchPage(url: string): Promise<string> {
-  const HTMLData = AXIOS
-    .get(url)
-    .then(res => res.data)
-    // .catch((error: AxiosError) => {
-    //   console.error(`There was an error with ${error.config.url}.`);
-    //   console.error(error.toJSON());
-    // });
-
-  return HTMLData;
-}
-
-
-function htmlToDom(html: string, ignoreCache = false) {
+function htmlToDom(html: string): HTMLDivElement {
     const cleanhtml = DOMPurify.sanitize(html);
     let elem = document.createElement("div");
     elem.innerHTML = cleanhtml;
     return elem
 }
 
-function getQCReports (elem: HTMLDivElement) {
-    const filelist = elem.querySelectorAll('ul')[1]
-    const qcfiles: string[] = []
-    filelist.querySelectorAll('a').forEach(
-        function(a) {
+function getQCReportURLs (html: string | undefined): string[] {
+    const fileurls: string[] = []
+    if (html === undefined) { return fileurls }
+
+    const elem = htmlToDom(html)
+    const dirlist = elem.querySelectorAll('ul')[1]
+    dirlist.querySelectorAll('a').forEach(
+        function(a: HTMLAnchorElement) {
             const href = a.getAttribute('href')?.replace("index.html", "qc_report.yaml")
-            if (!href?.includes('latest') && !href?.includes('kgx') && typeof(href) === 'string') qcfiles.push(href)
+            // Use this to remove 'latest' and 'kgx' directories but we probably can just leave them
+            // if (!href?.includes('latest') && !href?.includes('kgx') && typeof(href) === 'string') qcfiles.push(href)
+            if (typeof(href) === 'string') { fileurls.push(href) }
         }
     )
-    return qcfiles
+    return fileurls
 }
 
 
-async function fetchData(url = "") {
-    const response = await fetch(url);
-    console.log(response)
-    const text = await response.text();
-    const parsed = await YAML.parse(text);
-    return parsed;
+async function fetchData(url = ""): Promise<string | undefined> {
+    const response = await fetch(url)
+    .then(function(response){
+        if (!response.ok && response.status === 404) {
+            return undefined
+        }
+        return response
+    })
+    // console.log(response)
+    const text = await response?.text();
+    // const parsed = await YAML.parse(text);
+    return text;
+}
+
+function dropMissing(a: (string | undefined)[]): string[] {
+    const result: string[] = []
+    for (const element of a) {
+        if (element !== undefined) {result.push(element)}
+    }
+    return result
 }
 
 
 export async function fetchAllData() {
-    const qcsitehtml = await fetchPage(qcsite)
-    // console.log(qcsitehtml)
-    const qcsitedom = htmlToDom(qcsitehtml)
-    // console.log(qcsitedom)
-    const qcsitefiles = getQCReports(qcsitedom)
-    // console.log(qcsitefiles)
-    const arrayofpromises = files.map(fetchData);
-    // const arrayofpromises = qcsitefiles.map(fetchData);
-    const allresults = await Promise.all(arrayofpromises);
-    // console.log(allresults)
-    globalData.value = allresults[0].toString();
-    const allreports = allresults.map(processReport);
+    const qcsitehtml = await fetchData(qcsite)
+    const qcsiteurls = getQCReportURLs(qcsitehtml)
+    const qcpromises = qcsiteurls.map(fetchData)
+    const allresults = await Promise.all(qcpromises)
+    const results = dropMissing(allresults)
+    const allreports = results.map(processReport)
     console.log(allreports)
+    allNamespaces.value = getNamespaces(allreports[allreports.length -1].dangling_edges)
 }
 
 
-export function processReport(report: any) {
+export function processReport(text: string) {
+    const report = YAML.parse(text)
     const qc_report = <QCReport> report
     // console.log(qc_report)
-    allNamespaces.value = getNamespaces(qc_report.dangling_edges)
-    getTotalNumber(qc_report.dangling_edges)
-    getTotalNumber(qc_report.edges)
+    // allNamespaces.value = getNamespaces(qc_report.dangling_edges)
+    // getTotalNumber(qc_report.dangling_edges)
+    // getTotalNumber(qc_report.edges)
     return qc_report
 }
 
