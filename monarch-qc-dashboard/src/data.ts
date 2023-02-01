@@ -2,24 +2,15 @@ import { ref } from "vue";
 import YAML from "yaml";
 import DOMPurify from 'isomorphic-dompurify';
 
-export const globalData = ref<string>("")
+export const globalData = ref<Map<string, any>>(new Map())
 export const allNamespaces = ref<Array<string>>([])
-
-export const QCReportData = {
-
-    data() {
-        return {
-            
-        }
-    }
-}
 
 
 export interface QCReport {
-    dangling_edges: [];
-    edges: [];
-    missing_nodes: [];
-    nodes: [];
+    dangling_edges: QCPart[];
+    edges: QCPart[];
+    missing_nodes: QCPart[];
+    nodes: QCPart[];
 }
 
 
@@ -35,7 +26,6 @@ export interface QCPart {
 }
 
 const qcsite = "https://data.monarchinitiative.org/monarch-kg-dev/"
-const files = ["https://data.monarchinitiative.org/monarch-kg-dev/latest/qc_report.yaml"];
 
 
 function htmlToDom(html: string): HTMLDivElement {
@@ -92,24 +82,34 @@ export async function fetchAllData() {
     const qcpromises = qcsiteurls.map(fetchData)
     const allresults = await Promise.all(qcpromises)
     const results = dropMissing(allresults)
-    const allreports = results.map(processReport)
-    console.log(allreports)
-    allNamespaces.value = getNamespaces(allreports[allreports.length -1].dangling_edges)
+    // Right now processing all of the reports is a little slow
+    // I'm commenting the processing out for now so we can focus on the latest qc report
+    // const allreports = results.map(getQCReport)
+    const latest = getQCReport(results[results.length -1])
+
+    // allNamespaces.value = getNamespaces(latest.dangling_edges)
+    const namespacesMap = new Map<string, Map<string, string[]>>()
+    namespacesMap.set("dangling_edges", getNamespaces(latest.dangling_edges))
+    namespacesMap.set("edges", getNamespaces(latest.edges))
+    namespacesMap.set("missing_nodes", getNamespaces(latest.missing_nodes))
+    namespacesMap.set("nodes", getNamespaces(latest.nodes))
+    console.log(namespacesMap)
+
+    const totalnumber = new Map<string, Map<string, number>>()
+    // totalnumber.set("dangling_edges", )
+    globalData.value = globalData.value.set("Namespaces", namespacesMap)
+    console.log(latest)
 }
 
 
-export function processReport(text: string) {
+function getQCReport(text: string): QCReport {
     const report = YAML.parse(text)
     const qc_report = <QCReport> report
-    // console.log(qc_report)
-    // allNamespaces.value = getNamespaces(qc_report.dangling_edges)
-    // getTotalNumber(qc_report.dangling_edges)
-    // getTotalNumber(qc_report.edges)
     return qc_report
 }
 
 
-export function uniq(items: string[]) {
+function uniq(items: string[]) {
     const result: string[] = []
     for (const i of items) {
         if (result.indexOf(i) < 0) result.push(i)
@@ -117,17 +117,21 @@ export function uniq(items: string[]) {
     return result
 }
 
+function getNamespaces(qcpart: QCPart[]): Map<string, string[]> {
+    // console.log(qcpart)
+    if (qcpart === undefined) return new Map<string, []>()
 
-export function getNamespaces(report_part: QCPart[]) {
-    // console.log(report_part)
     let namespaces: string[] = []
-    for (const item of report_part) {
+    const namespacesMap = new Map<string, string[]>()
+    for (const item of qcpart) {
+        namespacesMap.set(item.name, item.namespaces)
         namespaces = namespaces.concat(item.namespaces)
     }
-    return uniq(namespaces)
+    namespacesMap.set("all_namespaces", uniq(namespaces))
+    return namespacesMap
 }
 
-export function getTotalNumber(report_part: QCPart[]) {
+function getTotalNumber(report_part: QCPart[]) {
     const totals = new Map<string, number>
     for (const item of report_part) {
         totals.set(item.name, item.total_number)
