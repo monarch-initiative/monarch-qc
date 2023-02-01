@@ -86,19 +86,22 @@ export async function fetchAllData() {
     // I'm commenting the processing out for now so we can focus on the latest qc report
     // const allreports = results.map(getQCReport)
     const latest = getQCReport(results[results.length -1])
+    // console.log(latest)
 
-    // allNamespaces.value = getNamespaces(latest.dangling_edges)
     const namespacesMap = new Map<string, Map<string, string[]>>()
     namespacesMap.set("dangling_edges", getNamespaces(latest.dangling_edges))
     namespacesMap.set("edges", getNamespaces(latest.edges))
     namespacesMap.set("missing_nodes", getNamespaces(latest.missing_nodes))
     namespacesMap.set("nodes", getNamespaces(latest.nodes))
-    console.log(namespacesMap)
-
-    const totalnumber = new Map<string, Map<string, number>>()
-    // totalnumber.set("dangling_edges", )
     globalData.value = globalData.value.set("Namespaces", namespacesMap)
-    console.log(latest)
+
+    const test = getTotalNumber(latest.dangling_edges)
+    const totalnumber = new Map<string, Map<string, number>>()
+    totalnumber.set("dangling_edges", getTotalNumber(latest.dangling_edges))
+    totalnumber.set("edges", getTotalNumber(latest.edges))
+    totalnumber.set("missing_nodes", getTotalNumber(latest.missing_nodes))
+    totalnumber.set("nodes", getTotalNumber(latest.nodes))
+    globalData.value = globalData.value.set("TotalNumbers", totalnumber)
 }
 
 
@@ -118,7 +121,6 @@ function uniq(items: string[]) {
 }
 
 function getNamespaces(qcpart: QCPart[]): Map<string, string[]> {
-    // console.log(qcpart)
     if (qcpart === undefined) return new Map<string, []>()
 
     let namespaces: string[] = []
@@ -131,10 +133,14 @@ function getNamespaces(qcpart: QCPart[]): Map<string, string[]> {
     return namespacesMap
 }
 
-function getTotalNumber(report_part: QCPart[]) {
+function getTotalNumber(qcpart: QCPart[]) {
+    if (qcpart === undefined) return new Map<string, number>()
+    let grandtotal = 0
     const totals = new Map<string, number>
-    for (const item of report_part) {
+    for (const item of qcpart) {
         totals.set(item.name, item.total_number)
+        grandtotal += item.total_number
     }
-    // console.log(totals)
+    totals.set("Total Number", grandtotal)
+    return totals
 }
