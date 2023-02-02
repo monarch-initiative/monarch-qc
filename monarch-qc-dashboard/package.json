@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "isomorphic-dompurify": "^0.26.0",
     "vue": "^3.2.45",
     "yaml": "^2.2.1"
   },

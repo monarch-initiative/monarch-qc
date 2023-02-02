@@ -8,10 +8,7 @@
     </div>
     <MonarchQCTest msg="Monarch QC Testing" />
     <div>
-      {{ globalData }}
-    </div>
-    <div>
-      {{ allNamespaces }}
+      <!-- {{ globalData }} -->
     </div>
   </main>
 </template>
