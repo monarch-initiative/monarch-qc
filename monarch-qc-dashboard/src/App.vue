@@ -8,9 +8,9 @@
     </div>
     <MonarchQCTest msg="Monarch QC Testing" />
     <SimpleDashboard msg="Monarch Simple QC" />
-    <div>
-      <!-- {{ globalData.get("dangling_edges") }}
-      {{ globalTotals }} -->
+    <div align="center">
+      Namespaces only in dangling_edges: <br />
+      {{ globalNamespaces }}
     </div>
   </main>
 </template>

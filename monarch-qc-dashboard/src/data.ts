@@ -53,7 +53,6 @@ function getQCReportURLs (html: string | undefined): string[] {
     return fileurls
 }
 
-
 async function fetchData(url = ""): Promise<string | undefined> {
     const response = await fetch(url)
     .then(function(response){
@@ -76,6 +75,10 @@ function dropMissing(a: (string | undefined)[]): string[] {
     return result
 }
 
+function stringDiff(a: string[], b: string[]): string[] {
+    const diff: string[] = a.filter(x => !b.includes(x));
+    return diff
+}
 
 export async function fetchAllData() {
     const qcsitehtml = await fetchData(qcsite)
@@ -89,12 +92,16 @@ export async function fetchAllData() {
     const latest = getQCReport(results[results.length -1])
     // console.log(latest)
 
-    const namespacesMap = new Map<string, Map<string, string[]>>()
-    namespacesMap.set("dangling_edges", getNamespaces(latest.dangling_edges))
-    namespacesMap.set("edges", getNamespaces(latest.edges))
-    namespacesMap.set("missing_nodes", getNamespaces(latest.missing_nodes))
-    namespacesMap.set("nodes", getNamespaces(latest.nodes))
-    globalData.value = globalData.value.set("Namespaces", namespacesMap)
+    const danglingEdgesNamespaces = getNamespaces(latest.dangling_edges)
+    const edgesNamespaces = getNamespaces(latest.edges)
+    globalNamespaces.value = stringDiff(danglingEdgesNamespaces, edgesNamespaces)
+
+    // const namespacesMap = new Map<string, Map<string, string[]>>()
+    // namespacesMap.set("dangling_edges", getNamespaces(latest.dangling_edges))
+    // namespacesMap.set("edges", getNamespaces(latest.edges))
+    // namespacesMap.set("missing_nodes", getNamespaces(latest.missing_nodes))
+    // namespacesMap.set("nodes", getNamespaces(latest.nodes))
+    // globalData.value = globalData.value.set("Namespaces", namespacesMap)
 
     const test = getTotalNumber(latest.dangling_edges)
     const totalnumber = new Map<string, Map<string, number>>()
@@ -107,13 +114,11 @@ export async function fetchAllData() {
     globalTotals.value = getEdgesDifference(latest)
 }
 
-
 function getQCReport(text: string): QCReport {
     const report = YAML.parse(text)
     const qc_report = <QCReport> report
     return qc_report
 }
-
 
 function uniq(items: string[]) {
     const result: string[] = []
@@ -123,17 +128,20 @@ function uniq(items: string[]) {
     return result
 }
 
-function getNamespaces(qcpart: QCPart[]): Map<string, string[]> {
-    if (qcpart === undefined) return new Map<string, []>()
+// function getNamespaces(qcpart: QCPart[]): Map<string, string[]> {
+function getNamespaces(qcpart: QCPart[]): string[] {
+    // if (qcpart === undefined) return new Map<string, []>()
+    if (qcpart === undefined) return []
 
     let allNamespaces: string[] = []
-    const namespacesMap = new Map<string, string[]>()
+    // const namespacesMap = new Map<string, string[]>()
     for (const item of qcpart) {
-        namespacesMap.set(item.name, item.namespaces)
+        // namespacesMap.set(item.name, item.namespaces)
         allNamespaces = allNamespaces.concat(item.namespaces)
     }
-    namespacesMap.set("all_namespaces", uniq(allNamespaces))
-    return namespacesMap
+    // namespacesMap.set("all_namespaces", uniq(allNamespaces))
+    // return namespacesMap
+    return allNamespaces
 }
 
 function getTotalNumber(qcpart: QCPart[]) {

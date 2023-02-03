@@ -14,8 +14,6 @@
         </tr>
       </tbody>
     </table>
-    Namespaces only in dangling_edges:
-    {{ globalNamespaces }}
   </div>
 </template>
   
