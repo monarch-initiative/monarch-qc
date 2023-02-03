@@ -7,27 +7,16 @@
       <img src="./global/monarch.png" class="logo" alt="Monarch Logo" />
     </div>
     <MonarchQCTest msg="Monarch QC Testing" />
+    <SimpleDashboard msg="Monarch Simple QC" />
     <div>
-      <!-- {{ globalData }} -->
+      <!-- {{ globalData.get("dangling_edges") }}
+      {{ globalTotals }} -->
     </div>
   </main>
 </template>
 
 <script setup lang="ts">
-  import { allNamespaces, globalData } from "./data";
+  import { globalNamespaces, globalData, globalTotals } from "./data";
   import MonarchQCTest from './components/MonarchQCTest.vue'
+  import SimpleDashboard from './components/SimpleDashboard.vue'
 </script>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>

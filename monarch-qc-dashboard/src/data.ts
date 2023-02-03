@@ -3,7 +3,8 @@ import YAML from "yaml";
 import DOMPurify from 'isomorphic-dompurify';
 
 export const globalData = ref<Map<string, any>>(new Map())
-export const allNamespaces = ref<Array<string>>([])
+export const globalTotals = ref<Map<string, string>>(new Map())
+export const globalNamespaces = ref<Array<string>>([])
 
 
 export interface QCReport {
@@ -102,6 +103,8 @@ export async function fetchAllData() {
     totalnumber.set("missing_nodes", getTotalNumber(latest.missing_nodes))
     totalnumber.set("nodes", getTotalNumber(latest.nodes))
     globalData.value = globalData.value.set("TotalNumbers", totalnumber)
+
+    globalTotals.value = getEdgesDifference(latest)
 }
 
 
@@ -123,13 +126,13 @@ function uniq(items: string[]) {
 function getNamespaces(qcpart: QCPart[]): Map<string, string[]> {
     if (qcpart === undefined) return new Map<string, []>()
 
-    let namespaces: string[] = []
+    let allNamespaces: string[] = []
     const namespacesMap = new Map<string, string[]>()
     for (const item of qcpart) {
         namespacesMap.set(item.name, item.namespaces)
-        namespaces = namespaces.concat(item.namespaces)
+        allNamespaces = allNamespaces.concat(item.namespaces)
     }
-    namespacesMap.set("all_namespaces", uniq(namespaces))
+    namespacesMap.set("all_namespaces", uniq(allNamespaces))
     return namespacesMap
 }
 
@@ -143,4 +146,47 @@ function getTotalNumber(qcpart: QCPart[]) {
     }
     totals.set("Total Number", grandtotal)
     return totals
+}
+
+
+function getNames(qcparts: QCPart[]): string[] {
+    const names: string[] = []
+    for (const qcpart of qcparts) {
+        names.push(qcpart.name)
+    }
+    return names
+}
+
+function getQCPartbyName(qcparts: QCPart[], name: string): QCPart | undefined {
+    for (const qcpart of qcparts) {
+        if (qcpart.name == name) { return qcpart }
+    }
+    return undefined
+}
+
+function cleanNumber(n: number | undefined): number {
+    return (typeof n === 'undefined') ? 0 : n;
+}
+
+function visualDiff(a: number | undefined, b: number | undefined): string {
+    const filled = "⚫"
+    const unfilled = "⚪"
+    const ratio = Math.floor(cleanNumber(a) / (cleanNumber(a) + cleanNumber(b)) * 10)
+    const visualRatio: string = filled.repeat(ratio).concat(unfilled.repeat(10 - ratio))
+    console.log(visualRatio)
+    return visualRatio
+}
+
+function getEdgesDifference(qcreport: QCReport): Map<string, string> {
+    const names = uniq(getNames(qcreport.dangling_edges).concat(getNames(qcreport.edges)))
+    // console.log(names)
+    const edge_diff = new Map<string, string>
+    for (const name of names) {
+        const dangling_edges_total = getQCPartbyName(qcreport.dangling_edges, name)?.total_number
+        const edges_total = getQCPartbyName(qcreport.edges, name)?.total_number
+        const diff = visualDiff(edges_total, dangling_edges_total)
+        // console.log(name)
+        edge_diff.set(name, diff)
+    }
+    return edge_diff
 }
