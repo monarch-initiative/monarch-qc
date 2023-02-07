@@ -36,72 +36,82 @@ function htmlToDom(html: string): HTMLDivElement {
     return elem
 }
 
-function getQCReportURLs (html: string | undefined): string[] {
-    const fileurls: string[] = []
-    if (html === undefined) { return fileurls }
+async function fetchQCReports (url = ""): Promise<Map<string, Promise<string>>> {
+    const text = await fetchData(url)
+    if(text === undefined) { return new Map<string, Promise<string>>() }
 
-    const elem = htmlToDom(html)
-    const dirlist = elem.querySelectorAll('ul')[1]
-    dirlist.querySelectorAll('a').forEach(
-        function(a: HTMLAnchorElement) {
-            const href = a.getAttribute('href')?.replace("index.html", "qc_report.yaml")
-            // Use this to remove 'latest' and 'kgx' directories but we probably can just leave them
-            // if (!href?.includes('latest') && !href?.includes('kgx') && typeof(href) === 'string') qcfiles.push(href)
-            if (typeof(href) === 'string') { fileurls.push(href) }
-        }
-    )
-    return fileurls
+    const releases = getQCReportReleases(text)
+    const reports = getQCReports(releases)
+    return reports
 }
 
-async function fetchData(url = ""): Promise<string | undefined> {
-    const response = await fetch(url)
-    .then(function(response){
-        if (!response.ok && response.status === 404) {
-            return undefined
+function zipPromiseMap(keys: string[], values: Promise<string>[]): Map<string, Promise<string>> {
+    const promiseMap = new Map<string, Promise<string>>()
+    keys.forEach((key, i) => promiseMap.set(key, values[i]))
+
+    return promiseMap
+}
+
+function getReportNames(url: string = ""): string {
+    const nameRegex = /monarch-kg-dev\/(.*)\//
+    const nameMatch = url.match(nameRegex)
+    if (nameMatch === null) { return "" }
+    return nameMatch[1]
+}
+
+async function getQCReports(urls: string[] = [""]): Promise<Map<string, Promise<string>>> {
+    const responses = urls.map(fetchData)
+    const responseMap = zipPromiseMap(urls, responses)
+
+    const reportURLs: string[] = []
+    for (const [url, response] of responseMap.entries()) {
+        const checkResponse = await response
+        if (checkResponse.match("qc_report.yaml")) {
+            reportURLs.push(url.replace("index.html", "qc_report.yaml"))
         }
-        return response
-    })
-    // console.log(response)
-    const text = await response?.text();
-    // const parsed = await YAML.parse(text);
+    }
+    const reports = reportURLs.map(fetchData)
+    const reportNames = reportURLs.map(getReportNames)
+
+    return zipPromiseMap(reportNames, reports)
+}
+
+function getQCReportReleases (html: string): string[] {
+    const elem = htmlToDom(html)
+    const alist = elem.querySelectorAll('ul')[1]
+
+    const urls: string[] = []
+    alist.querySelectorAll('a').forEach(
+        function(a: HTMLAnchorElement) {
+            const href = a.getAttribute('href')
+            if (typeof(href) === 'string') { urls.push(href) }
+        }
+    )
+    return urls
+}
+
+async function fetchData(url = ""): Promise<string> {
+    const response = await fetch(url)
+    const text = await response.text()
     return text;
 }
 
-function dropMissing(a: (string | undefined)[]): string[] {
-    const result: string[] = []
-    for (const element of a) {
-        if (element !== undefined) {result.push(element)}
-    }
-    return result
-}
-
-function stringDiff(a: string[], b: string[]): string[] {
+function stringSetDiff(a: string[], b: string[]): string[] {
     const diff: string[] = a.filter(x => !b.includes(x));
     return diff
 }
 
 export async function fetchAllData() {
-    const qcsitehtml = await fetchData(qcsite)
-    const qcsiteurls = getQCReportURLs(qcsitehtml)
-    const qcpromises = qcsiteurls.map(fetchData)
-    const allresults = await Promise.all(qcpromises)
-    const results = dropMissing(allresults)
-    // Right now processing all of the reports is a little slow
-    // I'm commenting the processing out for now so we can focus on the latest qc report
-    // const allreports = results.map(getQCReport)
-    const latest = getQCReport(results[results.length -1])
-    // console.log(latest)
+    const testQCfetch = await fetchQCReports(qcsite)
+
+    const latestText = testQCfetch.get('latest')
+    if (latestText === undefined) { return }
+    const latest = getQCReport((await latestText).valueOf())
+    // const latest_new = getQCReport_new(testQCfetch, 'latest')
 
     const danglingEdgesNamespaces = getNamespaces(latest.dangling_edges)
     const edgesNamespaces = getNamespaces(latest.edges)
-    globalNamespaces.value = stringDiff(danglingEdgesNamespaces, edgesNamespaces)
-
-    // const namespacesMap = new Map<string, Map<string, string[]>>()
-    // namespacesMap.set("dangling_edges", getNamespaces(latest.dangling_edges))
-    // namespacesMap.set("edges", getNamespaces(latest.edges))
-    // namespacesMap.set("missing_nodes", getNamespaces(latest.missing_nodes))
-    // namespacesMap.set("nodes", getNamespaces(latest.nodes))
-    // globalData.value = globalData.value.set("Namespaces", namespacesMap)
+    globalNamespaces.value = stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
 
     const test = getTotalNumber(latest.dangling_edges)
     const totalnumber = new Map<string, Map<string, number>>()
@@ -119,6 +129,16 @@ function getQCReport(text: string): QCReport {
     const qc_report = <QCReport> report
     return qc_report
 }
+
+// async function getQCReport_new(qcReports: Map<string, Promise<string>>, reportName: string): Promise<QCReport> {
+//     const reportResult = await qcReports.get(reportName)
+//     if (reportResult === undefined) { return <QCReport> {} }
+//     const reportText = reportResult
+//     const report = YAML.parse(text)
+//     const qc_report = <QCReport> report
+
+//     return qc_report
+// }
 
 function uniq(items: string[]) {
     const result: string[] = []
@@ -181,7 +201,7 @@ function visualDiff(a: number | undefined, b: number | undefined): string {
     const unfilled = "⚪"
     const ratio = Math.floor(cleanNumber(a) / (cleanNumber(a) + cleanNumber(b)) * 10)
     const visualRatio: string = filled.repeat(ratio).concat(unfilled.repeat(10 - ratio))
-    console.log(visualRatio)
+    // console.log(visualRatio)
     return visualRatio
 }
 
