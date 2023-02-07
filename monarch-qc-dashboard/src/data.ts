@@ -106,8 +106,9 @@ export async function fetchAllData() {
 
     const latestText = testQCfetch.get('latest')
     if (latestText === undefined) { return }
-    const latest = getQCReport((await latestText).valueOf())
-    // const latest_new = getQCReport_new(testQCfetch, 'latest')
+    // const latest = getQCReport((await latestText).valueOf())
+    const latest = await getQCReport(testQCfetch, 'latest')
+    // console.log(latest_new)
 
     const danglingEdgesNamespaces = getNamespaces(latest.dangling_edges)
     const edgesNamespaces = getNamespaces(latest.edges)
@@ -124,21 +125,12 @@ export async function fetchAllData() {
     globalTotals.value = getEdgesDifference(latest)
 }
 
-function getQCReport(text: string): QCReport {
-    const report = YAML.parse(text)
-    const qc_report = <QCReport> report
-    return qc_report
+async function getQCReport(qcReports: Map<string, Promise<string>>, reportName: string): Promise<QCReport> {
+    const reportText = await qcReports.get(reportName)
+    if (reportText === undefined) { return <QCReport> {} }
+
+    return <QCReport> YAML.parse(reportText)
 }
-
-// async function getQCReport_new(qcReports: Map<string, Promise<string>>, reportName: string): Promise<QCReport> {
-//     const reportResult = await qcReports.get(reportName)
-//     if (reportResult === undefined) { return <QCReport> {} }
-//     const reportText = reportResult
-//     const report = YAML.parse(text)
-//     const qc_report = <QCReport> report
-
-//     return qc_report
-// }
 
 function uniq(items: string[]) {
     const result: string[] = []
