@@ -106,9 +106,7 @@ export async function fetchAllData() {
 
     const latestText = testQCfetch.get('latest')
     if (latestText === undefined) { return }
-    // const latest = getQCReport((await latestText).valueOf())
     const latest = await getQCReport(testQCfetch, 'latest')
-    // console.log(latest_new)
 
     const danglingEdgesNamespaces = getNamespaces(latest.dangling_edges)
     const edgesNamespaces = getNamespaces(latest.edges)
@@ -140,19 +138,13 @@ function uniq(items: string[]) {
     return result
 }
 
-// function getNamespaces(qcpart: QCPart[]): Map<string, string[]> {
 function getNamespaces(qcpart: QCPart[]): string[] {
-    // if (qcpart === undefined) return new Map<string, []>()
     if (qcpart === undefined) return []
 
     let allNamespaces: string[] = []
-    // const namespacesMap = new Map<string, string[]>()
     for (const item of qcpart) {
-        // namespacesMap.set(item.name, item.namespaces)
         allNamespaces = allNamespaces.concat(item.namespaces)
     }
-    // namespacesMap.set("all_namespaces", uniq(allNamespaces))
-    // return namespacesMap
     return allNamespaces
 }
 
@@ -193,19 +185,16 @@ function visualDiff(a: number | undefined, b: number | undefined): string {
     const unfilled = "⚪"
     const ratio = Math.floor(cleanNumber(a) / (cleanNumber(a) + cleanNumber(b)) * 10)
     const visualRatio: string = filled.repeat(ratio).concat(unfilled.repeat(10 - ratio))
-    // console.log(visualRatio)
     return visualRatio
 }
 
 function getEdgesDifference(qcreport: QCReport): Map<string, string> {
     const names = uniq(getNames(qcreport.dangling_edges).concat(getNames(qcreport.edges)))
-    // console.log(names)
     const edge_diff = new Map<string, string>
     for (const name of names) {
         const dangling_edges_total = getQCPartbyName(qcreport.dangling_edges, name)?.total_number
         const edges_total = getQCPartbyName(qcreport.edges, name)?.total_number
         const diff = visualDiff(edges_total, dangling_edges_total)
-        // console.log(name)
         edge_diff.set(name, diff)
     }
     return edge_diff
