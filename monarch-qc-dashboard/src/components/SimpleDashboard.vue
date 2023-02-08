@@ -1,5 +1,6 @@
 <template>
-  <div align="left">
+  <h1> {{ msg }}</h1>
+  <div align="center">
     <table>
       <thead>
         <tr>
@@ -8,9 +9,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(value) of globalTotals">
-          <td>{{ value[0] }}</td>
-          <td align="right">{{ value[1] }}</td>
+        <tr v-for="[key, value] of totals.entries()">
+          <td>{{ key }}</td>
+          <td align="center">{{ value }}</td>
         </tr>
       </tbody>
     </table>
@@ -18,5 +19,6 @@
 </template>
   
 <script setup lang="ts">
-import { globalNamespaces, globalData, globalTotals } from "../data";
+import { ref } from 'vue'
+defineProps<{ msg: string, totals: Map<string, string> }>()
 </script>

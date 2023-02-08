@@ -4,10 +4,9 @@
 <template>
   <main>
     <div>
-      <img src="./global/monarch.png" class="logo" alt="Monarch Logo" />
+      <img src="/src/global/monarch.png" class="logo" alt="Monarch Logo" />
     </div>
-    <MonarchQCTest msg="Monarch QC Testing" />
-    <SimpleDashboard msg="Monarch Simple QC" />
+    <SimpleDashboard msg="Visualization of Edges vs Dangling Edges by provider" :totals="globalTotals" />
     <div align="center">
       Namespaces only in dangling_edges: <br />
       {{ globalNamespaces }}
@@ -17,6 +16,5 @@
 
 <script setup lang="ts">
   import { globalNamespaces, globalData, globalTotals } from "./data";
-  import MonarchQCTest from './components/MonarchQCTest.vue'
   import SimpleDashboard from './components/SimpleDashboard.vue'
 </script>
