@@ -104,8 +104,8 @@ function stringSetDiff(a: string[], b: string[]): string[] {
 export async function fetchAllData() {
     const testQCfetch = await fetchQCReports(qcsite)
 
-    const latestText = testQCfetch.get('latest')
-    if (latestText === undefined) { return }
+    // const latestText = testQCfetch.get('latest')
+    // if (latestText === undefined) { return }
     const latest = await getQCReport(testQCfetch, 'latest')
 
     const danglingEdgesNamespaces = getNamespaces(latest.dangling_edges)
@@ -148,7 +148,7 @@ function getNamespaces(qcpart: QCPart[]): string[] {
     return allNamespaces
 }
 
-function getTotalNumber(qcpart: QCPart[]) {
+function getTotalNumber(qcpart: QCPart[]): Map<string, number> {
     if (qcpart === undefined) return new Map<string, number>()
     let grandtotal = 0
     const totals = new Map<string, number>

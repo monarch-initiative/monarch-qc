@@ -1,11 +1,11 @@
 <template>
-  <h1> {{ msg }}</h1>
+  <h1> {{ title }}</h1>
   <div align="center">
     <table>
       <thead>
         <tr>
-          <th>provided_by</th>
-          <th>Edges (⚫) vs Dangling Edges (⚪)</th>
+          <th>{{ label }}</th>
+          <th>{{ scale }}</th>
         </tr>
       </thead>
       <tbody>
@@ -20,5 +20,6 @@
   
 <script setup lang="ts">
 import { ref } from 'vue'
-defineProps<{ msg: string, totals: Map<string, string> }>()
+defineProps<{ title: string, label: string, scale: string, totals: Map<string, string> }>()
+
 </script>

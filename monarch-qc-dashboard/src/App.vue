@@ -6,7 +6,8 @@
     <div>
       <img src="/src/global/monarch.png" class="logo" alt="Monarch Logo" />
     </div>
-    <SimpleDashboard msg="Visualization of Edges vs Dangling Edges by provider" :totals="globalTotals" />
+    <SimpleDashboard title="Edges vs Dangling Edges" label="provided_by"
+      scale="Edges (⚫) vs Dangling Edges (⚪)" :totals="globalTotals" />
     <div align="center">
       Namespaces only in dangling_edges: <br />
       {{ globalNamespaces }}
