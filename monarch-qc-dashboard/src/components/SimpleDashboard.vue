@@ -1,16 +1,21 @@
 <template>
-  <div align="left">
+  <h1> {{ title }}</h1>
+  <div align="center">
     <table>
       <thead>
         <tr>
-          <th>provided_by</th>
-          <th>Edges (⚫) vs Dangling Edges (⚪)</th>
+          <th>{{ label }}</th>
+          <th>{{ scale }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(value) of globalTotals">
-          <td>{{ value[0] }}</td>
-          <td align="right">{{ value[1] }}</td>
+        <!-- <tr v-for="[key, value] of totals.entries()">
+          <td>{{ key }}</td>
+          <td align="center">{{ value }}</td>
+        </tr> -->
+        <tr v-for="[key, value] of getVisualDiffs(a, b)">
+          <td>{{ key }}</td>
+          <td align="center">{{ value }}</td>
         </tr>
       </tbody>
     </table>
@@ -18,5 +23,6 @@
 </template>
   
 <script setup lang="ts">
-import { globalNamespaces, globalData, globalTotals } from "../data";
+  import { getVisualDiffs } from './SimpleDashboard'
+defineProps<{ title: string, label: string, scale: string, a: Map<string, number>, b: Map<string, number> }>()
 </script>

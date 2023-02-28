@@ -4,10 +4,10 @@
 <template>
   <main>
     <div>
-      <img src="./global/monarch.png" class="logo" alt="Monarch Logo" />
+      <img src="/src/global/monarch.png" class="logo" alt="Monarch Logo" />
     </div>
-    <MonarchQCTest msg="Monarch QC Testing" />
-    <SimpleDashboard msg="Monarch Simple QC" />
+    <SimpleDashboard title="Edges vs Dangling Edges" label="provided_by"
+      scale="Edges (⚫) vs Dangling Edges (⚪)" :a="edgesTotals" :b="danglingEdgesTotals"/>
     <div align="center">
       Namespaces only in dangling_edges: <br />
       {{ globalNamespaces }}
@@ -16,7 +16,8 @@
 </template>
 
 <script setup lang="ts">
-  import { globalNamespaces, globalData, globalTotals } from "./data";
-  import MonarchQCTest from './components/MonarchQCTest.vue'
+  import { globalNamespaces, globalData, danglingEdgesTotals, edgesTotals } from "./data";
   import SimpleDashboard from './components/SimpleDashboard.vue'
+  // console.log(danglingEdgesTotals)
+  // console.log(edgesTotals)
 </script>
