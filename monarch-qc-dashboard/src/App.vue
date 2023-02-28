@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-  import { globalNamespaces, globalData, danglingEdgesTotals, edgesTotals } from "./data";
+  import { globalNamespaces, danglingEdgesTotals, edgesTotals } from "./data";
   import SimpleDashboard from './components/SimpleDashboard.vue'
   // console.log(danglingEdgesTotals)
   // console.log(edgesTotals)

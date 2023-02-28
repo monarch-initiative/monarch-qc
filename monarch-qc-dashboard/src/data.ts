@@ -2,7 +2,6 @@ import { ref } from "vue";
 import YAML from "yaml";
 import DOMPurify from 'isomorphic-dompurify';
 
-export const globalData = ref<Map<string, any>>(new Map())
 export const globalTotals = ref<Map<string, string>>(new Map())
 export const globalNamespaces = ref<Array<string>>([])
 export const danglingEdgesTotals = ref<Map<string, number>>(new Map())
@@ -38,7 +37,7 @@ function htmlToDom(html: string): HTMLDivElement {
     @return: HTMLDivElement
     */
     const cleanhtml = DOMPurify.sanitize(html);
-    let elem = document.createElement("div");
+    const elem = document.createElement("div");
     elem.innerHTML = cleanhtml;
     return elem
 }
@@ -71,7 +70,7 @@ function zipPromiseMap(keys: string[], values: Promise<string>[]): Map<string, P
     return promiseMap
 }
 
-function getReportNames(url: string = ""): string {
+function getReportNames(url = ""): string {
     /**
      * Extracts the report name from the url.
      * @url: string
@@ -216,7 +215,7 @@ function getNamespaces(qcpart: QCPart[]): string[] {
     return allNamespaces
 }
 
-function getTotalNumber(qcpart: QCPart[], addTotal: boolean = false): Map<string, number> {
+function getTotalNumber(qcpart: QCPart[], addTotal = false): Map<string, number> {
     /**
      * Returns the total number of edges (or nodes) of each QCPart.
      * @qcpart: QCPart[]
