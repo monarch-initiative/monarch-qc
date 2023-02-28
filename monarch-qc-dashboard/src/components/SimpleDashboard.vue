@@ -9,7 +9,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="[key, value] of totals.entries()">
+        <!-- <tr v-for="[key, value] of totals.entries()">
+          <td>{{ key }}</td>
+          <td align="center">{{ value }}</td>
+        </tr> -->
+        <tr v-for="[key, value] of getVisualDiffs(a, b)">
           <td>{{ key }}</td>
           <td align="center">{{ value }}</td>
         </tr>
@@ -19,7 +23,6 @@
 </template>
   
 <script setup lang="ts">
-import { ref } from 'vue'
-defineProps<{ title: string, label: string, scale: string, totals: Map<string, string> }>()
-
+  import { getVisualDiffs } from './SimpleDashboard'
+defineProps<{ title: string, label: string, scale: string, a: Map<string, number>, b: Map<string, number> }>()
 </script>
