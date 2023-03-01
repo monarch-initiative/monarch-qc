@@ -1,9 +1,8 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
-import { fetchAllData } from './data';
+import { createApp } from "vue"
+import "./style.css"
+import App from "./App.vue"
+import { fetchAllData } from "./data"
 
+fetchAllData()
 
-fetchAllData();
-
-createApp(App).mount('#app')
+createApp(App).mount("#app")

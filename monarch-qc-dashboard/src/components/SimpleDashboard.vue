@@ -1,5 +1,5 @@
 <template>
-  <h1> {{ title }}</h1>
+  <h1>{{ title }}</h1>
   <div align="center">
     <table>
       <thead>
@@ -21,8 +21,14 @@
     </table>
   </div>
 </template>
-  
+
 <script setup lang="ts">
-  import { getVisualDiffs } from './SimpleDashboard'
-defineProps<{ title: string, label: string, scale: string, a: Map<string, number>, b: Map<string, number> }>()
+  import { getVisualDiffs } from "./SimpleDashboard"
+  defineProps<{
+    title: string
+    label: string
+    scale: string
+    a: Map<string, number>
+    b: Map<string, number>
+  }>()
 </script>
