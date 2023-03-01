@@ -128,6 +128,90 @@ These guides were used to insatall and configure ESLint and Prettier:
 [typescript-eslint](https://www.npmjs.com/package/@typescript-eslint/parser)
 [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier#installation)
 
+# Adding ESLint with Prettier and configuring git hooks - installation instructions
+ESLint and Prettier should make development and maintenance easier by identifying and fixing common errors and formatting code for easier readability and maintenance. I added these tools using basic instructions with a few modifications from the 
+
+## ESLint
+```
+yarn add -D eslint eslint-plugin-vue
+yarn add --dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript
+```
+
+.eslintignore
+```
+node_modules/
+dist/
+.prettierrc.cjs
+.eslintrc.cjs
+vite-env.d.ts
+```
+
+.eslintrc.cjs
+```
+module.exports = {
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/vue3-recommended",
+    "prettier",
+  ],
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
+  root: true,
+}
+```
+
+##Prettier
+```
+yarn add --dev --exact prettier
+yarn add --dev eslint-config-prettier
+```
+
+.prettierignore
+```
+node_modules
+dist
+```
+
+.prettierrc.cjs
+```
+// prettier.config.js or .prettierrc.js
+module.exports = {
+  bracketSpacing: true,
+  printWidth: 100,
+  semi: false,
+  singleAttributePerLine: false,
+  singleQuote: false,
+  trailingComma: "es5",
+  tabWidth: 2,
+  useTabs: false,
+  vueIndentScriptAndStyle: true,
+}
+```
+
+## Husky/lint-staged - for linting git hooks
+```
+yarn add husky --dev
+yarn add --dev lint-staged
+```
+
+.husky/pre-commit
+```
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+cd monarch-qc-dashboard && yarn format && yarn lint
+```
+
+## Add scripts to package.json
+This is an extract of the scripts added to package.json for eslint, prettier, and husky git hooks.
+```
+"scripts": {
+    "prepare": "cd .. && husky install monarch-qc-dashboard/.husky",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+```
 
 ---
 
