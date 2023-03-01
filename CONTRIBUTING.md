@@ -88,13 +88,20 @@ yarn
 yarn dev
 ```
 
-# npm run preview
-This will provide an html reference and local service to a preview of the current project.
-
-Compile and minify for production
+# Run preview during development 
+During development testing can be performed on a preview version launched locally with
 ```
-npm run build
+yarn preview
 ```
+Alternatively, you can launch a dev version allowing testing locally and with other users connecting to your system with
+```
+yarn dev
+```
+To compile the files without launching a preview or dev environment you can run
+```
+yarn build
+```
+All of these scripts are in package.json where you can review the commands to run them directly for debugging if necessary.
 
 ## Deploy to GitHub pages
 Running the deploy script will automatically build and deploy the project to github pages with any new changes
@@ -102,11 +109,25 @@ Running the deploy script will automatically build and deploy the project to git
 ./deploy.sh
 ```
 
-## Linting
-We will use linting to improve development and maintainability
+## Linting and Format review with Prettier and ESLint
+Run ESLint and Prettier to lint code and ensure proper formatting.
 ```
 yarn lint
+yarn format
 ```
+These scripts are in package.json if you would like to run the commands directly, perhaps with other options.
+Configuration for ESLint is in the files '.eslintrc.cjs' and '.eslintignore'.
+Configuration for Prettier is in the files '.prettierrc.cjs' and '.prettierignore'.
+
+For further documentation see:
+[ESLint](https://eslint.org/)
+[Prettier](https://prettier.io/)
+
+These guides were used to insatall and configure ESLint and Prettier:
+[Vue ESLint Guide](https://eslint.vuejs.org/user-guide/)
+[typescript-eslint](https://www.npmjs.com/package/@typescript-eslint/parser)
+[eslint-config-prettier](https://github.com/prettier/eslint-config-prettier#installation)
+
 
 ---
 
