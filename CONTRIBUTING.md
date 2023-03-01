@@ -88,13 +88,20 @@ yarn
 yarn dev
 ```
 
-# npm run preview
-This will provide an html reference and local service to a preview of the current project.
-
-Compile and minify for production
+# Run preview during development 
+During development testing can be performed on a preview version launched locally with
 ```
-npm run build
+yarn preview
 ```
+Alternatively, you can launch a dev version allowing testing locally and with other users connecting to your system with
+```
+yarn dev
+```
+To compile the files without launching a preview or dev environment you can run
+```
+yarn build
+```
+All of these scripts are in package.json where you can review the commands to run them directly for debugging if necessary.
 
 ## Deploy to GitHub pages
 Running the deploy script will automatically build and deploy the project to github pages with any new changes
@@ -102,10 +109,108 @@ Running the deploy script will automatically build and deploy the project to git
 ./deploy.sh
 ```
 
-## Linting
-We will use linting to improve development and maintainability
+## Linting and Format review with Prettier and ESLint
+Run ESLint and Prettier to lint code and ensure proper formatting.
 ```
 yarn lint
+yarn format
+```
+These scripts are in package.json if you would like to run the commands directly, perhaps with other options.
+Configuration for ESLint is in the files '.eslintrc.cjs' and '.eslintignore'.
+Configuration for Prettier is in the files '.prettierrc.cjs' and '.prettierignore'.
+
+For further documentation see:
+[ESLint](https://eslint.org/)
+[Prettier](https://prettier.io/)
+
+These guides were used to insatall and configure ESLint and Prettier:
+[Vue ESLint Guide](https://eslint.vuejs.org/user-guide/)
+[typescript-eslint](https://www.npmjs.com/package/@typescript-eslint/parser)
+[eslint-config-prettier](https://github.com/prettier/eslint-config-prettier#installation)
+
+# Adding ESLint with Prettier and configuring git hooks - installation instructions
+ESLint and Prettier should make development and maintenance easier by identifying and fixing common errors and formatting code for easier readability and maintenance. I added these tools using basic instructions with a few modifications from the 
+
+## ESLint
+```
+yarn add -D eslint eslint-plugin-vue
+yarn add --dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript
+```
+
+.eslintignore
+```
+node_modules/
+dist/
+.prettierrc.cjs
+.eslintrc.cjs
+vite-env.d.ts
+```
+
+.eslintrc.cjs
+```
+module.exports = {
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/vue3-recommended",
+    "prettier",
+  ],
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
+  root: true,
+}
+```
+
+##Prettier
+```
+yarn add --dev --exact prettier
+yarn add --dev eslint-config-prettier
+```
+
+.prettierignore
+```
+node_modules
+dist
+```
+
+.prettierrc.cjs
+```
+// prettier.config.js or .prettierrc.js
+module.exports = {
+  bracketSpacing: true,
+  printWidth: 100,
+  semi: false,
+  singleAttributePerLine: false,
+  singleQuote: false,
+  trailingComma: "es5",
+  tabWidth: 2,
+  useTabs: false,
+  vueIndentScriptAndStyle: true,
+}
+```
+
+## Husky/lint-staged - for linting git hooks
+```
+yarn add husky --dev
+yarn add --dev lint-staged
+```
+
+.husky/pre-commit
+```
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+cd monarch-qc-dashboard && yarn format && yarn lint
+```
+
+## Add scripts to package.json
+This is an extract of the scripts added to package.json for eslint, prettier, and husky git hooks.
+```
+"scripts": {
+    "prepare": "cd .. && husky install monarch-qc-dashboard/.husky",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
 ```
 
 ---
