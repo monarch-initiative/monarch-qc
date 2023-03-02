@@ -8,8 +8,10 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "setup": "cd .. && husky install monarch-qc-dashboard/.husky",
-    "lint": "eslint .",
-    "format": "prettier --write ."
+    "lint": "eslint --fix .",
+    "lint-check": "eslint .",
+    "format": "prettier --write .",
+    "format-check": "prettier --check ."
   },
   "dependencies": {
     "isomorphic-dompurify": "^0.26.0",
