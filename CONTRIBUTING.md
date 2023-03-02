@@ -4,8 +4,13 @@ This document describes how to setup the development and build environment and c
 ## Developing Monarch Ingest Dashboard in Vue + Vite (yarn) environment
 If you are new to Monarch Ingest Dashboard development please see the Initial Setup section below. Otherwise, use the instructions below for development and testing to contribute to the Monarch Ingest Dashboard.
 
-### Re-initialize Development environment
-To re-initialize a newly 
+### Initialize Development environment
+If  you are new to development or you have downloaded a new copy of the repo, you will need to initialize the development environment. For development on the Monarch QC Dashboard, you will need to set up the development environment. The commands below will switch to the monarch-qc-dashboard folder, install the needed packages for development, and yarn a setup script that adds git hooks to run Prettier and ESLint before committing.
+```
+cd monarch-qc-dashboard
+yarn install
+yarn setup
+```
 
 ## Initial Setup
 ### Install Node js from nodejs.org or NodeSource
