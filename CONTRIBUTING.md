@@ -203,6 +203,7 @@ yarn add --dev lint-staged
 .husky/pre-commit
 ```
 #!/usr/bin/env sh
+```
 . "$(dirname -- "$0")/_/husky.sh"
 
 cd monarch-qc-dashboard && yarn format && yarn lint
@@ -212,11 +213,64 @@ cd monarch-qc-dashboard && yarn format && yarn lint
 This is an extract of the scripts added to package.json for eslint, prettier, and husky git hooks.
 ```
 "scripts": {
-    "prepare": "cd .. && husky install monarch-qc-dashboard/.husky",
+    "setup": "cd .. && husky install monarch-qc-dashboard/.husky",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
 ```
+
+# Adding testing via Vitest and @testing-library/vue
+Vite recommends Vitest with @testing-library/vue for unit testing so we'll install these.
+Cypress is recommended for deeper testing or for end-to-end but we'll install that later if needed.
+
+## Install Vitest, @testing-library/vue, and happy-dom
+We'll implement unit testing using Vitest and @testing-library/vue with happy-dom.
+```
+yarn add -D vitest happy-dom @testing-library/vue
+mkdir test
+```
+
+## Configure Vitest by creating vitest.config.ts
+vitetest.config.ts
+```
+import { defineConfig } from "vite"
+
+export default defineConfig({
+  // ...
+  test: {
+    // enable jest-like global test APIs
+    globals: true,
+    // simulate DOM with happy-dom
+    // (requires installing happy-dom as a peer dependency)
+    environment: "happy-dom",
+  },
+})
+```
+
+tsconfig.json - excerpt
+```
+{
+ "compilerOptions": {
+    "types": ["vitest/globals"]
+  }
+}
+```
+
+Create a new unit test for utils.ts, uniq function, to serve as a template and confirm testing works.
+
+## Add a test to package.json and add to git pre-commit hook
+package.json - excerpt
+```
+"scripts": {
+    "test": "vitest"
+  }
+```
+
+Add `yarn test` to pre-commit hook where appropriate
+```
+cd monarch-qc-dashboard && yarn test && yarn format-check && yarn lint-check
+```
+
 
 ---
 
