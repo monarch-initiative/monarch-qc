@@ -4,8 +4,13 @@ This document describes how to setup the development and build environment and c
 ## Developing Monarch Ingest Dashboard in Vue + Vite (yarn) environment
 If you are new to Monarch Ingest Dashboard development please see the Initial Setup section below. Otherwise, use the instructions below for development and testing to contribute to the Monarch Ingest Dashboard.
 
-### Re-initialize Development environment
-To re-initialize a newly 
+### Initialize Development environment
+If  you are new to development or you have downloaded a new copy of the repo, you will need to initialize the development environment. For development on the Monarch QC Dashboard, you will need to set up the development environment. The commands below will switch to the monarch-qc-dashboard folder, install the needed packages for development, and yarn a setup script that adds git hooks to run Prettier and ESLint before committing.
+```
+cd monarch-qc-dashboard
+yarn install
+yarn setup
+```
 
 ## Initial Setup
 ### Install Node js from nodejs.org or NodeSource
@@ -198,6 +203,7 @@ yarn add --dev lint-staged
 .husky/pre-commit
 ```
 #!/usr/bin/env sh
+```
 . "$(dirname -- "$0")/_/husky.sh"
 
 cd monarch-qc-dashboard && yarn format && yarn lint
@@ -207,11 +213,64 @@ cd monarch-qc-dashboard && yarn format && yarn lint
 This is an extract of the scripts added to package.json for eslint, prettier, and husky git hooks.
 ```
 "scripts": {
-    "prepare": "cd .. && husky install monarch-qc-dashboard/.husky",
+    "setup": "cd .. && husky install monarch-qc-dashboard/.husky",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
 ```
+
+# Adding testing via Vitest and @testing-library/vue
+Vite recommends Vitest with @testing-library/vue for unit testing so we'll install these.
+Cypress is recommended for deeper testing or for end-to-end but we'll install that later if needed.
+
+## Install Vitest, @testing-library/vue, and happy-dom
+We'll implement unit testing using Vitest and @testing-library/vue with happy-dom.
+```
+yarn add -D vitest happy-dom @testing-library/vue
+mkdir test
+```
+
+## Configure Vitest by creating vitest.config.ts
+vitetest.config.ts
+```
+import { defineConfig } from "vite"
+
+export default defineConfig({
+  // ...
+  test: {
+    // enable jest-like global test APIs
+    globals: true,
+    // simulate DOM with happy-dom
+    // (requires installing happy-dom as a peer dependency)
+    environment: "happy-dom",
+  },
+})
+```
+
+tsconfig.json - excerpt
+```
+{
+ "compilerOptions": {
+    "types": ["vitest/globals"]
+  }
+}
+```
+
+Create a new unit test for utils.ts, uniq function, to serve as a template and confirm testing works.
+
+## Add a test to package.json and add to git pre-commit hook
+package.json - excerpt
+```
+"scripts": {
+    "test": "vitest"
+  }
+```
+
+Add `yarn test` to pre-commit hook where appropriate
+```
+cd monarch-qc-dashboard && yarn test && yarn format-check && yarn lint-check
+```
+
 
 ---
 

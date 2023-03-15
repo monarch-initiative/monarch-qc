@@ -1,5 +1,4 @@
 node_modules/
 dist/
-.prettierrc.cjs
-.eslintrc.cjs
+.vscode
 vite-env.d.ts
