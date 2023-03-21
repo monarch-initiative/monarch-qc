@@ -9,10 +9,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- <tr v-for="[key, value] of totals.entries()">
-          <td>{{ key }}</td>
-          <td align="center">{{ value }}</td>
-        </tr> -->
         <tr v-for="[key, value] of getVisualDiffs(a, b)">
           <td>{{ key }}</td>
           <td align="center">{{ value }}</td>

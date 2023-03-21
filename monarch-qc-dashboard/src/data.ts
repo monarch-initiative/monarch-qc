@@ -152,24 +152,11 @@ export async function fetchAllData() {
    * @return: void
    */
   const qcReports = await fetchQCReports(qcsite)
-
-  // const latestText = testQCfetch.get('latest')
-  // if (latestText === undefined) { return }
   const latest = await getQCReport(qcReports, "latest")
 
   const danglingEdgesNamespaces = getNamespaces(latest.dangling_edges)
   const edgesNamespaces = getNamespaces(latest.edges)
   globalNamespaces.value = stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
-
-  // const test = getTotalNumber(latest.dangling_edges)
-  // const totalnumber = new Map<string, Map<string, number>>()
-  // totalnumber.set("dangling_edges", getTotalNumber(latest.dangling_edges))
-  // totalnumber.set("edges", getTotalNumber(latest.edges))
-  // totalnumber.set("missing_nodes", getTotalNumber(latest.missing_nodes))
-  // totalnumber.set("nodes", getTotalNumber(latest.nodes))
-  // globalData.value = globalData.value.set("TotalNumbers", totalnumber)
-
-  // globalTotals.value = getEdgesDifference(latest)
   danglingEdgesTotals.value = getTotalNumber(latest.dangling_edges, true)
   edgesTotals.value = getTotalNumber(latest.edges, true)
 }
@@ -191,20 +178,6 @@ async function getQCReport(
 
   return <QCReport>YAML.parse(reportText)
 }
-
-// This should move to a utils file
-// export function uniq(items: string[]) {
-//     /**
-//      * Returns the unique items in the array.
-//      * @items: string[]
-//      * @return: string[]
-//      */
-//     const result: string[] = []
-//     for (const i of items) {
-//         if (result.indexOf(i) < 0) result.push(i)
-//     }
-//     return result
-// }
 
 function getNamespaces(qcpart: QCPart[]): string[] {
   /**
@@ -237,69 +210,3 @@ function getTotalNumber(qcpart: QCPart[], addTotal = false): Map<string, number>
   if (addTotal) totals.set("Total Number", grandtotal)
   return totals
 }
-
-// function getNames(qcparts: QCPart[]): string[] {
-//     /**
-//      * Returns the provided_by name of the QCParts.
-//      * @qcparts: QCPart[]
-//      * @return: string[]
-//      */
-//     const names: string[] = []
-//     for (const qcpart of qcparts) {
-//         names.push(qcpart.name)
-//     }
-//     return names
-// }
-
-// function getQCPartbyName(qcparts: QCPart[], name: string): QCPart | undefined {
-//     /**
-//      * Returns the QCPart with the provided name.
-//      * @qcparts: QCPart[]
-//      * @name: string
-//      * @return: QCPart | undefined
-//      */
-//     for (const qcpart of qcparts) {
-//         if (qcpart.name == name) { return qcpart }
-//     }
-//     return undefined
-// }
-
-// function cleanNumber(n: number | undefined): number {
-//     /**
-//      * Returns 0 if the number is undefined.
-//      * @n: number | undefined
-//      * @return: number
-//      */
-//     return (typeof n === 'undefined') ? 0 : n;
-// }
-
-// function visualDiff(a: number | undefined, b: number | undefined): string {
-//     /**
-//      * Returns a visual representation of the ratio of a to a+b.
-//      * @a: number | undefined
-//      * @b: number | undefined
-//      * @return: string
-//      */
-//     const filled = "⚫"
-//     const unfilled = "⚪"
-//     const ratio = Math.floor(cleanNumber(a) / (cleanNumber(a) + cleanNumber(b)) * 10)
-//     const visualRatio: string = filled.repeat(ratio).concat(unfilled.repeat(10 - ratio))
-//     return visualRatio
-// }
-
-// function getEdgesDifference(qcreport: QCReport): Map<string, string> {
-//     /**
-//      * Returns the difference between the dangling edges and the edges.
-//      * @qcreport: QCReport
-//      * @return: Map<string, string>
-//      */
-//     const names = uniq(getNames(qcreport.dangling_edges).concat(getNames(qcreport.edges)))
-//     const edge_diff = new Map<string, string>
-//     for (const name of names) {
-//         const dangling_edges_total = getQCPartbyName(qcreport.dangling_edges, name)?.total_number
-//         const edges_total = getQCPartbyName(qcreport.edges, name)?.total_number
-//         const diff = visualDiff(edges_total, dangling_edges_total)
-//         edge_diff.set(name, diff)
-//     }
-//     return edge_diff
-// }
