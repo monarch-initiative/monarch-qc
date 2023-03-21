@@ -1,5 +1,5 @@
 import { expect, test } from "vitest"
-import { uniq } from "../src/utils"
+import { uniq } from "../src/qc_utils"
 
 test("uniq empty array", () => {
   expect(uniq([])).toEqual([])

@@ -1,4 +1,4 @@
-import { uniq } from "../utils"
+import { uniq } from "../qc_utils"
 
 export function getVisualDiffs(
   a: Map<string, number>,
