@@ -1,22 +1,22 @@
 import { expect, test } from "vitest"
-import { uniq } from "../src/qc_utils"
+import * as qc_utils from "../src/qc_utils"
 
 test("uniq empty array", () => {
-  expect(uniq([])).toEqual([])
+  expect(qc_utils.uniq([])).toEqual([])
 })
 
 test("uniq remove duplicate", () => {
-  expect(uniq(["a", "a"])).toEqual(["a"])
+  expect(qc_utils.uniq(["a", "a"])).toEqual(["a"])
 })
 
 test("uniq remove duplicate non-consecutive", () => {
-  expect(uniq(["a", "b", "a"])).toEqual(["a", "b"])
+  expect(qc_utils.uniq(["a", "b", "a"])).toEqual(["a", "b"])
 })
 
 test("uniq remove duplicate out of order", () => {
-  expect(uniq(["b", "a", "a"])).toEqual(["b", "a"])
+  expect(qc_utils.uniq(["b", "a", "a"])).toEqual(["b", "a"])
 })
 
 test("uniq remove multiple duplicates out of order", () => {
-  expect(uniq(["b", "a", "a", "c", "b"])).toEqual(["b", "a", "c"])
+  expect(qc_utils.uniq(["b", "a", "a", "c", "b"])).toEqual(["b", "a", "c"])
 })

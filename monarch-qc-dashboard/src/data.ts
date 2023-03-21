@@ -2,28 +2,14 @@ import { ref } from "vue"
 import YAML from "yaml"
 import DOMPurify from "isomorphic-dompurify"
 
+import * as qc_utils from "./qc_utils"
+type QCReport = qc_utils.QCReport
+type QCPart = qc_utils.QCPart
+
 export const globalTotals = ref<Map<string, string>>(new Map())
 export const globalNamespaces = ref<Array<string>>([])
 export const danglingEdgesTotals = ref<Map<string, number>>(new Map())
 export const edgesTotals = ref<Map<string, number>>(new Map())
-
-export interface QCReport {
-  dangling_edges: QCPart[]
-  edges: QCPart[]
-  missing_nodes: QCPart[]
-  nodes: QCPart[]
-}
-
-export interface QCPart {
-  categories: []
-  missing: number
-  name: string
-  namespaces: []
-  node_types: []
-  predicates: []
-  taxon: []
-  total_number: number
-}
 
 const qcsite = "https://data.monarchinitiative.org/monarch-kg-dev/"
 
@@ -135,17 +121,6 @@ async function fetchData(url = ""): Promise<string> {
   return text
 }
 
-function stringSetDiff(a: string[], b: string[]): string[] {
-  /**
-   * Returns the difference between two string arrays.
-   * @a: string[]
-   * @b: string[]
-   * @return: string[]
-   */
-  const diff: string[] = a.filter((x) => !b.includes(x))
-  return diff
-}
-
 export async function fetchAllData() {
   /**
    * Fetches all the data and sets the globalData ref.
@@ -154,9 +129,9 @@ export async function fetchAllData() {
   const qcReports = await fetchQCReports(qcsite)
   const latest = await getQCReport(qcReports, "latest")
 
-  const danglingEdgesNamespaces = getNamespaces(latest.dangling_edges)
-  const edgesNamespaces = getNamespaces(latest.edges)
-  globalNamespaces.value = stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
+  const danglingEdgesNamespaces = qc_utils.getNamespaces(latest.dangling_edges)
+  const edgesNamespaces = qc_utils.getNamespaces(latest.edges)
+  globalNamespaces.value = qc_utils.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
   danglingEdgesTotals.value = getTotalNumber(latest.dangling_edges, true)
   edgesTotals.value = getTotalNumber(latest.edges, true)
 }
@@ -164,7 +139,7 @@ export async function fetchAllData() {
 async function getQCReport(
   qcReports: Map<string, Promise<string>>,
   reportName: string
-): Promise<QCReport> {
+): Promise<qc_utils.QCReport> {
   /**
    * Fetches the QC report and returns the parsed report.
    * @qcReports: Map<string, Promise<string>>
@@ -177,21 +152,6 @@ async function getQCReport(
   }
 
   return <QCReport>YAML.parse(reportText)
-}
-
-function getNamespaces(qcpart: QCPart[]): string[] {
-  /**
-   * Returns all namespaces in the QCPart.
-   * @qcpart: QCPart[]
-   * @return: string[]
-   */
-  if (qcpart === undefined) return []
-
-  let allNamespaces: string[] = []
-  for (const item of qcpart) {
-    allNamespaces = allNamespaces.concat(item.namespaces)
-  }
-  return allNamespaces
 }
 
 function getTotalNumber(qcpart: QCPart[], addTotal = false): Map<string, number> {
