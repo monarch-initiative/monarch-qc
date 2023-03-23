@@ -46,8 +46,6 @@ export function getNamespaces(qcparts: QCPart[]): string[] {
    * @qcpart: QCPart[]
    * @return: string[]
    */
-  if (qcparts.length === 0) return []
-
   let allNamespaces: string[] = []
   for (const item of qcparts) {
     const qcpart = toQCPart(item)
