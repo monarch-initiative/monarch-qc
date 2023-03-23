@@ -49,10 +49,7 @@ function zipPromiseMap(keys: string[], values: Promise<string>[]): Map<string, P
    * @values: Promise<string>[]
    * @return: Map<string, Promise<string>>
    */
-  const promiseMap = new Map<string, Promise<string>>()
-  keys.forEach((key, i) => promiseMap.set(key, values[i]))
-
-  return promiseMap
+  return <Map<string, Promise<string>>>qc_utils.zipMap(keys, values)
 }
 
 function getReportNames(url = ""): string {

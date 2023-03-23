@@ -54,3 +54,19 @@ export function uniq(items: string[]) {
   }
   return result
 }
+
+export function zipMap(keys: string[], values: object[]): Map<string, object> {
+  /**
+   * Zips two arrays into a map of keys to values.
+   * @keys: string[]
+   * @values: any[]
+   * @return: Map<string, any>
+   */
+  if (keys.length !== values.length) {
+    throw new RangeError("Keys and Values must be of equal length.")
+  }
+  const zippedMap = new Map<string, object>()
+  keys.forEach((key, i) => zippedMap.set(key, values[i]))
+
+  return zippedMap
+}
