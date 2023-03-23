@@ -3,8 +3,6 @@ import YAML from "yaml"
 import DOMPurify from "isomorphic-dompurify"
 
 import * as qc_utils from "./qc_utils"
-type QCReport = qc_utils.QCReport
-type QCPart = qc_utils.QCPart
 
 export const globalTotals = ref<Map<string, string>>(new Map())
 export const globalNamespaces = ref<Array<string>>([])
@@ -145,13 +143,13 @@ async function getQCReport(
    */
   const reportText = await qcReports.get(reportName)
   if (reportText === undefined) {
-    return <QCReport>{}
+    return qc_utils.toQCReport({})
   }
 
-  return <QCReport>YAML.parse(reportText)
+  return qc_utils.toQCReport(YAML.parse(reportText))
 }
 
-function getTotalNumber(qcpart: QCPart[], addTotal = false): Map<string, number> {
+function getTotalNumber(qcpart: qc_utils.QCPart[], addTotal = false): Map<string, number> {
   /**
    * Returns the total number of edges (or nodes) of each QCPart.
    * @qcpart: QCPart[]
