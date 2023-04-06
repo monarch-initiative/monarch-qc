@@ -23,19 +23,20 @@ function htmlToDom(html: string): HTMLDivElement {
   return elem
 }
 
-async function fetchQCReports(url = ""): Promise<Map<string, Promise<string>>> {
+export async function fetchQCReports(
+  qctext: string | undefined
+): Promise<Map<string, Promise<string>>> {
   /**
-   * Fetches the QC report index page, parses for QC Report urls,
+   * Parses the QC report index page for QC Report urls,
    * and returns a map of report names to promises of report text.
    * @url: string
    * @return: Map<string, Promise<string>>
    */
-  const text = await fetchData(url)
-  if (text === undefined) {
+  if (qctext === undefined) {
     return new Map<string, Promise<string>>()
   }
 
-  const releases = getQCReportReleases(text)
+  const releases = getQCReportReleases(qctext)
   const reports = getQCReports(releases)
   return reports
 }
@@ -121,7 +122,9 @@ export async function fetchAllData() {
    * Fetches all the data and sets the globalData ref.
    * @return: void
    */
-  const qcReports = await fetchQCReports(qcsite)
+  const qctext = await fetchData(qcsite)
+  const qcReports = await fetchQCReports(qctext)
+  console.log(qcReports)
   const latest = await getQCReport(qcReports, "latest")
 
   const danglingEdgesNamespaces = qc_utils.getNamespaces(latest.dangling_edges)
