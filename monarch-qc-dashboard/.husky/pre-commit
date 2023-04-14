@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-cd monarch-qc-dashboard && yarn vitest run && yarn format-check && yarn lint-check
