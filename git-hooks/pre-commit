@@ -46,6 +46,3 @@ if [ $tests_exit_status -ne 0 ] || [ $formatting_exit_status -ne 0 ] || [ $lint_
 else
   echo "All checks passed."
 fi
-
-exit 125
-
