@@ -5,11 +5,11 @@ This document describes how to setup the development and build environment and c
 If you are new to Monarch Ingest Dashboard development please see the Initial Setup section below. Otherwise, use the instructions below for development and testing to contribute to the Monarch Ingest Dashboard.
 
 ### Initialize Development environment
-If  you are new to development or you have downloaded a new copy of the repo, you will need to initialize the development environment. For development on the Monarch QC Dashboard, you will need to set up the development environment. The commands below will switch to the monarch-qc-dashboard folder, install the needed packages for development, and yarn a setup script that adds git hooks to run Prettier and ESLint before committing.
+If  you are new to development or you have downloaded a new copy of the repo, you will need to initialize the development environment. For development on the Monarch QC Dashboard, you will need to set up the development environment. The commands below will install the git hooks for checking commits, switch to the monarch-qc-dashboard folder, and install the needed packages for development.
 ```
+mkdir -p .git/hooks && cp git-hooks/* .git/hooks/
 cd monarch-qc-dashboard
 yarn install
-yarn setup
 ```
 
 ## Initial Setup
@@ -194,26 +194,10 @@ module.exports = {
 }
 ```
 
-## Husky/lint-staged - for linting git hooks
-```
-yarn add husky --dev
-yarn add --dev lint-staged
-```
-
-.husky/pre-commit
-```
-#!/usr/bin/env sh
-```
-. "$(dirname -- "$0")/_/husky.sh"
-
-cd monarch-qc-dashboard && yarn format && yarn lint
-```
-
 ## Add scripts to package.json
 This is an extract of the scripts added to package.json for eslint, prettier, and husky git hooks.
 ```
 "scripts": {
-    "setup": "cd .. && husky install monarch-qc-dashboard/.husky",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
@@ -270,6 +254,14 @@ Add `yarn test` to pre-commit hook where appropriate
 ```
 cd monarch-qc-dashboard && yarn test && yarn format-check && yarn lint-check
 ```
+
+## Create a git hook for pre-commit checks
+To track our pre-commit hook we'll create a folder called `git-hooks` in the top-level directory.
+```
+mkdir git-hooks
+```
+
+In the git-hooks directory we'll add our scripts for tracking outside of `.git/hooks/`. Initially, we have just a pre-commit hook but it might be nice to have a pre-push hook as well, i.e. to disallow pusing a broken commit. The script is too long to add here.
 
 
 ---

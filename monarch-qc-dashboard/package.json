@@ -11,7 +11,6 @@
     "lint": "eslint --fix .",
     "lint-check": "eslint .",
     "preview": "vite preview",
-    "setup": "cd .. && husky install monarch-qc-dashboard/.husky",
     "test": "vitest"
   },
   "dependencies": {
@@ -31,18 +30,12 @@
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-vue": "^9.9.0",
-    "husky": "^8.0.3",
     "jsdom": "^21.1.1",
-    "lint-staged": "^13.1.2",
     "prettier": "^2.5.1",
     "typescript": "^4.4.4",
     "vite": "^4.0.0",
     "vitest": "^0.29.2",
     "vue-eslint-parser": "^8.0.0",
     "vue-tsc": "^1.0.11"
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
   }
 }
