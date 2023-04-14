@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# Change to monarch-qc-dashboard to run tests
+cd monarch-qc-dashboard
+
+# Initialize variables to track exit status of each check
+tests_exit_status=0
+formatting_exit_status=0
+lint_exit_status=0
+
+# Stash all changes including untracked, then discard all unstaged changes
+echo "Stashing changes to validate only staged files"
+git stash --quiet --keep-index --include-untracked
+
+# Run the tests and print the output
+echo "Running vitest..."
+yarn vitest run
+tests_exit_status=$?
+
+# Check code formatting and print the output
+yarn format-check
+formatting_exit_status=$?
+
+# Run linting and print the output
+echo "Running lint check..."
+yarn lint-check
+lint_exit_status=$?
+
+# Unstash all changes including unstaged and untracked
+git stash pop --quiet
+
+# Determine whether any checks failed, and print an appropriate message
+if [ $tests_exit_status -ne 0 ] || [ $formatting_exit_status -ne 0 ] || [ $lint_exit_status -ne 0 ]; then
+  echo "Some checks failed:"
+  if [ $formatting_exit_status -ne 0 ]; then
+    echo "Prettier found formatting errors, please run \`yarn format\` or correct the format issues."
+  fi
+  if [ $lint_exit_status -ne 0 ]; then
+    echo "ESLint found linting issues, please run \`yarn lint\` and/or correct these issues."
+  fi
+  if [ $tests_exit_status -ne 0 ]; then
+    echo "\n** Test Errors occurred, you are strongly encouraged to fix these errors before committing. **"
+  fi
+  echo "To commit without validation, run \`git commit --no-verify\` ."
+  exit 117
+else
+  echo "All checks passed."
+fi
+
+exit 125
+
