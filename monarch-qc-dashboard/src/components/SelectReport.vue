@@ -1,3 +1,8 @@
+<!-- 
+  This component is a dropdown menu that allows the user to select a report to view.
+  It is a child component of the Dashboard component.
+ -->
+
 <template>
   <div>
     <h1>Select a report:</h1>
