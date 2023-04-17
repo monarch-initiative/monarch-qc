@@ -6,6 +6,13 @@
     <div>
       <img src="/src/global/monarch.png" class="logo" alt="Monarch Logo" />
     </div>
+    <SelectReport
+      :reports="globalReports"
+      :selected="selectedReport"
+      :namespaces="globalNamespaces"
+      :danglingEdgesTotals="danglingEdgesTotals"
+      :edgesTotals="edgesTotals"
+    />
     <SimpleDashboard
       title="Edges vs Dangling Edges"
       label="provided_by"
@@ -21,6 +28,13 @@
 </template>
 
 <script setup lang="ts">
-  import { globalNamespaces, danglingEdgesTotals, edgesTotals } from "./data"
+  import {
+    globalReports,
+    selectedReport,
+    globalNamespaces,
+    danglingEdgesTotals,
+    edgesTotals,
+  } from "./data"
   import SimpleDashboard from "./components/SimpleDashboard.vue"
+  import SelectReport from "./components/SelectReport.vue"
 </script>

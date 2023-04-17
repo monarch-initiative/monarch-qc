@@ -4,6 +4,9 @@ import DOMPurify from "isomorphic-dompurify"
 
 import * as qc_utils from "./qc_utils"
 
+export const globalReports = ref<Map<string, Promise<string>>>(new Map())
+export const selectedReport = ref<string>("")
+
 export const globalTotals = ref<Map<string, string>>(new Map())
 export const globalNamespaces = ref<Array<string>>([])
 export const danglingEdgesTotals = ref<Map<string, number>>(new Map())
@@ -124,6 +127,8 @@ export async function fetchAllData() {
    */
   const qctext = await fetchData(qcsite)
   const qcReports = await fetchQCReports(qctext)
+  globalReports.value = qcReports
+  selectedReport.value = "latest"
   console.log(qcReports)
   const latest = await getQCReport(qcReports, "latest")
 
@@ -132,6 +137,22 @@ export async function fetchAllData() {
   globalNamespaces.value = qc_utils.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
   danglingEdgesTotals.value = getTotalNumber(latest.dangling_edges, true)
   edgesTotals.value = getTotalNumber(latest.edges, true)
+}
+
+export async function processReport() {
+  /**
+   * Processes the selected report and sets the globalData ref.
+   * @return: void
+   */
+  const qcReports = globalReports.value
+  const reportName = selectedReport.value
+  const report = await getQCReport(qcReports, reportName)
+
+  const danglingEdgesNamespaces = qc_utils.getNamespaces(report.dangling_edges)
+  const edgesNamespaces = qc_utils.getNamespaces(report.edges)
+  globalNamespaces.value = qc_utils.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
+  danglingEdgesTotals.value = getTotalNumber(report.dangling_edges, true)
+  edgesTotals.value = getTotalNumber(report.edges, true)
 }
 
 async function getQCReport(

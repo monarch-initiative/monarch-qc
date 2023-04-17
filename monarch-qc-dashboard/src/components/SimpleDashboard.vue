@@ -1,3 +1,9 @@
+<!-- 
+  This component is a simple dashboard that displays a table of values
+  for two different data sets. The data sets are passed in as props.
+  The component is used to display the results of the visual diff
+  algorithm.
+ -->
 <template>
   <h1>{{ title }}</h1>
   <div align="center">
