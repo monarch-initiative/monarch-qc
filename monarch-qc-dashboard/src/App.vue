@@ -16,7 +16,8 @@
     <SimpleDashboard
       title="Edges vs Dangling Edges"
       label="provided_by"
-      scale="Edges (⚫) vs Dangling Edges (⚪)"
+      a_name="Edges"
+      b_name="Dangling Edges"
       :a="edgesTotals"
       :b="danglingEdgesTotals"
     />
