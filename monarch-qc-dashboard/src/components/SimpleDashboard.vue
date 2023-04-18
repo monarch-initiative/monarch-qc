@@ -11,13 +11,25 @@
       <thead>
         <tr>
           <th>{{ label }}</th>
-          <th>{{ scale }}</th>
+          <th style="padding-right: 10px">{{ a_name }} (⚫) vs {{ b_name }} (⚪)</th>
+          <th align="right" style="padding-right: 10px">{{ a_name }}</th>
+          <th align="right">{{ b_name }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="[key, value] of getVisualDiffs(a, b)">
+        <tr
+          v-for="([key, value], index) of getVisualDiffs(a, b)"
+          :key="key"
+          :style="index % 2 === 0 ? 'background-color: #f2f2f2;' : 'background-color: #ffffff;'"
+        >
           <td>{{ key }}</td>
           <td align="center">{{ value }}</td>
+          <td align="center" style="padding-right: 10px">
+            {{ (a.get(key) ?? 0).toLocaleString("en-US") }}
+          </td>
+          <td align="center" style="padding-left: 10px">
+            {{ (b.get(key) ?? 0).toLocaleString("en-US") }}
+          </td>
         </tr>
       </tbody>
     </table>
@@ -29,7 +41,8 @@
   defineProps<{
     title: string
     label: string
-    scale: string
+    a_name: string
+    b_name: string
     a: Map<string, number>
     b: Map<string, number>
   }>()
