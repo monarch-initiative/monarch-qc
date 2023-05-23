@@ -20,7 +20,7 @@
         <tr
           v-for="([key, value], index) of getVisualDiffs(a, b)"
           :key="key"
-          :style="index % 2 === 0 ? 'background-color: #f2f2f2;' : 'background-color: #ffffff;'"
+          :style="index % 2 === 0 ? 'background-color: #f2f2f2;' : 'background-color: transparent;'"
         >
           <td>{{ key }}</td>
           <td align="center">{{ value }}</td>
