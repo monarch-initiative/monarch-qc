@@ -20,7 +20,7 @@
         <tr
           v-for="([key, value], index) of getVisualDiffs(a, b)"
           :key="key"
-          :style="index % 2 === 0 ? 'background-color: #f2f2f2;' : 'background-color: transparent;'"
+          :style="getRowStyle(index)"
         >
           <td>{{ key }}</td>
           <td align="center">{{ value }}</td>
@@ -38,6 +38,7 @@
 
 <script setup lang="ts">
   import { getVisualDiffs } from "./SimpleDashboard"
+  import { getRowStyle } from "../style"
   defineProps<{
     title: string
     label: string
