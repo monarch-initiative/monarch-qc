@@ -1,19 +1,16 @@
-<!-- 
+<!--
   This component is a dropdown menu that allows the user to select a report to view.
   It is a child component of the Dashboard component.
  -->
 
 <template>
-  <div>
-    <h1>Select a report:</h1>
+  <div style="float: right">
+    <label style="font-weight: bold; font-size: large; padding-right: 1em;">KG Release:</label>
     <select v-model="selectedReport" :style="{ padding: '0.5rem', borderRadius: '0.25rem' }">
       <option v-for="[reportName, value] of reports" :key="reportName" :value="reportName">
         {{ reportName }}
       </option>
     </select>
-    <div v-if="selectedReport">
-      <h2>{{ selectedReport }}</h2>
-    </div>
   </div>
 </template>
 
