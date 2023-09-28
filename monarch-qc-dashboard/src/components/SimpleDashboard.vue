@@ -26,21 +26,21 @@
           <td style="padding-right: 10px">
             {{ (a.get(key) ?? 0).toLocaleString("en-US") }}
 
-            <span v-if="a_diff.get(key) >= 0" style="color: green; font-style: italic">
-              (+{{ (a_diff.get(key) ?? 0).toLocaleString("en-US") }})
+            <span v-if="a_diff.has(key) && a_diff.get(key)! > 0" style="color: green; font-style: italic">
+              (+{{ (a_diff.get(key)!).toLocaleString("en-US") }})
             </span>
-            <span v-if="a_diff.get(key) < 0" style="color: red; font-weight: bold">
-              ({{ (a_diff.get(key) ?? 0).toLocaleString("en-US") }})
+            <span v-if="a_diff.has(key) && a_diff.get(key)! < 0" style="color: red; font-weight: bold">
+              ({{ (a_diff.get(key)!).toLocaleString("en-US") }})
             </span>
           </td>
           <td style="text-align: center">{{ value }}</td>
           <td style="padding-left: 10px">
             {{ (b.get(key) ?? 0).toLocaleString("en-US") }}
-            <span v-if="b_diff.get(key) >= 0">
-              (+{{ (b_diff.get(key) ?? 0).toLocaleString("en-US") }})
+            <span v-if="b_diff.has(key) && b_diff.get(key)! > 0">
+              (+{{ (b_diff.get(key)!).toLocaleString("en-US") }})
             </span>
-            <span v-if="b_diff.get(key) < 0">
-              ({{ (b_diff.get(key) ?? 0).toLocaleString("en-US") }})
+            <span v-if="b_diff.has(key) && b_diff.get(key)! < 0">
+              ({{ (b_diff.get(key)!).toLocaleString("en-US") }})
             </span>
           </td>
         </tr>
