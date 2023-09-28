@@ -62,7 +62,7 @@ export function stringSetDiff(a: string[], b: string[]): string[] {
    * @return: string[]
    */
   const diff: string[] = a.filter((x) => !b.includes(x))
-  return diff
+  return uniq(diff).sort()
 }
 
 export function uniq(items: string[]) {
