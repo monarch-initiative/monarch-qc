@@ -29,20 +29,23 @@
       Namespaces only in dangling_edges: <br />
       <ul>
         <li v-for="namespace in globalNamespaces" :key="namespace">
-          {{ namespace }} </li>
+          {{ namespace }}
+        </li>
       </ul>
     </div>
   </main>
 </template>
 
 <script setup lang="ts">
-import {
-  globalReports,
-  selectedReport,
-  globalNamespaces,
-  danglingEdgesTotals,
-  edgesTotals, edgesDifference, danglingEdgesDifference,
-} from "./data"
+  import {
+    globalReports,
+    selectedReport,
+    globalNamespaces,
+    danglingEdgesTotals,
+    edgesTotals,
+    edgesDifference,
+    danglingEdgesDifference,
+  } from "./data"
   import SimpleDashboard from "./components/SimpleDashboard.vue"
   import SelectReport from "./components/SelectReport.vue"
 </script>

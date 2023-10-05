@@ -5,7 +5,7 @@
 
 <template>
   <div style="float: right">
-    <label style="font-weight: bold; font-size: large; padding-right: 1em;">KG Release:</label>
+    <label style="font-weight: bold; font-size: large; padding-right: 1em">KG Release:</label>
     <select v-model="selectedReport" :style="{ padding: '0.5rem', borderRadius: '0.25rem' }">
       <option v-for="[reportName, value] of reports" :key="reportName" :value="reportName">
         {{ reportName }}

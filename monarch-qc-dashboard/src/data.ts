@@ -134,21 +134,21 @@ export async function fetchAllData() {
   qcReports.delete("latest")
 
   //TODO: protect against being at the start with no previous
-  const latestReleaseName: string = [...qcReports.keys()].slice(-1)[0];
-  const previousReleaseName: string = [...qcReports.keys()].slice(-2)[0];
+  const latestReleaseName: string = [...qcReports.keys()].slice(-1)[0]
+  const previousReleaseName: string = [...qcReports.keys()].slice(-2)[0]
 
   globalReports.value = qcReports
   selectedReport.value = latestReleaseName ?? ""
   console.log(qcReports)
   const selected = await getQCReport(qcReports, latestReleaseName)
-  const previous : qc_utils.QCReport = await getQCReport(qcReports, previousReleaseName)
+  const previous: qc_utils.QCReport = await getQCReport(qcReports, previousReleaseName)
 
   const danglingEdgesNamespaces = qc_utils.getNamespaces(selected.dangling_edges)
   const edgesNamespaces = qc_utils.getNamespaces(selected.edges)
   globalNamespaces.value = qc_utils.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
   danglingEdgesTotals.value = getTotalNumber(selected.dangling_edges, true)
   edgesTotals.value = getTotalNumber(selected.edges, true)
-  danglingEdgesDifference.value = getDifference(selected.dangling_edges, previous.dangling_edges);
+  danglingEdgesDifference.value = getDifference(selected.dangling_edges, previous.dangling_edges)
   edgesDifference.value = getDifference(selected.edges, previous.edges)
 }
 
@@ -161,7 +161,10 @@ export async function processReport() {
   const qcReportNames = [...qcReports.keys()]
   const reportName = selectedReport.value
 
-  const previousReportName: string = qcReportNames.indexOf(reportName) > 0 ? qcReportNames[qcReportNames.indexOf(reportName) - 1] : qcReportNames[0]
+  const previousReportName: string =
+    qcReportNames.indexOf(reportName) > 0
+      ? qcReportNames[qcReportNames.indexOf(reportName) - 1]
+      : qcReportNames[0]
 
   const report = await getQCReport(qcReports, reportName)
   const previousReport = await getQCReport(qcReports, previousReportName)
@@ -171,7 +174,10 @@ export async function processReport() {
   globalNamespaces.value = qc_utils.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
   danglingEdgesTotals.value = getTotalNumber(report.dangling_edges, true)
   edgesTotals.value = getTotalNumber(report.edges, true)
-  danglingEdgesDifference.value = getDifference(report.dangling_edges, previousReport.dangling_edges);
+  danglingEdgesDifference.value = getDifference(
+    report.dangling_edges,
+    previousReport.dangling_edges
+  )
   edgesDifference.value = getDifference(report.edges, previousReport.edges)
 }
 
@@ -210,21 +216,24 @@ function getTotalNumber(qcpart: qc_utils.QCPart[], addTotal = false): Map<string
   return totals
 }
 
-function getDifference(qcpart: qc_utils.QCPart[], previous_qcpart: qc_utils.QCPart[]): Map<string, number> {
+function getDifference(
+  qcpart: qc_utils.QCPart[],
+  previous_qcpart: qc_utils.QCPart[]
+): Map<string, number> {
   /**
    * Return the difference between two QCParts matching on the same key.
    * @qcpart: QCPart[]
    * @previous_qcpart: QCPart[]
    * @return: Map<string, number>
    */
-    let difference_totals = new Map<string, number>()
-    if (qcpart === undefined || previous_qcpart === undefined) return new Map<string, number>()
-    for (const item of qcpart) {
-      for (const previous_item of previous_qcpart) {
-        if (item.name === previous_item.name) {
-          difference_totals.set(item.name, item.total_number - previous_item.total_number)
-        }
+  const difference_totals = new Map<string, number>()
+  if (qcpart === undefined || previous_qcpart === undefined) return new Map<string, number>()
+  for (const item of qcpart) {
+    for (const previous_item of previous_qcpart) {
+      if (item.name === previous_item.name) {
+        difference_totals.set(item.name, item.total_number - previous_item.total_number)
       }
     }
-    return difference_totals
+  }
+  return difference_totals
 }
