@@ -1,11 +1,13 @@
-import { ref } from "vue"
+import { Ref, ref } from "vue"
 import YAML from "yaml"
 import DOMPurify from "isomorphic-dompurify"
 
 import * as qc_utils from "./qc_utils"
 
 export const globalReports = ref<Map<string, Promise<string>>>(new Map())
+export const compareReportNames = ref<Array<string>>([])
 export const selectedReport = ref<string>("")
+export const selectedCompareReport: Ref<string> = ref("")
 export const previousReport = ref<string>("")
 export const globalTotals = ref<Map<string, string>>(new Map())
 export const globalNamespaces = ref<Array<string>>([])
@@ -127,24 +129,26 @@ export async function fetchAllData() {
    * Fetches all the data and sets the globalData ref.
    * @return: void
    */
-  const qctext = await fetchData(qcsite)
-  const qcReports = await fetchQCReports(qctext)
+  const qctext: string = await fetchData(qcsite)
+  const qcReports: Map<string, Promise<string>> = await fetchQCReports(qctext)
 
   // remove "latest" from qcReports, since it's always a duplicate of the most recent release
   qcReports.delete("latest")
 
-  //TODO: protect against being at the start with no previous
+  // TODO: protect against being at the start with no previous
   const latestReleaseName: string = [...qcReports.keys()].slice(-1)[0]
   const previousReleaseName: string = [...qcReports.keys()].slice(-2)[0]
 
   globalReports.value = qcReports
+  compareReportNames.value = removeLaterReports([...qcReports.keys()], selectedReport.value)
   selectedReport.value = latestReleaseName ?? ""
+  selectedCompareReport.value = previousReleaseName ?? ""
   console.log(qcReports)
-  const selected = await getQCReport(qcReports, latestReleaseName)
+  const selected: qc_utils.QCReport = await getQCReport(qcReports, latestReleaseName)
   const previous: qc_utils.QCReport = await getQCReport(qcReports, previousReleaseName)
 
-  const danglingEdgesNamespaces = qc_utils.getNamespaces(selected.dangling_edges)
-  const edgesNamespaces = qc_utils.getNamespaces(selected.edges)
+  const danglingEdgesNamespaces: string[] = qc_utils.getNamespaces(selected.dangling_edges)
+  const edgesNamespaces: string[] = qc_utils.getNamespaces(selected.edges)
   globalNamespaces.value = qc_utils.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
   danglingEdgesTotals.value = getTotalNumber(selected.dangling_edges, true)
   edgesTotals.value = getTotalNumber(selected.edges, true)
@@ -157,20 +161,20 @@ export async function processReport() {
    * Processes the selected report and sets the globalData ref.
    * @return: void
    */
-  const qcReports = globalReports.value
-  const qcReportNames = [...qcReports.keys()]
-  const reportName = selectedReport.value
+  const qcReports: Map<string, Promise<string>> = globalReports.value
+  compareReportNames.value = removeLaterReports([...qcReports.keys()], selectedReport.value)
+  if (compareReportNames.value.indexOf(selectedCompareReport.value, 0) === -1) {
+    selectedCompareReport.value = compareReportNames.value.slice(-1)[0]
+  }
 
-  const previousReportName: string =
-    qcReportNames.indexOf(reportName) > 0
-      ? qcReportNames[qcReportNames.indexOf(reportName) - 1]
-      : qcReportNames[0]
+  const report: qc_utils.QCReport = await getQCReport(globalReports.value, selectedReport.value)
+  const previousReport: qc_utils.QCReport = await getQCReport(
+    globalReports.value,
+    selectedCompareReport.value
+  )
 
-  const report = await getQCReport(qcReports, reportName)
-  const previousReport = await getQCReport(qcReports, previousReportName)
-
-  const danglingEdgesNamespaces = qc_utils.getNamespaces(report.dangling_edges)
-  const edgesNamespaces = qc_utils.getNamespaces(report.edges)
+  const danglingEdgesNamespaces: string[] = qc_utils.getNamespaces(report.dangling_edges)
+  const edgesNamespaces: string[] = qc_utils.getNamespaces(report.edges)
   globalNamespaces.value = qc_utils.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
   danglingEdgesTotals.value = getTotalNumber(report.dangling_edges, true)
   edgesTotals.value = getTotalNumber(report.edges, true)
@@ -236,4 +240,15 @@ function getDifference(
     }
   }
   return difference_totals
+}
+
+function removeLaterReports(reportNames: string[], reportName: string): string[] {
+  /**
+   * Removes the selected report and all later reports.
+   * @reportNames: string[]
+   * @reportName: string
+   * @return: string[]
+   */
+  const index = reportNames.indexOf(reportName)
+  return reportNames.slice(0, index)
 }

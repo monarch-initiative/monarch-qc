@@ -6,15 +6,12 @@
     <div>
       <img src="/src/global/monarch.png" class="logo" alt="Monarch Logo" />
     </div>
-    <SelectReport
-      :reports="globalReports"
-      :selected="selectedReport"
-      :namespaces="globalNamespaces"
-      :danglingEdgesTotals="danglingEdgesTotals"
-      :edgesTotals="edgesTotals"
-      :edgesDifference="edgesDifference"
-      :danglingEdgesDifference="danglingEdgesDifference"
+    <SelectCompareReport
+      :reportNames="compareReportNames"
+      :selectedReport="selectedReport"
+      style="padding-left: 0.75rem"
     />
+    <SelectReport :reports="globalReports" />
     <SimpleDashboard
       title="Edges Report"
       label="Ingest"
@@ -41,6 +38,7 @@
     globalReports,
     selectedReport,
     globalNamespaces,
+    compareReportNames,
     danglingEdgesTotals,
     edgesTotals,
     edgesDifference,
@@ -48,4 +46,5 @@
   } from "./data"
   import SimpleDashboard from "./components/SimpleDashboard.vue"
   import SelectReport from "./components/SelectReport.vue"
+  import SelectCompareReport from "./components/CompareReport.vue"
 </script>
