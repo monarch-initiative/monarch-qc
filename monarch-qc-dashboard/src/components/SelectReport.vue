@@ -5,9 +5,14 @@
 
 <template>
   <div style="float: right">
-    <label style="font-weight: bold; font-size: large; padding-right: 1em">KG Release:</label>
-    <select v-model="selectedReport" :style="{ padding: '0.5rem', borderRadius: '0.25rem' }">
-      <option v-for="[reportName, value] of reports" :key="reportName" :value="reportName">
+    <label style="font-weight: bold; font-size: large; padding-right: 1em">{{ label }}</label>
+    <select
+      :id="id"
+      :value="modelValue"
+      @change="selectChange"
+      :style="{ padding: '0.5rem', borderRadius: '0.25rem' }"
+    >
+      <option v-for="reportName in reportNames" :key="reportName" :value="reportName">
         {{ reportName }}
       </option>
     </select>
@@ -15,16 +20,19 @@
 </template>
 
 <script setup lang="ts">
-  // import { selectReport } from "./SelectReport"
-  import { watch } from "vue"
-  import { processReport } from "../data"
-  import { selectedReport } from "../data"
-
-  defineProps<{
-    reports: Map<string, Promise<string>>
+  const { onChange, modelValue } = defineProps<{
+    id: string
+    label: string
+    reportNames: string[]
+    modelValue: string
+    onChange: () => void
   }>()
 
-  watch(selectedReport, async () => {
-    await processReport()
-  })
+  const emit = defineEmits(["update:modelValue"])
+  const selectChange = (event: Event) => {
+    emit("update:modelValue", (event.target as HTMLSelectElement)?.value)
+    if (onChange) {
+      onChange()
+    }
+  }
 </script>

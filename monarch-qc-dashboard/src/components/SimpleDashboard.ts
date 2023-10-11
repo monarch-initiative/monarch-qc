@@ -1,5 +1,12 @@
 import { uniq } from "../qc_utils"
 
+export interface dashboardData {
+  a: Map<string, number>
+  b: Map<string, number>
+  a_diff: Map<string, number>
+  b_diff: Map<string, number>
+}
+
 export function getVisualDiffs(
   a: Map<string, number>,
   b: Map<string, number>

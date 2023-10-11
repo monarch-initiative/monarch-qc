@@ -55,14 +55,15 @@
 </template>
 
 <script setup lang="ts">
-  import { getVisualDiffs } from "./SimpleDashboard"
-  import { getStateSummary } from "./SimpleDashboard"
+  import { getVisualDiffs, dashboardData } from "./SimpleDashboard"
+  // import { getStateSummary } from "./SimpleDashboard"
   import { getRowStyle } from "../style"
   defineProps<{
     title: string
     label: string
     a_name: string
     b_name: string
+    data: dashboardData
     a: Map<string, number>
     b: Map<string, number>
     a_diff: Map<string, number>
