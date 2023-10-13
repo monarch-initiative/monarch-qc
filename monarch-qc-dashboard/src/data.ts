@@ -1,22 +1,17 @@
-import { Ref, ref } from "vue"
+import { reactive, ref } from "vue"
 import YAML from "yaml"
 import DOMPurify from "isomorphic-dompurify"
 
-import * as qc_utils from "./qc_utils"
-import { dashboardData } from "./components/SimpleDashboard"
+import * as qc from "./qc_utils"
+import { DashboardData } from "./components/SimpleDashboard"
 
 export const globalReports = ref<Map<string, Promise<string>>>(new Map())
 export const selectedReport = ref<string>("")
 export const compareNames = ref<Array<string>>([])
-export const selectedCompare: Ref<string> = ref("")
+export const selectedCompare = ref<string>("")
 
-export const edgesDashboardData = ref<dashboardData>({} as dashboardData)
-// All of these should move to a single dshboard interface ref
-// export const globalTotals = ref<Map<string, string>>(new Map())
-export const danglingEdgesTotals = ref<Map<string, number>>(new Map())
-export const edgesTotals = ref<Map<string, number>>(new Map())
-export const danglingEdgesDifference = ref<Map<string, number>>(new Map())
-export const edgesDifference = ref<Map<string, number>>(new Map())
+export const edgesDashboardData = reactive({} as DashboardData)
+
 export const globalNamespaces = ref<Array<string>>([])
 
 const qcsite = "https://data.monarchinitiative.org/monarch-kg-dev/"
@@ -58,7 +53,7 @@ function zipPromiseMap(keys: string[], values: Promise<string>[]): Map<string, P
    * @values: Promise<string>[]
    * @return: Map<string, Promise<string>>
    */
-  return <Map<string, Promise<string>>>qc_utils.zipMap(keys, values)
+  return <Map<string, Promise<string>>>qc.zipMap(keys, values)
 }
 
 function getReportNames(url = ""): string {
@@ -139,8 +134,6 @@ export async function fetchAllData() {
   globalReports.value.delete("latest")
 
   selectedReport.value = [...globalReports.value.keys()].slice(-1)[0] ?? ""
-  selectedCompare.value = [...globalReports.value.keys()].slice(-2)[0] ?? ""
-
   processReports()
 }
 
@@ -149,35 +142,58 @@ export async function processReports() {
    * Processes the selected and comparison reports and set the global refs.
    * @return: void
    */
-  compareNames.value = removeLaterReports([...globalReports.value.keys()], selectedReport.value)
+  // compareNames.value = removeLaterReports([...globalReports.value.keys()], selectedReport.value)
+  const reportNames: string[] = [...globalReports.value.keys()]
+  compareNames.value = reportNames.slice(0, reportNames.indexOf(selectedReport.value))
   if (compareNames.value.indexOf(selectedCompare.value, 0) === -1) {
     selectedCompare.value = compareNames.value.slice(-1)[0] ?? ""
   }
 
-  const selected: qc_utils.QCReport = await getQCReport(selectedReport.value)
-  const previous: qc_utils.QCReport = await getQCReport(selectedCompare.value)
+  const selected: qc.QCReport = await getQCReport(selectedReport.value)
+  const previous: qc.QCReport = await getQCReport(selectedCompare.value)
 
-  danglingEdgesTotals.value = getTotalNumber(selected.dangling_edges, true)
-  edgesTotals.value = getTotalNumber(selected.edges, true)
-  danglingEdgesDifference.value = getDifference(selected.dangling_edges, previous.dangling_edges)
-  edgesDifference.value = getDifference(selected.edges, previous.edges)
+  setDashboardData(edgesDashboardData, selected, previous, "edges", "dangling_edges")
 
-  const danglingEdgesNamespaces: string[] = qc_utils.getNamespaces(selected.dangling_edges)
-  const edgesNamespaces: string[] = qc_utils.getNamespaces(selected.edges)
-  globalNamespaces.value = qc_utils.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
+  const danglingEdgesNamespaces: string[] = qc.getNamespaces(selected.dangling_edges)
+  const edgesNamespaces: string[] = qc.getNamespaces(selected.edges)
+  globalNamespaces.value = qc.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
 }
 
-async function getQCReport(reportName: string): Promise<qc_utils.QCReport> {
+export async function getQCReport(reportName: string): Promise<qc.QCReport> {
   /**
    * Fetches the QC report from globalReports and returns the parsed report.
    * @reportName: string
    * @return: Promise<QCReport>
    */
   const reportText = (await globalReports.value.get(reportName)) ?? "{}"
-  return qc_utils.toQCReport(YAML.parse(reportText))
+  return qc.toQCReport(YAML.parse(reportText))
 }
 
-function getTotalNumber(qcpart: qc_utils.QCPart[], addTotal = false): Map<string, number> {
+function setDashboardData(
+  data: DashboardData,
+  selected: qc.QCReport,
+  previous: qc.QCReport,
+  name_a: string,
+  name_b: string
+) {
+  /**
+   * Sets the dashboard data for the given QCReports and parts.
+   * @data: DashboardData
+   * @selected: QCReport
+   * @previous: QCReport
+   * @in_kg: string
+   * @in_qc: string
+   * @return: void
+   */
+  const key_a = name_a as keyof qc.QCReport
+  const key_b = name_b as keyof qc.QCReport
+  data.a = getTotalNumber(selected[key_a], true)
+  data.b = getTotalNumber(selected[key_b], true)
+  data.a_diff = getDifference(selected[key_a], previous[key_a])
+  data.b_diff = getDifference(selected[key_b], previous[key_b])
+}
+
+function getTotalNumber(qcpart: qc.QCPart[], addTotal = false): Map<string, number> {
   /**
    * Returns the total number of edges (or nodes) of each QCPart.
    * @qcpart: QCPart[]
@@ -194,10 +210,7 @@ function getTotalNumber(qcpart: qc_utils.QCPart[], addTotal = false): Map<string
   return totals
 }
 
-function getDifference(
-  qcpart: qc_utils.QCPart[],
-  previous_qcpart: qc_utils.QCPart[]
-): Map<string, number> {
+function getDifference(qcpart: qc.QCPart[], previous_qcpart: qc.QCPart[]): Map<string, number> {
   /**
    * Return the difference between two QCParts matching on the same key.
    * @qcpart: QCPart[]
@@ -214,15 +227,4 @@ function getDifference(
     }
   }
   return difference_totals
-}
-
-function removeLaterReports(reportNames: string[], reportName: string): string[] {
-  /**
-   * Removes the selected report and all later reports.
-   * @reportNames: string[]
-   * @reportName: string
-   * @return: string[]
-   */
-  const index = reportNames.indexOf(reportName)
-  return reportNames.slice(0, index)
 }

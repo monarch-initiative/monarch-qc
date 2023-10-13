@@ -13,7 +13,6 @@
       v-model="selectedCompare"
       :onChange="processReports"
       :removeFrom="selectedReport"
-      style="padding-left: 0.75rem"
     />
     <SelectReport
       id="selectReport"
@@ -28,12 +27,12 @@
       a_name="Edges"
       b_name="Dangling Edges"
       :data="edgesDashboardData"
-      :a="edgesTotals"
-      :b="danglingEdgesTotals"
-      :a_diff="edgesDifference"
-      :b_diff="danglingEdgesDifference"
     />
-    <!-- <LineChart :reports="chartReports" /> -->
+    <!-- <LineChart
+      :beginReport="selectedReport"
+      :endReport="selectedCompare"
+      :reports="globalReports"
+    /> -->
     <div class="danging-namespaces">
       Namespaces only in dangling_edges: <br />
       <ul>
@@ -53,10 +52,6 @@
     selectedCompare,
     processReports,
     edgesDashboardData,
-    danglingEdgesTotals,
-    edgesTotals,
-    edgesDifference,
-    danglingEdgesDifference,
     globalNamespaces,
   } from "./data"
   import SimpleDashboard from "./components/SimpleDashboard.vue"

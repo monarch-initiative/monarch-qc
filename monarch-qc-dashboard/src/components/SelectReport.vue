@@ -5,17 +5,19 @@
 
 <template>
   <div style="float: right">
-    <label style="font-weight: bold; font-size: large; padding-right: 1em">{{ label }}</label>
-    <select
-      :id="id"
-      :value="modelValue"
-      @change="selectChange"
-      :style="{ padding: '0.5rem', borderRadius: '0.25rem' }"
-    >
-      <option v-for="reportName in reportNames" :key="reportName" :value="reportName">
-        {{ reportName }}
-      </option>
-    </select>
+    <label style="font-weight: bold; font-size: large; padding-right: 1em"
+      >{{ label }}
+      <select
+        :id="id"
+        :value="modelValue"
+        @change="selectChange"
+        :style="{ padding: '0.5rem', borderRadius: '0.25rem' }"
+      >
+        <option v-for="reportName in reportNames" :key="reportName" :value="reportName">
+          {{ reportName }}
+        </option>
+      </select>
+    </label>
   </div>
 </template>
 

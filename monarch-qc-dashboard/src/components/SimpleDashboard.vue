@@ -18,34 +18,34 @@
       </thead>
       <tbody>
         <tr
-          v-for="([key, value], index) of getVisualDiffs(a, b)"
+          v-for="([key, value], index) of getVisualDiffs(data.a, data.b)"
           :key="key"
           :style="getRowStyle(index)"
         >
           <td>{{ key }}</td>
           <td style="padding-right: 10px">
-            {{ (a.get(key) ?? 0).toLocaleString("en-US") }}
+            {{ (data.a.get(key) ?? 0).toLocaleString("en-US") }}
             <span
-              v-if="a_diff.has(key) && (a_diff.get(key) ?? 0) > 0"
+              v-if="data.a_diff.has(key) && (data.a_diff.get(key) ?? 0) > 0"
               style="color: green; font-style: italic"
             >
-              (+{{ a_diff.get(key)?.toLocaleString("en-US") }})
+              (+{{ data.a_diff.get(key)?.toLocaleString("en-US") }})
             </span>
             <span
-              v-if="a_diff.has(key) && (a_diff.get(key) ?? 0) < 0"
+              v-if="data.a_diff.has(key) && (data.a_diff.get(key) ?? 0) < 0"
               style="color: red; font-weight: bold"
             >
-              ({{ a_diff.get(key)?.toLocaleString("en-US") }})
+              ({{ data.a_diff.get(key)?.toLocaleString("en-US") }})
             </span>
           </td>
           <td style="text-align: center">{{ value }}</td>
           <td style="padding-left: 10px">
-            {{ (b.get(key) ?? 0).toLocaleString("en-US") }}
-            <span v-if="b_diff.has(key) && (b_diff.get(key) ?? 0) > 0">
-              (+{{ b_diff.get(key)?.toLocaleString("en-US") }})
+            {{ (data.b.get(key) ?? 0).toLocaleString("en-US") }}
+            <span v-if="data.b_diff.has(key) && (data.b_diff.get(key) ?? 0) > 0">
+              (+{{ data.b_diff.get(key)?.toLocaleString("en-US") }})
             </span>
-            <span v-if="b_diff.has(key) && (b_diff.get(key) ?? 0) < 0">
-              ({{ b_diff.get(key)?.toLocaleString("en-US") }})
+            <span v-if="data.b_diff.has(key) && (data.b_diff.get(key) ?? 0) < 0">
+              ({{ data.b_diff.get(key)?.toLocaleString("en-US") }})
             </span>
           </td>
         </tr>
@@ -55,18 +55,13 @@
 </template>
 
 <script setup lang="ts">
-  import { getVisualDiffs, dashboardData } from "./SimpleDashboard"
-  // import { getStateSummary } from "./SimpleDashboard"
+  import { getVisualDiffs, DashboardData } from "./SimpleDashboard"
   import { getRowStyle } from "../style"
   defineProps<{
     title: string
     label: string
     a_name: string
     b_name: string
-    data: dashboardData
-    a: Map<string, number>
-    b: Map<string, number>
-    a_diff: Map<string, number>
-    b_diff: Map<string, number>
+    data: DashboardData
   }>()
 </script>
