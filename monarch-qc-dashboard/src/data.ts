@@ -4,6 +4,7 @@ import DOMPurify from "isomorphic-dompurify"
 
 import * as qc from "./qc_utils"
 import { DashboardData } from "./components/SimpleDashboard"
+// import { LineChartData, getChartOptions, getChartSeries } from "./components/LineChart"
 
 export const globalReports = ref<Map<string, Promise<string>>>(new Map())
 export const selectedReport = ref<string>("")
@@ -11,6 +12,7 @@ export const compareNames = ref<Array<string>>([])
 export const selectedCompare = ref<string>("")
 
 export const edgesDashboardData = reactive({} as DashboardData)
+// export const edgesTimeSeriesData = reactive({} as LineChartData)
 
 export const globalNamespaces = ref<Array<string>>([])
 
@@ -153,6 +155,7 @@ export async function processReports() {
   const previous: qc.QCReport = await getQCReport(selectedCompare.value)
 
   setDashboardData(edgesDashboardData, selected, previous, "edges", "dangling_edges")
+  // setEdgesTimeSeriesData(edgesTimeSeriesData, selected, previous, "edges", "dangling_edges")
 
   const danglingEdgesNamespaces: string[] = qc.getNamespaces(selected.dangling_edges)
   const edgesNamespaces: string[] = qc.getNamespaces(selected.edges)
@@ -228,3 +231,27 @@ function getDifference(qcpart: qc.QCPart[], previous_qcpart: qc.QCPart[]): Map<s
   }
   return difference_totals
 }
+
+// function setEdgesTimeSeriesData(
+//   data: LineChartData,
+//   selected: qc.QCReport,
+//   previous: qc.QCReport,
+//   name_a: string,
+//   name_b: string
+// ) {
+//   /**
+//    * Sets the time series data for the given QCReports and parts.
+//    * @data: DashboardData
+//    * @selected: QCReport
+//    * @previous: QCReport
+//    * @in_kg: string
+//    * @in_qc: string
+//    * @return: void
+//    */
+
+//   const chartOptions = getChartOptions()
+//   const chartSeries = getChartSeries()
+
+//   edgesTimeSeriesData.chartOptions = chartOptions
+//   edgesTimeSeriesData.chartSeries = chartSeries
+// }

@@ -28,11 +28,11 @@
       b_name="Dangling Edges"
       :data="edgesDashboardData"
     />
-    <!-- <LineChart
+    <LineChart
       :beginReport="selectedReport"
       :endReport="selectedCompare"
       :reports="globalReports"
-    /> -->
+    />
     <div class="danging-namespaces">
       Namespaces only in dangling_edges: <br />
       <ul>
@@ -52,6 +52,7 @@
     selectedCompare,
     processReports,
     edgesDashboardData,
+    edgesTimeSeriesData,
     globalNamespaces,
   } from "./data"
   import SimpleDashboard from "./components/SimpleDashboard.vue"
