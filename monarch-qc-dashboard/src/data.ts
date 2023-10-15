@@ -4,7 +4,8 @@ import DOMPurify from "isomorphic-dompurify"
 
 import * as qc from "./qc_utils"
 import { DashboardData } from "./components/SimpleDashboard"
-// import { LineChartData, getChartOptions, getChartSeries } from "./components/LineChart"
+import { LineChartData } from "./components/LineChart"
+import { r } from "@vitest/runner/dist/tasks-e1fc71d1"
 
 export const globalReports = ref<Map<string, Promise<string>>>(new Map())
 export const selectedReport = ref<string>("")
@@ -12,7 +13,7 @@ export const compareNames = ref<Array<string>>([])
 export const selectedCompare = ref<string>("")
 
 export const edgesDashboardData = reactive({} as DashboardData)
-// export const edgesTimeSeriesData = reactive({} as LineChartData)
+export const edgesTimeSeriesData = reactive({} as LineChartData)
 
 export const globalNamespaces = ref<Array<string>>([])
 
@@ -151,11 +152,15 @@ export async function processReports() {
     selectedCompare.value = compareNames.value.slice(-1)[0] ?? ""
   }
 
-  const selected: qc.QCReport = await getQCReport(selectedReport.value)
-  const previous: qc.QCReport = await getQCReport(selectedCompare.value)
+  const selected_name: string = selectedReport.value
+  const compare_name: string = selectedCompare.value
 
+  const selected: qc.QCReport = await getQCReport(selected_name)
+  const previous: qc.QCReport = await getQCReport(compare_name)
   setDashboardData(edgesDashboardData, selected, previous, "edges", "dangling_edges")
-  // setEdgesTimeSeriesData(edgesTimeSeriesData, selected, previous, "edges", "dangling_edges")
+
+  const timeSeriesReports = await getTimeSeriesReports(selected_name, compare_name)
+  setEdgesTimeSeriesData(edgesTimeSeriesData, timeSeriesReports, "edges")
 
   const danglingEdgesNamespaces: string[] = qc.getNamespaces(selected.dangling_edges)
   const edgesNamespaces: string[] = qc.getNamespaces(selected.edges)
@@ -232,26 +237,67 @@ function getDifference(qcpart: qc.QCPart[], previous_qcpart: qc.QCPart[]): Map<s
   return difference_totals
 }
 
-// function setEdgesTimeSeriesData(
-//   data: LineChartData,
-//   selected: qc.QCReport,
-//   previous: qc.QCReport,
-//   name_a: string,
-//   name_b: string
-// ) {
-//   /**
-//    * Sets the time series data for the given QCReports and parts.
-//    * @data: DashboardData
-//    * @selected: QCReport
-//    * @previous: QCReport
-//    * @in_kg: string
-//    * @in_qc: string
-//    * @return: void
-//    */
+async function getTimeSeriesReports(
+  selected_name: string,
+  compare_name: string
+): Promise<Map<string, qc.QCReport>> {
+  /**
+   * Returns an array of QCReports for the selected and previous reports.
+   * @selected: QCReport
+   * @previous: QCReport
+   * @return: Array<QCReport>
+   */
 
-//   const chartOptions = getChartOptions()
-//   const chartSeries = getChartSeries()
+  const reportKeys = Array.from(globalReports.value.keys())
+  const lastIndex = reportKeys.indexOf(selected_name)
+  const checkIndex = reportKeys.indexOf(compare_name)
+  const firstIndex = lastIndex - checkIndex > 4 ? checkIndex : lastIndex - 4
 
-//   edgesTimeSeriesData.chartOptions = chartOptions
-//   edgesTimeSeriesData.chartSeries = chartSeries
-// }
+  const reports = new Map<string, qc.QCReport>()
+  for (const [key, value] of globalReports.value.entries()) {
+    const index = reportKeys.indexOf(key)
+    if (firstIndex <= index && index <= lastIndex) {
+      const report = qc.toQCReport(YAML.parse(await value))
+      reports.set(key, report)
+    }
+  }
+  return reports
+}
+
+function setEdgesTimeSeriesData(
+  data: LineChartData,
+  reports: Map<string, qc.QCReport>,
+  part_name: string
+) {
+  /**
+   * Sets the time series data for the given QCReports and parts.
+   * @data: DashboardData
+   * @reports: Array<QCReport>
+   * @part_name: string
+   * @return: void
+   */
+  // const chartOptions = getChartOptions()
+  const part_key = part_name as keyof qc.QCReport
+  // const chartSeries = getChartSeries()
+  const chartSeries = <{ name: string; data: [Date, number][] }[]>[]
+  for (const [key, value] of reports.entries()) {
+    const report = value
+    const date = new Date(key)
+    for (const qcpart of report[part_key]) {
+      const name = qcpart.name
+      const total = qcpart.total_number
+
+      const existingSeries = chartSeries.find((item) => item.name === name)
+      if (existingSeries) {
+        existingSeries.data.push([date, total])
+      } else {
+        chartSeries.push({ name: name, data: [[date, total]] })
+      }
+    }
+  }
+
+  console.log(chartSeries)
+
+  // data.chartOptions = chartOptions
+  data.chartSeries = chartSeries
+}

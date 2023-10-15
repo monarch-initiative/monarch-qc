@@ -28,11 +28,7 @@
       b_name="Dangling Edges"
       :data="edgesDashboardData"
     />
-    <LineChart
-      :beginReport="selectedReport"
-      :endReport="selectedCompare"
-      :reports="globalReports"
-    />
+    <LineChart :n="5" :sortFn="Math.max" :data="edgesTimeSeriesData" />
     <div class="danging-namespaces">
       Namespaces only in dangling_edges: <br />
       <ul>

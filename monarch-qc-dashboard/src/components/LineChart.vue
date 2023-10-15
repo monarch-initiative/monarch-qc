@@ -1,29 +1,28 @@
 <template>
-  <div class="line-chart">
-    <apexchart type="line" :options="chartOptions" :series="chartSeries" />
-  </div>
+  <span v-if="data">
+    <div class="line-chart">
+      <apexchart
+        type="line"
+        :options="chartOptions"
+        :series="getSeriesSortN(data.chartSeries || [], sortFn, n)"
+      />
+    </div>
+  </span>
 </template>
 
 <script setup lang="ts">
-  import { onMounted, ref } from "vue"
-  import { ApexOptions } from "apexcharts"
-  import { processChartReports } from "./LineChart"
+  import { LineChartData, getSeriesSortN } from "./LineChart"
 
-  const { beginReport, endReport, reports } = defineProps<{
-    beginReport: string
-    endReport: string
-    reports: Map<string, Promise<string>>
+  const chartOptions = {
+    chart: { id: "line-chart" },
+    xaxis: { type: "datetime", labels: { datetimeUTC: false } },
+  }
+
+  defineProps<{
+    n: number
+    sortFn: (...values: number[]) => number
+    data: LineChartData
   }>()
-
-  const chartOptions = ref<ApexOptions>()
-  const chartSeries = ref<{ name: string; data: [Date, number][] }[]>()
-
-  onMounted(() => {
-    processChartReports(beginReport, endReport, reports, (chartData) => {
-      chartOptions.value = chartData.chartOptions
-      chartSeries.value = chartData.chartSeries
-    })
-  })
 </script>
 
 <style scoped>

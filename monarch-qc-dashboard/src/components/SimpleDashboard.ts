@@ -17,6 +17,7 @@ export function getVisualDiffs(
    * @b: Map<string, number>
    * @return: Map<string, string>
    */
+  if (a === undefined || b === undefined) return new Map<string, string>()
   const names = uniq([...b.keys(), ...a.keys()])
   const edge_diff = new Map<string, string>()
   for (const name of names) {
