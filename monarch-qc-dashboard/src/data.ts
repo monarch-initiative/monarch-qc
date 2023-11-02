@@ -5,7 +5,6 @@ import DOMPurify from "isomorphic-dompurify"
 import * as qc from "./qc_utils"
 import { DashboardData } from "./components/SimpleDashboard"
 import { LineChartData } from "./components/LineChart"
-import { r } from "@vitest/runner/dist/tasks-e1fc71d1"
 
 export const globalReports = ref<Map<string, Promise<string>>>(new Map())
 export const selectedReport = ref<string>("")
