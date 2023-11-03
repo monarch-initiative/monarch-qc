@@ -20,22 +20,24 @@
   }>()
 
   const lineChart = ref<ApexCharts | null>(null)
-  const loaded = ref(false)
 
   watch(data, (newData) => {
-    if (!loaded.value) {
-      const seriesSortN = getSeriesSortN(data.chartSeries, sortFn, n)
-      data.chartSeries.forEach((series) => {
-        if (seriesSortN.some((s) => s.name === series.name)) {
-          lineChart.value?.showSeries(series.name)
-        } else {
-          lineChart.value?.hideSeries(series.name)
-        }
+    try {
+      const seriesPromises = newData.chartSeries.map((series) => {
+        return Promise.all(series.data.map((item) => item[1]))
       })
-      loaded.value = true
-    }
-    if (newData.chartSeries) {
-      lineChart.value?.updateSeries(newData.chartSeries as ApexAxisChartSeries)
+      Promise.all(seriesPromises).then(() => {
+        const seriesSortN = getSeriesSortN(newData.chartSeries, sortFn, n)
+        newData.chartSeries.forEach((series) => {
+          if (seriesSortN.some((s) => s.name === series.name)) {
+            lineChart.value?.showSeries(series.name)
+          } else {
+            lineChart.value?.hideSeries(series.name)
+          }
+        })
+      })
+    } catch (error) {
+      console.error("Error while processing data:", error)
     }
   })
 </script>
