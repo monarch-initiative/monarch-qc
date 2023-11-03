@@ -24,22 +24,18 @@
   }
 
   watch(data, (newData) => {
-    try {
-      const seriesPromises = newData.chartSeries.map((series) => {
-        return Promise.all(series.data.map((item) => item[1]))
+    const seriesPromises = newData.chartSeries.map((series) => {
+      return Promise.all(series.data.map((item) => item[1]))
+    })
+    Promise.all(seriesPromises).then(() => {
+      const seriesSortN = getSeriesSortN(newData.chartSeries, sortFn, n)
+      newData.chartSeries.forEach((series) => {
+        if (seriesSortN.some((s) => s.name === series.name)) {
+          lineChart.value?.showSeries(series.name)
+        } else {
+          lineChart.value?.hideSeries(series.name)
+        }
       })
-      Promise.all(seriesPromises).then(() => {
-        const seriesSortN = getSeriesSortN(newData.chartSeries, sortFn, n)
-        newData.chartSeries.forEach((series) => {
-          if (seriesSortN.some((s) => s.name === series.name)) {
-            lineChart.value?.showSeries(series.name)
-          } else {
-            lineChart.value?.hideSeries(series.name)
-          }
-        })
-      })
-    } catch (error) {
-      console.error("Error while processing data:", error)
-    }
+    })
   })
 </script>
