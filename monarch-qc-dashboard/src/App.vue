@@ -28,7 +28,13 @@
       b_name="Dangling Edges"
       :data="edgesDashboardData"
     />
-    <LineChart :n="5" :sortFn="Math.max" :data="edgesTimeSeriesData" style="width: 100%" />
+    <LineChart
+      :data="edgesTimeSeriesData"
+      :n="5"
+      :sortFn="Math.max"
+      style="width: 100%"
+      :theme="getTheme"
+    />
     <div class="danging-namespaces">
       Namespaces only in dangling_edges: <br />
       <ul>
@@ -41,6 +47,7 @@
 </template>
 
 <script setup lang="ts">
+  import { computed } from "vue"
   import {
     globalReports,
     selectedReport,
@@ -54,4 +61,12 @@
   import SimpleDashboard from "./components/SimpleDashboard.vue"
   import SelectReport from "./components/SelectReport.vue"
   import LineChart from "./components/LineChart.vue"
+
+  function isDarkMode() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+  }
+
+  const getTheme = computed(() => {
+    return isDarkMode() ? "dark" : "light"
+  })
 </script>

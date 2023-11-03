@@ -8,18 +8,20 @@
   import { ref, watch } from "vue"
   import { getSeriesSortN, LineChartData } from "./LineChart"
 
-  const chartOptions = {
-    chart: { id: "line-chart" },
-    xaxis: { type: "datetime", labels: { datetimeUTC: false } },
-  }
-
-  const { n, sortFn, data } = defineProps<{
+  const { data, n, sortFn, theme } = defineProps<{
+    data: LineChartData
     n: number
     sortFn: (...values: number[]) => number
-    data: LineChartData
+    theme: "dark" | "light"
   }>()
 
   const lineChart = ref<ApexCharts | null>(null)
+
+  const chartOptions = {
+    chart: { id: "line-chart" },
+    xaxis: { type: "datetime", labels: { datetimeUTC: false } },
+    theme: { mode: theme },
+  }
 
   watch(data, (newData) => {
     try {
