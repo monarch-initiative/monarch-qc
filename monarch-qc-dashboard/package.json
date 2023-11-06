@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "vue-tsc && vite build",
+    "coverage": "vitest --coverage",
     "dev": "vite",
     "format": "prettier --write .",
     "format-check": "prettier --check .",
