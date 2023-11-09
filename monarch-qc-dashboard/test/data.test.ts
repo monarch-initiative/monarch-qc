@@ -1,9 +1,9 @@
 import { readFileSync } from "fs"
-import { afterAll, afterEach, beforeAll, describe, expect, test } from "vitest"
+import { describe, expect, test } from "vitest"
 import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 
-import { fetchQCReports } from "../src/data"
+import { fetchAllData, fetchQCReports, globalReports } from "../src/data"
 
 function createRequestHandler(url: string) {
   const mockPath = url.replace("https://data.monarchinitiative.org/", "test/mock_http/")
@@ -32,20 +32,41 @@ const urls = [
 
 const handlers = urls.map(createRequestHandler)
 const server = setupServer(...handlers)
+server.listen({ onUnhandledRequest: "error" })
 
-describe("fetchAllData tests", () => {
+describe("fetchAllData tests", async () => {
   // @vitest-environment jsdom
-  test("fetchAllData empty QCPart", () => {
-    expect(true).toBe(true)
+  await fetchAllData()
+  test("fetchAllData globalReports", async () => {
+    expect(globalReports.value).toEqual(
+      new Map([
+        [
+          `2023-04-02`,
+          Promise.resolve(
+            readFileSync("test/mock_http/monarch-kg-dev/2023-04-02/qc_report.yaml", "utf-8")
+          ),
+        ],
+        [
+          `2023-10-28`,
+          Promise.resolve(
+            readFileSync("test/mock_http/monarch-kg-dev/2023-10-28/qc_report.yaml", "utf-8")
+          ),
+        ],
+      ])
+    )
+    expect(await globalReports.value.get("2022-02-10")).toEqual(undefined)
+    expect(await globalReports.value.get("latest")).toEqual(undefined)
+    expect(await globalReports.value.get("2023-04-02")).toEqual(
+      readFileSync("test/mock_http/monarch-kg-dev/2023-04-02/qc_report.yaml", "utf-8")
+    )
+    expect(await globalReports.value.get("2023-10-28")).toEqual(
+      readFileSync("test/mock_http/monarch-kg-dev/2023-10-28/qc_report.yaml", "utf-8")
+    )
   })
 })
 
 describe("fetchQCReports tests", () => {
   // @vitest-environment jsdom
-  beforeAll(() => server.listen({ onUnhandledRequest: "error" }))
-  afterAll(() => server.close())
-  afterEach(() => server.resetHandlers())
-
   test("fetchQCReports undefined", async () => {
     const reports = await fetchQCReports(undefined)
     expect(reports).toEqual(new Map())

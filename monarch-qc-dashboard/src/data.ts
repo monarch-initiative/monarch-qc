@@ -295,8 +295,5 @@ function setEdgesTimeSeriesData(
     }
   }
 
-  console.log(chartSeries)
-
-  // data.chartOptions = chartOptions
   data.chartSeries = chartSeries
 }
