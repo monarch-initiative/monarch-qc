@@ -1,5 +1,6 @@
 <template>
   <span v-if="data.chartSeries">
+    <h2>{{ title }}</h2>
     <apexchart ref="lineChart" type="line" :options="chartOptions" :series="data.chartSeries" />
   </span>
 </template>
@@ -8,18 +9,24 @@
   import { ref, watch } from "vue"
   import { getSeriesSortN, LineChartData } from "./LineChart"
 
-  const { data, n, sortFn, theme } = defineProps<{
+  const { data, n, sortFn, theme, yaxisTitle } = defineProps<{
     data: LineChartData
     n: number
     sortFn: (...values: number[]) => number
     theme: "dark" | "light"
+    title: string
+    yaxisTitle: string
   }>()
 
   const lineChart = ref<ApexCharts | null>(null)
 
   const chartOptions = {
     chart: { id: "line-chart" },
-    xaxis: { type: "datetime", labels: { datetimeUTC: false } },
+    xaxis: {
+      type: "datetime",
+      title: { text: "Release Date" },
+    },
+    yaxis: { title: { text: yaxisTitle } },
     theme: { mode: theme },
   }
 

@@ -34,6 +34,8 @@
       :sortFn="Math.max"
       style="width: 100%"
       :theme="getTheme"
+      title="Change in Edges over Time by Ingest"
+      yaxisTitle="Edges Count"
     />
     <div class="danging-namespaces">
       Namespaces only in dangling_edges: <br />
