@@ -7,42 +7,68 @@
       <img src="/src/global/monarch.png" class="logo" alt="Monarch Logo" />
     </div>
     <SelectReport
-      :reports="globalReports"
-      :selected="selectedReport"
-      :namespaces="globalNamespaces"
-      :danglingEdgesTotals="danglingEdgesTotals"
-      :edgesTotals="edgesTotals"
-      :edgesDifference="edgesDifference"
-      :danglingEdgesDifference="danglingEdgesDifference"
+      id="selectCompareReport"
+      label="Compare to:"
+      :reportNames="compareNames"
+      v-model="selectedCompare"
+      :onChange="processReports"
+      :removeFrom="selectedReport"
+    />
+    <SelectReport
+      id="selectReport"
+      label="KG Release:"
+      :reportNames="[...globalReports.keys()]"
+      v-model="selectedReport"
+      :onChange="processReports"
     />
     <SimpleDashboard
       title="Edges Report"
       label="Ingest"
       a_name="Edges"
       b_name="Dangling Edges"
-      :a="edgesTotals"
-      :b="danglingEdgesTotals"
-      :a_diff="edgesDifference"
-      :b_diff="danglingEdgesDifference"
+      :data="edgesDashboardData"
+    />
+    <LineChart
+      :data="edgesTimeSeriesData"
+      :n="5"
+      :sortFn="Math.max"
+      style="width: 100%"
+      :theme="getTheme"
+      title="Change in Edges over Time by Ingest"
+      yaxisTitle="Edges Count"
     />
     <div class="danging-namespaces">
       Namespaces only in dangling_edges: <br />
       <ul>
         <li v-for="namespace in globalNamespaces" :key="namespace">
-          {{ namespace }} </li>
+          {{ namespace }}
+        </li>
       </ul>
     </div>
   </main>
 </template>
 
 <script setup lang="ts">
-import {
-  globalReports,
-  selectedReport,
-  globalNamespaces,
-  danglingEdgesTotals,
-  edgesTotals, edgesDifference, danglingEdgesDifference,
-} from "./data"
+  import { computed } from "vue"
+  import {
+    globalReports,
+    selectedReport,
+    compareNames,
+    selectedCompare,
+    processReports,
+    edgesDashboardData,
+    edgesTimeSeriesData,
+    globalNamespaces,
+  } from "./data"
   import SimpleDashboard from "./components/SimpleDashboard.vue"
   import SelectReport from "./components/SelectReport.vue"
+  import LineChart from "./components/LineChart.vue"
+
+  function isDarkMode() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+  }
+
+  const getTheme = computed(() => {
+    return isDarkMode() ? "dark" : "light"
+  })
 </script>

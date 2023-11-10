@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "vue-tsc && vite build",
+    "coverage": "vitest --coverage",
     "dev": "vite",
     "format": "prettier --write .",
     "format-check": "prettier --check .",
@@ -18,8 +19,10 @@
     "@vue/compiler-dom": "^3.2.47",
     "@vue/compiler-sfc": "^3.2.47",
     "@vue/server-renderer": "^3.2.47",
+    "apexcharts": "^3.43.0",
     "isomorphic-dompurify": "^0.26.0",
     "vue": "^3.2.45",
+    "vue3-apexcharts": "^1.4.4",
     "yaml": "^2.2.1"
   },
   "devDependencies": {
@@ -31,6 +34,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-vue": "^9.9.0",
     "jsdom": "^21.1.1",
+    "msw": "^2.0.3",
     "prettier": "^2.5.1",
     "typescript": "^4.4.4",
     "vite": "^4.0.0",

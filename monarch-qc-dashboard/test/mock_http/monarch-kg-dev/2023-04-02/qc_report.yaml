@@ -1,0 +1,1897 @@
+dangling_edges:
+- categories:
+  - biolink:GeneToExpressionSiteAssociation
+  missing: 115
+  name: alliance_gene_to_expression_edges
+  namespaces:
+  - EMAPA
+  - FB
+  - GO
+  - MGI
+  - RGD
+  - ZFA
+  - ZFIN
+  node_types:
+  - categories:
+    - biolink:AnatomicalEntity
+    - biolink:Cell
+    - biolink:CellularComponent
+    - biolink:GrossAnatomicalStructure
+    - biolink:MacromolecularComplexMixin
+    - biolink:NamedThing
+    missing: 285
+    name: phenio_nodes
+    namespaces:
+    - EMAPA
+    - GO
+    - ZFA
+    taxon:
+    - missing taxon
+    total_number: 285
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - FB
+    - MGI
+    - RGD
+    - ZFIN
+    missing_subjects: 115
+    total_number: 1267
+    uri: biolink:expressed_in
+  total_number: 1267
+- categories:
+  - biolink:GeneToPhenotypicFeatureAssociation
+  missing: 31
+  name: alliance_gene_to_phenotype_edges
+  namespaces:
+  - MGI
+  - MP
+  - RGD
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 103
+    name: alliance_gene_nodes
+    namespaces:
+    - MGI
+    - RGD
+    taxon:
+    - NCBITaxon:10090
+    - NCBITaxon:10116
+    total_number: 103
+  predicates:
+  - missing_object_namespaces:
+    - MP
+    missing_objects: 31
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 114
+    uri: biolink:has_phenotype
+  total_number: 114
+- categories:
+  - biolink:GeneToExpressionSiteAssociation
+  missing: 40101
+  name: bgee_gene_to_expression_edges
+  namespaces:
+  - CL
+  - ENSEMBL
+  - NCBIGene
+  - UBERON
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 15434
+    name: ncbi_gene_nodes
+    namespaces:
+    - NCBIGene
+    taxon:
+    - NCBITaxon:9823
+    - NCBITaxon:9913
+    total_number: 15434
+  - categories:
+    - biolink:AnatomicalEntity
+    - biolink:GrossAnatomicalStructure
+    missing: 157
+    name: phenio_nodes
+    namespaces:
+    - UBERON
+    taxon:
+    - missing taxon
+    total_number: 157
+  predicates:
+  - missing_object_namespaces:
+    - CL
+    missing_objects: 11
+    missing_subject_namespaces:
+    - ENSEMBL
+    missing_subjects: 40090
+    total_number: 266654
+    uri: biolink:expressed_in
+  total_number: 266654
+- categories:
+  - biolink:ChemicalToDiseaseOrPhenotypicFeatureAssociation
+  missing: 7680
+  name: ctd_chemical_to_disease_edges
+  namespaces:
+  - MESH
+  - MONDO
+  node_types:
+  - categories:
+    - biolink:Disease
+    missing: 1690
+    name: phenio_nodes
+    namespaces:
+    - MONDO
+    taxon:
+    - missing taxon
+    total_number: 1690
+  predicates:
+  - missing_object_namespaces:
+    - MESH
+    missing_objects: 794
+    missing_subject_namespaces:
+    - MESH
+    missing_subjects: 6886
+    total_number: 37655
+    uri: biolink:treats
+  total_number: 37655
+- categories:
+  - biolink:GeneToPhenotypicFeatureAssociation
+  missing: 170
+  name: dictybase_gene_to_phenotype_edges
+  namespaces:
+  - DDPHENO
+  - dictyBase
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 507
+    name: dictybase_gene_nodes
+    namespaces:
+    - dictyBase
+    taxon:
+    - NCBITaxon:44689
+    total_number: 507
+  predicates:
+  - missing_object_namespaces:
+    - DDPHENO
+    missing_objects: 170
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 1216
+    uri: biolink:has_phenotype
+  total_number: 1216
+- categories:
+  - biolink:MacromolecularMachineToBiologicalProcessAssociation
+  - biolink:MacromolecularMachineToCellularComponentAssociation
+  - biolink:MacromolecularMachineToMolecularActivityAssociation
+  missing: 98606
+  name: goa_go_annotation_edges
+  namespaces:
+  - AspGD
+  - FB
+  - GO
+  - HGNC
+  - MGI
+  - PR
+  - PomBase
+  - RGD
+  - RefSeq
+  - SGD
+  - UniProtKB
+  - WB
+  - ZFIN
+  - dictyBase
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 37
+    name: alliance_gene_nodes
+    namespaces:
+    - MGI
+    - RGD
+    taxon:
+    - NCBITaxon:10090
+    - NCBITaxon:10116
+    total_number: 37
+  - categories:
+    - biolink:Gene
+    missing: 24
+    name: dictybase_gene_nodes
+    namespaces:
+    - dictyBase
+    taxon:
+    - NCBITaxon:44689
+    total_number: 24
+  - categories:
+    - biolink:Gene
+    missing: 10
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    total_number: 10
+  - categories:
+    - biolink:BiologicalProcess
+    - biolink:CellularComponent
+    - biolink:MacromolecularComplexMixin
+    - biolink:MolecularActivity
+    - biolink:NamedThing
+    - biolink:Occurrent
+    - biolink:Pathway
+    missing: 18098
+    name: phenio_nodes
+    namespaces:
+    - GO
+    taxon:
+    - missing taxon
+    total_number: 18098
+  - categories:
+    - biolink:Gene
+    missing: 4
+    name: pombase_gene_nodes
+    namespaces:
+    - PomBase
+    taxon:
+    - NCBITaxon:4896
+    total_number: 4
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - AspGD
+    - FB
+    - MGI
+    - PR
+    - PomBase
+    - RGD
+    - SGD
+    - UniProtKB
+    - ZFIN
+    missing_subjects: 17629
+    total_number: 22552
+    uri: biolink:active_in
+  - missing_object_namespaces:
+    - GO
+    missing_objects: 4
+    missing_subject_namespaces:
+    - AspGD
+    - FB
+    - MGI
+    - PR
+    - PomBase
+    - RGD
+    - SGD
+    - UniProtKB
+    - ZFIN
+    missing_subjects: 72159
+    total_number: 269375
+    uri: biolink:actively_involved_in
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - MGI
+    - PR
+    - UniProtKB
+    missing_subjects: 45
+    total_number: 64
+    uri: biolink:acts_upstream_of
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - UniProtKB
+    missing_subjects: 4
+    total_number: 8
+    uri: biolink:acts_upstream_of_negative_effect
+  - missing_object_namespaces:
+    - GO
+    missing_objects: 1
+    missing_subject_namespaces:
+    - AspGD
+    - MGI
+    - PR
+    - RGD
+    - SGD
+    - UniProtKB
+    - WB
+    missing_subjects: 2033
+    total_number: 4198
+    uri: biolink:acts_upstream_of_or_within
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - PR
+    missing_subjects: 1
+    total_number: 2
+    uri: biolink:acts_upstream_of_or_within_negative_effect
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - PR
+    - UniProtKB
+    missing_subjects: 6
+    total_number: 8
+    uri: biolink:acts_upstream_of_or_within_positive_effect
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - UniProtKB
+    missing_subjects: 12
+    total_number: 17
+    uri: biolink:acts_upstream_of_positive_effect
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - AspGD
+    - RGD
+    - UniProtKB
+    missing_subjects: 231
+    total_number: 292
+    uri: biolink:colocalizes_with
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - AspGD
+    - PR
+    - PomBase
+    - RGD
+    - UniProtKB
+    - ZFIN
+    missing_subjects: 485
+    total_number: 603
+    uri: biolink:contributes_to
+  - missing_object_namespaces:
+    - GO
+    missing_objects: 7
+    missing_subject_namespaces:
+    - AspGD
+    - FB
+    - MGI
+    - PR
+    - PomBase
+    - RGD
+    - RefSeq
+    - SGD
+    - UniProtKB
+    - WB
+    - ZFIN
+    missing_subjects: 69970
+    total_number: 141640
+    uri: biolink:enables
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - AspGD
+    - FB
+    - MGI
+    - PR
+    - RGD
+    - SGD
+    - UniProtKB
+    missing_subjects: 55815
+    total_number: 112452
+    uri: biolink:located_in
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - AspGD
+    - FB
+    - MGI
+    - PR
+    - PomBase
+    - RGD
+    - SGD
+    - UniProtKB
+    - ZFIN
+    missing_subjects: 15750
+    total_number: 19789
+    uri: biolink:part_of
+  total_number: 571000
+- categories:
+  - biolink:DiseaseOrPhenotypicFeatureToGeneticInheritanceAssociation
+  missing: 201
+  name: hpoa_disease_mode_of_inheritance_edges
+  namespaces:
+  - DECIPHER
+  - HP
+  - OMIM
+  node_types:
+  - categories:
+    - biolink:GeneticInheritance
+    missing: 7
+    name: phenio_nodes
+    namespaces:
+    - HP
+    taxon:
+    - missing taxon
+    total_number: 7
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - DECIPHER
+    - OMIM
+    missing_subjects: 201
+    total_number: 207
+    uri: biolink:has_mode_of_inheritance
+  total_number: 207
+- categories:
+  - biolink:DiseaseToPhenotypicFeatureAssociation
+  missing: 342
+  name: hpoa_disease_phenotype_edges
+  namespaces:
+  - DECIPHER
+  - HP
+  - MONDO
+  - OMIM
+  - Orphanet
+  node_types:
+  - categories:
+    - biolink:Disease
+    - biolink:PhenotypicQuality
+    missing: 1932
+    name: phenio_nodes
+    namespaces:
+    - HP
+    - MONDO
+    taxon:
+    - missing taxon
+    total_number: 1932
+  predicates:
+  - missing_object_namespaces:
+    - HP
+    missing_objects: 85
+    missing_subject_namespaces:
+    - DECIPHER
+    - OMIM
+    - Orphanet
+    missing_subjects: 257
+    total_number: 6030
+    uri: biolink:has_phenotype
+  total_number: 6030
+- categories:
+  - biolink:GeneToPhenotypicFeatureAssociation
+  missing: 87
+  name: hpoa_gene_to_phenotype_edges
+  namespaces:
+  - HGNC
+  - HP
+  - NCBIGene
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 104
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    total_number: 104
+  - categories:
+    - biolink:GeneticInheritance
+    - biolink:Onset
+    - biolink:PhenotypicQuality
+    missing: 152
+    name: phenio_nodes
+    namespaces:
+    - HP
+    taxon:
+    - missing taxon
+    total_number: 152
+  predicates:
+  - missing_object_namespaces:
+    - HP
+    missing_objects: 83
+    missing_subject_namespaces:
+    - NCBIGene
+    missing_subjects: 4
+    total_number: 281
+    uri: biolink:has_phenotype
+  total_number: 281
+- categories:
+  - biolink:GeneToDiseaseAssociation
+  missing: 1187
+  name: omim_gene_to_disease_edges
+  namespaces:
+  - HGNC
+  - MONDO
+  - NCBIGene
+  - OMIM
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 254
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    total_number: 254
+  - categories:
+    - biolink:Disease
+    missing: 803
+    name: phenio_nodes
+    namespaces:
+    - MONDO
+    taxon:
+    - missing taxon
+    total_number: 803
+  predicates:
+  - missing_object_namespaces:
+    - OMIM
+    missing_objects: 71
+    missing_subject_namespaces:
+    - NCBIGene
+    - OMIM
+    missing_subjects: 346
+    total_number: 370
+    uri: biolink:affects_risk_for
+  - missing_object_namespaces:
+    - OMIM
+    missing_objects: 252
+    missing_subject_namespaces:
+    - NCBIGene
+    - OMIM
+    missing_subjects: 521
+    total_number: 765
+    uri: biolink:gene_associated_with_condition
+  total_number: 1135
+- categories:
+  - biolink:GeneToGeneHomologyAssociation
+  missing: 59957
+  name: panther_genome_orthologs_edges
+  namespaces:
+  - ENSEMBL
+  - FB
+  - HGNC
+  - MGI
+  - NCBIGene
+  - POMBASE
+  - RGD
+  - SGD
+  - UniProtKB
+  - WB
+  - Xenbase
+  - ZFIN
+  - dictyBase
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 68509
+    name: alliance_gene_nodes
+    namespaces:
+    - FB
+    - MGI
+    - RGD
+    - SGD
+    - WB
+    - Xenbase
+    - ZFIN
+    taxon:
+    - NCBITaxon:10090
+    - NCBITaxon:10116
+    - NCBITaxon:559292
+    - NCBITaxon:6239
+    - NCBITaxon:7227
+    - NCBITaxon:7955
+    - NCBITaxon:8364
+    - missing taxon
+    total_number: 91296
+  - categories:
+    - biolink:Gene
+    missing: 5877
+    name: dictybase_gene_nodes
+    namespaces:
+    - dictyBase
+    taxon:
+    - NCBITaxon:44689
+    total_number: 5877
+  - categories:
+    - biolink:Gene
+    missing: 18913
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    - missing taxon
+    total_number: 18913
+  - categories:
+    - biolink:Gene
+    missing: 30638
+    name: ncbi_gene_nodes
+    namespaces:
+    - NCBIGene
+    taxon:
+    - NCBITaxon:9615
+    - NCBITaxon:9823
+    - NCBITaxon:9913
+    total_number: 32316
+  predicates:
+  - missing_object_namespaces:
+    - ENSEMBL
+    - FB
+    - MGI
+    - NCBIGene
+    - POMBASE
+    - RGD
+    - UniProtKB
+    - WB
+    - Xenbase
+    - ZFIN
+    missing_objects: 57027
+    missing_subject_namespaces:
+    - ENSEMBL
+    - FB
+    - HGNC
+    - MGI
+    - NCBIGene
+    - POMBASE
+    - RGD
+    - UniProtKB
+    - WB
+    - Xenbase
+    - ZFIN
+    missing_subjects: 55084
+    total_number: 999914
+    uri: biolink:orthologous_to
+  total_number: 999914
+- categories:
+  - biolink:GeneToPhenotypicFeatureAssociation
+  missing: 6190
+  name: pombase_gene_to_phenotype_edges
+  namespaces:
+  - FYPO
+  - PomBase
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 4968
+    name: pombase_gene_nodes
+    namespaces:
+    - PomBase
+    taxon:
+    - NCBITaxon:4896
+    total_number: 4968
+  predicates:
+  - missing_object_namespaces:
+    - FYPO
+    missing_objects: 6020
+    missing_subject_namespaces:
+    - PomBase
+    missing_subjects: 170
+    total_number: 92772
+    uri: biolink:has_phenotype
+  total_number: 92772
+- categories:
+  - biolink:ChemicalToPathwayAssociation
+  missing: 2005
+  name: reactome_chemical_to_pathway_edges
+  namespaces:
+  - CHEBI
+  - REACT
+  node_types:
+  - categories:
+    - biolink:Pathway
+    missing: 8589
+    name: reactome_pathway_nodes
+    namespaces:
+    - REACT
+    taxon:
+    - NCBITaxon:10090
+    - NCBITaxon:10116
+    - NCBITaxon:44689
+    - NCBITaxon:4896
+    - NCBITaxon:4932
+    - NCBITaxon:6239
+    - NCBITaxon:7227
+    - NCBITaxon:7955
+    - NCBITaxon:8364
+    - NCBITaxon:9031
+    - NCBITaxon:9606
+    - NCBITaxon:9615
+    - NCBITaxon:9823
+    - NCBITaxon:9913
+    total_number: 8589
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - CHEBI
+    missing_subjects: 2005
+    total_number: 43155
+    uri: biolink:participates_in
+  total_number: 43155
+- categories:
+  - biolink:GeneToPathwayAssociation
+  missing: 54229
+  name: reactome_gene_to_pathway_edges
+  namespaces:
+  - NCBIGene
+  - REACT
+  - UniProtKB
+  node_types:
+  - categories:
+    - biolink:Pathway
+    missing: 13364
+    name: reactome_pathway_nodes
+    namespaces:
+    - REACT
+    taxon:
+    - NCBITaxon:10090
+    - NCBITaxon:10116
+    - NCBITaxon:44689
+    - NCBITaxon:4896
+    - NCBITaxon:4932
+    - NCBITaxon:6239
+    - NCBITaxon:7227
+    - NCBITaxon:7955
+    - NCBITaxon:8364
+    - NCBITaxon:9031
+    - NCBITaxon:9606
+    - NCBITaxon:9615
+    - NCBITaxon:9823
+    - NCBITaxon:9913
+    total_number: 13364
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces:
+    - NCBIGene
+    - UniProtKB
+    missing_subjects: 54229
+    total_number: 185911
+    uri: biolink:participates_in
+  total_number: 185911
+- categories:
+  - biolink:PairwiseGeneToGeneInteraction
+  missing: 102381
+  name: string_protein_links_edges
+  namespaces:
+  - HGNC
+  - NCBIGene
+  - UniProtKB
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 0
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    total_number: 865
+  - categories:
+    - biolink:Gene
+    missing: 0
+    name: ncbi_gene_nodes
+    namespaces:
+    - NCBIGene
+    taxon:
+    - NCBITaxon:227321
+    - NCBITaxon:9031
+    - NCBITaxon:9913
+    total_number: 2963
+  predicates:
+  - missing_object_namespaces:
+    - NCBIGene
+    - UniProtKB
+    missing_objects: 102381
+    missing_subject_namespaces:
+    - NCBIGene
+    - UniProtKB
+    missing_subjects: 102381
+    total_number: 2630948
+    uri: biolink:interacts_with
+  total_number: 2630948
+- categories:
+  - biolink:GeneToPhenotypicFeatureAssociation
+  missing: 63
+  name: xenbase_gene_to_phenotype_edges
+  namespaces:
+  - XPO
+  - Xenbase
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 4
+    name: alliance_gene_nodes
+    namespaces:
+    - Xenbase
+    taxon:
+    - NCBITaxon:8355
+    - NCBITaxon:8364
+    total_number: 4
+  - categories:
+    - biolink:PhenotypicQuality
+    missing: 146
+    name: phenio_nodes
+    namespaces:
+    - XPO
+    taxon:
+    - missing taxon
+    total_number: 146
+  predicates:
+  - missing_object_namespaces:
+    - XPO
+    missing_objects: 2
+    missing_subject_namespaces:
+    - Xenbase
+    missing_subjects: 61
+    total_number: 275
+    uri: biolink:has_phenotype
+  total_number: 275
+- categories:
+  - biolink:GeneToGeneHomologyAssociation
+  missing: 15303
+  name: xenbase_non_entrez_orthologs_edges
+  namespaces:
+  - HGNC
+  - MGI
+  - OMIM
+  - Xenbase
+  - ZFIN
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 26557
+    name: alliance_gene_nodes
+    namespaces:
+    - MGI
+    - ZFIN
+    taxon:
+    - NCBITaxon:10090
+    - NCBITaxon:7955
+    - missing taxon
+    total_number: 26557
+  - categories:
+    - biolink:Gene
+    missing: 12399
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    total_number: 12399
+  predicates:
+  - missing_object_namespaces:
+    - MGI
+    - OMIM
+    - ZFIN
+    missing_objects: 348
+    missing_subject_namespaces:
+    - Xenbase
+    missing_subjects: 14955
+    total_number: 44287
+    uri: biolink:orthologous_to
+  total_number: 44287
+- categories:
+  - biolink:GeneToGeneHomologyAssociation
+  missing: 44287
+  name: xenbase_orthologs_edges
+  namespaces:
+  - HGNC
+  - NCBIGene
+  - Xenbase
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 14918
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    - missing taxon
+    total_number: 14918
+  predicates:
+  - missing_object_namespaces:
+    - NCBIGene
+    missing_objects: 28688
+    missing_subject_namespaces:
+    - Xenbase
+    missing_subjects: 15599
+    total_number: 45104
+    uri: biolink:orthologous_to
+  total_number: 45104
+- categories:
+  - biolink:GeneToPhenotypicFeatureAssociation
+  missing: 1619
+  name: zfin_gene_to_phenotype_edges
+  namespaces:
+  - ZFIN
+  - ZP
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 444
+    name: alliance_gene_nodes
+    namespaces:
+    - ZFIN
+    taxon:
+    - NCBITaxon:7955
+    total_number: 444
+  predicates:
+  - missing_object_namespaces:
+    - ZP
+    missing_objects: 1619
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 2872
+    uri: biolink:has_phenotype
+  total_number: 2872
+edges:
+- categories:
+  - biolink:GeneToExpressionSiteAssociation
+  missing: 0
+  name: alliance_gene_to_expression_edges
+  namespaces:
+  - EMAPA
+  - FB
+  - FBbt
+  - GO
+  - MGI
+  - RGD
+  - SGD
+  - WB
+  - WBbt
+  - ZFA
+  - ZFIN
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 54151
+    name: alliance_gene_nodes
+    namespaces:
+    - FB
+    - MGI
+    - RGD
+    - SGD
+    - WB
+    - ZFIN
+    taxon:
+    - NCBITaxon:10090
+    - NCBITaxon:10116
+    - NCBITaxon:559292
+    - NCBITaxon:6239
+    - NCBITaxon:7227
+    - NCBITaxon:7955
+    - missing taxon
+    total_number: 54151
+  - categories:
+    - biolink:AnatomicalEntity
+    - biolink:Cell
+    - biolink:CellularComponent
+    - biolink:GrossAnatomicalStructure
+    - biolink:MacromolecularComplexMixin
+    - biolink:NamedThing
+    missing: 13368
+    name: phenio_nodes
+    namespaces:
+    - EMAPA
+    - FBbt
+    - GO
+    - WBbt
+    - ZFA
+    taxon:
+    - missing taxon
+    total_number: 13368
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 1790844
+    uri: biolink:expressed_in
+  total_number: 1790844
+- categories:
+  - biolink:GeneToPhenotypicFeatureAssociation
+  missing: 0
+  name: alliance_gene_to_phenotype_edges
+  namespaces:
+  - MGI
+  - MP
+  - RGD
+  - WB
+  - WBPhenotype
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 19669
+    name: alliance_gene_nodes
+    namespaces:
+    - MGI
+    - RGD
+    - WB
+    taxon:
+    - NCBITaxon:10090
+    - NCBITaxon:10116
+    - NCBITaxon:6239
+    - missing taxon
+    total_number: 19669
+  - categories:
+    - biolink:PhenotypicQuality
+    missing: 12258
+    name: phenio_nodes
+    namespaces:
+    - MP
+    - WBPhenotype
+    taxon:
+    - missing taxon
+    total_number: 12258
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 298084
+    uri: biolink:has_phenotype
+  total_number: 298084
+- categories:
+  - biolink:GeneToExpressionSiteAssociation
+  missing: 0
+  name: bgee_gene_to_expression_edges
+  namespaces:
+  - NCBIGene
+  - UBERON
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 31877
+    name: ncbi_gene_nodes
+    namespaces:
+    - NCBIGene
+    taxon:
+    - NCBITaxon:9823
+    - NCBITaxon:9913
+    total_number: 31877
+  - categories:
+    - biolink:AnatomicalEntity
+    - biolink:GrossAnatomicalStructure
+    missing: 139
+    name: phenio_nodes
+    namespaces:
+    - UBERON
+    taxon:
+    - missing taxon
+    total_number: 139
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 236565
+    uri: biolink:expressed_in
+  total_number: 236565
+- categories:
+  - biolink:MacromolecularMachineToBiologicalProcessAssociation
+  - biolink:MacromolecularMachineToCellularComponentAssociation
+  - biolink:MacromolecularMachineToMolecularActivityAssociation
+  missing: 0
+  name: goa_go_annotation_edges
+  namespaces:
+  - FB
+  - GO
+  - HGNC
+  - MGI
+  - PomBase
+  - RGD
+  - SGD
+  - WB
+  - ZFIN
+  - dictyBase
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 111537
+    name: alliance_gene_nodes
+    namespaces:
+    - FB
+    - MGI
+    - RGD
+    - SGD
+    - WB
+    - ZFIN
+    taxon:
+    - NCBITaxon:10090
+    - NCBITaxon:10116
+    - NCBITaxon:559292
+    - NCBITaxon:6239
+    - NCBITaxon:7227
+    - NCBITaxon:7955
+    - missing taxon
+    total_number: 111537
+  - categories:
+    - biolink:Gene
+    missing: 9490
+    name: dictybase_gene_nodes
+    namespaces:
+    - dictyBase
+    taxon:
+    - NCBITaxon:44689
+    total_number: 9490
+  - categories:
+    - biolink:Gene
+    missing: 19585
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    - missing taxon
+    total_number: 19585
+  - categories:
+    - biolink:CellularComponent
+    - biolink:MacromolecularComplexMixin
+    - biolink:Occurrent
+    - biolink:Pathway
+    missing: 24298
+    name: phenio_nodes
+    namespaces:
+    - GO
+    taxon:
+    - missing taxon
+    total_number: 24298
+  - categories:
+    - biolink:Gene
+    missing: 5070
+    name: pombase_gene_nodes
+    namespaces:
+    - PomBase
+    taxon:
+    - NCBITaxon:4896
+    total_number: 5070
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 135612
+    uri: biolink:active_in
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 678730
+    uri: biolink:actively_involved_in
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 9280
+    uri: biolink:acts_upstream_of
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 164
+    uri: biolink:acts_upstream_of_negative_effect
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 200625
+    uri: biolink:acts_upstream_of_or_within
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 182
+    uri: biolink:acts_upstream_of_or_within_negative_effect
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 452
+    uri: biolink:acts_upstream_of_or_within_positive_effect
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 297
+    uri: biolink:acts_upstream_of_positive_effect
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 4218
+    uri: biolink:colocalizes_with
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 6834
+    uri: biolink:contributes_to
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 785128
+    uri: biolink:enables
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 473285
+    uri: biolink:located_in
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 78316
+    uri: biolink:part_of
+  total_number: 2373123
+- categories:
+  - biolink:DiseaseOrPhenotypicFeatureToGeneticInheritanceAssociation
+  missing: 0
+  name: hpoa_disease_mode_of_inheritance_edges
+  namespaces:
+  - HGNC
+  - HP
+  - MONDO
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 7
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    total_number: 7
+  - categories:
+    - biolink:Disease
+    - biolink:GeneticInheritance
+    missing: 7974
+    name: phenio_nodes
+    namespaces:
+    - HP
+    - MONDO
+    taxon:
+    - missing taxon
+    total_number: 7974
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 8431
+    uri: biolink:has_mode_of_inheritance
+  total_number: 8431
+- categories:
+  - biolink:DiseaseToPhenotypicFeatureAssociation
+  missing: 0
+  name: hpoa_disease_phenotype_edges
+  namespaces:
+  - HGNC
+  - HP
+  - MONDO
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 8
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    total_number: 8
+  - categories:
+    - biolink:Disease
+    - biolink:PhenotypicQuality
+    missing: 20492
+    name: phenio_nodes
+    namespaces:
+    - HP
+    - MONDO
+    taxon:
+    - missing taxon
+    total_number: 20492
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 232442
+    uri: biolink:has_phenotype
+  total_number: 232442
+- categories:
+  - biolink:GeneToPhenotypicFeatureAssociation
+  missing: 0
+  name: hpoa_gene_to_phenotype_edges
+  namespaces:
+  - HGNC
+  - HP
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 4891
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    total_number: 4891
+  - categories:
+    - biolink:ClinicalModifier
+    - biolink:GeneticInheritance
+    - biolink:Onset
+    - biolink:PhenotypicFeature
+    - biolink:PhenotypicQuality
+    missing: 9250
+    name: phenio_nodes
+    namespaces:
+    - HP
+    taxon:
+    - missing taxon
+    total_number: 9250
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 268702
+    uri: biolink:has_phenotype
+  total_number: 268702
+- categories:
+  - biolink:GeneToDiseaseAssociation
+  missing: 0
+  name: omim_gene_to_disease_edges
+  namespaces:
+  - HGNC
+  - MONDO
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 4079
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    total_number: 4175
+  - categories:
+    - biolink:Disease
+    missing: 5451
+    name: phenio_nodes
+    namespaces:
+    - MONDO
+    taxon:
+    - missing taxon
+    total_number: 5456
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 702
+    uri: biolink:affects_risk_for
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 5673
+    uri: biolink:gene_associated_with_condition
+  total_number: 6375
+- categories:
+  - biolink:GeneToGeneHomologyAssociation
+  missing: 0
+  name: panther_genome_orthologs_edges
+  namespaces:
+  - FB
+  - HGNC
+  - MGI
+  - NCBIGene
+  - RGD
+  - SGD
+  - WB
+  - Xenbase
+  - ZFIN
+  - dictyBase
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 15186
+    name: alliance_gene_nodes
+    namespaces:
+    - FB
+    - MGI
+    - RGD
+    - SGD
+    - WB
+    - Xenbase
+    - ZFIN
+    taxon:
+    - NCBITaxon:10090
+    - NCBITaxon:10116
+    - NCBITaxon:559292
+    - NCBITaxon:6239
+    - NCBITaxon:7227
+    - NCBITaxon:7955
+    - NCBITaxon:8364
+    - missing taxon
+    total_number: 92553
+  - categories:
+    - biolink:Gene
+    missing: 5756
+    name: dictybase_gene_nodes
+    namespaces:
+    - dictyBase
+    taxon:
+    - NCBITaxon:44689
+    total_number: 5756
+  - categories:
+    - biolink:Gene
+    missing: 19081
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    - missing taxon
+    total_number: 19081
+  - categories:
+    - biolink:Gene
+    missing: 2018
+    name: ncbi_gene_nodes
+    namespaces:
+    - NCBIGene
+    taxon:
+    - NCBITaxon:9615
+    - NCBITaxon:9823
+    - NCBITaxon:9913
+    total_number: 32571
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 873929
+    uri: biolink:orthologous_to
+  total_number: 873929
+- categories:
+  - null
+  missing: 0
+  name: phenio_edges
+  namespaces:
+  - CHEBI
+  - EMAPA
+  - FBbt
+  - GO
+  - HP
+  - MONDO
+  - MP
+  - MPATH
+  - UBERON
+  - WBPhenotype
+  - WBbt
+  - XPO
+  - ZFA
+  - ZP
+  node_types:
+  - categories:
+    - biolink:AnatomicalEntity
+    - biolink:BiologicalProcess
+    - biolink:Cell
+    - biolink:CellularComponent
+    - biolink:ChemicalEntity
+    - biolink:ChemicalSubstance
+    - biolink:ClinicalModifier
+    - biolink:Disease
+    - biolink:GeneticInheritance
+    - biolink:GrossAnatomicalStructure
+    - biolink:MacromolecularComplexMixin
+    - biolink:MolecularEntity
+    - biolink:NamedThing
+    - biolink:Occurrent
+    - biolink:Onset
+    - biolink:PathologicalEntityMixin
+    - biolink:Pathway
+    - biolink:PhenotypicFeature
+    - biolink:PhenotypicQuality
+    - biolink:Protein
+    - biolink:RNAProduct
+    - biolink:SmallMolecule
+    - biolink:biological_role_mixin
+    - biolink:chemical_role_mixin
+    - biolink:is_metabolite_of
+    missing: 118008
+    name: phenio_nodes
+    namespaces:
+    - CHEBI
+    - EMAPA
+    - FBbt
+    - GO
+    - HP
+    - MONDO
+    - MP
+    - MPATH
+    - UBERON
+    - WBPhenotype
+    - WBbt
+    - XPO
+    - ZFA
+    - ZP
+    taxon:
+    - missing taxon
+    total_number: 211696
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 144353
+    uri: biolink:related_to
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 351115
+    uri: biolink:subclass_of
+  total_number: 495468
+- categories:
+  - biolink:ChemicalToPathwayAssociation
+  missing: 0
+  name: reactome_chemical_to_pathway_edges
+  namespaces:
+  - CHEBI
+  - REACT
+  node_types:
+  - categories:
+    - biolink:ChemicalEntity
+    - biolink:ChemicalSubstance
+    - biolink:MolecularEntity
+    - biolink:PhenotypicQuality
+    - biolink:Protein
+    - biolink:RNAProduct
+    - biolink:SmallMolecule
+    - biolink:biological_role_mixin
+    - biolink:chemical_role_mixin
+    missing: 389
+    name: phenio_nodes
+    namespaces:
+    - CHEBI
+    taxon:
+    - missing taxon
+    total_number: 389
+  - categories:
+    - biolink:Pathway
+    missing: 12639
+    name: reactome_pathway_nodes
+    namespaces:
+    - REACT
+    taxon:
+    - NCBITaxon:10090
+    - NCBITaxon:10116
+    - NCBITaxon:44689
+    - NCBITaxon:4896
+    - NCBITaxon:4932
+    - NCBITaxon:6239
+    - NCBITaxon:7227
+    - NCBITaxon:7955
+    - NCBITaxon:8364
+    - NCBITaxon:9031
+    - NCBITaxon:9606
+    - NCBITaxon:9615
+    - NCBITaxon:9823
+    - NCBITaxon:9913
+    total_number: 12639
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 54899
+    uri: biolink:participates_in
+  total_number: 54899
+- categories:
+  - biolink:GeneToPathwayAssociation
+  missing: 0
+  name: reactome_gene_to_pathway_edges
+  namespaces:
+  - HGNC
+  - NCBIGene
+  - REACT
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 10937
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    - missing taxon
+    total_number: 10937
+  - categories:
+    - biolink:Gene
+    missing: 1295
+    name: ncbi_gene_nodes
+    namespaces:
+    - NCBIGene
+    taxon:
+    - NCBITaxon:9031
+    - NCBITaxon:9615
+    - NCBITaxon:9823
+    - NCBITaxon:9913
+    total_number: 1295
+  - categories:
+    - biolink:Pathway
+    missing: 3134
+    name: reactome_pathway_nodes
+    namespaces:
+    - REACT
+    taxon:
+    - NCBITaxon:9031
+    - NCBITaxon:9606
+    - NCBITaxon:9615
+    - NCBITaxon:9823
+    - NCBITaxon:9913
+    total_number: 3134
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 51984
+    uri: biolink:participates_in
+  total_number: 51984
+- categories:
+  - biolink:PairwiseGeneToGeneInteraction
+  missing: 0
+  name: string_protein_links_edges
+  namespaces:
+  - HGNC
+  - NCBIGene
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 0
+    name: hgnc_gene_nodes
+    namespaces:
+    - HGNC
+    taxon:
+    - NCBITaxon:9606
+    - missing taxon
+    total_number: 16338
+  - categories:
+    - biolink:Gene
+    missing: 0
+    name: ncbi_gene_nodes
+    namespaces:
+    - NCBIGene
+    taxon:
+    - NCBITaxon:227321
+    - NCBITaxon:9031
+    - NCBITaxon:9913
+    total_number: 2252
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 502120
+    uri: biolink:interacts_with
+  total_number: 502120
+- categories:
+  - biolink:GeneToPhenotypicFeatureAssociation
+  missing: 0
+  name: xenbase_gene_to_phenotype_edges
+  namespaces:
+  - XPO
+  - Xenbase
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 517
+    name: alliance_gene_nodes
+    namespaces:
+    - Xenbase
+    taxon:
+    - NCBITaxon:8355
+    - NCBITaxon:8364
+    total_number: 517
+  - categories:
+    - biolink:PhenotypicQuality
+    missing: 481
+    name: phenio_nodes
+    namespaces:
+    - XPO
+    taxon:
+    - missing taxon
+    total_number: 481
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 2317
+    uri: biolink:has_phenotype
+  total_number: 2317
+- categories:
+  - biolink:GeneToPhenotypicFeatureAssociation
+  missing: 0
+  name: zfin_gene_to_phenotype_edges
+  namespaces:
+  - ZFIN
+  - ZP
+  node_types:
+  - categories:
+    - biolink:Gene
+    missing: 7300
+    name: alliance_gene_nodes
+    namespaces:
+    - ZFIN
+    taxon:
+    - NCBITaxon:7955
+    total_number: 7300
+  - categories:
+    - biolink:PhenotypicQuality
+    missing: 23540
+    name: phenio_nodes
+    namespaces:
+    - ZP
+    taxon:
+    - missing taxon
+    total_number: 23540
+  predicates:
+  - missing_object_namespaces: []
+    missing_objects: 0
+    missing_subject_namespaces: []
+    missing_subjects: 0
+    total_number: 139916
+    uri: biolink:has_phenotype
+  total_number: 139916
+nodes:
+- categories:
+  - biolink:Gene
+  name: alliance_gene_nodes
+  namespaces:
+  - FB
+  - MGI
+  - RGD
+  - SGD
+  - WB
+  - Xenbase
+  - ZFIN
+  taxon:
+  - NCBITaxon:10090
+  - NCBITaxon:10116
+  - NCBITaxon:559292
+  - NCBITaxon:6239
+  - NCBITaxon:7227
+  - NCBITaxon:7955
+  - NCBITaxon:8355
+  - NCBITaxon:8364
+  - missing taxon
+  total_number: 309111
+- categories:
+  - biolink:Gene
+  name: dictybase_gene_nodes
+  namespaces:
+  - dictyBase
+  taxon:
+  - NCBITaxon:44689
+  total_number: 14222
+- categories:
+  - biolink:Gene
+  name: hgnc_gene_nodes
+  namespaces:
+  - HGNC
+  taxon:
+  - NCBITaxon:9606
+  - missing taxon
+  total_number: 43624
+- categories:
+  - biolink:Gene
+  name: ncbi_gene_nodes
+  namespaces:
+  - NCBIGene
+  taxon:
+  - NCBITaxon:227321
+  - NCBITaxon:9031
+  - NCBITaxon:9615
+  - NCBITaxon:9823
+  - NCBITaxon:9913
+  total_number: 194715
+- categories:
+  - biolink:AnatomicalEntity
+  - biolink:BiologicalProcess
+  - biolink:Cell
+  - biolink:CellularComponent
+  - biolink:ChemicalEntity
+  - biolink:ChemicalSubstance
+  - biolink:ClinicalModifier
+  - biolink:Disease
+  - biolink:GeneticInheritance
+  - biolink:GrossAnatomicalStructure
+  - biolink:MacromolecularComplexMixin
+  - biolink:MolecularActivity
+  - biolink:MolecularEntity
+  - biolink:NamedThing
+  - biolink:Occurrent
+  - biolink:Onset
+  - biolink:PathologicalEntityMixin
+  - biolink:Pathway
+  - biolink:PhenotypicFeature
+  - biolink:PhenotypicQuality
+  - biolink:Protein
+  - biolink:RNAProduct
+  - biolink:SmallMolecule
+  - biolink:affects
+  - biolink:affects_localization_of
+  - biolink:biological_role_mixin
+  - biolink:causes
+  - biolink:chemical_role_mixin
+  - biolink:close_match
+  - biolink:coexists_with
+  - biolink:contributes_to
+  - biolink:derives_from
+  - biolink:disease_has_basis_in
+  - biolink:disease_has_location
+  - biolink:has_attribute
+  - biolink:has_part
+  - biolink:increases_degradation_of
+  - biolink:is_metabolite_of
+  - biolink:located_in
+  - biolink:manifestation_of
+  - biolink:part_of
+  - biolink:related_to
+  - biolink:same_as
+  - biolink:subclass_of
+  - biolink:superclass_of
+  - biolink:treated_by
+  name: phenio_nodes
+  namespaces:
+  - CHEBI
+  - EMAPA
+  - FBbt
+  - FYPO
+  - GO
+  - GOREL
+  - HP
+  - MESH
+  - MONDO
+  - MP
+  - MPATH
+  - OMIM
+  - UBERON
+  - WBPhenotype
+  - WBbt
+  - XPO
+  - ZFA
+  - ZP
+  taxon:
+  - missing taxon
+  total_number: 227732
+- categories:
+  - biolink:Gene
+  name: pombase_gene_nodes
+  namespaces:
+  - PomBase
+  taxon:
+  - NCBITaxon:4896
+  total_number: 5134
+- categories:
+  - biolink:Pathway
+  name: reactome_pathway_nodes
+  namespaces:
+  - REACT
+  taxon:
+  - NCBITaxon:10090
+  - NCBITaxon:10116
+  - NCBITaxon:44689
+  - NCBITaxon:4896
+  - NCBITaxon:4932
+  - NCBITaxon:6239
+  - NCBITaxon:7227
+  - NCBITaxon:7955
+  - NCBITaxon:8364
+  - NCBITaxon:9031
+  - NCBITaxon:9606
+  - NCBITaxon:9615
+  - NCBITaxon:9823
+  - NCBITaxon:9913
+  total_number: 21427

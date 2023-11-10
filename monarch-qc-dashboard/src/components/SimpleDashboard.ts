@@ -1,5 +1,12 @@
 import { uniq } from "../qc_utils"
 
+export interface DashboardData {
+  a: Map<string, number>
+  b: Map<string, number>
+  a_diff: Map<string, number>
+  b_diff: Map<string, number>
+}
+
 export function getVisualDiffs(
   a: Map<string, number>,
   b: Map<string, number>
@@ -10,6 +17,7 @@ export function getVisualDiffs(
    * @b: Map<string, number>
    * @return: Map<string, string>
    */
+  if (a === undefined || b === undefined) return new Map<string, string>()
   const names = uniq([...b.keys(), ...a.keys()])
   const edge_diff = new Map<string, string>()
   for (const name of names) {
@@ -39,18 +47,4 @@ function visualDiff(a: number, b: number): string {
   // e.g. 3/7 = ⚫⚫⚫⚪⚪⚪⚪⚪⚪⚪
   const visualRatio: string = filled.repeat(ratio).concat(unfilled.repeat(10 - ratio))
   return visualRatio
-}
-
-export function getStateSummary(key:string, edges: Map<string, number>, edges_diff: Map<string, number>): string {
-  if (edges === undefined
-      || edges.get(key) === undefined
-      || edges_diff === undefined
-      || edges_diff.get(key) === undefined) return ""
-
-  const edge_count = edges.get(key) ?? 0
-  const diff_count = edges_diff.get(key) ?? 0
-  const total = edge_count + diff_count
-  const percent_difference = diff_count / total * 100
-
-  return " (" + percent_difference.toFixed(1) + "%)"
 }

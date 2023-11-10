@@ -1,18 +1,20 @@
-import { ref } from "vue"
+import { reactive, ref } from "vue"
 import YAML from "yaml"
 import DOMPurify from "isomorphic-dompurify"
 
-import * as qc_utils from "./qc_utils"
+import * as qc from "./qc_utils"
+import { DashboardData } from "./components/SimpleDashboard"
+import { LineChartData } from "./components/LineChart"
 
 export const globalReports = ref<Map<string, Promise<string>>>(new Map())
 export const selectedReport = ref<string>("")
-export const previousReport = ref<string>("")
-export const globalTotals = ref<Map<string, string>>(new Map())
+export const compareNames = ref<Array<string>>([])
+export const selectedCompare = ref<string>("")
+
+export const edgesDashboardData = reactive({} as DashboardData)
+export const edgesTimeSeriesData = reactive({} as LineChartData)
+
 export const globalNamespaces = ref<Array<string>>([])
-export const danglingEdgesTotals = ref<Map<string, number>>(new Map())
-export const edgesTotals = ref<Map<string, number>>(new Map())
-export const danglingEdgesDifference = ref<Map<string, number>>(new Map())
-export const edgesDifference = ref<Map<string, number>>(new Map())
 
 const qcsite = "https://data.monarchinitiative.org/monarch-kg-dev/"
 
@@ -53,7 +55,7 @@ function zipPromiseMap(keys: string[], values: Promise<string>[]): Map<string, P
    * @values: Promise<string>[]
    * @return: Map<string, Promise<string>>
    */
-  return <Map<string, Promise<string>>>qc_utils.zipMap(keys, values)
+  return <Map<string, Promise<string>>>qc.zipMap(keys, values)
 }
 
 function getReportNames(url = ""): string {
@@ -124,76 +126,81 @@ async function fetchData(url = ""): Promise<string> {
 
 export async function fetchAllData() {
   /**
-   * Fetches all the data and sets the globalData ref.
+   * Fetches all the data, initializes values, and sets the global refs.
    * @return: void
    */
-  const qctext = await fetchData(qcsite)
-  const qcReports = await fetchQCReports(qctext)
+  const qctext: string = await fetchData(qcsite)
+  globalReports.value = await fetchQCReports(qctext)
 
   // remove "latest" from qcReports, since it's always a duplicate of the most recent release
-  qcReports.delete("latest")
+  globalReports.value.delete("latest")
 
-  //TODO: protect against being at the start with no previous
-  const latestReleaseName: string = [...qcReports.keys()].slice(-1)[0];
-  const previousReleaseName: string = [...qcReports.keys()].slice(-2)[0];
-
-  globalReports.value = qcReports
-  selectedReport.value = latestReleaseName ?? ""
-  console.log(qcReports)
-  const selected = await getQCReport(qcReports, latestReleaseName)
-  const previous : qc_utils.QCReport = await getQCReport(qcReports, previousReleaseName)
-
-  const danglingEdgesNamespaces = qc_utils.getNamespaces(selected.dangling_edges)
-  const edgesNamespaces = qc_utils.getNamespaces(selected.edges)
-  globalNamespaces.value = qc_utils.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
-  danglingEdgesTotals.value = getTotalNumber(selected.dangling_edges, true)
-  edgesTotals.value = getTotalNumber(selected.edges, true)
-  danglingEdgesDifference.value = getDifference(selected.dangling_edges, previous.dangling_edges);
-  edgesDifference.value = getDifference(selected.edges, previous.edges)
+  selectedReport.value = [...globalReports.value.keys()].slice(-1)[0] ?? ""
+  processReports()
 }
 
-export async function processReport() {
+export async function processReports() {
   /**
-   * Processes the selected report and sets the globalData ref.
+   * Processes the selected and comparison reports and set the global refs.
    * @return: void
    */
-  const qcReports = globalReports.value
-  const qcReportNames = [...qcReports.keys()]
-  const reportName = selectedReport.value
+  // compareNames.value = removeLaterReports([...globalReports.value.keys()], selectedReport.value)
+  const reportNames: string[] = [...globalReports.value.keys()]
+  compareNames.value = reportNames.slice(0, reportNames.indexOf(selectedReport.value))
+  if (compareNames.value.indexOf(selectedCompare.value, 0) === -1) {
+    selectedCompare.value = compareNames.value.slice(-1)[0] ?? ""
+  }
 
-  const previousReportName: string = qcReportNames.indexOf(reportName) > 0 ? qcReportNames[qcReportNames.indexOf(reportName) - 1] : qcReportNames[0]
+  const selected_name: string = selectedReport.value
+  const compare_name: string = selectedCompare.value
 
-  const report = await getQCReport(qcReports, reportName)
-  const previousReport = await getQCReport(qcReports, previousReportName)
+  const selected: qc.QCReport = await getQCReport(selected_name)
+  const previous: qc.QCReport = await getQCReport(compare_name)
+  setDashboardData(edgesDashboardData, selected, previous, "edges", "dangling_edges")
 
-  const danglingEdgesNamespaces = qc_utils.getNamespaces(report.dangling_edges)
-  const edgesNamespaces = qc_utils.getNamespaces(report.edges)
-  globalNamespaces.value = qc_utils.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
-  danglingEdgesTotals.value = getTotalNumber(report.dangling_edges, true)
-  edgesTotals.value = getTotalNumber(report.edges, true)
-  danglingEdgesDifference.value = getDifference(report.dangling_edges, previousReport.dangling_edges);
-  edgesDifference.value = getDifference(report.edges, previousReport.edges)
+  const timeSeriesReports = await getTimeSeriesReports(selected_name, compare_name)
+  setEdgesTimeSeriesData(edgesTimeSeriesData, timeSeriesReports, "edges")
+
+  const danglingEdgesNamespaces: string[] = qc.getNamespaces(selected.dangling_edges)
+  const edgesNamespaces: string[] = qc.getNamespaces(selected.edges)
+  globalNamespaces.value = qc.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
 }
 
-async function getQCReport(
-  qcReports: Map<string, Promise<string>>,
-  reportName: string
-): Promise<qc_utils.QCReport> {
+export async function getQCReport(reportName: string): Promise<qc.QCReport> {
   /**
-   * Fetches the QC report and returns the parsed report.
-   * @qcReports: Map<string, Promise<string>>
+   * Fetches the QC report from globalReports and returns the parsed report.
    * @reportName: string
    * @return: Promise<QCReport>
    */
-  const reportText = await qcReports.get(reportName)
-  if (reportText === undefined) {
-    return qc_utils.toQCReport({})
-  }
-
-  return qc_utils.toQCReport(YAML.parse(reportText))
+  const reportText = (await globalReports.value.get(reportName)) ?? "{}"
+  return qc.toQCReport(YAML.parse(reportText))
 }
 
-function getTotalNumber(qcpart: qc_utils.QCPart[], addTotal = false): Map<string, number> {
+function setDashboardData(
+  data: DashboardData,
+  selected: qc.QCReport,
+  previous: qc.QCReport,
+  name_a: string,
+  name_b: string
+) {
+  /**
+   * Sets the dashboard data for the given QCReports and parts.
+   * @data: DashboardData
+   * @selected: QCReport
+   * @previous: QCReport
+   * @in_kg: string
+   * @in_qc: string
+   * @return: void
+   */
+  const key_a = name_a as keyof qc.QCReport
+  const key_b = name_b as keyof qc.QCReport
+  data.a = getTotalNumber(selected[key_a], true)
+  data.b = getTotalNumber(selected[key_b], true)
+  data.a_diff = getDifference(selected[key_a], previous[key_a])
+  data.b_diff = getDifference(selected[key_b], previous[key_b])
+}
+
+function getTotalNumber(qcpart: qc.QCPart[], addTotal = false): Map<string, number> {
   /**
    * Returns the total number of edges (or nodes) of each QCPart.
    * @qcpart: QCPart[]
@@ -210,21 +217,83 @@ function getTotalNumber(qcpart: qc_utils.QCPart[], addTotal = false): Map<string
   return totals
 }
 
-function getDifference(qcpart: qc_utils.QCPart[], previous_qcpart: qc_utils.QCPart[]): Map<string, number> {
+function getDifference(qcpart: qc.QCPart[], previous_qcpart: qc.QCPart[]): Map<string, number> {
   /**
    * Return the difference between two QCParts matching on the same key.
    * @qcpart: QCPart[]
    * @previous_qcpart: QCPart[]
    * @return: Map<string, number>
    */
-    let difference_totals = new Map<string, number>()
-    if (qcpart === undefined || previous_qcpart === undefined) return new Map<string, number>()
-    for (const item of qcpart) {
-      for (const previous_item of previous_qcpart) {
-        if (item.name === previous_item.name) {
-          difference_totals.set(item.name, item.total_number - previous_item.total_number)
-        }
+  const difference_totals = new Map<string, number>()
+  if (qcpart === undefined || previous_qcpart === undefined) return new Map<string, number>()
+  for (const item of qcpart) {
+    for (const previous_item of previous_qcpart) {
+      if (item.name === previous_item.name) {
+        difference_totals.set(item.name, item.total_number - previous_item.total_number)
       }
     }
-    return difference_totals
+  }
+  return difference_totals
+}
+
+async function getTimeSeriesReports(
+  selected_name: string,
+  compare_name: string
+): Promise<Map<string, qc.QCReport>> {
+  /**
+   * Returns an array of QCReports for the selected and previous reports.
+   * @selected: QCReport
+   * @previous: QCReport
+   * @return: Array<QCReport>
+   */
+
+  const reportKeys = Array.from(globalReports.value.keys())
+  const lastIndex = reportKeys.indexOf(selected_name)
+  const checkIndex = reportKeys.indexOf(compare_name)
+  const firstIndex = lastIndex - checkIndex > 4 ? checkIndex : lastIndex - 4
+
+  const reports = new Map<string, qc.QCReport>()
+  for (const [key, value] of globalReports.value.entries()) {
+    const index = reportKeys.indexOf(key)
+    if (firstIndex <= index && index <= lastIndex) {
+      const report = qc.toQCReport(YAML.parse(await value))
+      reports.set(key, report)
+    }
+  }
+  return reports
+}
+
+function setEdgesTimeSeriesData(
+  data: LineChartData,
+  reports: Map<string, qc.QCReport>,
+  part_name: string
+) {
+  /**
+   * Sets the time series data for the given QCReports and parts.
+   * @data: DashboardData
+   * @reports: Array<QCReport>
+   * @part_name: string
+   * @return: void
+   */
+  // const chartOptions = getChartOptions()
+  const part_key = part_name as keyof qc.QCReport
+  // const chartSeries = getChartSeries()
+  const chartSeries = <{ name: string; data: [Date, number][] }[]>[]
+  for (const [key, value] of reports.entries()) {
+    const report = value
+    const date = new Date(key)
+    for (const qcpart of report[part_key]) {
+      const name = qcpart.name
+      const total = qcpart.total_number
+
+      const existingSeries = chartSeries.find((item) => item.name === name)
+      if (existingSeries) {
+        existingSeries.data.push([date, total])
+      } else {
+        chartSeries.push({ name: name, data: [[date, total]] })
+      }
+    }
+  }
+
+  data.chartSeries = chartSeries
 }
