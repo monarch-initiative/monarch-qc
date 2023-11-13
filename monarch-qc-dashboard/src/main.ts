@@ -1,10 +1,10 @@
 import { createApp } from "vue"
 import "./style.css"
 import App from "./App.vue"
-import { fetchAllData } from "./data"
+import { updateData } from "./data"
 import VueApexCharts from "vue3-apexcharts"
 
-fetchAllData()
+updateData()
 
 const app = createApp(App)
 

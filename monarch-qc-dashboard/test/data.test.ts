@@ -3,7 +3,7 @@ import { describe, expect, test } from "vitest"
 import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 
-import { fetchAllData, fetchQCReports, globalReports } from "../src/data"
+import { updateData, fetchQCReports, globalReports } from "../src/data"
 
 function createRequestHandler(url: string) {
   const mockPath = url.replace("https://data.monarchinitiative.org/", "test/mock_http/")
@@ -36,7 +36,7 @@ server.listen({ onUnhandledRequest: "error" })
 
 describe("fetchAllData tests", async () => {
   // @vitest-environment jsdom
-  await fetchAllData()
+  await updateData()
   test("fetchAllData globalReports", async () => {
     expect(globalReports.value).toEqual(
       new Map([

@@ -5,6 +5,13 @@
   <main>
     <div>
       <img src="/src/global/monarch.png" class="logo" alt="Monarch Logo" />
+      <SelectReport
+        id="selectDataSet"
+        label=""
+        :reportNames="dataNames"
+        v-model="selectedData"
+        :onChange="updateData"
+      />
     </div>
     <SelectReport
       id="selectCompareReport"
@@ -52,6 +59,9 @@
   import { computed } from "vue"
   import {
     globalReports,
+    dataNames,
+    selectedData,
+    updateData,
     selectedReport,
     compareNames,
     selectedCompare,

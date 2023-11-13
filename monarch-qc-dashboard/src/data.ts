@@ -7,6 +7,8 @@ import { DashboardData } from "./components/SimpleDashboard"
 import { LineChartData } from "./components/LineChart"
 
 export const globalReports = ref<Map<string, Promise<string>>>(new Map())
+export const dataNames = ref<Array<string>>([])
+export const selectedData = ref<string>("")
 export const selectedReport = ref<string>("")
 export const compareNames = ref<Array<string>>([])
 export const selectedCompare = ref<string>("")
@@ -16,7 +18,12 @@ export const edgesTimeSeriesData = reactive({} as LineChartData)
 
 export const globalNamespaces = ref<Array<string>>([])
 
-const qcsite = "https://data.monarchinitiative.org/monarch-kg-dev/"
+const qcbase = "https://data.monarchinitiative.org/"
+
+const qcdata = new Map<string, string>([
+  ["Released", "monarch-kg/"],
+  ["Development", "monarch-kg-dev/"],
+])
 
 function htmlToDom(html: string): HTMLDivElement {
   /**
@@ -64,7 +71,8 @@ function getReportNames(url = ""): string {
    * @url: string
    * @return: string
    */
-  const nameRegex = /monarch-kg-dev\/(.*)\//
+  const dataSite = qcdata.get(selectedData.value)
+  const nameRegex = new RegExp(`${dataSite}(.*)/`)
   const nameMatch = url.match(nameRegex)
   if (nameMatch === null) {
     return ""
@@ -124,11 +132,16 @@ async function fetchData(url = ""): Promise<string> {
   return text
 }
 
-export async function fetchAllData() {
+export async function updateData() {
   /**
    * Fetches all the data, initializes values, and sets the global refs.
    * @return: void
    */
+  if (selectedData.value === "") {
+    selectedData.value = "Development"
+  }
+
+  const qcsite = qcbase + qcdata.get(selectedData.value)
   const qctext: string = await fetchData(qcsite)
   globalReports.value = await fetchQCReports(qctext)
 
@@ -136,6 +149,8 @@ export async function fetchAllData() {
   globalReports.value.delete("latest")
 
   selectedReport.value = [...globalReports.value.keys()].slice(-1)[0] ?? ""
+  dataNames.value = [...qcdata.keys()]
+
   processReports()
 }
 
