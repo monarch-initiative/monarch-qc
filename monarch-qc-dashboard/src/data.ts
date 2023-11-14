@@ -7,6 +7,7 @@ import { DashboardData } from "./components/SimpleDashboard"
 import { LineChartData } from "./components/LineChart"
 
 export const globalReports = ref<Map<string, Promise<string>>>(new Map())
+export const globalStats = ref<Map<string, Promise<string>>>(new Map())
 export const dataNames = ref<Array<string>>([])
 export const selectedData = ref<string>("")
 export const selectedReport = ref<string>("")
@@ -38,7 +39,8 @@ function htmlToDom(html: string): HTMLDivElement {
 }
 
 export async function fetchQCReports(
-  qctext: string | undefined
+  qctext: string | undefined,
+  report: string
 ): Promise<Map<string, Promise<string>>> {
   /**
    * Parses the QC report index page for QC Report urls,
@@ -51,7 +53,7 @@ export async function fetchQCReports(
   }
 
   const releases = getQCReportReleases(qctext)
-  const reports = getQCReports(releases)
+  const reports = getQCReports(releases, report)
   return reports
 }
 
@@ -80,7 +82,10 @@ function getReportNames(url = ""): string {
   return nameMatch[1]
 }
 
-async function getQCReports(urls: string[] = [""]): Promise<Map<string, Promise<string>>> {
+async function getQCReports(
+  urls: string[] = [""],
+  report: string
+): Promise<Map<string, Promise<string>>> {
   /**
    * Fetches the QC reports and returns a map of report names to promises of report text.
    * @urls: string[]
@@ -92,8 +97,8 @@ async function getQCReports(urls: string[] = [""]): Promise<Map<string, Promise<
   const reportURLs: string[] = []
   for (const [url, response] of responseMap.entries()) {
     const checkResponse = await response
-    if (checkResponse.match("qc_report.yaml")) {
-      reportURLs.push(url.replace("index.html", "qc_report.yaml"))
+    if (checkResponse.match(report)) {
+      reportURLs.push(url.replace("index.html", report))
     }
   }
   const reports = reportURLs.map(fetchData)
@@ -143,10 +148,12 @@ export async function updateData() {
 
   const qcsite = qcbase + qcdata.get(selectedData.value)
   const qctext: string = await fetchData(qcsite)
-  globalReports.value = await fetchQCReports(qctext)
+  globalReports.value = await fetchQCReports(qctext, "qc_report.yaml")
+  globalStats.value = await fetchQCReports(qctext, "merged_graph_stats.yaml")
 
   // remove "latest" from qcReports, since it's always a duplicate of the most recent release
   globalReports.value.delete("latest")
+  globalStats.value.delete("latest")
 
   selectedReport.value = [...globalReports.value.keys()].slice(-1)[0] ?? ""
   dataNames.value = [...qcdata.keys()]
