@@ -52,6 +52,13 @@
         </li>
       </ul>
     </div>
+    <SimpleDashboard
+      title="Nodes Report"
+      label="Ingest"
+      a_name="Nodes"
+      b_name="Other Nodes"
+      :data="edgesDashboardData"
+    />
   </main>
 </template>
 
@@ -69,6 +76,7 @@
     edgesDashboardData,
     edgesTimeSeriesData,
     globalNamespaces,
+    nodesDashboardData,
   } from "./data"
   import SimpleDashboard from "./components/SimpleDashboard.vue"
   import SelectReport from "./components/SelectReport.vue"

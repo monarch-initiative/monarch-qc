@@ -19,6 +19,8 @@ export const edgesTimeSeriesData = reactive({} as LineChartData)
 
 export const globalNamespaces = ref<Array<string>>([])
 
+export const nodesDashboardData = reactive({} as DashboardData)
+
 const qcbase = "https://data.monarchinitiative.org/"
 
 const qcdata = new Map<string, string>([
@@ -186,6 +188,10 @@ export async function processReports() {
   const danglingEdgesNamespaces: string[] = qc.getNamespaces(selected.dangling_edges)
   const edgesNamespaces: string[] = qc.getNamespaces(selected.edges)
   globalNamespaces.value = qc.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
+
+  const selectedStats: qc.QCReport = await getQCReport(selected_name)
+  const previousStats: qc.QCReport = await getQCReport(compare_name)
+  // setDashboardData(edgesDashboardData, selectedStats, previousStats, "edges", "dangling_edges")
 }
 
 export async function getQCReport(reportName: string): Promise<qc.QCReport> {

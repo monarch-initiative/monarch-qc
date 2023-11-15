@@ -40,6 +40,32 @@ export function toQCReport(i: object = {}): QCReport {
   }
 }
 
+export interface StatCount {
+  count: number
+  provided_by: Map<string, { count: number }>
+}
+
+export interface EdgeStatPart {
+  count_by_predicates: Map<string, StatCount>
+  count_by_spo: Map<string, StatCount>
+  predicates: string[]
+  provided_by: string[]
+  total_edges: number
+}
+
+export interface NodeStatPart {
+  count_by_category: Map<string, Map<string, number>>
+  predicates: string[]
+  provided_by: string[]
+  total_nodes: number
+}
+
+export interface StatReport {
+  edge_stats: EdgeStatPart
+  graph_name: string
+  node_stats: NodeStatPart
+}
+
 export function getNamespaces(qcparts: QCPart[]): string[] {
   /**
    * Returns all namespaces in the QCPart.
