@@ -40,6 +40,10 @@ export function toQCReport(i: object = {}): QCReport {
   }
 }
 
+export function isQCReport(i: object): i is QCReport {
+  return "dangling_edges" in i && "edges" in i && "missing_nodes" in i && "nodes" in i
+}
+
 export interface StatCount {
   count: number
   provided_by: Map<string, { count: number }>
@@ -64,6 +68,19 @@ export interface StatReport {
   edge_stats: EdgeStatPart
   graph_name: string
   node_stats: NodeStatPart
+}
+
+export function toStatReport(i: object = {}): StatReport {
+  const o = <StatReport>i
+  return {
+    edge_stats: o.edge_stats ?? {},
+    graph_name: o.graph_name ?? "",
+    node_stats: o.node_stats ?? {},
+  }
+}
+
+export function isStatReport(i: object): i is StatReport {
+  return "edge_stats" in i && "graph_name" in i && "node_stats" in i
 }
 
 export function getNamespaces(qcparts: QCPart[]): string[] {
