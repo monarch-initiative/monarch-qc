@@ -31,8 +31,7 @@
     <SimpleDashboard
       title="Edges Report"
       label="Ingest"
-      a_name="Edges"
-      b_name="Dangling Edges"
+      :colorCols="['edges']"
       :data="edgesDashboardData"
     />
     <LineChart
@@ -55,8 +54,7 @@
     <SimpleDashboard
       title="Nodes Report"
       label="Ingest"
-      a_name="Nodes"
-      b_name="Other Nodes"
+      :colorCols="['Nodes']"
       :data="edgesDashboardData"
     />
   </main>

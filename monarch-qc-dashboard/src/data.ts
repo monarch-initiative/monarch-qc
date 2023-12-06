@@ -180,7 +180,7 @@ export async function processReports() {
 
   const selected: qc.QCReport = await getQCReport(selected_name)
   const previous: qc.QCReport = await getQCReport(compare_name)
-  setDashboardData(edgesDashboardData, selected, previous, "edges", "dangling_edges")
+  setDashboardData(edgesDashboardData, selected, previous, ["edges", "dangling_edges"])
 
   const timeSeriesReports = await getTimeSeriesReports(selected_name, compare_name)
   setEdgesTimeSeriesData(edgesTimeSeriesData, timeSeriesReports, "edges")
@@ -218,8 +218,7 @@ function setDashboardData(
   data: DashboardData,
   selected: qc.QCReport,
   previous: qc.QCReport,
-  name_a: string,
-  name_b: string
+  names: string[]
 ) {
   /**
    * Sets the dashboard data for the given QCReports and parts.
@@ -230,12 +229,13 @@ function setDashboardData(
    * @in_qc: string
    * @return: void
    */
-  const key_a = name_a as keyof qc.QCReport
-  const key_b = name_b as keyof qc.QCReport
-  data.a = getTotalNumber(selected[key_a], true)
-  data.b = getTotalNumber(selected[key_b], true)
-  data.a_diff = getDifference(selected[key_a], previous[key_a])
-  data.b_diff = getDifference(selected[key_b], previous[key_b])
+  for (const name of names) {
+    const field = name as keyof qc.QCReport
+    data[name] = {
+      value: getTotalNumber(selected[field], true),
+      diff: getDifference(selected[field], previous[field]),
+    }
+  }
 }
 
 function setNodeDashboardData(
@@ -256,10 +256,16 @@ function setNodeDashboardData(
    */
   const key_a = name_a as keyof qc.StatReport
   const key_b = name_b as keyof qc.StatReport
-  data.a = getNodeTotalNumber(selected[key_a], true)
-  data.b = getNodeTotalNumber(selected[key_b], true)
-  data.a_diff = getNodeDifference(selected[key_a], previous[key_a])
-  data.b_diff = getNodeDifference(selected[key_b], previous[key_b])
+
+  data[name_a] = {
+    value: getNodeTotalNumber(selected[key_a], true),
+    diff: getNodeDifference(selected[key_a], previous[key_b]),
+  }
+
+  data[name_b] = {
+    value: getNodeTotalNumber(selected[key_b], true),
+    diff: getNodeDifference(selected[key_b], previous[key_b]),
+  }
 }
 
 function getTotalNumber(qcpart: qc.QCPart[], addTotal = false): Map<string, number> {
