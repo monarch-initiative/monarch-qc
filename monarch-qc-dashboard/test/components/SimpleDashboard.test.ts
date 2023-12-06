@@ -1,5 +1,9 @@
 import { describe, expect, test } from "vitest"
-import { getAllVisualDiffs, DashboardData } from "../../src/components/SimpleDashboard"
+import {
+  DashboardData,
+  getAllVisualDiffs,
+  getDataLabels,
+} from "../../src/components/SimpleDashboard"
 
 describe("getAllVisualDiffs tests", () => {
   test("getAllVisualDiffs empty maps", () => {
@@ -142,5 +146,18 @@ describe("getAllVisualDiffs tests", () => {
         ],
       ])
     )
+  })
+})
+
+describe("getDataLabels tests", () => {
+  test("getDataLabels empty data", () => {
+    const data: DashboardData = {}
+    expect(getDataLabels(data)).toEqual([])
+  })
+  test("getDataLabels non-empty data", () => {
+    const data: DashboardData = {
+      x: { value: new Map([["a", 1]]), diff: new Map() },
+    }
+    expect(getDataLabels(data)).toEqual(["a"])
   })
 })
