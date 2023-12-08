@@ -8,6 +8,12 @@ import { LineChartData } from "./components/LineChart"
 
 export const globalReports = ref<Map<string, Promise<string>>>(new Map())
 export const globalStats = ref<Map<string, Promise<string>>>(new Map())
+
+export const sriFetched = ref<boolean>(false)
+export const v3Stats = ref<Promise<string>>()
+export const sriStats = ref<Promise<string>>()
+export const sriCompareData = ref<Map<string, DashboardData>>(new Map())
+
 export const dataNames = ref<Array<string>>([])
 export const selectedData = ref<string>("")
 export const selectedReport = ref<string>("")
@@ -138,6 +144,35 @@ async function fetchData(url = ""): Promise<string> {
   const response = await fetch(url)
   const text = await response.text()
   return text
+}
+
+export async function getSRICompareData() {
+  /**
+   * Fetches the SRI stats and returns the text.
+   * @return: Promise<string>
+   */
+  if (sriFetched.value) return
+  v3Stats.value = fetchData(qcbase + "monarch-kg/2023-11-16/merged_graph_stats.yaml")
+  sriStats.value = fetchData(
+    qcbase + "sri-reference-kg/sri-reference-kg-0.4.0/merged_graph_stats.yaml"
+  )
+
+  const v3 = await v3Stats.value
+  const sri = await sriStats.value
+  const v3Report = qc.toStatReport(YAML.parse(v3))
+  const sriReport = qc.toStatReport(YAML.parse(sri))
+
+  sriCompareData.value.set("nodes_stats_category", {} as DashboardData)
+  sriCompareData.value.set("edges_stats", {} as DashboardData)
+  setStatDashboardData(
+    sriCompareData.value.get("nodes_stats_category") as DashboardData,
+    v3Report,
+    sriReport,
+    "node_stats",
+    "count_by_category"
+  )
+
+  sriFetched.value = true
 }
 
 export async function updateData() {
