@@ -28,6 +28,7 @@
       v-model="selectedReport"
       :onChange="processReports"
     />
+    <h2>Edges Report</h2>
     <SimpleDashboard
       title="Edges Report"
       label="Ingest"
@@ -51,12 +52,25 @@
         </li>
       </ul>
     </div>
-    <SimpleDashboard
-      title="Nodes Report"
-      label="Ingest"
-      :colorCols="['Nodes']"
-      :data="edgesDashboardData"
-    />
+    <div>
+      <h2>Nodes Report</h2>
+      <div style="display: inline-block; margin-right: 20px; vertical-align: top">
+        <SimpleDashboard
+          title="Nodes Report"
+          label="Category"
+          :colorCols="['node_stats']"
+          :data="nodesDashboardData_category"
+        />
+      </div>
+      <div style="display: inline-block; margin-right: 20px; vertical-align: top">
+        <SimpleDashboard
+          title="Nodes Report"
+          label="ID"
+          :colorCols="['node_stats']"
+          :data="nodesDashboardData_id"
+        />
+      </div>
+    </div>
   </main>
 </template>
 
@@ -74,7 +88,8 @@
     edgesDashboardData,
     edgesTimeSeriesData,
     globalNamespaces,
-    nodesDashboardData,
+    nodesDashboardData_category,
+    nodesDashboardData_id,
   } from "./data"
   import SimpleDashboard from "./components/SimpleDashboard.vue"
   import SelectReport from "./components/SelectReport.vue"

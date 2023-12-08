@@ -46,22 +46,36 @@ export function isQCReport(i: object): i is QCReport {
 
 export interface StatCount {
   count: number
-  provided_by: Map<string, { count: number }>
+  provided_by: { [key: string]: { count: number } }
 }
 
 export interface EdgeStatPart {
-  count_by_predicates: Map<string, StatCount>
-  count_by_spo: Map<string, StatCount>
+  count_by_predicates: { [key: string]: StatCount }
+  count_by_spo: { [key: string]: StatCount }
   predicates: string[]
   provided_by: string[]
   total_edges: number
 }
 
+export function isEdgeStatPart(i: object | string): i is EdgeStatPart {
+  if (typeof i === "string") return false
+  return "count_by_predicates" in i && "count_by_spo" in i
+}
+
 export interface NodeStatPart {
-  count_by_category: Map<string, Map<string, number>>
-  predicates: string[]
+  count_by_category: { [key: string]: StatCount }
+  count_by_id_prefixes: { [key: string]: number }
+  count_by_id_prefixes_by_category: { [key: string]: { [key: string]: StatCount } }
+  node_categories: string[]
+  node_id_prefixes: string[]
+  node_id_prefixes_by_category: { [key: string]: string[] }
   provided_by: string[]
   total_nodes: number
+}
+
+export function isNodeStatPart(i: object | string): i is NodeStatPart {
+  if (typeof i != "object") return false
+  return "count_by_category" in i && "count_by_id_prefixes" in i
 }
 
 export interface StatReport {

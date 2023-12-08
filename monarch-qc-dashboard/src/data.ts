@@ -19,7 +19,8 @@ export const edgesTimeSeriesData = reactive({} as LineChartData)
 
 export const globalNamespaces = ref<Array<string>>([])
 
-export const nodesDashboardData = reactive({} as DashboardData)
+export const nodesDashboardData_category = reactive({} as DashboardData)
+export const nodesDashboardData_id = reactive({} as DashboardData)
 
 const qcbase = "https://data.monarchinitiative.org/"
 
@@ -191,7 +192,20 @@ export async function processReports() {
 
   const selectedStats: qc.StatReport = await getStatReport(selected_name)
   const previousStats: qc.StatReport = await getStatReport(compare_name)
-  setNodeDashboardData(nodesDashboardData, selectedStats, previousStats, "edges", "dangling_edges")
+  setStatDashboardData(
+    nodesDashboardData_category,
+    selectedStats,
+    previousStats,
+    "node_stats",
+    "count_by_category"
+  )
+  setStatDashboardData(
+    nodesDashboardData_id,
+    selectedStats,
+    previousStats,
+    "node_stats",
+    "count_by_id_prefixes"
+  )
 }
 
 export async function getQCReport(reportName: string): Promise<qc.QCReport> {
@@ -238,12 +252,12 @@ function setDashboardData(
   }
 }
 
-function setNodeDashboardData(
+function setStatDashboardData(
   data: DashboardData,
   selected: qc.StatReport,
   previous: qc.StatReport,
-  name_a: string,
-  name_b: string
+  statName: string,
+  field: string
 ) {
   /**
    * Sets the dashboard data for the given QCReports and parts.
@@ -254,30 +268,26 @@ function setNodeDashboardData(
    * @in_qc: string
    * @return: void
    */
-  const key_a = name_a as keyof qc.StatReport
-  const key_b = name_b as keyof qc.StatReport
-
-  data[name_a] = {
-    value: getNodeTotalNumber(selected[key_a], true),
-    diff: getNodeDifference(selected[key_a], previous[key_b]),
-  }
-
-  data[name_b] = {
-    value: getNodeTotalNumber(selected[key_b], true),
-    diff: getNodeDifference(selected[key_b], previous[key_b]),
+  const partKey = statName as keyof qc.StatReport
+  if (statName === "node_stats") {
+    data[statName] = {
+      value: getStatTotalNumber(selected[partKey], field, true),
+      diff: getStatDifference(selected[partKey], previous[partKey], field),
+    }
+    return
   }
 }
 
-function getTotalNumber(qcpart: qc.QCPart[], addTotal = false): Map<string, number> {
+function getTotalNumber(part: qc.QCPart[], addTotal = false): Map<string, number> {
   /**
    * Returns the total number of edges (or nodes) of each QCPart.
    * @qcpart: QCPart[]
    * @return: Map<string, number>
    */
-  if (qcpart === undefined) return new Map<string, number>()
+  if (part === undefined) return new Map<string, number>()
   let grandtotal = 0
   const totals = new Map<string, number>()
-  for (const item of qcpart) {
+  for (const item of part) {
     totals.set(item.name, item.total_number)
     grandtotal += item.total_number
   }
@@ -285,28 +295,38 @@ function getTotalNumber(qcpart: qc.QCPart[], addTotal = false): Map<string, numb
   return totals
 }
 
-function getNodeTotalNumber(
-  qcpart: qc.NodeStatPart | qc.EdgeStatPart | string,
+function getStatTotalNumber(
+  part: qc.NodeStatPart | qc.EdgeStatPart | string,
+  field: string,
   addTotal = false
 ): Map<string, number> {
   /**
    * Returns the total number of edges (or nodes) of each QCPart.
-   * @qcpart: QCPart[]
+   * @part: StatPart[]
    * @return: Map<string, number>
    */
-  if (qcpart === undefined) return new Map<string, number>()
-  const grandtotal = 0
+  let grandtotal = 0
   const totals = new Map<string, number>()
-  // for (const [key, value] of qcpart.count_by_category.entries()) {
-  //   const total = Array.from(value.values()).reduce((a, b) => a + b, 0)
-  //   totals.set(key, total)
-  //   grandtotal += total
-  // }
+  if (qc.isNodeStatPart(part)) {
+    const fieldVals = part[field as keyof qc.NodeStatPart]
+    if (typeof fieldVals != "object") return new Map<string, number>()
+    else if (field === "count_by_category") {
+      for (const [key, value] of Object.entries(fieldVals)) {
+        totals.set(key, value.count)
+        grandtotal += value.count
+      }
+    } else if (field === "count_by_id_prefixes") {
+      grandtotal = Object.values(fieldVals).reduce((a, b) => a + b, 0)
+      return new Map(Object.entries(fieldVals)).set("Total Number", grandtotal)
+    }
+  } else if (qc.isEdgeStatPart(part)) {
+    // TODO: implement
+  }
   if (addTotal) totals.set("Total Number", grandtotal)
   return totals
 }
 
-function getDifference(qcpart: qc.QCPart[], previous_qcpart: qc.QCPart[]): Map<string, number> {
+function getDifference(part: qc.QCPart[], previous_part: qc.QCPart[]): Map<string, number> {
   /**
    * Return the difference between two QCParts matching on the same key.
    * @qcpart: QCPart[]
@@ -314,9 +334,9 @@ function getDifference(qcpart: qc.QCPart[], previous_qcpart: qc.QCPart[]): Map<s
    * @return: Map<string, number>
    */
   const difference_totals = new Map<string, number>()
-  if (qcpart === undefined || previous_qcpart === undefined) return new Map<string, number>()
-  for (const item of qcpart) {
-    for (const previous_item of previous_qcpart) {
+  if (part === undefined || previous_part === undefined) return new Map<string, number>()
+  for (const item of part) {
+    for (const previous_item of previous_part) {
       if (item.name === previous_item.name) {
         difference_totals.set(item.name, item.total_number - previous_item.total_number)
       }
@@ -325,9 +345,10 @@ function getDifference(qcpart: qc.QCPart[], previous_qcpart: qc.QCPart[]): Map<s
   return difference_totals
 }
 
-function getNodeDifference(
-  qcpart: qc.NodeStatPart | qc.EdgeStatPart | string,
-  previous_qcpart: qc.NodeStatPart | qc.EdgeStatPart | string
+function getStatDifference(
+  part: qc.NodeStatPart | qc.EdgeStatPart | string,
+  previous_part: qc.NodeStatPart | qc.EdgeStatPart | string,
+  field: string
 ): Map<string, number> {
   /**
    * Return the difference between two QCParts matching on the same key.
@@ -335,16 +356,29 @@ function getNodeDifference(
    * @previous_qcpart: QCPart[]
    * @return: Map<string, number>
    */
-  const difference_totals = new Map<string, number>()
-  if (qcpart === undefined || previous_qcpart === undefined) return new Map<string, number>()
-  // for (const [key, value] of qcpart.count_by_category.entries()) {
-  //   const previous_value = previous_qcpart.count_by_category.get(key)
-  //   if (previous_value === undefined) continue
-  //   const total = Array.from(value.values()).reduce((a, b) => a + b, 0)
-  //   const previous_total = Array.from(previous_value.values()).reduce((a, b) => a + b, 0)
-  //   difference_totals.set(key, total - previous_total)
-  // }
-  return difference_totals
+  const total_diffs = new Map<string, number>()
+  const fieldKey = field as keyof qc.NodeStatPart
+  if (qc.isNodeStatPart(part) && qc.isNodeStatPart(previous_part)) {
+    if (fieldKey === "count_by_category") {
+      const fieldVals = part[fieldKey]
+      const previousFieldVals = previous_part[fieldKey]
+      for (const [key, value] of Object.entries(fieldVals)) {
+        const previousValue = previousFieldVals[key] as qc.StatCount
+        if (previousValue === undefined) continue
+        total_diffs.set(key, value.count - previousValue.count)
+      }
+    }
+    if (fieldKey === "count_by_id_prefixes") {
+      const fieldVals = part[fieldKey]
+      const previousFieldVals = previous_part[fieldKey]
+      for (const [key, value] of Object.entries(fieldVals)) {
+        const previousValue = previousFieldVals[key] as number
+        if (previousValue === undefined) continue
+        total_diffs.set(key, value - previousValue)
+      }
+    }
+  }
+  return total_diffs
 }
 
 async function getTimeSeriesReports(
