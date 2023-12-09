@@ -1,16 +1,55 @@
 import { uniq } from "../qc_utils"
 
 export interface DashboardData {
-  a: Map<string, number>
-  b: Map<string, number>
-  a_diff: Map<string, number>
-  b_diff: Map<string, number>
+  [field: string]: {
+    value: Map<string, number>
+    diff: Map<string, number>
+  }
 }
 
-export function getVisualDiffs(
-  a: Map<string, number>,
-  b: Map<string, number>
-): Map<string, string> {
+export function getDataLabels(data: DashboardData): string[] {
+  /**
+   * Returns the data labels of the internal value/diff maps.
+   * @data: DashboardData
+   * @return: string[]
+   */
+  const labels: string[] = []
+  const fieldData = Object.values(data)[0]
+  if (fieldData === undefined) return labels
+  for (const [name] of fieldData.value) {
+    labels.push(name)
+  }
+  return labels
+}
+
+export function getAllVisualDiffs(data: DashboardData): Map<string, Map<string, string>> {
+  /**
+   * Returns a map of the differences between two maps.
+   * @data: DashboardData
+   * @return: Map<string, Map<string, string>>
+   */
+  const visualDiffs = new Map<string, Map<string, string>>()
+  for (const [field, value] of Object.entries(data)) {
+    if (getNextField(field, data) === null) continue
+    const nextField = getNextField(field, data) as string
+    visualDiffs.set(field, getVisualDiffs(value.value, data[nextField].value))
+  }
+  return visualDiffs
+}
+
+export function getNextField(field: number | string, data: DashboardData): string | null {
+  /**
+   * Returns the next field in the DashboardData object.
+   * @index: number
+   * @data: DashboardData
+   * @return: string
+   */
+  const keys = Object.keys(data)
+  const index = typeof field === "string" ? keys.indexOf(field) : field
+  return index < keys.length - 1 ? keys[index + 1] : null
+}
+
+function getVisualDiffs(a: Map<string, number>, b: Map<string, number>): Map<string, string> {
   /**
    * Returns a map of the differences between two maps.
    * @a: Map<string, number>
@@ -18,7 +57,7 @@ export function getVisualDiffs(
    * @return: Map<string, string>
    */
   if (a === undefined || b === undefined) return new Map<string, string>()
-  const names = uniq([...b.keys(), ...a.keys()])
+  const names = uniq([...a.keys(), ...b.keys()])
   const edge_diff = new Map<string, string>()
   for (const name of names) {
     if (name == "Total Number") continue

@@ -40,6 +40,63 @@ export function toQCReport(i: object = {}): QCReport {
   }
 }
 
+export function isQCReport(i: object): i is QCReport {
+  return "dangling_edges" in i && "edges" in i && "missing_nodes" in i && "nodes" in i
+}
+
+export interface StatCount {
+  count: number
+  provided_by: { [key: string]: { count: number } }
+}
+
+export interface EdgeStatPart {
+  count_by_predicates: { [key: string]: StatCount }
+  count_by_spo: { [key: string]: StatCount }
+  predicates: string[]
+  provided_by: string[]
+  total_edges: number
+}
+
+export function isEdgeStatPart(i: object | string): i is EdgeStatPart {
+  if (typeof i === "string") return false
+  return "count_by_predicates" in i && "count_by_spo" in i
+}
+
+export interface NodeStatPart {
+  count_by_category: { [key: string]: StatCount }
+  count_by_id_prefixes: { [key: string]: number }
+  count_by_id_prefixes_by_category: { [key: string]: { [key: string]: StatCount } }
+  node_categories: string[]
+  node_id_prefixes: string[]
+  node_id_prefixes_by_category: { [key: string]: string[] }
+  provided_by: string[]
+  total_nodes: number
+}
+
+export function isNodeStatPart(i: object | string): i is NodeStatPart {
+  if (typeof i != "object") return false
+  return "count_by_category" in i && "count_by_id_prefixes" in i
+}
+
+export interface StatReport {
+  edge_stats: EdgeStatPart
+  graph_name: string
+  node_stats: NodeStatPart
+}
+
+export function toStatReport(i: object = {}): StatReport {
+  const o = <StatReport>i
+  return {
+    edge_stats: o.edge_stats ?? {},
+    graph_name: o.graph_name ?? "",
+    node_stats: o.node_stats ?? {},
+  }
+}
+
+export function isStatReport(i: object): i is StatReport {
+  return "edge_stats" in i && "graph_name" in i && "node_stats" in i
+}
+
 export function getNamespaces(qcparts: QCPart[]): string[] {
   /**
    * Returns all namespaces in the QCPart.

@@ -7,6 +7,9 @@ import { DashboardData } from "./components/SimpleDashboard"
 import { LineChartData } from "./components/LineChart"
 
 export const globalReports = ref<Map<string, Promise<string>>>(new Map())
+export const globalStats = ref<Map<string, Promise<string>>>(new Map())
+export const dataNames = ref<Array<string>>([])
+export const selectedData = ref<string>("")
 export const selectedReport = ref<string>("")
 export const compareNames = ref<Array<string>>([])
 export const selectedCompare = ref<string>("")
@@ -16,7 +19,15 @@ export const edgesTimeSeriesData = reactive({} as LineChartData)
 
 export const globalNamespaces = ref<Array<string>>([])
 
-const qcsite = "https://data.monarchinitiative.org/monarch-kg-dev/"
+export const nodesDashboardData_category = reactive({} as DashboardData)
+export const nodesDashboardData_id = reactive({} as DashboardData)
+
+const qcbase = "https://data.monarchinitiative.org/"
+
+const qcdata = new Map<string, string>([
+  ["Released", "monarch-kg/"],
+  ["Development", "monarch-kg-dev/"],
+])
 
 function htmlToDom(html: string): HTMLDivElement {
   /**
@@ -31,7 +42,8 @@ function htmlToDom(html: string): HTMLDivElement {
 }
 
 export async function fetchQCReports(
-  qctext: string | undefined
+  qctext: string | undefined,
+  report: string
 ): Promise<Map<string, Promise<string>>> {
   /**
    * Parses the QC report index page for QC Report urls,
@@ -44,7 +56,7 @@ export async function fetchQCReports(
   }
 
   const releases = getQCReportReleases(qctext)
-  const reports = getQCReports(releases)
+  const reports = getQCReports(releases, report)
   return reports
 }
 
@@ -64,7 +76,8 @@ function getReportNames(url = ""): string {
    * @url: string
    * @return: string
    */
-  const nameRegex = /monarch-kg-dev\/(.*)\//
+  const dataSite = qcdata.get(selectedData.value)
+  const nameRegex = new RegExp(`${dataSite}(.*)/`)
   const nameMatch = url.match(nameRegex)
   if (nameMatch === null) {
     return ""
@@ -72,7 +85,10 @@ function getReportNames(url = ""): string {
   return nameMatch[1]
 }
 
-async function getQCReports(urls: string[] = [""]): Promise<Map<string, Promise<string>>> {
+async function getQCReports(
+  urls: string[] = [""],
+  report: string
+): Promise<Map<string, Promise<string>>> {
   /**
    * Fetches the QC reports and returns a map of report names to promises of report text.
    * @urls: string[]
@@ -84,8 +100,8 @@ async function getQCReports(urls: string[] = [""]): Promise<Map<string, Promise<
   const reportURLs: string[] = []
   for (const [url, response] of responseMap.entries()) {
     const checkResponse = await response
-    if (checkResponse.match("qc_report.yaml")) {
-      reportURLs.push(url.replace("index.html", "qc_report.yaml"))
+    if (checkResponse.match(report)) {
+      reportURLs.push(url.replace("index.html", report))
     }
   }
   const reports = reportURLs.map(fetchData)
@@ -124,18 +140,27 @@ async function fetchData(url = ""): Promise<string> {
   return text
 }
 
-export async function fetchAllData() {
+export async function updateData() {
   /**
    * Fetches all the data, initializes values, and sets the global refs.
    * @return: void
    */
+  if (selectedData.value === "") {
+    selectedData.value = "Development"
+  }
+
+  const qcsite = qcbase + qcdata.get(selectedData.value)
   const qctext: string = await fetchData(qcsite)
-  globalReports.value = await fetchQCReports(qctext)
+  globalReports.value = await fetchQCReports(qctext, "qc_report.yaml")
+  globalStats.value = await fetchQCReports(qctext, "merged_graph_stats.yaml")
 
   // remove "latest" from qcReports, since it's always a duplicate of the most recent release
   globalReports.value.delete("latest")
+  globalStats.value.delete("latest")
 
   selectedReport.value = [...globalReports.value.keys()].slice(-1)[0] ?? ""
+  dataNames.value = [...qcdata.keys()]
+
   processReports()
 }
 
@@ -156,7 +181,7 @@ export async function processReports() {
 
   const selected: qc.QCReport = await getQCReport(selected_name)
   const previous: qc.QCReport = await getQCReport(compare_name)
-  setDashboardData(edgesDashboardData, selected, previous, "edges", "dangling_edges")
+  setDashboardData(edgesDashboardData, selected, previous, ["edges", "dangling_edges"])
 
   const timeSeriesReports = await getTimeSeriesReports(selected_name, compare_name)
   setEdgesTimeSeriesData(edgesTimeSeriesData, timeSeriesReports, "edges")
@@ -164,6 +189,23 @@ export async function processReports() {
   const danglingEdgesNamespaces: string[] = qc.getNamespaces(selected.dangling_edges)
   const edgesNamespaces: string[] = qc.getNamespaces(selected.edges)
   globalNamespaces.value = qc.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
+
+  const selectedStats: qc.StatReport = await getStatReport(selected_name)
+  const previousStats: qc.StatReport = await getStatReport(compare_name)
+  setStatDashboardData(
+    nodesDashboardData_category,
+    selectedStats,
+    previousStats,
+    "node_stats",
+    "count_by_category"
+  )
+  setStatDashboardData(
+    nodesDashboardData_id,
+    selectedStats,
+    previousStats,
+    "node_stats",
+    "count_by_id_prefixes"
+  )
 }
 
 export async function getQCReport(reportName: string): Promise<qc.QCReport> {
@@ -176,40 +218,76 @@ export async function getQCReport(reportName: string): Promise<qc.QCReport> {
   return qc.toQCReport(YAML.parse(reportText))
 }
 
+export async function getStatReport(reportName: string): Promise<qc.StatReport> {
+  /**
+   * Fetches the stat report from globalStats and returns the parsed report.
+   * @reportName: string
+   * @return: Promise<StatReport>
+   */
+  const reportText = (await globalStats.value.get(reportName)) ?? "{}"
+  return qc.toStatReport(YAML.parse(reportText))
+}
+
 function setDashboardData(
   data: DashboardData,
   selected: qc.QCReport,
   previous: qc.QCReport,
-  name_a: string,
-  name_b: string
+  names: string[]
 ) {
   /**
    * Sets the dashboard data for the given QCReports and parts.
    * @data: DashboardData
-   * @selected: QCReport
-   * @previous: QCReport
+   * @selected: qc.QCReport
+   * @previous: qc.QCReport
    * @in_kg: string
    * @in_qc: string
    * @return: void
    */
-  const key_a = name_a as keyof qc.QCReport
-  const key_b = name_b as keyof qc.QCReport
-  data.a = getTotalNumber(selected[key_a], true)
-  data.b = getTotalNumber(selected[key_b], true)
-  data.a_diff = getDifference(selected[key_a], previous[key_a])
-  data.b_diff = getDifference(selected[key_b], previous[key_b])
+  for (const name of names) {
+    const field = name as keyof qc.QCReport
+    data[name] = {
+      value: getTotalNumber(selected[field], true),
+      diff: getDifference(selected[field], previous[field]),
+    }
+  }
 }
 
-function getTotalNumber(qcpart: qc.QCPart[], addTotal = false): Map<string, number> {
+function setStatDashboardData(
+  data: DashboardData,
+  selected: qc.StatReport,
+  previous: qc.StatReport,
+  statName: string,
+  field: string
+) {
+  /**
+   * Sets the dashboard data for the given QCReports and parts.
+   * @data: DashboardData
+   * @selected: qc.StatReport
+   * @previous: qc.StatReport
+   * @in_kg: string
+   * @in_qc: string
+   * @return: void
+   */
+  const partKey = statName as keyof qc.StatReport
+  if (statName === "node_stats") {
+    data[statName] = {
+      value: getStatTotalNumber(selected[partKey], field, true),
+      diff: getStatDifference(selected[partKey], previous[partKey], field),
+    }
+    return
+  }
+}
+
+function getTotalNumber(part: qc.QCPart[], addTotal = false): Map<string, number> {
   /**
    * Returns the total number of edges (or nodes) of each QCPart.
    * @qcpart: QCPart[]
    * @return: Map<string, number>
    */
-  if (qcpart === undefined) return new Map<string, number>()
+  if (part === undefined) return new Map<string, number>()
   let grandtotal = 0
   const totals = new Map<string, number>()
-  for (const item of qcpart) {
+  for (const item of part) {
     totals.set(item.name, item.total_number)
     grandtotal += item.total_number
   }
@@ -217,7 +295,38 @@ function getTotalNumber(qcpart: qc.QCPart[], addTotal = false): Map<string, numb
   return totals
 }
 
-function getDifference(qcpart: qc.QCPart[], previous_qcpart: qc.QCPart[]): Map<string, number> {
+function getStatTotalNumber(
+  part: qc.NodeStatPart | qc.EdgeStatPart | string,
+  field: string,
+  addTotal = false
+): Map<string, number> {
+  /**
+   * Returns the total number of edges (or nodes) of each QCPart.
+   * @part: StatPart[]
+   * @return: Map<string, number>
+   */
+  let grandtotal = 0
+  const totals = new Map<string, number>()
+  if (qc.isNodeStatPart(part)) {
+    const fieldVals = part[field as keyof qc.NodeStatPart]
+    if (typeof fieldVals != "object") return new Map<string, number>()
+    else if (field === "count_by_category") {
+      for (const [key, value] of Object.entries(fieldVals)) {
+        totals.set(key, value.count)
+        grandtotal += value.count
+      }
+    } else if (field === "count_by_id_prefixes") {
+      grandtotal = Object.values(fieldVals).reduce((a, b) => a + b, 0)
+      return new Map(Object.entries(fieldVals)).set("Total Number", grandtotal)
+    }
+  } else if (qc.isEdgeStatPart(part)) {
+    // TODO: implement
+  }
+  if (addTotal) totals.set("Total Number", grandtotal)
+  return totals
+}
+
+function getDifference(part: qc.QCPart[], previous_part: qc.QCPart[]): Map<string, number> {
   /**
    * Return the difference between two QCParts matching on the same key.
    * @qcpart: QCPart[]
@@ -225,15 +334,51 @@ function getDifference(qcpart: qc.QCPart[], previous_qcpart: qc.QCPart[]): Map<s
    * @return: Map<string, number>
    */
   const difference_totals = new Map<string, number>()
-  if (qcpart === undefined || previous_qcpart === undefined) return new Map<string, number>()
-  for (const item of qcpart) {
-    for (const previous_item of previous_qcpart) {
+  if (part === undefined || previous_part === undefined) return new Map<string, number>()
+  for (const item of part) {
+    for (const previous_item of previous_part) {
       if (item.name === previous_item.name) {
         difference_totals.set(item.name, item.total_number - previous_item.total_number)
       }
     }
   }
   return difference_totals
+}
+
+function getStatDifference(
+  part: qc.NodeStatPart | qc.EdgeStatPart | string,
+  previous_part: qc.NodeStatPart | qc.EdgeStatPart | string,
+  field: string
+): Map<string, number> {
+  /**
+   * Return the difference between two QCParts matching on the same key.
+   * @qcpart: QCPart[]
+   * @previous_qcpart: QCPart[]
+   * @return: Map<string, number>
+   */
+  const total_diffs = new Map<string, number>()
+  const fieldKey = field as keyof qc.NodeStatPart
+  if (qc.isNodeStatPart(part) && qc.isNodeStatPart(previous_part)) {
+    if (fieldKey === "count_by_category") {
+      const fieldVals = part[fieldKey]
+      const previousFieldVals = previous_part[fieldKey]
+      for (const [key, value] of Object.entries(fieldVals)) {
+        const previousValue = previousFieldVals[key] as qc.StatCount
+        if (previousValue === undefined) continue
+        total_diffs.set(key, value.count - previousValue.count)
+      }
+    }
+    if (fieldKey === "count_by_id_prefixes") {
+      const fieldVals = part[fieldKey]
+      const previousFieldVals = previous_part[fieldKey]
+      for (const [key, value] of Object.entries(fieldVals)) {
+        const previousValue = previousFieldVals[key] as number
+        if (previousValue === undefined) continue
+        total_diffs.set(key, value - previousValue)
+      }
+    }
+  }
+  return total_diffs
 }
 
 async function getTimeSeriesReports(

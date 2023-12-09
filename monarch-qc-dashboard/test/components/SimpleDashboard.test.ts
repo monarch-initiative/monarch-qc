@@ -1,94 +1,163 @@
 import { describe, expect, test } from "vitest"
-import { getVisualDiffs } from "../../src/components/SimpleDashboard"
+import {
+  DashboardData,
+  getAllVisualDiffs,
+  getDataLabels,
+} from "../../src/components/SimpleDashboard"
 
-describe("getVisualDiffs tests", () => {
-  test("getVisualDiffs empty maps", () => {
-    expect(getVisualDiffs(new Map(), new Map())).toEqual(new Map())
+describe("getAllVisualDiffs tests", () => {
+  test("getAllVisualDiffs empty maps", () => {
+    expect(getAllVisualDiffs({} as DashboardData)).toEqual(new Map())
   })
-  test("getVisualDiffs empty map and non-empty map", () => {
-    expect(getVisualDiffs(new Map([["a", 1]]), new Map())).toEqual(
-      new Map([["a", "⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"]])
-    )
-  })
-  test("getVisualDiffs non-empty map and empty map", () => {
-    expect(getVisualDiffs(new Map(), new Map([["a", 1]]))).toEqual(
-      new Map([["a", "⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪"]])
-    )
-  })
-  test("getVisualDiffs equal maps", () => {
-    expect(getVisualDiffs(new Map([["a", 1]]), new Map([["a", 1]]))).toEqual(
-      new Map([["a", "⚫⚫⚫⚫⚫⚪⚪⚪⚪⚪"]])
-    )
-  })
-  test("getVisualDiffs equal maps out of order", () => {
+  test("getAllVisualDiffs empty map and non-empty map", () => {
     expect(
-      getVisualDiffs(
-        new Map([
-          ["a", 1],
-          ["b", 2],
-        ]),
-        new Map([
-          ["b", 2],
-          ["a", 1],
-        ])
-      )
+      getAllVisualDiffs({
+        x: { value: new Map([["a", 1]]), diff: new Map() },
+        y: { value: new Map(), diff: new Map() },
+      })
+    ).toEqual(new Map([["x", new Map([["a", "⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"]])]]))
+  })
+  test("getAllVisualDiffs non-empty map and empty map", () => {
+    expect(
+      getAllVisualDiffs({
+        x: { value: new Map(), diff: new Map() },
+        y: { value: new Map([["a", 1]]), diff: new Map() },
+      })
+    ).toEqual(new Map([["x", new Map([["a", "⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪"]])]]))
+  })
+  test("getAllVisualDiffs equal maps", () => {
+    expect(
+      getAllVisualDiffs({
+        x: { value: new Map([["a", 1]]), diff: new Map() },
+        y: { value: new Map([["a", 1]]), diff: new Map() },
+      })
+    ).toEqual(new Map([["x", new Map([["a", "⚫⚫⚫⚫⚫⚪⚪⚪⚪⚪"]])]]))
+  })
+  test("getAllVisualDiffs equal maps out of order", () => {
+    expect(
+      getAllVisualDiffs({
+        x: {
+          value: new Map([
+            ["a", 1],
+            ["b", 2],
+          ]),
+          diff: new Map(),
+        },
+        y: {
+          value: new Map([
+            ["b", 2],
+            ["a", 1],
+          ]),
+          diff: new Map(),
+        },
+      })
     ).toEqual(
       new Map([
-        ["a", "⚫⚫⚫⚫⚫⚪⚪⚪⚪⚪"],
-        ["b", "⚫⚫⚫⚫⚫⚪⚪⚪⚪⚪"],
+        [
+          "x",
+          new Map([
+            ["a", "⚫⚫⚫⚫⚫⚪⚪⚪⚪⚪"],
+            ["b", "⚫⚫⚫⚫⚫⚪⚪⚪⚪⚪"],
+          ]),
+        ],
       ])
     )
   })
-  test("getVisualDiffs non-equal maps", () => {
-    expect(getVisualDiffs(new Map([["a", 1]]), new Map([["b", 2]]))).toEqual(
-      new Map([
-        ["a", "⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"],
-        ["b", "⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪"],
-      ])
-    )
-  })
-  test("getVisualDiffs non-equal maps out of order", () => {
+  test("getAllVisualDiffs non-equal maps", () => {
     expect(
-      getVisualDiffs(
-        new Map([
-          ["a", 1],
-          ["b", 2],
-        ]),
-        new Map([
-          ["b", 2],
-          ["c", 3],
-        ])
-      )
+      getAllVisualDiffs({
+        x: { value: new Map([["a", 1]]), diff: new Map() },
+        y: { value: new Map([["b", 2]]), diff: new Map() },
+      })
     ).toEqual(
       new Map([
-        ["a", "⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"],
-        ["b", "⚫⚫⚫⚫⚫⚪⚪⚪⚪⚪"],
-        ["c", "⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪"],
+        [
+          "x",
+          new Map([
+            ["a", "⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"],
+            ["b", "⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪"],
+          ]),
+        ],
       ])
     )
   })
-  test("getVisualDiffs non-equal maps out of order with total number", () => {
+  test("getAllVisualDiffs non-equal maps out of order", () => {
     expect(
-      getVisualDiffs(
-        new Map([
-          ["a", 1],
-          ["b", 2],
-          ["Total Number", 3],
-        ]),
-        new Map([
-          ["b", 2],
-          ["c", 3],
-          ["Total Number", 5],
-        ])
-      )
+      getAllVisualDiffs({
+        x: {
+          value: new Map([
+            ["a", 1],
+            ["b", 2],
+          ]),
+          diff: new Map(),
+        },
+        y: {
+          value: new Map([
+            ["b", 2],
+            ["c", 3],
+          ]),
+          diff: new Map(),
+        },
+      })
     ).toEqual(
       new Map([
-        ["a", "⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"],
-        ["b", "⚫⚫⚫⚫⚫⚪⚪⚪⚪⚪"],
-        ["c", "⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪"],
-        ["-------------", "-------------"],
-        ["Total Number", "⚫⚫⚫⚪⚪⚪⚪⚪⚪⚪"],
+        [
+          "x",
+          new Map([
+            ["a", "⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"],
+            ["b", "⚫⚫⚫⚫⚫⚪⚪⚪⚪⚪"],
+            ["c", "⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪"],
+          ]),
+        ],
       ])
     )
+  })
+  test("getAllVisualDiffs non-equal maps out of order with total number", () => {
+    expect(
+      getAllVisualDiffs({
+        x: {
+          value: new Map([
+            ["a", 1],
+            ["b", 2],
+            ["Total Number", 3],
+          ]),
+          diff: new Map(),
+        },
+        y: {
+          value: new Map([
+            ["b", 2],
+            ["c", 3],
+            ["Total Number", 5],
+          ]),
+          diff: new Map(),
+        },
+      })
+    ).toEqual(
+      new Map([
+        [
+          "x",
+          new Map([
+            ["a", "⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"],
+            ["b", "⚫⚫⚫⚫⚫⚪⚪⚪⚪⚪"],
+            ["c", "⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪"],
+            ["-------------", "-------------"],
+            ["Total Number", "⚫⚫⚫⚪⚪⚪⚪⚪⚪⚪"],
+          ]),
+        ],
+      ])
+    )
+  })
+})
+
+describe("getDataLabels tests", () => {
+  test("getDataLabels empty data", () => {
+    const data: DashboardData = {}
+    expect(getDataLabels(data)).toEqual([])
+  })
+  test("getDataLabels non-empty data", () => {
+    const data: DashboardData = {
+      x: { value: new Map([["a", 1]]), diff: new Map() },
+    }
+    expect(getDataLabels(data)).toEqual(["a"])
   })
 })

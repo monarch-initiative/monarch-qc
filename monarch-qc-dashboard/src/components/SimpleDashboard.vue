@@ -5,49 +5,53 @@
   algorithm.
  -->
 <template>
-  <h2>{{ title }}</h2>
   <div align="center">
     <table>
       <thead>
         <tr>
           <th>{{ label }}</th>
-          <th style="padding-right: 10px">{{ a_name }}</th>
-          <th style="padding-right: 10px">{{ a_name }} (⚫) vs {{ b_name }} (⚪)</th>
-          <th>{{ b_name }}</th>
+          <template v-for="field in fields" :key="field">
+            <th style="padding-right: 10px">{{ titleFormat(field) }}</th>
+            <template v-if="getNextField(field, data) !== null">
+              <th style="text-align: center">
+                {{ titleFormat(field) }} (⚫) vs {{ titleFormat(getNextField(field, data)) }} (⚪)
+              </th>
+            </template>
+          </template>
         </tr>
       </thead>
       <tbody>
-        <tr
-          v-for="([key, value], index) of getVisualDiffs(data.a, data.b)"
-          :key="key"
-          :style="getRowStyle(index)"
-        >
-          <td>{{ key }}</td>
-          <td style="padding-right: 10px">
-            {{ (data.a.get(key) ?? 0).toLocaleString("en-US") }}
-            <span
-              v-if="data.a_diff.has(key) && (data.a_diff.get(key) ?? 0) > 0"
-              style="color: green; font-style: italic"
-            >
-              (+{{ data.a_diff.get(key)?.toLocaleString("en-US") }})
-            </span>
-            <span
-              v-if="data.a_diff.has(key) && (data.a_diff.get(key) ?? 0) < 0"
-              style="color: red; font-weight: bold"
-            >
-              ({{ data.a_diff.get(key)?.toLocaleString("en-US") }})
-            </span>
-          </td>
-          <td style="text-align: center">{{ value }}</td>
-          <td style="padding-left: 10px">
-            {{ (data.b.get(key) ?? 0).toLocaleString("en-US") }}
-            <span v-if="data.b_diff.has(key) && (data.b_diff.get(key) ?? 0) > 0">
-              (+{{ data.b_diff.get(key)?.toLocaleString("en-US") }})
-            </span>
-            <span v-if="data.b_diff.has(key) && (data.b_diff.get(key) ?? 0) < 0">
-              ({{ data.b_diff.get(key)?.toLocaleString("en-US") }})
-            </span>
-          </td>
+        <tr v-for="(label, index) in labels" :key="label" :style="getRowStyle(index)">
+          <td>{{ label }}</td>
+          <template v-for="field in fields" :key="field">
+            <td style="padding-right: 10px">
+              {{ (data[field].value.get(label) ?? 0).toLocaleString("en-US") }}
+              <template v-if="colorCols.includes(field)">
+                <span
+                  v-if="data[field].diff.has(label) && (data[field].diff.get(label) ?? 0) > 0"
+                  style="color: green; font-style: italic"
+                >
+                  (+{{ data[field].diff.get(label)?.toLocaleString("en-US") }})
+                </span>
+                <span
+                  v-if="data[field].diff.has(label) && (data[field].diff.get(label) ?? 0) < 0"
+                  style="color: red; font-weight: bold"
+                >
+                  ({{ data[field].diff.get(label)?.toLocaleString("en-US") }})
+                </span>
+              </template>
+              <template v-if="!colorCols.includes(field)">
+                <span v-if="data[field].diff.has(label) && (data[field].diff.get(label) ?? 0) > 0">
+                  (+{{ data[field].diff.get(label)?.toLocaleString("en-US") }})
+                </span>
+                <span v-if="data[field].diff.has(label) && (data[field].diff.get(label) ?? 0) < 0">
+                  ({{ data[field].diff.get(label)?.toLocaleString("en-US") }})
+                </span>
+              </template>
+            </td>
+            <template v-if="getNextField(field, data) !== null"></template>
+            <td style="text-align: center">{{ visualDiffs.get(field)?.get(label) }}</td>
+          </template>
         </tr>
       </tbody>
     </table>
@@ -55,13 +59,16 @@
 </template>
 
 <script setup lang="ts">
-  import { getVisualDiffs, DashboardData } from "./SimpleDashboard"
-  import { getRowStyle } from "../style"
-  defineProps<{
+  import { DashboardData, getAllVisualDiffs, getDataLabels, getNextField } from "./SimpleDashboard"
+  import { getRowStyle, titleFormat } from "../style"
+  import { computed } from "vue"
+  const { data } = defineProps<{
     title: string
     label: string
-    a_name: string
-    b_name: string
+    colorCols: string[]
     data: DashboardData
   }>()
+  const fields = computed(() => Object.keys(data))
+  const labels = computed(() => getDataLabels(data))
+  const visualDiffs = computed(() => getAllVisualDiffs(data))
 </script>

@@ -5,6 +5,13 @@
   <main>
     <div>
       <img src="/src/global/monarch.png" class="logo" alt="Monarch Logo" />
+      <SelectReport
+        id="selectDataSet"
+        label=""
+        :reportNames="dataNames"
+        v-model="selectedData"
+        :onChange="updateData"
+      />
     </div>
     <SelectReport
       id="selectCompareReport"
@@ -21,11 +28,11 @@
       v-model="selectedReport"
       :onChange="processReports"
     />
+    <h2>Edges Report</h2>
     <SimpleDashboard
       title="Edges Report"
       label="Ingest"
-      a_name="Edges"
-      b_name="Dangling Edges"
+      :colorCols="['edges']"
       :data="edgesDashboardData"
     />
     <LineChart
@@ -45,6 +52,25 @@
         </li>
       </ul>
     </div>
+    <div>
+      <h2>Nodes Report</h2>
+      <div style="display: inline-block; margin-right: 20px; vertical-align: top">
+        <SimpleDashboard
+          title="Nodes Report"
+          label="Category"
+          :colorCols="['node_stats']"
+          :data="nodesDashboardData_category"
+        />
+      </div>
+      <div style="display: inline-block; margin-right: 20px; vertical-align: top">
+        <SimpleDashboard
+          title="Nodes Report"
+          label="ID"
+          :colorCols="['node_stats']"
+          :data="nodesDashboardData_id"
+        />
+      </div>
+    </div>
   </main>
 </template>
 
@@ -52,6 +78,9 @@
   import { computed } from "vue"
   import {
     globalReports,
+    dataNames,
+    selectedData,
+    updateData,
     selectedReport,
     compareNames,
     selectedCompare,
@@ -59,6 +88,8 @@
     edgesDashboardData,
     edgesTimeSeriesData,
     globalNamespaces,
+    nodesDashboardData_category,
+    nodesDashboardData_id,
   } from "./data"
   import SimpleDashboard from "./components/SimpleDashboard.vue"
   import SelectReport from "./components/SelectReport.vue"

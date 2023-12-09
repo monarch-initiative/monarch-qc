@@ -1,0 +1,1577 @@
+edge_stats:
+  count_by_predicates:
+    biolink:active_in:
+      count: 135612
+      provided_by:
+        goa_go_annotation_edges:
+          count: 135612
+    biolink:actively_involved_in:
+      count: 678730
+      provided_by:
+        goa_go_annotation_edges:
+          count: 678730
+    biolink:acts_upstream_of:
+      count: 9280
+      provided_by:
+        goa_go_annotation_edges:
+          count: 9280
+    biolink:acts_upstream_of_negative_effect:
+      count: 164
+      provided_by:
+        goa_go_annotation_edges:
+          count: 164
+    biolink:acts_upstream_of_or_within:
+      count: 200625
+      provided_by:
+        goa_go_annotation_edges:
+          count: 200625
+    biolink:acts_upstream_of_or_within_negative_effect:
+      count: 182
+      provided_by:
+        goa_go_annotation_edges:
+          count: 182
+    biolink:acts_upstream_of_or_within_positive_effect:
+      count: 452
+      provided_by:
+        goa_go_annotation_edges:
+          count: 452
+    biolink:acts_upstream_of_positive_effect:
+      count: 297
+      provided_by:
+        goa_go_annotation_edges:
+          count: 297
+    biolink:affects_risk_for:
+      count: 702
+      provided_by:
+        omim_gene_to_disease_edges:
+          count: 702
+    biolink:colocalizes_with:
+      count: 4218
+      provided_by:
+        goa_go_annotation_edges:
+          count: 4218
+    biolink:contributes_to:
+      count: 6834
+      provided_by:
+        goa_go_annotation_edges:
+          count: 6834
+    biolink:enables:
+      count: 785128
+      provided_by:
+        goa_go_annotation_edges:
+          count: 785128
+    biolink:expressed_in:
+      count: 2027409
+      provided_by:
+        alliance_gene_to_expression_edges:
+          count: 1790844
+        bgee_gene_to_expression_edges:
+          count: 236565
+    biolink:gene_associated_with_condition:
+      count: 5673
+      provided_by:
+        omim_gene_to_disease_edges:
+          count: 5673
+    biolink:has_mode_of_inheritance:
+      count: 8431
+      provided_by:
+        hpoa_disease_mode_of_inheritance_edges:
+          count: 8431
+    biolink:has_phenotype:
+      count: 941461
+      provided_by:
+        alliance_gene_to_phenotype_edges:
+          count: 298084
+        hpoa_disease_phenotype_edges:
+          count: 232442
+        hpoa_gene_to_phenotype_edges:
+          count: 268702
+        xenbase_gene_to_phenotype_edges:
+          count: 2317
+        zfin_gene_to_phenotype_edges:
+          count: 139916
+    biolink:interacts_with:
+      count: 502120
+      provided_by:
+        string_protein_links_edges:
+          count: 502120
+    biolink:located_in:
+      count: 473285
+      provided_by:
+        goa_go_annotation_edges:
+          count: 473285
+    biolink:orthologous_to:
+      count: 873929
+      provided_by:
+        panther_genome_orthologs_edges:
+          count: 873929
+    biolink:part_of:
+      count: 78316
+      provided_by:
+        goa_go_annotation_edges:
+          count: 78316
+    biolink:participates_in:
+      count: 106883
+      provided_by:
+        reactome_chemical_to_pathway_edges:
+          count: 54899
+        reactome_gene_to_pathway_edges:
+          count: 51984
+    biolink:related_to:
+      count: 144353
+      provided_by:
+        phenio_edges:
+          count: 144353
+    biolink:subclass_of:
+      count: 351115
+      provided_by:
+        phenio_edges:
+          count: 351115
+    unknown:
+      count: 0
+  count_by_spo:
+    biolink:AnatomicalEntity-biolink:related_to-biolink:AnatomicalEntity:
+      count: 3752
+      provided_by:
+        phenio_edges:
+          count: 3752
+    biolink:AnatomicalEntity-biolink:related_to-biolink:Cell:
+      count: 431
+      provided_by:
+        phenio_edges:
+          count: 431
+    biolink:AnatomicalEntity-biolink:related_to-biolink:CellularComponent:
+      count: 32
+      provided_by:
+        phenio_edges:
+          count: 32
+    biolink:AnatomicalEntity-biolink:related_to-biolink:ChemicalEntity:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:AnatomicalEntity-biolink:related_to-biolink:GrossAnatomicalStructure:
+      count: 5631
+      provided_by:
+        phenio_edges:
+          count: 5631
+    biolink:AnatomicalEntity-biolink:related_to-biolink:MacromolecularComplexMixin:
+      count: 5
+      provided_by:
+        phenio_edges:
+          count: 5
+    biolink:AnatomicalEntity-biolink:related_to-biolink:MolecularEntity:
+      count: 15
+      provided_by:
+        phenio_edges:
+          count: 15
+    biolink:AnatomicalEntity-biolink:related_to-biolink:NamedThing:
+      count: 60
+      provided_by:
+        phenio_edges:
+          count: 60
+    biolink:AnatomicalEntity-biolink:related_to-biolink:Occurrent:
+      count: 170
+      provided_by:
+        phenio_edges:
+          count: 170
+    biolink:AnatomicalEntity-biolink:related_to-biolink:Protein:
+      count: 4
+      provided_by:
+        phenio_edges:
+          count: 4
+    biolink:AnatomicalEntity-biolink:related_to-biolink:SmallMolecule:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:AnatomicalEntity-biolink:subclass_of-biolink:AnatomicalEntity:
+      count: 11146
+      provided_by:
+        phenio_edges:
+          count: 11146
+    biolink:AnatomicalEntity-biolink:subclass_of-biolink:NamedThing:
+      count: 32
+      provided_by:
+        phenio_edges:
+          count: 32
+    biolink:Cell-biolink:related_to-biolink:AnatomicalEntity:
+      count: 34883
+      provided_by:
+        phenio_edges:
+          count: 34883
+    biolink:Cell-biolink:related_to-biolink:Cell:
+      count: 2616
+      provided_by:
+        phenio_edges:
+          count: 2616
+    biolink:Cell-biolink:related_to-biolink:GrossAnatomicalStructure:
+      count: 5932
+      provided_by:
+        phenio_edges:
+          count: 5932
+    biolink:Cell-biolink:related_to-biolink:Occurrent:
+      count: 474
+      provided_by:
+        phenio_edges:
+          count: 474
+    biolink:Cell-biolink:related_to-biolink:Pathway:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:Cell-biolink:subclass_of-biolink:AnatomicalEntity:
+      count: 144
+      provided_by:
+        phenio_edges:
+          count: 144
+    biolink:Cell-biolink:subclass_of-biolink:Cell:
+      count: 27509
+      provided_by:
+        phenio_edges:
+          count: 27509
+    biolink:Cell-biolink:subclass_of-biolink:NamedThing:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:CellularComponent-biolink:related_to-biolink:AnatomicalEntity:
+      count: 34
+      provided_by:
+        phenio_edges:
+          count: 34
+    biolink:CellularComponent-biolink:related_to-biolink:Cell:
+      count: 3354
+      provided_by:
+        phenio_edges:
+          count: 3354
+    biolink:CellularComponent-biolink:related_to-biolink:CellularComponent:
+      count: 3994
+      provided_by:
+        phenio_edges:
+          count: 3994
+    biolink:CellularComponent-biolink:related_to-biolink:GrossAnatomicalStructure:
+      count: 166
+      provided_by:
+        phenio_edges:
+          count: 166
+    biolink:CellularComponent-biolink:related_to-biolink:MacromolecularComplexMixin:
+      count: 17
+      provided_by:
+        phenio_edges:
+          count: 17
+    biolink:CellularComponent-biolink:related_to-biolink:Occurrent:
+      count: 20
+      provided_by:
+        phenio_edges:
+          count: 20
+    biolink:CellularComponent-biolink:related_to-biolink:RNAProduct:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:CellularComponent-biolink:subclass_of-biolink:AnatomicalEntity:
+      count: 2780
+      provided_by:
+        phenio_edges:
+          count: 2780
+    biolink:CellularComponent-biolink:subclass_of-biolink:CellularComponent:
+      count: 5208
+      provided_by:
+        phenio_edges:
+          count: 5208
+    biolink:ChemicalEntity-biolink:participates_in-biolink:Pathway:
+      count: 109
+      provided_by:
+        reactome_chemical_to_pathway_edges:
+          count: 109
+    biolink:ChemicalEntity-biolink:related_to-biolink:ChemicalEntity:
+      count: 3
+      provided_by:
+        phenio_edges:
+          count: 3
+    biolink:ChemicalEntity-biolink:related_to-biolink:ChemicalSubstance:
+      count: 2
+      provided_by:
+        phenio_edges:
+          count: 2
+    biolink:ChemicalEntity-biolink:related_to-biolink:MolecularEntity:
+      count: 4
+      provided_by:
+        phenio_edges:
+          count: 4
+    biolink:ChemicalEntity-biolink:related_to-biolink:PhenotypicQuality:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:ChemicalEntity-biolink:subclass_of-biolink:ChemicalEntity:
+      count: 105
+      provided_by:
+        phenio_edges:
+          count: 105
+    biolink:ChemicalSubstance-biolink:participates_in-biolink:Pathway:
+      count: 107
+      provided_by:
+        reactome_chemical_to_pathway_edges:
+          count: 107
+    biolink:ChemicalSubstance-biolink:related_to-biolink:ChemicalSubstance:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:ChemicalSubstance-biolink:subclass_of-biolink:ChemicalSubstance:
+      count: 15
+      provided_by:
+        phenio_edges:
+          count: 15
+    biolink:ClinicalModifier-biolink:subclass_of-biolink:ClinicalModifier:
+      count: 170
+      provided_by:
+        phenio_edges:
+          count: 170
+    biolink:ClinicalModifier-biolink:subclass_of-biolink:PhenotypicFeature:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:Disease-biolink:affects_risk_for-biolink:Disease:
+      count: 17
+      provided_by:
+        omim_gene_to_disease_edges:
+          count: 17
+    biolink:Disease-biolink:gene_associated_with_condition-biolink:Disease:
+      count: 5
+      provided_by:
+        omim_gene_to_disease_edges:
+          count: 5
+    biolink:Disease-biolink:has_mode_of_inheritance-biolink:GeneticInheritance:
+      count: 8424
+      provided_by:
+        hpoa_disease_mode_of_inheritance_edges:
+          count: 8424
+    biolink:Disease-biolink:has_phenotype-biolink:PhenotypicQuality:
+      count: 232419
+      provided_by:
+        hpoa_disease_phenotype_edges:
+          count: 232419
+    biolink:Disease-biolink:related_to-biolink:AnatomicalEntity:
+      count: 425
+      provided_by:
+        phenio_edges:
+          count: 425
+    biolink:Disease-biolink:related_to-biolink:CellularComponent:
+      count: 22
+      provided_by:
+        phenio_edges:
+          count: 22
+    biolink:Disease-biolink:related_to-biolink:ChemicalEntity:
+      count: 4
+      provided_by:
+        phenio_edges:
+          count: 4
+    biolink:Disease-biolink:related_to-biolink:ClinicalModifier:
+      count: 33
+      provided_by:
+        phenio_edges:
+          count: 33
+    biolink:Disease-biolink:related_to-biolink:Disease:
+      count: 918
+      provided_by:
+        phenio_edges:
+          count: 918
+    biolink:Disease-biolink:related_to-biolink:GeneticInheritance:
+      count: 202
+      provided_by:
+        phenio_edges:
+          count: 202
+    biolink:Disease-biolink:related_to-biolink:GrossAnatomicalStructure:
+      count: 2602
+      provided_by:
+        phenio_edges:
+          count: 2602
+    biolink:Disease-biolink:related_to-biolink:MacromolecularComplexMixin:
+      count: 13
+      provided_by:
+        phenio_edges:
+          count: 13
+    biolink:Disease-biolink:related_to-biolink:MolecularEntity:
+      count: 42
+      provided_by:
+        phenio_edges:
+          count: 42
+    biolink:Disease-biolink:related_to-biolink:Occurrent:
+      count: 390
+      provided_by:
+        phenio_edges:
+          count: 390
+    biolink:Disease-biolink:related_to-biolink:Onset:
+      count: 206
+      provided_by:
+        phenio_edges:
+          count: 206
+    biolink:Disease-biolink:related_to-biolink:Pathway:
+      count: 7
+      provided_by:
+        phenio_edges:
+          count: 7
+    biolink:Disease-biolink:related_to-biolink:PhenotypicQuality:
+      count: 2548
+      provided_by:
+        phenio_edges:
+          count: 2548
+    biolink:Disease-biolink:related_to-biolink:Protein:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:Disease-biolink:related_to-biolink:SmallMolecule:
+      count: 2
+      provided_by:
+        phenio_edges:
+          count: 2
+    biolink:Disease-biolink:subclass_of-biolink:Disease:
+      count: 38753
+      provided_by:
+        phenio_edges:
+          count: 38753
+    biolink:Gene-biolink:active_in-biolink:CellularComponent:
+      count: 135612
+      provided_by:
+        goa_go_annotation_edges:
+          count: 135612
+    biolink:Gene-biolink:actively_involved_in-biolink:Occurrent:
+      count: 637751
+      provided_by:
+        goa_go_annotation_edges:
+          count: 637751
+    biolink:Gene-biolink:actively_involved_in-biolink:Pathway:
+      count: 40979
+      provided_by:
+        goa_go_annotation_edges:
+          count: 40979
+    biolink:Gene-biolink:acts_upstream_of-biolink:Occurrent:
+      count: 8153
+      provided_by:
+        goa_go_annotation_edges:
+          count: 8153
+    biolink:Gene-biolink:acts_upstream_of-biolink:Pathway:
+      count: 1127
+      provided_by:
+        goa_go_annotation_edges:
+          count: 1127
+    biolink:Gene-biolink:acts_upstream_of_negative_effect-biolink:Occurrent:
+      count: 146
+      provided_by:
+        goa_go_annotation_edges:
+          count: 146
+    biolink:Gene-biolink:acts_upstream_of_negative_effect-biolink:Pathway:
+      count: 18
+      provided_by:
+        goa_go_annotation_edges:
+          count: 18
+    biolink:Gene-biolink:acts_upstream_of_or_within-biolink:Occurrent:
+      count: 186903
+      provided_by:
+        goa_go_annotation_edges:
+          count: 186903
+    biolink:Gene-biolink:acts_upstream_of_or_within-biolink:Pathway:
+      count: 13722
+      provided_by:
+        goa_go_annotation_edges:
+          count: 13722
+    biolink:Gene-biolink:acts_upstream_of_or_within_negative_effect-biolink:Occurrent:
+      count: 167
+      provided_by:
+        goa_go_annotation_edges:
+          count: 167
+    biolink:Gene-biolink:acts_upstream_of_or_within_negative_effect-biolink:Pathway:
+      count: 15
+      provided_by:
+        goa_go_annotation_edges:
+          count: 15
+    biolink:Gene-biolink:acts_upstream_of_or_within_positive_effect-biolink:Occurrent:
+      count: 423
+      provided_by:
+        goa_go_annotation_edges:
+          count: 423
+    biolink:Gene-biolink:acts_upstream_of_or_within_positive_effect-biolink:Pathway:
+      count: 29
+      provided_by:
+        goa_go_annotation_edges:
+          count: 29
+    biolink:Gene-biolink:acts_upstream_of_positive_effect-biolink:Occurrent:
+      count: 271
+      provided_by:
+        goa_go_annotation_edges:
+          count: 271
+    biolink:Gene-biolink:acts_upstream_of_positive_effect-biolink:Pathway:
+      count: 26
+      provided_by:
+        goa_go_annotation_edges:
+          count: 26
+    biolink:Gene-biolink:affects_risk_for-biolink:Disease:
+      count: 644
+      provided_by:
+        omim_gene_to_disease_edges:
+          count: 644
+    biolink:Gene-biolink:affects_risk_for-biolink:Gene:
+      count: 41
+      provided_by:
+        omim_gene_to_disease_edges:
+          count: 41
+    biolink:Gene-biolink:colocalizes_with-biolink:CellularComponent:
+      count: 4218
+      provided_by:
+        goa_go_annotation_edges:
+          count: 4218
+    biolink:Gene-biolink:contributes_to-biolink:Occurrent:
+      count: 6834
+      provided_by:
+        goa_go_annotation_edges:
+          count: 6834
+    biolink:Gene-biolink:enables-biolink:Occurrent:
+      count: 785128
+      provided_by:
+        goa_go_annotation_edges:
+          count: 785128
+    biolink:Gene-biolink:expressed_in-biolink:AnatomicalEntity:
+      count: 391318
+      provided_by:
+        alliance_gene_to_expression_edges:
+          count: 356753
+        bgee_gene_to_expression_edges:
+          count: 34565
+    biolink:Gene-biolink:expressed_in-biolink:Cell:
+      count: 107757
+      provided_by:
+        alliance_gene_to_expression_edges:
+          count: 107757
+    biolink:Gene-biolink:expressed_in-biolink:CellularComponent:
+      count: 33513
+      provided_by:
+        alliance_gene_to_expression_edges:
+          count: 33513
+    biolink:Gene-biolink:expressed_in-biolink:GrossAnatomicalStructure:
+      count: 1451415
+      provided_by:
+        alliance_gene_to_expression_edges:
+          count: 1249415
+        bgee_gene_to_expression_edges:
+          count: 202000
+    biolink:Gene-biolink:expressed_in-biolink:MacromolecularComplexMixin:
+      count: 6342
+      provided_by:
+        alliance_gene_to_expression_edges:
+          count: 6342
+    biolink:Gene-biolink:expressed_in-biolink:NamedThing:
+      count: 37064
+      provided_by:
+        alliance_gene_to_expression_edges:
+          count: 37064
+    biolink:Gene-biolink:gene_associated_with_condition-biolink:Disease:
+      count: 5585
+      provided_by:
+        omim_gene_to_disease_edges:
+          count: 5585
+    biolink:Gene-biolink:gene_associated_with_condition-biolink:Gene:
+      count: 83
+      provided_by:
+        omim_gene_to_disease_edges:
+          count: 83
+    biolink:Gene-biolink:has_mode_of_inheritance-biolink:GeneticInheritance:
+      count: 7
+      provided_by:
+        hpoa_disease_mode_of_inheritance_edges:
+          count: 7
+    biolink:Gene-biolink:has_phenotype-biolink:ClinicalModifier:
+      count: 1463
+      provided_by:
+        hpoa_gene_to_phenotype_edges:
+          count: 1463
+    biolink:Gene-biolink:has_phenotype-biolink:GeneticInheritance:
+      count: 7225
+      provided_by:
+        hpoa_gene_to_phenotype_edges:
+          count: 7225
+    biolink:Gene-biolink:has_phenotype-biolink:Onset:
+      count: 4855
+      provided_by:
+        hpoa_gene_to_phenotype_edges:
+          count: 4855
+    biolink:Gene-biolink:has_phenotype-biolink:PhenotypicFeature:
+      count: 1
+      provided_by:
+        hpoa_gene_to_phenotype_edges:
+          count: 1
+    biolink:Gene-biolink:has_phenotype-biolink:PhenotypicQuality:
+      count: 695498
+      provided_by:
+        alliance_gene_to_phenotype_edges:
+          count: 298084
+        hpoa_disease_phenotype_edges:
+          count: 23
+        hpoa_gene_to_phenotype_edges:
+          count: 255158
+        xenbase_gene_to_phenotype_edges:
+          count: 2317
+        zfin_gene_to_phenotype_edges:
+          count: 139916
+    biolink:Gene-biolink:interacts_with-biolink:Gene:
+      count: 502120
+      provided_by:
+        string_protein_links_edges:
+          count: 502120
+    biolink:Gene-biolink:located_in-biolink:CellularComponent:
+      count: 473285
+      provided_by:
+        goa_go_annotation_edges:
+          count: 473285
+    biolink:Gene-biolink:orthologous_to-biolink:Gene:
+      count: 873929
+      provided_by:
+        panther_genome_orthologs_edges:
+          count: 873929
+    biolink:Gene-biolink:part_of-biolink:MacromolecularComplexMixin:
+      count: 78316
+      provided_by:
+        goa_go_annotation_edges:
+          count: 78316
+    biolink:Gene-biolink:participates_in-biolink:Pathway:
+      count: 51984
+      provided_by:
+        reactome_gene_to_pathway_edges:
+          count: 51984
+    biolink:GeneticInheritance-biolink:subclass_of-biolink:GeneticInheritance:
+      count: 35
+      provided_by:
+        phenio_edges:
+          count: 35
+    biolink:GeneticInheritance-biolink:subclass_of-biolink:PhenotypicFeature:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:GrossAnatomicalStructure-biolink:related_to-biolink:AnatomicalEntity:
+      count: 4516
+      provided_by:
+        phenio_edges:
+          count: 4516
+    biolink:GrossAnatomicalStructure-biolink:related_to-biolink:Cell:
+      count: 213
+      provided_by:
+        phenio_edges:
+          count: 213
+    biolink:GrossAnatomicalStructure-biolink:related_to-biolink:CellularComponent:
+      count: 29
+      provided_by:
+        phenio_edges:
+          count: 29
+    biolink:GrossAnatomicalStructure-biolink:related_to-biolink:GrossAnatomicalStructure:
+      count: 20963
+      provided_by:
+        phenio_edges:
+          count: 20963
+    biolink:GrossAnatomicalStructure-biolink:related_to-biolink:MacromolecularComplexMixin:
+      count: 6
+      provided_by:
+        phenio_edges:
+          count: 6
+    biolink:GrossAnatomicalStructure-biolink:related_to-biolink:MolecularEntity:
+      count: 9
+      provided_by:
+        phenio_edges:
+          count: 9
+    biolink:GrossAnatomicalStructure-biolink:related_to-biolink:NamedThing:
+      count: 289
+      provided_by:
+        phenio_edges:
+          count: 289
+    biolink:GrossAnatomicalStructure-biolink:related_to-biolink:Occurrent:
+      count: 335
+      provided_by:
+        phenio_edges:
+          count: 335
+    biolink:GrossAnatomicalStructure-biolink:related_to-biolink:SmallMolecule:
+      count: 2
+      provided_by:
+        phenio_edges:
+          count: 2
+    biolink:GrossAnatomicalStructure-biolink:subclass_of-biolink:AnatomicalEntity:
+      count: 3003
+      provided_by:
+        phenio_edges:
+          count: 3003
+    biolink:GrossAnatomicalStructure-biolink:subclass_of-biolink:Cell:
+      count: 106
+      provided_by:
+        phenio_edges:
+          count: 106
+    biolink:GrossAnatomicalStructure-biolink:subclass_of-biolink:CellularComponent:
+      count: 2
+      provided_by:
+        phenio_edges:
+          count: 2
+    biolink:GrossAnatomicalStructure-biolink:subclass_of-biolink:GrossAnatomicalStructure:
+      count: 32268
+      provided_by:
+        phenio_edges:
+          count: 32268
+    biolink:GrossAnatomicalStructure-biolink:subclass_of-biolink:NamedThing:
+      count: 104
+      provided_by:
+        phenio_edges:
+          count: 104
+    biolink:MacromolecularComplexMixin-biolink:related_to-biolink:CellularComponent:
+      count: 592
+      provided_by:
+        phenio_edges:
+          count: 592
+    biolink:MacromolecularComplexMixin-biolink:related_to-biolink:MacromolecularComplexMixin:
+      count: 253
+      provided_by:
+        phenio_edges:
+          count: 253
+    biolink:MacromolecularComplexMixin-biolink:related_to-biolink:MolecularEntity:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:MacromolecularComplexMixin-biolink:related_to-biolink:Occurrent:
+      count: 64
+      provided_by:
+        phenio_edges:
+          count: 64
+    biolink:MacromolecularComplexMixin-biolink:related_to-biolink:Pathway:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:MacromolecularComplexMixin-biolink:related_to-biolink:RNAProduct:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:MacromolecularComplexMixin-biolink:subclass_of-biolink:CellularComponent:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:MacromolecularComplexMixin-biolink:subclass_of-biolink:MacromolecularComplexMixin:
+      count: 2614
+      provided_by:
+        phenio_edges:
+          count: 2614
+    biolink:MolecularEntity-biolink:participates_in-biolink:Pathway:
+      count: 53233
+      provided_by:
+        reactome_chemical_to_pathway_edges:
+          count: 53233
+    biolink:MolecularEntity-biolink:related_to-biolink:ChemicalEntity:
+      count: 55
+      provided_by:
+        phenio_edges:
+          count: 55
+    biolink:MolecularEntity-biolink:related_to-biolink:MolecularEntity:
+      count: 2143
+      provided_by:
+        phenio_edges:
+          count: 2143
+    biolink:MolecularEntity-biolink:related_to-biolink:PhenotypicQuality:
+      count: 371
+      provided_by:
+        phenio_edges:
+          count: 371
+    biolink:MolecularEntity-biolink:related_to-biolink:SmallMolecule:
+      count: 7
+      provided_by:
+        phenio_edges:
+          count: 7
+    biolink:MolecularEntity-biolink:subclass_of-biolink:ChemicalEntity:
+      count: 4
+      provided_by:
+        phenio_edges:
+          count: 4
+    biolink:MolecularEntity-biolink:subclass_of-biolink:MolecularEntity:
+      count: 5620
+      provided_by:
+        phenio_edges:
+          count: 5620
+    biolink:NamedThing-biolink:related_to-biolink:AnatomicalEntity:
+      count: 382
+      provided_by:
+        phenio_edges:
+          count: 382
+    biolink:NamedThing-biolink:related_to-biolink:Cell:
+      count: 2
+      provided_by:
+        phenio_edges:
+          count: 2
+    biolink:NamedThing-biolink:related_to-biolink:GrossAnatomicalStructure:
+      count: 1602
+      provided_by:
+        phenio_edges:
+          count: 1602
+    biolink:NamedThing-biolink:related_to-biolink:NamedThing:
+      count: 573
+      provided_by:
+        phenio_edges:
+          count: 573
+    biolink:NamedThing-biolink:subclass_of-biolink:NamedThing:
+      count: 329
+      provided_by:
+        phenio_edges:
+          count: 329
+    biolink:Occurrent-biolink:related_to-biolink:AnatomicalEntity:
+      count: 276
+      provided_by:
+        phenio_edges:
+          count: 276
+    biolink:Occurrent-biolink:related_to-biolink:CellularComponent:
+      count: 1320
+      provided_by:
+        phenio_edges:
+          count: 1320
+    biolink:Occurrent-biolink:related_to-biolink:ChemicalEntity:
+      count: 5
+      provided_by:
+        phenio_edges:
+          count: 5
+    biolink:Occurrent-biolink:related_to-biolink:ChemicalSubstance:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:Occurrent-biolink:related_to-biolink:GrossAnatomicalStructure:
+      count: 848
+      provided_by:
+        phenio_edges:
+          count: 848
+    biolink:Occurrent-biolink:related_to-biolink:MacromolecularComplexMixin:
+      count: 68
+      provided_by:
+        phenio_edges:
+          count: 68
+    biolink:Occurrent-biolink:related_to-biolink:MolecularEntity:
+      count: 2009
+      provided_by:
+        phenio_edges:
+          count: 2009
+    biolink:Occurrent-biolink:related_to-biolink:Occurrent:
+      count: 15470
+      provided_by:
+        phenio_edges:
+          count: 15470
+    biolink:Occurrent-biolink:related_to-biolink:Pathway:
+      count: 910
+      provided_by:
+        phenio_edges:
+          count: 910
+    biolink:Occurrent-biolink:related_to-biolink:Protein:
+      count: 38
+      provided_by:
+        phenio_edges:
+          count: 38
+    biolink:Occurrent-biolink:related_to-biolink:RNAProduct:
+      count: 25
+      provided_by:
+        phenio_edges:
+          count: 25
+    biolink:Occurrent-biolink:related_to-biolink:SmallMolecule:
+      count: 7
+      provided_by:
+        phenio_edges:
+          count: 7
+    biolink:Occurrent-biolink:subclass_of-biolink:Occurrent:
+      count: 77709
+      provided_by:
+        phenio_edges:
+          count: 77709
+    biolink:Onset-biolink:subclass_of-biolink:ClinicalModifier:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:Onset-biolink:subclass_of-biolink:Onset:
+      count: 20
+      provided_by:
+        phenio_edges:
+          count: 20
+    biolink:PathologicalEntityMixin-biolink:related_to-biolink:PathologicalEntityMixin:
+      count: 3
+      provided_by:
+        phenio_edges:
+          count: 3
+    biolink:PathologicalEntityMixin-biolink:subclass_of-biolink:NamedThing:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:PathologicalEntityMixin-biolink:subclass_of-biolink:PathologicalEntityMixin:
+      count: 944
+      provided_by:
+        phenio_edges:
+          count: 944
+    biolink:Pathway-biolink:related_to-biolink:CellularComponent:
+      count: 7
+      provided_by:
+        phenio_edges:
+          count: 7
+    biolink:Pathway-biolink:related_to-biolink:MolecularEntity:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:Pathway-biolink:related_to-biolink:Occurrent:
+      count: 352
+      provided_by:
+        phenio_edges:
+          count: 352
+    biolink:Pathway-biolink:related_to-biolink:Pathway:
+      count: 17
+      provided_by:
+        phenio_edges:
+          count: 17
+    biolink:Pathway-biolink:subclass_of-biolink:Occurrent:
+      count: 133
+      provided_by:
+        phenio_edges:
+          count: 133
+    biolink:Pathway-biolink:subclass_of-biolink:Pathway:
+      count: 894
+      provided_by:
+        phenio_edges:
+          count: 894
+    biolink:PhenotypicFeature-biolink:subclass_of-biolink:PhenotypicFeature:
+      count: 35
+      provided_by:
+        phenio_edges:
+          count: 35
+    biolink:PhenotypicQuality-biolink:participates_in-biolink:Pathway:
+      count: 10
+      provided_by:
+        reactome_chemical_to_pathway_edges:
+          count: 10
+    biolink:PhenotypicQuality-biolink:related_to-biolink:AnatomicalEntity:
+      count: 2599
+      provided_by:
+        phenio_edges:
+          count: 2599
+    biolink:PhenotypicQuality-biolink:related_to-biolink:BiologicalProcess:
+      count: 19
+      provided_by:
+        phenio_edges:
+          count: 19
+    biolink:PhenotypicQuality-biolink:related_to-biolink:Cell:
+      count: 109
+      provided_by:
+        phenio_edges:
+          count: 109
+    biolink:PhenotypicQuality-biolink:related_to-biolink:CellularComponent:
+      count: 2431
+      provided_by:
+        phenio_edges:
+          count: 2431
+    biolink:PhenotypicQuality-biolink:related_to-biolink:ChemicalEntity:
+      count: 67
+      provided_by:
+        phenio_edges:
+          count: 67
+    biolink:PhenotypicQuality-biolink:related_to-biolink:ChemicalSubstance:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:PhenotypicQuality-biolink:related_to-biolink:GrossAnatomicalStructure:
+      count: 7565
+      provided_by:
+        phenio_edges:
+          count: 7565
+    biolink:PhenotypicQuality-biolink:related_to-biolink:MacromolecularComplexMixin:
+      count: 255
+      provided_by:
+        phenio_edges:
+          count: 255
+    biolink:PhenotypicQuality-biolink:related_to-biolink:MolecularEntity:
+      count: 867
+      provided_by:
+        phenio_edges:
+          count: 867
+    biolink:PhenotypicQuality-biolink:related_to-biolink:NamedThing:
+      count: 32
+      provided_by:
+        phenio_edges:
+          count: 32
+    biolink:PhenotypicQuality-biolink:related_to-biolink:Occurrent:
+      count: 4563
+      provided_by:
+        phenio_edges:
+          count: 4563
+    biolink:PhenotypicQuality-biolink:related_to-biolink:PathologicalEntityMixin:
+      count: 342
+      provided_by:
+        phenio_edges:
+          count: 342
+    biolink:PhenotypicQuality-biolink:related_to-biolink:Pathway:
+      count: 134
+      provided_by:
+        phenio_edges:
+          count: 134
+    biolink:PhenotypicQuality-biolink:related_to-biolink:PhenotypicQuality:
+      count: 35
+      provided_by:
+        phenio_edges:
+          count: 35
+    biolink:PhenotypicQuality-biolink:related_to-biolink:Protein:
+      count: 33
+      provided_by:
+        phenio_edges:
+          count: 33
+    biolink:PhenotypicQuality-biolink:related_to-biolink:RNAProduct:
+      count: 3
+      provided_by:
+        phenio_edges:
+          count: 3
+    biolink:PhenotypicQuality-biolink:related_to-biolink:SmallMolecule:
+      count: 19
+      provided_by:
+        phenio_edges:
+          count: 19
+    biolink:PhenotypicQuality-biolink:subclass_of-biolink:PhenotypicFeature:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:PhenotypicQuality-biolink:subclass_of-biolink:PhenotypicQuality:
+      count: 140748
+      provided_by:
+        phenio_edges:
+          count: 140748
+    biolink:Protein-biolink:participates_in-biolink:Pathway:
+      count: 602
+      provided_by:
+        reactome_chemical_to_pathway_edges:
+          count: 602
+    biolink:Protein-biolink:related_to-biolink:MolecularEntity:
+      count: 6
+      provided_by:
+        phenio_edges:
+          count: 6
+    biolink:Protein-biolink:related_to-biolink:Protein:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:Protein-biolink:subclass_of-biolink:MolecularEntity:
+      count: 4
+      provided_by:
+        phenio_edges:
+          count: 4
+    biolink:Protein-biolink:subclass_of-biolink:Protein:
+      count: 20
+      provided_by:
+        phenio_edges:
+          count: 20
+    biolink:RNAProduct-biolink:participates_in-biolink:Pathway:
+      count: 628
+      provided_by:
+        reactome_chemical_to_pathway_edges:
+          count: 628
+    biolink:RNAProduct-biolink:related_to-biolink:MolecularEntity:
+      count: 2
+      provided_by:
+        phenio_edges:
+          count: 2
+    biolink:RNAProduct-biolink:subclass_of-biolink:MolecularEntity:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:RNAProduct-biolink:subclass_of-biolink:RNAProduct:
+      count: 2
+      provided_by:
+        phenio_edges:
+          count: 2
+    biolink:SmallMolecule-biolink:participates_in-biolink:Pathway:
+      count: 46
+      provided_by:
+        reactome_chemical_to_pathway_edges:
+          count: 46
+    biolink:SmallMolecule-biolink:related_to-biolink:MolecularEntity:
+      count: 88
+      provided_by:
+        phenio_edges:
+          count: 88
+    biolink:SmallMolecule-biolink:related_to-biolink:PhenotypicQuality:
+      count: 21
+      provided_by:
+        phenio_edges:
+          count: 21
+    biolink:SmallMolecule-biolink:related_to-biolink:SmallMolecule:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:SmallMolecule-biolink:subclass_of-biolink:ChemicalEntity:
+      count: 1
+      provided_by:
+        phenio_edges:
+          count: 1
+    biolink:SmallMolecule-biolink:subclass_of-biolink:MolecularEntity:
+      count: 51
+      provided_by:
+        phenio_edges:
+          count: 51
+    biolink:SmallMolecule-biolink:subclass_of-biolink:SmallMolecule:
+      count: 57
+      provided_by:
+        phenio_edges:
+          count: 57
+  predicates:
+  - biolink:active_in
+  - biolink:actively_involved_in
+  - biolink:acts_upstream_of
+  - biolink:acts_upstream_of_negative_effect
+  - biolink:acts_upstream_of_or_within
+  - biolink:acts_upstream_of_or_within_negative_effect
+  - biolink:acts_upstream_of_or_within_positive_effect
+  - biolink:acts_upstream_of_positive_effect
+  - biolink:affects_risk_for
+  - biolink:colocalizes_with
+  - biolink:contributes_to
+  - biolink:enables
+  - biolink:expressed_in
+  - biolink:gene_associated_with_condition
+  - biolink:has_mode_of_inheritance
+  - biolink:has_phenotype
+  - biolink:interacts_with
+  - biolink:located_in
+  - biolink:orthologous_to
+  - biolink:part_of
+  - biolink:participates_in
+  - biolink:related_to
+  - biolink:subclass_of
+  provided_by:
+  - alliance_gene_to_expression_edges
+  - alliance_gene_to_phenotype_edges
+  - bgee_gene_to_expression_edges
+  - goa_go_annotation_edges
+  - hpoa_disease_mode_of_inheritance_edges
+  - hpoa_disease_phenotype_edges
+  - hpoa_gene_to_phenotype_edges
+  - omim_gene_to_disease_edges
+  - panther_genome_orthologs_edges
+  - phenio_edges
+  - reactome_chemical_to_pathway_edges
+  - reactome_gene_to_pathway_edges
+  - string_protein_links_edges
+  - xenbase_gene_to_phenotype_edges
+  - zfin_gene_to_phenotype_edges
+  total_edges: 7335199
+graph_name: Graph
+node_stats:
+  count_by_category:
+    biolink:AnatomicalEntity:
+      count: 9880
+      provided_by:
+        phenio_nodes:
+          count: 9880
+    biolink:BiologicalProcess:
+      count: 2553
+      provided_by:
+        phenio_nodes:
+          count: 2553
+    biolink:Cell:
+      count: 15719
+      provided_by:
+        phenio_nodes:
+          count: 15719
+    biolink:CellularComponent:
+      count: 5276
+      provided_by:
+        phenio_nodes:
+          count: 5276
+    biolink:ChemicalEntity:
+      count: 76
+      provided_by:
+        phenio_nodes:
+          count: 76
+    biolink:ChemicalSubstance:
+      count: 14
+      provided_by:
+        phenio_nodes:
+          count: 14
+    biolink:ClinicalModifier:
+      count: 171
+      provided_by:
+        phenio_nodes:
+          count: 171
+    biolink:Disease:
+      count: 25951
+      provided_by:
+        phenio_nodes:
+          count: 25951
+    biolink:Gene:
+      count: 566806
+      provided_by:
+        alliance_gene_nodes:
+          count: 309111
+        dictybase_gene_nodes:
+          count: 14222
+        hgnc_gene_nodes:
+          count: 43624
+        ncbi_gene_nodes:
+          count: 194715
+        pombase_gene_nodes:
+          count: 5134
+    biolink:GeneticInheritance:
+      count: 33
+      provided_by:
+        phenio_nodes:
+          count: 33
+    biolink:GrossAnatomicalStructure:
+      count: 21753
+      provided_by:
+        phenio_nodes:
+          count: 21753
+    biolink:MacromolecularComplexMixin:
+      count: 2100
+      provided_by:
+        phenio_nodes:
+          count: 2100
+    biolink:MolecularActivity:
+      count: 1175
+      provided_by:
+        phenio_nodes:
+          count: 1175
+    biolink:MolecularEntity:
+      count: 3395
+      provided_by:
+        phenio_nodes:
+          count: 3395
+    biolink:NamedThing:
+      count: 9099
+      provided_by:
+        phenio_nodes:
+          count: 9099
+    biolink:Occurrent:
+      count: 38565
+      provided_by:
+        phenio_nodes:
+          count: 38565
+    biolink:Onset:
+      count: 21
+      provided_by:
+        phenio_nodes:
+          count: 21
+    biolink:PathologicalEntityMixin:
+      count: 839
+      provided_by:
+        phenio_nodes:
+          count: 839
+    biolink:Pathway:
+      count: 22144
+      provided_by:
+        phenio_nodes:
+          count: 717
+        reactome_pathway_nodes:
+          count: 21427
+    biolink:PhenotypicFeature:
+      count: 368
+      provided_by:
+        phenio_nodes:
+          count: 368
+    biolink:PhenotypicQuality:
+      count: 89435
+      provided_by:
+        phenio_nodes:
+          count: 89435
+    biolink:Protein:
+      count: 21
+      provided_by:
+        phenio_nodes:
+          count: 21
+    biolink:RNAProduct:
+      count: 3
+      provided_by:
+        phenio_nodes:
+          count: 3
+    biolink:SmallMolecule:
+      count: 57
+      provided_by:
+        phenio_nodes:
+          count: 57
+    unknown:
+      count: 0
+  count_by_id_prefixes:
+    CHEBI: 3697
+    EMAPA: 8745
+    FB: 30254
+    FBbt: 19918
+    FYPO: 1
+    GO: 51063
+    HGNC: 43624
+    HP: 16954
+    MESH: 2
+    MGI: 79302
+    MONDO: 25990
+    MP: 14049
+    MPATH: 891
+    NCBIGene: 194715
+    PomBase: 5134
+    REACT: 21427
+    RGD: 66867
+    SGD: 7153
+    UBERON: 15779
+    WB: 48774
+    WBPhenotype: 2695
+    WBbt: 7556
+    XPO: 20061
+    Xenbase: 38752
+    ZFA: 3218
+    ZFIN: 38009
+    ZP: 36602
+    dictyBase: 14222
+  count_by_id_prefixes_by_category:
+    biolink:AnatomicalEntity:
+      EMAPA: 1119
+      FBbt: 2290
+      UBERON: 5432
+      WBbt: 141
+      ZFA: 898
+    biolink:BiologicalProcess:
+      GO: 2553
+    biolink:Cell:
+      EMAPA: 5
+      FBbt: 12324
+      GO: 1
+      WBbt: 3388
+      ZFA: 1
+    biolink:CellularComponent:
+      GO: 2368
+      WBbt: 2908
+    biolink:ChemicalEntity:
+      CHEBI: 76
+    biolink:ChemicalSubstance:
+      CHEBI: 14
+    biolink:ClinicalModifier:
+      HP: 171
+    biolink:Disease:
+      MESH: 2
+      MONDO: 25949
+    biolink:Gene:
+      FB: 30254
+      HGNC: 43624
+      MGI: 79302
+      NCBIGene: 194715
+      PomBase: 5134
+      RGD: 66867
+      SGD: 7153
+      WB: 48774
+      Xenbase: 38752
+      ZFIN: 38009
+      dictyBase: 14222
+    biolink:GeneticInheritance:
+      HP: 33
+    biolink:GrossAnatomicalStructure:
+      EMAPA: 4746
+      FBbt: 4193
+      UBERON: 10287
+      WBbt: 326
+      ZFA: 2201
+    biolink:MacromolecularComplexMixin:
+      GO: 2100
+    biolink:MolecularActivity:
+      GO: 1175
+    biolink:MolecularEntity:
+      CHEBI: 3395
+    biolink:NamedThing:
+      EMAPA: 2875
+      FBbt: 1111
+      GO: 3644
+      MP: 444
+      MPATH: 52
+      WBPhenotype: 62
+      WBbt: 793
+      ZFA: 118
+    biolink:Occurrent:
+      GO: 38505
+      UBERON: 60
+    biolink:Onset:
+      HP: 21
+    biolink:PathologicalEntityMixin:
+      MPATH: 839
+    biolink:Pathway:
+      GO: 717
+      REACT: 21427
+    biolink:PhenotypicFeature:
+      FYPO: 1
+      HP: 367
+    biolink:PhenotypicQuality:
+      CHEBI: 131
+      HP: 16362
+      MONDO: 41
+      MP: 13605
+      WBPhenotype: 2633
+      XPO: 20061
+      ZP: 36602
+    biolink:Protein:
+      CHEBI: 21
+    biolink:RNAProduct:
+      CHEBI: 3
+    biolink:SmallMolecule:
+      CHEBI: 57
+    unknown: {}
+  node_categories:
+  - biolink:AnatomicalEntity
+  - biolink:BiologicalProcess
+  - biolink:Cell
+  - biolink:CellularComponent
+  - biolink:ChemicalEntity
+  - biolink:ChemicalSubstance
+  - biolink:ClinicalModifier
+  - biolink:Disease
+  - biolink:Gene
+  - biolink:GeneticInheritance
+  - biolink:GrossAnatomicalStructure
+  - biolink:MacromolecularComplexMixin
+  - biolink:MolecularActivity
+  - biolink:MolecularEntity
+  - biolink:NamedThing
+  - biolink:Occurrent
+  - biolink:Onset
+  - biolink:PathologicalEntityMixin
+  - biolink:Pathway
+  - biolink:PhenotypicFeature
+  - biolink:PhenotypicQuality
+  - biolink:Protein
+  - biolink:RNAProduct
+  - biolink:SmallMolecule
+  node_id_prefixes:
+  - CHEBI
+  - EMAPA
+  - FB
+  - FBbt
+  - FYPO
+  - GO
+  - HGNC
+  - HP
+  - MESH
+  - MGI
+  - MONDO
+  - MP
+  - MPATH
+  - NCBIGene
+  - PomBase
+  - REACT
+  - RGD
+  - SGD
+  - UBERON
+  - WB
+  - WBPhenotype
+  - WBbt
+  - XPO
+  - Xenbase
+  - ZFA
+  - ZFIN
+  - ZP
+  - dictyBase
+  node_id_prefixes_by_category:
+    biolink:AnatomicalEntity:
+    - EMAPA
+    - FBbt
+    - UBERON
+    - WBbt
+    - ZFA
+    biolink:BiologicalProcess:
+    - GO
+    biolink:Cell:
+    - EMAPA
+    - FBbt
+    - GO
+    - WBbt
+    - ZFA
+    biolink:CellularComponent:
+    - GO
+    - WBbt
+    biolink:ChemicalEntity:
+    - CHEBI
+    biolink:ChemicalSubstance:
+    - CHEBI
+    biolink:ClinicalModifier:
+    - HP
+    biolink:Disease:
+    - MESH
+    - MONDO
+    biolink:Gene:
+    - PomBase
+    - HGNC
+    - ZFIN
+    - Xenbase
+    - WB
+    - SGD
+    - RGD
+    - MGI
+    - FB
+    - NCBIGene
+    - dictyBase
+    biolink:GeneticInheritance:
+    - HP
+    biolink:GrossAnatomicalStructure:
+    - EMAPA
+    - FBbt
+    - UBERON
+    - WBbt
+    - ZFA
+    biolink:MacromolecularComplexMixin:
+    - GO
+    biolink:MolecularActivity:
+    - GO
+    biolink:MolecularEntity:
+    - CHEBI
+    biolink:NamedThing:
+    - EMAPA
+    - FBbt
+    - GO
+    - MPATH
+    - MP
+    - WBPhenotype
+    - WBbt
+    - ZFA
+    biolink:Occurrent:
+    - GO
+    - UBERON
+    biolink:Onset:
+    - HP
+    biolink:PathologicalEntityMixin:
+    - MPATH
+    biolink:Pathway:
+    - REACT
+    - GO
+    biolink:PhenotypicFeature:
+    - FYPO
+    - HP
+    biolink:PhenotypicQuality:
+    - CHEBI
+    - HP
+    - MONDO
+    - MP
+    - WBPhenotype
+    - XPO
+    - ZP
+    biolink:Protein:
+    - CHEBI
+    biolink:RNAProduct:
+    - CHEBI
+    biolink:SmallMolecule:
+    - CHEBI
+    unknown: []
+  provided_by:
+  - alliance_gene_nodes
+  - dictybase_gene_nodes
+  - hgnc_gene_nodes
+  - ncbi_gene_nodes
+  - phenio_nodes
+  - pombase_gene_nodes
+  - reactome_pathway_nodes
+  total_nodes: 815965
