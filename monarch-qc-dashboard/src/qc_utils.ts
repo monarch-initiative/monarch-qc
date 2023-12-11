@@ -75,7 +75,7 @@ export interface NodeStatPart {
 
 export function isNodeStatPart(i: object | string): i is NodeStatPart {
   if (typeof i != "object") return false
-  return "count_by_category" in i && "count_by_id_prefixes" in i
+  return "count_by_category" in i
 }
 
 export interface StatReport {

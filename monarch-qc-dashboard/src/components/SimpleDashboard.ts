@@ -1,5 +1,9 @@
 import { uniq } from "../qc_utils"
 
+export interface DashboardDataGroup {
+  [field: string]: DashboardData
+}
+
 export interface DashboardData {
   [field: string]: {
     value: Map<string, number>
@@ -37,13 +41,21 @@ export function getAllVisualDiffs(data: DashboardData): Map<string, Map<string, 
   return visualDiffs
 }
 
-export function getNextField(field: number | string, data: DashboardData): string | null {
+export function getNextField(
+  field: number | string,
+  data: DashboardData | Array<string>
+): string | null {
   /**
    * Returns the next field in the DashboardData object.
    * @index: number
    * @data: DashboardData
    * @return: string
    */
+  // Check if data is an array of strings
+  if (Array.isArray(data)) {
+    const index = typeof field === "string" ? data.indexOf(field) : field
+    return index < data.length - 1 ? data[index + 1] : null
+  }
   const keys = Object.keys(data)
   const index = typeof field === "string" ? keys.indexOf(field) : field
   return index < keys.length - 1 ? keys[index + 1] : null
