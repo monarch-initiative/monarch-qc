@@ -247,6 +247,18 @@ export async function processReports() {
     "node_stats",
     "count_by_id_prefixes"
   )
+  dashboardDataGroup["edges_predicates"] = getStatDashboardData(
+    selectedStats,
+    previousStats,
+    "edge_stats",
+    "count_by_predicates"
+  )
+  dashboardDataGroup["edges_spo"] = getStatDashboardData(
+    selectedStats,
+    previousStats,
+    "edge_stats",
+    "count_by_spo"
+  )
 }
 
 export async function getQCReport(reportName: string): Promise<qc.QCReport> {

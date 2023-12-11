@@ -79,6 +79,27 @@
           />
         </div>
       </div>
+      <div>
+        <h2>Edge Stat Report</h2>
+        <div style="display: inline-block; margin-right: 20px; vertical-align: top">
+          <SimpleDashboard
+            v-if="dashboardDataGroup.edges_predicates"
+            title="Edges Report"
+            label="Predicate"
+            :colorCols="['edge_stats']"
+            :data="dashboardDataGroup.edges_predicates"
+          />
+        </div>
+        <div style="display: inline-block; margin-right: 20px; vertical-align: top">
+          <SimpleDashboard
+            v-if="dashboardDataGroup.edges_spo && false"
+            title="Edges Report"
+            label="Subject-Predicate-Object"
+            :colorCols="['edge_stats']"
+            :data="dashboardDataGroup.edges_spo"
+          />
+        </div>
+      </div>
     </div>
     <div v-if="selectedSection === 'sri'">
       <img src="/src/global/monarch.png" class="logo" alt="Monarch Logo" />
