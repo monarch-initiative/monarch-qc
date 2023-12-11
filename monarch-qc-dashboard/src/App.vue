@@ -86,15 +86,8 @@
             title="Nodes Report"
             label="Category"
             :colorCols="['node_stats']"
-            :data="nodesDashboardData_category"
-          />
-        </div>
-        <div style="display: inline-block; margin-right: 20px; vertical-align: top">
-          <SimpleDashboard
-            title="Nodes Report"
-            label="ID"
-            :colorCols="['node_stats']"
-            :data="nodesDashboardData_id"
+            :data="sriCompareData"
+            :field_names="['Monarch V3', 'SRI Reference']"
           />
         </div>
       </div>

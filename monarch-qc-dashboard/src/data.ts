@@ -12,7 +12,7 @@ export const globalStats = ref<Map<string, Promise<string>>>(new Map())
 export const sriFetched = ref<boolean>(false)
 export const v3Stats = ref<Promise<string>>()
 export const sriStats = ref<Promise<string>>()
-export const sriCompareData = ref<Map<string, DashboardData>>(new Map())
+export const sriCompareData = reactive({} as DashboardData)
 
 export const dataNames = ref<Array<string>>([])
 export const selectedData = ref<string>("")
@@ -162,15 +162,9 @@ export async function getSRICompareData() {
   const v3Report = qc.toStatReport(YAML.parse(v3))
   const sriReport = qc.toStatReport(YAML.parse(sri))
 
-  sriCompareData.value.set("nodes_stats_category", {} as DashboardData)
-  sriCompareData.value.set("edges_stats", {} as DashboardData)
-  setStatDashboardData(
-    sriCompareData.value.get("nodes_stats_category") as DashboardData,
-    v3Report,
-    sriReport,
-    "node_stats",
-    "count_by_category"
-  )
+  // sriCompareData.value.set("nodes_stats_category", {} as DashboardData)
+  // sriCompareData.value.set("edges_stats", {} as DashboardData)
+  setStatDashboardData(sriCompareData, v3Report, sriReport, "node_stats", "count_by_category", true)
 
   sriFetched.value = true
 }
@@ -292,7 +286,8 @@ function setStatDashboardData(
   selected: qc.StatReport,
   previous: qc.StatReport,
   statName: string,
-  field: string
+  field: string,
+  compare = false
 ) {
   /**
    * Sets the dashboard data for the given QCReports and parts.
@@ -304,12 +299,15 @@ function setStatDashboardData(
    * @return: void
    */
   const partKey = statName as keyof qc.StatReport
-  if (statName === "node_stats") {
-    data[statName] = {
-      value: getStatTotalNumber(selected[partKey], field, true),
-      diff: getStatDifference(selected[partKey], previous[partKey], field),
+  data[statName] = {
+    value: getStatTotalNumber(selected[partKey], field, true),
+    diff: getStatDifference(selected[partKey], previous[partKey], field),
+  }
+  if (compare) {
+    data[statName + "_compare"] = {
+      value: getStatTotalNumber(previous[partKey], field, true),
+      diff: getStatDifference(previous[partKey], selected[partKey], field),
     }
-    return
   }
 }
 
