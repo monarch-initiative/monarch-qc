@@ -1,5 +1,9 @@
 import { uniq } from "../qc_utils"
 
+export interface DashboardDataGroup {
+  [field: string]: DashboardData
+}
+
 export interface DashboardData {
   [field: string]: {
     value: Map<string, number>

@@ -35,10 +35,11 @@
       />
       <h2>Edges Report</h2>
       <SimpleDashboard
+        v-if="dashboardDataGroup.edges"
         title="Edges Report"
         label="Ingest"
         :colorCols="['edges']"
-        :data="edgesDashboardData"
+        :data="dashboardDataGroup.edges"
       />
       <LineChart
         :data="edgesTimeSeriesData"
@@ -58,35 +59,60 @@
         </ul>
       </div>
       <div>
-        <h2>Nodes Report</h2>
+        <h2>Nodes Stat Report</h2>
         <div style="display: inline-block; margin-right: 20px; vertical-align: top">
           <SimpleDashboard
+            v-if="dashboardDataGroup.nodes_category"
             title="Nodes Report"
             label="Category"
             :colorCols="['node_stats']"
-            :data="nodesDashboardData_category"
+            :data="dashboardDataGroup.nodes_category"
           />
         </div>
         <div style="display: inline-block; margin-right: 20px; vertical-align: top">
           <SimpleDashboard
+            v-if="dashboardDataGroup.nodes_id"
             title="Nodes Report"
             label="ID"
             :colorCols="['node_stats']"
-            :data="nodesDashboardData_id"
+            :data="dashboardDataGroup.nodes_id"
           />
         </div>
       </div>
     </div>
     <div v-if="selectedSection === 'sri'">
       <img src="/src/global/monarch.png" class="logo" alt="Monarch Logo" />
-      <div>
-        <h2>Nodes Report</h2>
+      <div v-if="sriCompareData.edges_predicates">
+        <h2>Edges Comparison</h2>
+        <div style="display: inline-block; margin-right: 20px; vertical-align: top">
+          <SimpleDashboard
+            title="Nodes Report"
+            label="Category"
+            :colorCols="['edge_stats']"
+            :data="sriCompareData.edges_predicates"
+            :field_names="['Monarch V3', 'SRI Reference']"
+          />
+        </div>
+      </div>
+      <div v-if="sriCompareData.edges_spo && false">
+        <div style="display: inline-block; margin-right: 20px; vertical-align: top">
+          <SimpleDashboard
+            title="Nodes Report"
+            label="Subject-Predicate-Object"
+            :colorCols="['edge_stats']"
+            :data="sriCompareData.edges_spo"
+            :field_names="['Monarch V3', 'SRI Reference']"
+          />
+        </div>
+      </div>
+      <div v-if="sriCompareData.nodes_category">
+        <h2>Nodes Comparison</h2>
         <div style="display: inline-block; margin-right: 20px; vertical-align: top">
           <SimpleDashboard
             title="Nodes Report"
             label="Category"
             :colorCols="['node_stats']"
-            :data="sriCompareData"
+            :data="sriCompareData.nodes_category"
             :field_names="['Monarch V3', 'SRI Reference']"
           />
         </div>
@@ -106,13 +132,11 @@
     compareNames,
     selectedCompare,
     processReports,
-    edgesDashboardData,
     edgesTimeSeriesData,
     getSRICompareData,
     globalNamespaces,
-    nodesDashboardData_category,
-    nodesDashboardData_id,
     sriCompareData,
+    dashboardDataGroup,
   } from "./data"
   import SimpleDashboard from "./components/SimpleDashboard.vue"
   import SelectReport from "./components/SelectReport.vue"
