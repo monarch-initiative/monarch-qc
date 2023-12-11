@@ -11,9 +11,9 @@
         <tr>
           <th>{{ label }}</th>
           <template v-for="field in field_labels" :key="field">
-            <th style="text-align: center">{{ titleFormat(field) }}</th>
+            <th>{{ titleFormat(field) }}</th>
             <template style="text-align: center" v-if="getNextField(field, field_labels) !== null">
-              <th style="text-align: center">
+              <th style="text-align: center; padding: 0 10px 0 10px">
                 <span style="margin-right: 3ch">(⚫)</span> vs
                 <span style="margin-left: 3ch">(⚪)</span>
               </th>
@@ -25,7 +25,7 @@
         <tr v-for="(label, index) in labels" :key="label" :style="getRowStyle(index)">
           <td>{{ label }}</td>
           <template v-for="field in fields" :key="field">
-            <td style="padding-right: 10px">
+            <td style="padding: 0 10px 0 10px">
               {{ (data[field].value.get(label) ?? 0).toLocaleString("en-US") }}
               <template v-if="colorCols.includes(field)">
                 <span
@@ -51,7 +51,7 @@
               </template>
             </td>
             <template v-if="getNextField(field, data) !== null"></template>
-            <td style="text-align: center">{{ visualDiffs.get(field)?.get(label) }}</td>
+            <td style="padding: 0 10px 0 10px">{{ visualDiffs.get(field)?.get(label) }}</td>
           </template>
         </tr>
       </tbody>
