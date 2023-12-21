@@ -2,7 +2,8 @@ import { reactive, ref } from "vue"
 import YAML from "yaml"
 import DOMPurify from "isomorphic-dompurify"
 
-import * as qc from "./qc_utils"
+import * as qc_utils from "./qc_utils"
+import * as qc from "./schema/monarch_kg_qc_schema"
 import { DashboardData, DashboardDataGroup } from "./components/SimpleDashboard"
 import { LineChartData } from "./components/LineChart"
 
@@ -69,7 +70,7 @@ function zipPromiseMap(keys: string[], values: Promise<string>[]): Map<string, P
    * @values: Promise<string>[]
    * @return: Map<string, Promise<string>>
    */
-  return <Map<string, Promise<string>>>qc.zipMap(keys, values)
+  return <Map<string, Promise<string>>>qc_utils.zipMap(keys, values)
 }
 
 function getReportNames(url = ""): string {
@@ -155,8 +156,8 @@ export async function getSRICompareData() {
 
   const v3 = await v3Stats.value
   const sri = await sriStats.value
-  const v3Report = qc.toStatReport(YAML.parse(v3))
-  const sriReport = qc.toStatReport(YAML.parse(sri))
+  const v3Report = qc_utils.toStatReport(YAML.parse(v3))
+  const sriReport = qc_utils.toStatReport(YAML.parse(sri))
 
   sriCompareData["edges_predicates"] = getStatDashboardData(
     v3Report,
@@ -222,19 +223,19 @@ export async function processReports() {
   const selected_name: string = selectedReport.value
   const compare_name: string = selectedCompare.value
 
-  const selected: qc.QCReport = await getQCReport(selected_name)
-  const previous: qc.QCReport = await getQCReport(compare_name)
+  const selected: qc.Report = await getQCReport(selected_name)
+  const previous: qc.Report = await getQCReport(compare_name)
   dashboardDataGroup["edges"] = getDashboardData(selected, previous, ["edges", "dangling_edges"])
 
   const timeSeriesReports = await getTimeSeriesReports(selected_name, compare_name)
   setEdgesTimeSeriesData(edgesTimeSeriesData, timeSeriesReports, "edges")
 
-  const danglingEdgesNamespaces: string[] = qc.getNamespaces(selected.dangling_edges)
-  const edgesNamespaces: string[] = qc.getNamespaces(selected.edges)
-  globalNamespaces.value = qc.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
+  const danglingEdgesNamespaces: string[] = qc_utils.getNamespaces(selected.dangling_edges)
+  const edgesNamespaces: string[] = qc_utils.getNamespaces(selected.edges)
+  globalNamespaces.value = qc_utils.stringSetDiff(danglingEdgesNamespaces, edgesNamespaces)
 
-  const selectedStats: qc.StatReport = await getStatReport(selected_name)
-  const previousStats: qc.StatReport = await getStatReport(compare_name)
+  const selectedStats: qc_utils.StatReport = await getStatReport(selected_name)
+  const previousStats: qc_utils.StatReport = await getStatReport(compare_name)
   dashboardDataGroup["nodes_category"] = getStatDashboardData(
     selectedStats,
     previousStats,
@@ -261,29 +262,29 @@ export async function processReports() {
   )
 }
 
-export async function getQCReport(reportName: string): Promise<qc.QCReport> {
+export async function getQCReport(reportName: string): Promise<qc.Report> {
   /**
    * Fetches the QC report from globalReports and returns the parsed report.
    * @reportName: string
    * @return: Promise<QCReport>
    */
   const reportText = (await globalReports.value.get(reportName)) ?? "{}"
-  return qc.toQCReport(YAML.parse(reportText))
+  return qc.toReport(YAML.parse(reportText))
 }
 
-export async function getStatReport(reportName: string): Promise<qc.StatReport> {
+export async function getStatReport(reportName: string): Promise<qc_utils.StatReport> {
   /**
    * Fetches the stat report from globalStats and returns the parsed report.
    * @reportName: string
    * @return: Promise<StatReport>
    */
   const reportText = (await globalStats.value.get(reportName)) ?? "{}"
-  return qc.toStatReport(YAML.parse(reportText))
+  return qc_utils.toStatReport(YAML.parse(reportText))
 }
 
 function getDashboardData(
-  selected: qc.QCReport,
-  previous: qc.QCReport,
+  selected: qc.Report,
+  previous: qc.Report,
   names: string[]
 ): DashboardData {
   /**
@@ -297,7 +298,7 @@ function getDashboardData(
    */
   const data: DashboardData = {}
   for (const name of names) {
-    const field = name as keyof qc.QCReport
+    const field = name as keyof qc.Report
     data[name] = {
       value: getTotalNumber(selected[field], true),
       diff: getDifference(selected[field], previous[field]),
@@ -307,8 +308,8 @@ function getDashboardData(
 }
 
 function getStatDashboardData(
-  selected: qc.StatReport,
-  previous: qc.StatReport,
+  selected: qc_utils.StatReport,
+  previous: qc_utils.StatReport,
   statName: string,
   field: string,
   compare = false
@@ -323,7 +324,7 @@ function getStatDashboardData(
    * @return: void
    */
   const data: DashboardData = {}
-  const partKey = statName as keyof qc.StatReport
+  const partKey = statName as keyof qc_utils.StatReport
   data[statName] = {
     value: getStatTotalNumber(selected[partKey], field, true),
     diff: getStatDifference(selected[partKey], previous[partKey], field),
@@ -337,15 +338,15 @@ function getStatDashboardData(
   return data
 }
 
-function getTotalNumber(part: qc.QCPart[], addTotal = false): Map<string, number> {
+function getTotalNumber(part: qc.SubReport[] | undefined, addTotal = false): Map<string, number> {
   /**
    * Returns the total number of edges (or nodes) of each QCPart.
    * @qcpart: QCPart[]
    * @return: Map<string, number>
    */
-  if (part === undefined) return new Map<string, number>()
-  let grandtotal = 0
   const totals = new Map<string, number>()
+  if (part === undefined) return totals
+  let grandtotal = 0
   for (const item of part) {
     totals.set(item.name, item.total_number)
     grandtotal += item.total_number
@@ -355,7 +356,7 @@ function getTotalNumber(part: qc.QCPart[], addTotal = false): Map<string, number
 }
 
 function getStatTotalNumber(
-  part: qc.NodeStatPart | qc.EdgeStatPart | string,
+  part: qc_utils.NodeStatPart | qc_utils.EdgeStatPart | string,
   field: string,
   addTotal = false
 ): Map<string, number> {
@@ -366,8 +367,8 @@ function getStatTotalNumber(
    */
   let grandtotal = 0
   const totals = new Map<string, number>()
-  if (qc.isNodeStatPart(part)) {
-    const fieldVals = part[field as keyof qc.NodeStatPart]
+  if (qc_utils.isNodeStatPart(part)) {
+    const fieldVals = part[field as keyof qc_utils.NodeStatPart]
     if (typeof fieldVals != "object") return new Map<string, number>()
     else if (field === "count_by_category") {
       for (const [key, value] of Object.entries(fieldVals)) {
@@ -378,8 +379,8 @@ function getStatTotalNumber(
       grandtotal = Object.values(fieldVals).reduce((a, b) => a + b, 0)
       return new Map(Object.entries(fieldVals)).set("Total Number", grandtotal)
     }
-  } else if (qc.isEdgeStatPart(part)) {
-    const fieldVals = part[field as keyof qc.EdgeStatPart]
+  } else if (qc_utils.isEdgeStatPart(part)) {
+    const fieldVals = part[field as keyof qc_utils.EdgeStatPart]
     if (typeof fieldVals != "object") return new Map<string, number>()
     else if (field === "count_by_predicates" || field === "count_by_spo") {
       for (const [key, value] of Object.entries(fieldVals)) {
@@ -392,7 +393,10 @@ function getStatTotalNumber(
   return totals
 }
 
-function getDifference(part: qc.QCPart[], previous_part: qc.QCPart[]): Map<string, number> {
+function getDifference(
+  part: qc.SubReport[] | undefined,
+  previous_part: qc.SubReport[] | undefined
+): Map<string, number> {
   /**
    * Return the difference between two QCParts matching on the same key.
    * @qcpart: QCPart[]
@@ -400,7 +404,7 @@ function getDifference(part: qc.QCPart[], previous_part: qc.QCPart[]): Map<strin
    * @return: Map<string, number>
    */
   const difference_totals = new Map<string, number>()
-  if (part === undefined || previous_part === undefined) return new Map<string, number>()
+  if (part === undefined || previous_part === undefined) return difference_totals
   for (const item of part) {
     for (const previous_item of previous_part) {
       if (item.name === previous_item.name) {
@@ -412,8 +416,8 @@ function getDifference(part: qc.QCPart[], previous_part: qc.QCPart[]): Map<strin
 }
 
 function getStatDifference(
-  part: qc.NodeStatPart | qc.EdgeStatPart | string,
-  previous_part: qc.NodeStatPart | qc.EdgeStatPart | string,
+  part: qc_utils.NodeStatPart | qc_utils.EdgeStatPart | string,
+  previous_part: qc_utils.NodeStatPart | qc_utils.EdgeStatPart | string,
   field: string
 ): Map<string, number> {
   /**
@@ -424,13 +428,13 @@ function getStatDifference(
    */
   const total_diffs = new Map<string, number>()
 
-  if (qc.isNodeStatPart(part) && qc.isNodeStatPart(previous_part)) {
-    const fieldKey = field as keyof qc.NodeStatPart
+  if (qc_utils.isNodeStatPart(part) && qc_utils.isNodeStatPart(previous_part)) {
+    const fieldKey = field as keyof qc_utils.NodeStatPart
     if (fieldKey === "count_by_category") {
       const fieldVals = part[fieldKey]
       const previousFieldVals = previous_part[fieldKey]
       for (const [key, value] of Object.entries(fieldVals)) {
-        const previousValue = previousFieldVals[key] as qc.StatCount
+        const previousValue = previousFieldVals[key] as qc_utils.StatCount
         if (previousValue === undefined) continue
         total_diffs.set(key, value.count - previousValue.count)
       }
@@ -445,13 +449,13 @@ function getStatDifference(
       }
     }
   }
-  if (qc.isEdgeStatPart(part) && qc.isEdgeStatPart(previous_part)) {
-    const fieldKey = field as keyof qc.EdgeStatPart
+  if (qc_utils.isEdgeStatPart(part) && qc_utils.isEdgeStatPart(previous_part)) {
+    const fieldKey = field as keyof qc_utils.EdgeStatPart
     if (fieldKey === "count_by_predicates" || fieldKey === "count_by_spo") {
       const fieldVals = part[fieldKey]
       const previousFieldVals = previous_part[fieldKey]
       for (const [key, value] of Object.entries(fieldVals)) {
-        const previousValue = previousFieldVals[key] as qc.StatCount
+        const previousValue = previousFieldVals[key] as qc_utils.StatCount
         if (previousValue === undefined) continue
         total_diffs.set(key, value.count - previousValue.count)
       }
@@ -463,7 +467,7 @@ function getStatDifference(
 async function getTimeSeriesReports(
   selected_name: string,
   compare_name: string
-): Promise<Map<string, qc.QCReport>> {
+): Promise<Map<string, qc.Report>> {
   /**
    * Returns an array of QCReports for the selected and previous reports.
    * @selected: QCReport
@@ -476,11 +480,11 @@ async function getTimeSeriesReports(
   const checkIndex = reportKeys.indexOf(compare_name)
   const firstIndex = lastIndex - checkIndex > 4 ? checkIndex : lastIndex - 4
 
-  const reports = new Map<string, qc.QCReport>()
+  const reports = new Map<string, qc.Report>()
   for (const [key, value] of globalReports.value.entries()) {
     const index = reportKeys.indexOf(key)
     if (firstIndex <= index && index <= lastIndex) {
-      const report = qc.toQCReport(YAML.parse(await value))
+      const report = qc.toReport(YAML.parse(await value))
       reports.set(key, report)
     }
   }
@@ -489,7 +493,7 @@ async function getTimeSeriesReports(
 
 function setEdgesTimeSeriesData(
   data: LineChartData,
-  reports: Map<string, qc.QCReport>,
+  reports: Map<string, qc.Report>,
   part_name: string
 ) {
   /**
@@ -500,13 +504,13 @@ function setEdgesTimeSeriesData(
    * @return: void
    */
   // const chartOptions = getChartOptions()
-  const part_key = part_name as keyof qc.QCReport
+  const part_key = part_name as keyof qc.Report
   // const chartSeries = getChartSeries()
   const chartSeries = <{ name: string; data: [Date, number][] }[]>[]
   for (const [key, value] of reports.entries()) {
     const report = value
     const date = new Date(key)
-    for (const qcpart of report[part_key]) {
+    for (const qcpart of report[part_key] ?? []) {
       const name = qcpart.name
       const total = qcpart.total_number
 
