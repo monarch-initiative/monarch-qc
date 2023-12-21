@@ -1,48 +1,50 @@
-export interface QCPart {
-  categories: string[]
-  missing: number
-  name: string
-  namespaces: string[]
-  node_types: string[]
-  predicates: string[]
-  taxon: string[]
-  total_number: number
-}
+import * as qc from "./schema/monarch_kg_qc_schema"
 
-export function toQCPart(i: object = {}): QCPart {
-  const o = <QCPart>i
-  return {
-    categories: o.categories ?? [],
-    missing: o.missing ?? 0,
-    name: o.name ?? "",
-    namespaces: o.namespaces ?? [],
-    node_types: o.node_types ?? [],
-    predicates: o.predicates ?? [],
-    taxon: o.taxon ?? [],
-    total_number: o.total_number ?? 0,
-  }
-}
+// export interface QCPart {
+//   categories: string[]
+//   missing: number
+//   name: string
+//   namespaces: string[]
+//   node_types: string[]
+//   predicates: string[]
+//   taxon: string[]
+//   total_number: number
+// }
 
-export interface QCReport {
-  dangling_edges: QCPart[]
-  edges: QCPart[]
-  missing_nodes: QCPart[]
-  nodes: QCPart[]
-}
+// export function toQCPart(i: object = {}): QCPart {
+//   const o = <QCPart>i
+//   return {
+//     categories: o.categories ?? [],
+//     missing: o.missing ?? 0,
+//     name: o.name ?? "",
+//     namespaces: o.namespaces ?? [],
+//     node_types: o.node_types ?? [],
+//     predicates: o.predicates ?? [],
+//     taxon: o.taxon ?? [],
+//     total_number: o.total_number ?? 0,
+//   }
+// }
 
-export function toQCReport(i: object = {}): QCReport {
-  const o = <QCReport>i
-  return {
-    dangling_edges: o.dangling_edges ?? [],
-    edges: o.edges ?? [],
-    missing_nodes: o.missing_nodes ?? [],
-    nodes: o.nodes ?? [],
-  }
-}
+// export interface QCReport {
+//   dangling_edges: QCPart[]
+//   edges: QCPart[]
+//   missing_nodes: QCPart[]
+//   nodes: QCPart[]
+// }
 
-export function isQCReport(i: object): i is QCReport {
-  return "dangling_edges" in i && "edges" in i && "missing_nodes" in i && "nodes" in i
-}
+// export function toQCReport(i: object = {}): QCReport {
+//   const o = <QCReport>i
+//   return {
+//     dangling_edges: o.dangling_edges ?? [],
+//     edges: o.edges ?? [],
+//     missing_nodes: o.missing_nodes ?? [],
+//     nodes: o.nodes ?? [],
+//   }
+// }
+
+// export function isQCReport(i: object): i is QCReport {
+//   return "dangling_edges" in i && "edges" in i && "missing_nodes" in i && "nodes" in i
+// }
 
 export interface StatCount {
   count: number
@@ -97,16 +99,17 @@ export function isStatReport(i: object): i is StatReport {
   return "edge_stats" in i && "graph_name" in i && "node_stats" in i
 }
 
-export function getNamespaces(qcparts: QCPart[]): string[] {
+export function getNamespaces(qcparts: qc.SubReport[] | undefined): string[] {
   /**
    * Returns all namespaces in the QCPart.
    * @qcpart: QCPart[]
    * @return: string[]
    */
+  if (qcparts === undefined) return []
   let allNamespaces: string[] = []
   for (const item of qcparts) {
-    const qcpart = toQCPart(item)
-    allNamespaces = allNamespaces.concat(qcpart.namespaces)
+    const qcpart = qc.toSubReport(item)
+    allNamespaces = allNamespaces.concat(qcpart.namespaces ?? [])
   }
   return allNamespaces
 }
