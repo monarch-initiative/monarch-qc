@@ -1,7 +1,7 @@
 import { readFileSync } from "fs"
 import { describe, expect, test } from "vitest"
-import { http, HttpResponse } from "msw"
-import { setupServer } from "msw/node"
+// import { http, HttpResponse } from "msw"
+// import { setupServer } from "msw/node"
 import { mockFetch } from "./test_utils"
 
 import { updateData, fetchQCReports, globalReports, globalStats } from "../src/data"
