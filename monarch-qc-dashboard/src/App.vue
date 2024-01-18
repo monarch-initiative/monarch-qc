@@ -6,6 +6,7 @@
     <div>
       <button @click="selectSection('monarch')">Monarch-QC</button>
       <button @click="selectSection('sri')">SRI-Reference Comparison</button>
+      <UploadReport />
     </div>
     <div v-if="selectedSection === 'monarch'">
       <div>
@@ -162,6 +163,7 @@
   import SimpleDashboard from "./components/SimpleDashboard.vue"
   import SelectReport from "./components/SelectReport.vue"
   import LineChart from "./components/LineChart.vue"
+  import UploadReport from "./components/UploadReport.vue"
 
   function isDarkMode() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches
