@@ -1,4 +1,5 @@
 import { describe, expect, test } from "vitest"
+import * as qc from "../src/schema/monarch_kg_qc_schema"
 import * as qc_utils from "../src/qc_utils"
 
 // describe("toQCPart tests", () => {
@@ -81,39 +82,167 @@ import * as qc_utils from "../src/qc_utils"
 //   })
 // })
 
-// describe("getNamespaces tests", () => {
-//   test("getNamespaces empty QCPart", () => {
-//     const qcpart = qc_utils.toQCPart()
-//     expect(qc_utils.getNamespaces([qcpart])).toEqual([])
-//   })
-//   test("getNamespaces single QCPart", () => {
-//     const qcpart = qc_utils.toQCPart({ namespaces: ["a"] })
-//     expect(qc_utils.getNamespaces([qcpart])).toEqual(["a"])
-//   })
-//   test("getNamespaces multiple QCPart", () => {
-//     const qcpart = qc_utils.toQCPart({ namespaces: ["a", "b"] })
-//     expect(qc_utils.getNamespaces([qcpart])).toEqual(["a", "b"])
-//   })
-//   test("getNamespaces multiple QCPart with differences", () => {
-//     const qcpart1 = qc_utils.toQCPart({ namespaces: ["a", "b"] })
-//     const qcpart2 = qc_utils.toQCPart({ namespaces: ["c", "d"] })
-//     expect(qc_utils.getNamespaces([qcpart1, qcpart2])).toEqual(["a", "b", "c", "d"])
-//   })
-//   test("getNamespaces multiple QCPart with differences out of order", () => {
-//     const qcpart1 = qc_utils.toQCPart({ namespaces: ["a", "b"] })
-//     const qcpart2 = qc_utils.toQCPart({ namespaces: ["d", "c"] })
-//     expect(qc_utils.getNamespaces([qcpart1, qcpart2])).toEqual(["a", "b", "d", "c"])
-//   })
-//   test("getNamespaces multiple QCPart with duplicates", () => {
-//     const qcpart = qc_utils.toQCPart({ namespaces: ["a", "b"] })
-//     expect(qc_utils.getNamespaces([qcpart, qcpart])).toEqual(["a", "b", "a", "b"])
-//   })
-//   test("getNamespaces multiple QCPart with duplicates out of order", () => {
-//     const qcpart1 = qc_utils.toQCPart({ namespaces: ["a", "b"] })
-//     const qcpart2 = qc_utils.toQCPart({ namespaces: ["b", "a"] })
-//     expect(qc_utils.getNamespaces([qcpart1, qcpart2])).toEqual(["a", "b", "b", "a"])
-//   })
-// })
+describe("isEdgeStatPart tests", () => {
+  test("isEdgeStatPart string", () => {
+    expect(qc_utils.isEdgeStatPart("")).toEqual(false)
+  })
+  test("isEdgeStatPart empty", () => {
+    expect(qc_utils.isEdgeStatPart({})).toEqual(false)
+  })
+  test("isEdgeStatPart with values", () => {
+    expect(qc_utils.isEdgeStatPart({ a: 1 })).toEqual(false)
+  })
+  test("isEdgeStatPart with single value", () => {
+    expect(
+      qc_utils.isEdgeStatPart({
+        count_by_predicates: {},
+        count_by_spo: {},
+      })
+    ).toEqual(true)
+  })
+  test("isEdgeStatPart with extra values", () => {
+    expect(
+      qc_utils.isEdgeStatPart({
+        count_by_predicates: {},
+        count_by_spo: {},
+        extra: "a",
+      })
+    ).toEqual(true)
+  })
+})
+
+describe("isNodeStatPart tests", () => {
+  test("isNodeStatPart string", () => {
+    expect(qc_utils.isNodeStatPart("")).toEqual(false)
+  })
+  test("isNodeStatPart empty", () => {
+    expect(qc_utils.isNodeStatPart({})).toEqual(false)
+  })
+  test("isNodeStatPart with values", () => {
+    expect(qc_utils.isNodeStatPart({ a: 1 })).toEqual(false)
+  })
+  test("isNodeStatPart with single value", () => {
+    expect(
+      qc_utils.isNodeStatPart({
+        count_by_category: {},
+      })
+    ).toEqual(true)
+  })
+  test("isNodeStatPart with extra values", () => {
+    expect(
+      qc_utils.isNodeStatPart({
+        count_by_category: {},
+        extra: "a",
+      })
+    ).toEqual(true)
+  })
+})
+
+describe("toStatReport tests", () => {
+  const emptyStatReport = {
+    edge_stats: {},
+    graph_name: "",
+    node_stats: {},
+  }
+
+  const valuesStatReport = {
+    edge_stats: { count_by_predicates: 0, count_by_spo: 0 },
+    graph_name: "b",
+    node_stats: { count_by_category: 0 },
+  }
+
+  test("toStatReport empty", () => {
+    expect(qc_utils.toStatReport()).toEqual(emptyStatReport)
+  })
+  test("toStatReport with values", () => {
+    expect(qc_utils.toStatReport(valuesStatReport)).toEqual(valuesStatReport)
+  })
+  test("toStatReport with single value", () => {
+    const singleStatReport = <qc_utils.StatReport>emptyStatReport
+    singleStatReport.edge_stats = {
+      count_by_predicates: { predicate: { count: 0, provided_by: {} } },
+      count_by_spo: { spo: { count: 0, provided_by: {} } },
+    }
+    expect(
+      qc_utils.toStatReport({
+        edge_stats: {
+          count_by_predicates: { predicate: { count: 0, provided_by: {} } },
+          count_by_spo: { spo: { count: 0, provided_by: {} } },
+        },
+      })
+    ).toEqual(singleStatReport)
+  })
+  test("toStatReport with extra values", () => {
+    const extraStatReport = structuredClone(valuesStatReport)
+    // use explicit any to add extra property for testing
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ;(extraStatReport as any).extra = "d"
+    expect(qc_utils.toStatReport(extraStatReport)).toEqual(valuesStatReport)
+  })
+})
+
+describe("isStatReport tests", () => {
+  test("isStatReport empty", () => {
+    expect(qc_utils.isStatReport({})).toEqual(false)
+  })
+  test("isStatReport with values", () => {
+    expect(qc_utils.isStatReport({ a: 1 })).toEqual(false)
+  })
+  test("isStatReport with single value", () => {
+    expect(qc_utils.isStatReport({ edge_stats: 1, graph_name: 0, node_stats: 1 })).toEqual(true)
+  })
+  test("isStatReport with extra values", () => {
+    expect(
+      qc_utils.isStatReport({ edge_stats: 1, graph_name: 0, node_stats: 1, extra: "a" })
+    ).toEqual(true)
+  })
+})
+
+describe("getNamespaces tests", () => {
+  test("getNamespaces undefined", () => {
+    expect(qc_utils.getNamespaces(undefined)).toEqual([])
+  })
+  test("getNamespaces empty QCPart", () => {
+    const qcpart = qc.toSubReport({} as qc.SubReport)
+    expect(qc_utils.getNamespaces([qcpart])).toEqual([])
+  })
+  test("getNamespaces single QCPart", () => {
+    const qcpart = qc.toSubReport({ namespaces: ["a"] } as qc.SubReport)
+    expect(qc_utils.getNamespaces([qcpart])).toEqual(["a"])
+  })
+  test("getNamespaces multiple QCPart", () => {
+    const qcpart = qc.toSubReport({ namespaces: ["a", "b"] } as qc.SubReport)
+    expect(qc_utils.getNamespaces([qcpart])).toEqual(["a", "b"])
+  })
+  test("getNamespaces multiple QCPart with differences", () => {
+    const qcpart1 = qc.toSubReport({ namespaces: ["a", "b"] } as qc.SubReport)
+    const qcpart2 = qc.toSubReport({ namespaces: ["c", "d"] } as qc.SubReport)
+    expect(qc_utils.getNamespaces([qcpart1, qcpart2])).toEqual(["a", "b", "c", "d"])
+  })
+  test("getNamespaces multiple QCPart with differences out of order", () => {
+    const qcpart1 = qc.toSubReport({ namespaces: ["a", "b"] } as qc.SubReport)
+    const qcpart2 = qc.toSubReport({ namespaces: ["d", "c"] } as qc.SubReport)
+    expect(qc_utils.getNamespaces([qcpart1, qcpart2])).toEqual(["a", "b", "d", "c"])
+  })
+  test("getNamespaces multiple QCPart with duplicates", () => {
+    const qcpart = qc.toSubReport({ namespaces: ["a", "b"] } as qc.SubReport)
+    expect(qc_utils.getNamespaces([qcpart, qcpart])).toEqual(["a", "b", "a", "b"])
+  })
+  test("getNamespaces multiple QCPart with duplicates out of order", () => {
+    const qcpart1 = qc.toSubReport({ namespaces: ["a", "b"] } as qc.SubReport)
+    const qcpart2 = qc.toSubReport({ namespaces: ["b", "a"] } as qc.SubReport)
+    expect(qc_utils.getNamespaces([qcpart1, qcpart2])).toEqual(["a", "b", "b", "a"])
+  })
+  test("getNamespaces mulitple QCPart with some undefined namespaces", () => {
+    const qcpart1 = qc.toSubReport({ namespaces: ["a", "b"] } as qc.SubReport)
+    const qcpart2 = qc.toSubReport({} as qc.SubReport)
+    expect(qc_utils.getNamespaces([qcpart1, qcpart2])).toEqual(["a", "b"])
+  })
+  test("getNamespaces QCPart with null namespaces", () => {
+    const qcpart = qc.toSubReport({ namespaces: null } as unknown as qc.SubReport)
+    expect(qc_utils.getNamespaces([qcpart])).toEqual([])
+  })
+})
 
 describe("stringSetDiff tests", () => {
   test("stringSetDiff empty sets", () => {

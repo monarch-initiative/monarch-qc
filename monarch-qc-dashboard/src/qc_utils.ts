@@ -54,9 +54,9 @@ export interface StatCount {
 export interface EdgeStatPart {
   count_by_predicates: { [key: string]: StatCount }
   count_by_spo: { [key: string]: StatCount }
-  predicates: string[]
-  provided_by: string[]
-  total_edges: number
+  predicates?: string[]
+  provided_by?: string[]
+  total_edges?: number
 }
 
 export function isEdgeStatPart(i: object | string): i is EdgeStatPart {
