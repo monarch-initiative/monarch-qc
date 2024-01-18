@@ -19,9 +19,9 @@ describe("uploadFile", async () => {
     ]
     const file = new File(fileContents, "file.txt", { type: "text/plain" })
     const selectedReportInitial = selectedReport.value
-    uploadFile(file, "currentDate")
-    expect(globalReports.value.get("currentDate")).toEqual(Promise.resolve(""))
+    uploadFile(file, currentDate)
+    expect(globalReports.value.get(currentDate)).toEqual(Promise.resolve(""))
     expect(selectedCompare.value).toEqual(selectedReportInitial)
-    expect(selectedReport.value).toEqual("currentDate")
+    expect(selectedReport.value).toEqual(currentDate)
   })
 })
