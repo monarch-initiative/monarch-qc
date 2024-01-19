@@ -160,6 +160,45 @@ describe("getAllVisualDiffs tests", () => {
       ])
     )
   })
+  test("getAllVisualDiffs Total Number is null", () => {
+    expect(
+      getAllVisualDiffs({
+        x: {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          value: new Map([
+            ["a", 1],
+            ["b", 2],
+            ["Total Number", null],
+          ]),
+          diff: new Map(),
+        },
+        y: {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          value: new Map([
+            ["b", 2],
+            ["c", 3],
+            ["Total Number", null],
+          ]),
+          diff: new Map(),
+        },
+      })
+    ).toEqual(
+      new Map([
+        [
+          "x",
+          new Map([
+            ["a", "⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"],
+            ["b", "⚫⚫⚫⚫⚫⚪⚪⚪⚪⚪"],
+            ["c", "⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪"],
+            ["-------------", "-------------"],
+            ["Total Number", ""],
+          ]),
+        ],
+      ])
+    )
+  })
 })
 
 describe("getNextField tests", () => {
@@ -177,9 +216,9 @@ describe("getNextField tests", () => {
     const data: Array<string> = ["a", "b"]
     expect(getNextField(0, data)).toEqual("b")
   })
-  test("getNextField array of strings out of bounds", () => {
+  test("getNextField array of strings by string", () => {
     const data: Array<string> = ["a", "b"]
-    expect(getNextField(1, data)).toEqual(null)
+    expect(getNextField("b", data)).toEqual(null)
   })
 })
 
