@@ -158,9 +158,10 @@ describe("getNamespaces tests", () => {
     const qcpart2 = {} as qc.SubReport
     expect(qc_utils.getNamespaces([qcpart1, qcpart2])).toEqual(["a", "b"])
   })
-  test("getNamespaces QCPart with null namespaces", () => {
-    const qcpart = { namespaces: null } as unknown as qc.SubReport
-    expect(qc_utils.getNamespaces([qcpart])).toEqual([])
+  test("getNamespaces QCPart with null and undefined namespaces", () => {
+    const qcpart1 = { namespaces: null } as unknown as qc.SubReport
+    const qcpart2 = { namespaces: undefined } as unknown as qc.SubReport
+    expect(qc_utils.getNamespaces([qcpart1, qcpart2])).toEqual([])
   })
 })
 

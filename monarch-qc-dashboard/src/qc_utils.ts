@@ -109,7 +109,9 @@ export function getNamespaces(qcparts: qc.SubReport[] | undefined): string[] {
   let allNamespaces: string[] = []
   for (const item of qcparts) {
     const qcpart = qc.toSubReport(item)
-    allNamespaces = allNamespaces.concat(qcpart.namespaces ?? [])
+    // qc.toSubReport(item) guarantees namespaces is not undefined or null
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    allNamespaces = allNamespaces.concat(qcpart.namespaces!)
   }
   return allNamespaces
 }
