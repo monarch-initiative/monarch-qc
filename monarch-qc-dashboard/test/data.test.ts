@@ -2,7 +2,14 @@ import { readFileSync } from "fs"
 import { describe, expect, test } from "vitest"
 import { mockFetch } from "./test_utils"
 
-import { updateData, fetchQCReports, globalReports, globalStats } from "../src/data"
+import {
+  updateData,
+  fetchQCReports,
+  getSRICompareData,
+  globalReports,
+  globalStats,
+  v3Stats,
+} from "../src/data"
 
 mockFetch()
 
@@ -110,6 +117,20 @@ describe("fetchQCReports tests", () => {
     )
     expect(await reports.get("latest")).toEqual(
       readFileSync("test/mock_http/monarch-kg-dev/2023-10-28/qc_report.yaml", "utf-8")
+    )
+  })
+})
+
+describe("getSRICompareData tests", async () => {
+  await getSRICompareData()
+  test("getSRICompareData", async () => {
+    expect(v3Stats.value).toEqual(
+      Promise.resolve(
+        readFileSync(
+          "test/mock_http/sri-reference-kg/sri-reference-kg-0.4.0/merged_graph_stats.yaml",
+          "utf-8"
+        )
+      )
     )
   })
 })

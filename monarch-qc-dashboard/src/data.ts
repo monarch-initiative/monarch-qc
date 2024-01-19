@@ -262,7 +262,7 @@ export async function processReports() {
   )
 }
 
-export async function getQCReport(reportName: string): Promise<qc.Report> {
+async function getQCReport(reportName: string): Promise<qc.Report> {
   /**
    * Fetches the QC report from globalReports and returns the parsed report.
    * @reportName: string
@@ -272,7 +272,7 @@ export async function getQCReport(reportName: string): Promise<qc.Report> {
   return qc.toReport(YAML.parse(reportText))
 }
 
-export async function getStatReport(reportName: string): Promise<qc_utils.StatReport> {
+async function getStatReport(reportName: string): Promise<qc_utils.StatReport> {
   /**
    * Fetches the stat report from globalStats and returns the parsed report.
    * @reportName: string
