@@ -81,10 +81,7 @@ function getReportNames(url = ""): string {
    */
   const dataSite = qcdata.get(selectedData.value)
   const nameRegex = new RegExp(`${dataSite}(.*)/`)
-  const nameMatch = url.match(nameRegex)
-  if (nameMatch === null) {
-    return ""
-  }
+  const nameMatch = url.match(nameRegex) ?? [""]
   return nameMatch[1]
 }
 

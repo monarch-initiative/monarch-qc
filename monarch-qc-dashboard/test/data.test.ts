@@ -8,6 +8,7 @@ import {
   getSRICompareData,
   globalReports,
   globalStats,
+  sriFetched,
   v3Stats,
 } from "../src/data"
 
@@ -124,6 +125,17 @@ describe("fetchQCReports tests", () => {
 describe("getSRICompareData tests", async () => {
   await getSRICompareData()
   test("getSRICompareData", async () => {
+    expect(v3Stats.value).toEqual(
+      Promise.resolve(
+        readFileSync(
+          "test/mock_http/sri-reference-kg/sri-reference-kg-0.4.0/merged_graph_stats.yaml",
+          "utf-8"
+        )
+      )
+    )
+  })
+  test("getSRICompareData data already fetched", async () => {
+    sriFetched.value = true
     expect(v3Stats.value).toEqual(
       Promise.resolve(
         readFileSync(
