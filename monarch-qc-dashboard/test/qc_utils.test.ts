@@ -123,43 +123,43 @@ describe("getNamespaces tests", () => {
     expect(qc_utils.getNamespaces(undefined)).toEqual([])
   })
   test("getNamespaces empty QCPart", () => {
-    const qcpart = qc.toSubReport({} as qc.SubReport)
+    const qcpart = {} as qc.SubReport
     expect(qc_utils.getNamespaces([qcpart])).toEqual([])
   })
   test("getNamespaces single QCPart", () => {
-    const qcpart = qc.toSubReport({ namespaces: ["a"] } as qc.SubReport)
+    const qcpart = { namespaces: ["a"] } as qc.SubReport
     expect(qc_utils.getNamespaces([qcpart])).toEqual(["a"])
   })
   test("getNamespaces multiple QCPart", () => {
-    const qcpart = qc.toSubReport({ namespaces: ["a", "b"] } as qc.SubReport)
+    const qcpart = { namespaces: ["a", "b"] } as qc.SubReport
     expect(qc_utils.getNamespaces([qcpart])).toEqual(["a", "b"])
   })
   test("getNamespaces multiple QCPart with differences", () => {
-    const qcpart1 = qc.toSubReport({ namespaces: ["a", "b"] } as qc.SubReport)
-    const qcpart2 = qc.toSubReport({ namespaces: ["c", "d"] } as qc.SubReport)
+    const qcpart1 = { namespaces: ["a", "b"] } as qc.SubReport
+    const qcpart2 = { namespaces: ["c", "d"] } as qc.SubReport
     expect(qc_utils.getNamespaces([qcpart1, qcpart2])).toEqual(["a", "b", "c", "d"])
   })
   test("getNamespaces multiple QCPart with differences out of order", () => {
-    const qcpart1 = qc.toSubReport({ namespaces: ["a", "b"] } as qc.SubReport)
-    const qcpart2 = qc.toSubReport({ namespaces: ["d", "c"] } as qc.SubReport)
+    const qcpart1 = { namespaces: ["a", "b"] } as qc.SubReport
+    const qcpart2 = { namespaces: ["d", "c"] } as qc.SubReport
     expect(qc_utils.getNamespaces([qcpart1, qcpart2])).toEqual(["a", "b", "d", "c"])
   })
   test("getNamespaces multiple QCPart with duplicates", () => {
-    const qcpart = qc.toSubReport({ namespaces: ["a", "b"] } as qc.SubReport)
+    const qcpart = { namespaces: ["a", "b"] } as qc.SubReport
     expect(qc_utils.getNamespaces([qcpart, qcpart])).toEqual(["a", "b", "a", "b"])
   })
   test("getNamespaces multiple QCPart with duplicates out of order", () => {
-    const qcpart1 = qc.toSubReport({ namespaces: ["a", "b"] } as qc.SubReport)
+    const qcpart1 = { namespaces: ["a", "b"] } as qc.SubReport
     const qcpart2 = qc.toSubReport({ namespaces: ["b", "a"] } as qc.SubReport)
     expect(qc_utils.getNamespaces([qcpart1, qcpart2])).toEqual(["a", "b", "b", "a"])
   })
   test("getNamespaces mulitple QCPart with some undefined namespaces", () => {
-    const qcpart1 = qc.toSubReport({ namespaces: ["a", "b"] } as qc.SubReport)
-    const qcpart2 = qc.toSubReport({} as qc.SubReport)
+    const qcpart1 = { namespaces: ["a", "b"] } as qc.SubReport
+    const qcpart2 = {} as qc.SubReport
     expect(qc_utils.getNamespaces([qcpart1, qcpart2])).toEqual(["a", "b"])
   })
   test("getNamespaces QCPart with null namespaces", () => {
-    const qcpart = qc.toSubReport({ namespaces: null } as unknown as qc.SubReport)
+    const qcpart = { namespaces: null } as unknown as qc.SubReport
     expect(qc_utils.getNamespaces([qcpart])).toEqual([])
   })
 })
