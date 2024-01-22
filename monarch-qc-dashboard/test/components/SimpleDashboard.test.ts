@@ -3,11 +3,24 @@ import {
   DashboardData,
   getAllVisualDiffs,
   getDataLabels,
+  getNextField,
 } from "../../src/components/SimpleDashboard"
 
 describe("getAllVisualDiffs tests", () => {
   test("getAllVisualDiffs empty maps", () => {
     expect(getAllVisualDiffs({} as DashboardData)).toEqual(new Map())
+  })
+  test("getAllVisualDiffs undefined map", () => {
+    expect(
+      getAllVisualDiffs({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        x: { value: undefined, diff: undefined },
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        y: { value: undefined, diff: undefined },
+      })
+    ).toEqual(new Map().set("x", new Map()))
   })
   test("getAllVisualDiffs empty map and non-empty map", () => {
     expect(
@@ -146,6 +159,66 @@ describe("getAllVisualDiffs tests", () => {
         ],
       ])
     )
+  })
+  test("getAllVisualDiffs Total Number is null", () => {
+    expect(
+      getAllVisualDiffs({
+        x: {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          value: new Map([
+            ["a", 1],
+            ["b", 2],
+            ["Total Number", null],
+          ]),
+          diff: new Map(),
+        },
+        y: {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          value: new Map([
+            ["b", 2],
+            ["c", 3],
+            ["Total Number", null],
+          ]),
+          diff: new Map(),
+        },
+      })
+    ).toEqual(
+      new Map([
+        [
+          "x",
+          new Map([
+            ["a", "⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"],
+            ["b", "⚫⚫⚫⚫⚫⚪⚪⚪⚪⚪"],
+            ["c", "⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪"],
+            ["-------------", "-------------"],
+            ["Total Number", ""],
+          ]),
+        ],
+      ])
+    )
+  })
+})
+
+describe("getNextField tests", () => {
+  test("getNextField empty data", () => {
+    const data: DashboardData = {}
+    expect(getNextField(0, data)).toEqual(null)
+  })
+  test("getNextField non-empty data", () => {
+    const data: DashboardData = {
+      x: { value: new Map([["a", 1]]), diff: new Map() },
+    }
+    expect(getNextField(0, data)).toEqual(null)
+  })
+  test("getNextField array of strings", () => {
+    const data: Array<string> = ["a", "b"]
+    expect(getNextField(0, data)).toEqual("b")
+  })
+  test("getNextField array of strings by string", () => {
+    const data: Array<string> = ["a", "b"]
+    expect(getNextField("b", data)).toEqual(null)
   })
 })
 

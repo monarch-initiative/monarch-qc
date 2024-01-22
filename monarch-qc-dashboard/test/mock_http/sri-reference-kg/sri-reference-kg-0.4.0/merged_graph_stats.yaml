@@ -1,0 +1,5436 @@
+edge_stats:
+  count_by_predicates:
+    biolink:actively_involved_in:
+      count: 2264737
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 1164317
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 84200
+        Monarch Ontologies:
+          count: 8
+        Reactome (Monarch version 202012):
+          count: 1016212
+    biolink:affects:
+      count: 24577
+      provided_by:
+        Monarch Ontologies:
+          count: 24577
+    biolink:affects_localization_of:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:affects_transport_of:
+      count: 2016
+      provided_by:
+        Monarch Ontologies:
+          count: 2016
+    biolink:biomarker_for:
+      count: 651342
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 586131
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 64590
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 202
+        Orphanet (Monarch version 202012):
+          count: 419
+    biolink:capable_of:
+      count: 1436
+      provided_by:
+        Monarch Ontologies:
+          count: 1436
+    biolink:caused_by:
+      count: 860
+      provided_by:
+        Monarch Ontologies:
+          count: 860
+    biolink:causes:
+      count: 411
+      provided_by:
+        Monarch Ontologies:
+          count: 411
+    biolink:coexists_with:
+      count: 1015
+      provided_by:
+        Monarch Ontologies:
+          count: 1015
+    biolink:contributes_to:
+      count: 199773
+      provided_by:
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 194174
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 5135
+        Orphanet (Monarch version 202012):
+          count: 464
+    biolink:correlated_with:
+      count: 1096
+      provided_by:
+        Monarch Ontologies:
+          count: 1096
+    biolink:derives_from:
+      count: 61426
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 61374
+        Monarch Ontologies:
+          count: 52
+    biolink:develops_from:
+      count: 3816
+      provided_by:
+        Monarch Ontologies:
+          count: 3816
+    biolink:disrupts:
+      count: 112
+      provided_by:
+        Monarch Ontologies:
+          count: 112
+    biolink:enables:
+      count: 766488
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 766488
+    biolink:expressed_in:
+      count: 2609765
+      provided_by:
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 2609765
+    biolink:expresses:
+      count: 198
+      provided_by:
+        Monarch Ontologies:
+          count: 198
+    biolink:gene_associated_with_condition:
+      count: 207105
+      provided_by:
+        ClinVar (Monarch version 202012):
+          count: 207105
+    biolink:genetically_interacts_with:
+      count: 26202
+      provided_by:
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 26202
+    biolink:has_attribute:
+      count: 39831
+      provided_by:
+        ChEBI:
+          count: 39674
+        Monarch Ontologies:
+          count: 10354
+    biolink:has_gene_product:
+      count: 369441
+      provided_by:
+        ENSEMBL (Monarch version 202012):
+          count: 345239
+        Gene Ontology (Monarch version 202012):
+          count: 11398
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 12847
+    biolink:has_input:
+      count: 3164
+      provided_by:
+        Monarch Ontologies:
+          count: 3164
+    biolink:has_output:
+      count: 139559
+      provided_by:
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 136147
+        Monarch Ontologies:
+          count: 3412
+    biolink:has_part:
+      count: 519166
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 313
+        ChEBI:
+          count: 3795
+        ClinVar (Monarch version 202012):
+          count: 50
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 30687
+        HGNC (Monarch version 202012):
+          count: 42099
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 67138
+        Monarch Ontologies:
+          count: 3649
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 22
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 17204
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 318425
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 26662
+        WormBase (Monarch version 202012):
+          count: 7
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 9405
+    biolink:has_participant:
+      count: 1883
+      provided_by:
+        Monarch Ontologies:
+          count: 1883
+    biolink:has_phenotype:
+      count: 1523217
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 13206
+        FlyBase (Monarch version 202012):
+          count: 150075
+        Gene Ontology (Monarch version 202012):
+          count: 42695
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 201715
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 48964
+        Monarch Ontologies:
+          count: 150
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 247943
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 337471
+        Mouse Phenome Database (Monarch version 202012):
+          count: 12999
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 3755
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1960
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 965
+        Rat Genome Database (Monarch version 202012):
+          count: 1083
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 68675
+        Simplified ZFIN (Monarch version 202012):
+          count: 69738
+        The Monarch Initiative (Monarch version 202012):
+          count: 1913
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 1120
+        WormBase (Monarch version 202012):
+          count: 196830
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 121960
+    biolink:has_sequence_location:
+      count: 1869976
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 418752
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 2825
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 303013
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 134623
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 17180
+        WormBase (Monarch version 202012):
+          count: 974712
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 18871
+    biolink:has_unit:
+      count: 5
+      provided_by:
+        Monarch Ontologies:
+          count: 5
+    biolink:has_variant_part:
+      count: 1260450
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 5701
+        ClinVar (Monarch version 202012):
+          count: 1137
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 6967
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 46566
+        Monarch Ontologies:
+          count: 6
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 645944
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 395010
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 13177
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 112
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 145830
+    biolink:homologous_to:
+      count: 12
+      provided_by:
+        Monarch Ontologies:
+          count: 12
+    biolink:in_taxon:
+      count: 3005
+      provided_by:
+        Monarch Ontologies:
+          count: 3005
+    biolink:increases_degradation_of:
+      count: 8
+      provided_by:
+        Monarch Ontologies:
+          count: 8
+    biolink:interacts_with:
+      count: 2131132
+      provided_by:
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 596975
+        Known and predicted protein-protein interactions (Monarch version 202012):
+          count: 1571731
+        Monarch Ontologies:
+          count: 734
+    biolink:inverseOf:
+      count: 151
+      provided_by:
+        ChEBI:
+          count: 1
+        Monarch Ontologies:
+          count: 151
+    biolink:located_in:
+      count: 560
+      provided_by:
+        Monarch Ontologies:
+          count: 560
+    biolink:location_of:
+      count: 10
+      provided_by:
+        Monarch Ontologies:
+          count: 10
+    biolink:model_of:
+      count: 37566
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 13206
+        FlyBase (Monarch version 202012):
+          count: 1655
+        Monarch Ontologies:
+          count: 1
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 8378
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 949
+        WormBase (Monarch version 202012):
+          count: 12100
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 1277
+    biolink:negatively_regulates:
+      count: 19
+      provided_by:
+        Monarch Ontologies:
+          count: 19
+    biolink:negatively_regulates_process_to_process:
+      count: 3140
+      provided_by:
+        Monarch Ontologies:
+          count: 3140
+    biolink:object:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:occurs_in:
+      count: 638
+      provided_by:
+        Monarch Ontologies:
+          count: 638
+    biolink:orthologous_to:
+      count: 1957846
+      provided_by:
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 1941137
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 16709
+    biolink:overlaps:
+      count: 2663
+      provided_by:
+        Monarch Ontologies:
+          count: 2663
+    biolink:part_of:
+      count: 1425339
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 313
+        ClinVar (Monarch version 202012):
+          count: 597529
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 23072
+        Gene Ontology (Monarch version 202012):
+          count: 695285
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 67301
+        Monarch Ontologies:
+          count: 41329
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 22
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 24
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 281
+        WormBase (Monarch version 202012):
+          count: 7
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 176
+    biolink:participates_in:
+      count: 663
+      provided_by:
+        Monarch Ontologies:
+          count: 663
+    biolink:positively_regulates:
+      count: 21
+      provided_by:
+        Monarch Ontologies:
+          count: 21
+    biolink:preceded_by:
+      count: 249
+      provided_by:
+        Monarch Ontologies:
+          count: 249
+    biolink:precedes:
+      count: 30
+      provided_by:
+        Monarch Ontologies:
+          count: 30
+    biolink:produced_by:
+      count: 59
+      provided_by:
+        Monarch Ontologies:
+          count: 59
+    biolink:produces:
+      count: 48
+      provided_by:
+        Monarch Ontologies:
+          count: 48
+    biolink:regulates:
+      count: 37
+      provided_by:
+        Monarch Ontologies:
+          count: 37
+    biolink:regulates_process_to_process:
+      count: 3765
+      provided_by:
+        Monarch Ontologies:
+          count: 3765
+    biolink:related_to:
+      count: 16049147
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 166294
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 94780
+        ChEBI:
+          count: 40612
+        ClinVar (Monarch version 202012):
+          count: 3736061
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 5336
+        Elements of Morphology (Monarch version 202012):
+          count: 1178
+        FlyBase (Monarch version 202012):
+          count: 201821
+        Gene Ontology (Monarch version 202012):
+          count: 10644
+        Gene Reviews (Monarch version 202012):
+          count: 31173
+        HGNC (Monarch version 202012):
+          count: 74410
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 10731
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 419083
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 10796
+        Monarch Ontologies:
+          count: 25328
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1985079
+        Mouse Phenome Database (Monarch version 202012):
+          count: 2915
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 185162
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 330774
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 5604842
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 6949
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 164470
+        Orphanet (Monarch version 202012):
+          count: 6924
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 1602168
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 57184
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 136
+        WormBase (Monarch version 202012):
+          count: 1120868
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 183009
+    biolink:same_as:
+      count: 2103170
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 1429
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 260964
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 7396
+        ENSEMBL (Monarch version 202012):
+          count: 106691
+        Elements of Morphology (Monarch version 202012):
+          count: 400
+        FlyBase (Monarch version 202012):
+          count: 19843
+        HGNC (Monarch version 202012):
+          count: 97910
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 23306
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 945315
+        Mouse Phenome Database (Monarch version 202012):
+          count: 2334
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 497293
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 17320
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 43135
+        Orphanet (Monarch version 202012):
+          count: 20149
+        Rat Genome Database (Monarch version 202012):
+          count: 222
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 5940
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 23
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 60
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 61639
+    biolink:subPropertyOf:
+      count: 878
+      provided_by:
+        Monarch Ontologies:
+          count: 878
+    biolink:subclass_of:
+      count: 1994985
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 3667
+        ChEBI:
+          count: 192215
+        ENSEMBL (Monarch version 202012):
+          count: 110804
+        Elements of Morphology (Monarch version 202012):
+          count: 400
+        FlyBase (Monarch version 202012):
+          count: 28228
+        Gene Reviews (Monarch version 202012):
+          count: 742
+        HGNC (Monarch version 202012):
+          count: 42340
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 6008
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 47363
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 8385
+        Monarch Ontologies:
+          count: 535660
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 75092
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 22817
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 2190
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 758612
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 9265
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 20492
+        Reactome (Monarch version 202012):
+          count: 31588
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 635
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 2221
+        WormBase (Monarch version 202012):
+          count: 100106
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 61296
+    biolink:temporally_related_to:
+      count: 6575
+      provided_by:
+        Monarch Ontologies:
+          count: 6298
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 277
+    biolink:treats:
+      count: 36137
+      provided_by:
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 36137
+    biolink:type:
+      count: 69
+      provided_by:
+        Monarch Ontologies:
+          count: 69
+    owl:onProperty:
+      count: 3166
+      provided_by:
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 2933
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 233
+    owl:someValuesFrom:
+      count: 3157
+      provided_by:
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 2924
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 233
+    owl:versionIRI:
+      count: 1
+      provided_by:
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 1
+    unknown:
+      count: 0
+  count_by_spo:
+    biolink:AnatomicalEntity-biolink:affects-biolink:AnatomicalEntity:
+      count: 8338
+      provided_by:
+        Monarch Ontologies:
+          count: 8338
+    biolink:AnatomicalEntity-biolink:capable_of-biolink:BiologicalProcess:
+      count: 124
+      provided_by:
+        Monarch Ontologies:
+          count: 124
+    biolink:AnatomicalEntity-biolink:capable_of-biolink:OntologyClass:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:AnatomicalEntity-biolink:causes-biolink:AnatomicalEntity:
+      count: 20
+      provided_by:
+        Monarch Ontologies:
+          count: 20
+    biolink:AnatomicalEntity-biolink:coexists_with-biolink:AnatomicalEntity:
+      count: 897
+      provided_by:
+        Monarch Ontologies:
+          count: 897
+    biolink:AnatomicalEntity-biolink:coexists_with-biolink:Cell:
+      count: 14
+      provided_by:
+        Monarch Ontologies:
+          count: 14
+    biolink:AnatomicalEntity-biolink:coexists_with-biolink:CellularComponent:
+      count: 3
+      provided_by:
+        Monarch Ontologies:
+          count: 3
+    biolink:AnatomicalEntity-biolink:derives_from-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:AnatomicalEntity-biolink:develops_from-biolink:AnatomicalEntity:
+      count: 1486
+      provided_by:
+        Monarch Ontologies:
+          count: 1486
+    biolink:AnatomicalEntity-biolink:develops_from-biolink:Cell:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:AnatomicalEntity-biolink:has_attribute-biolink:OntologyClass:
+      count: 92
+      provided_by:
+        Monarch Ontologies:
+          count: 92
+    biolink:AnatomicalEntity-biolink:has_input-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:AnatomicalEntity-biolink:has_output-biolink:BiologicalProcess:
+      count: 19
+      provided_by:
+        Monarch Ontologies:
+          count: 19
+    biolink:AnatomicalEntity-biolink:has_output-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:AnatomicalEntity-biolink:has_part-biolink:AnatomicalEntity:
+      count: 976
+      provided_by:
+        Monarch Ontologies:
+          count: 976
+    biolink:AnatomicalEntity-biolink:has_part-biolink:Cell:
+      count: 317
+      provided_by:
+        Monarch Ontologies:
+          count: 317
+    biolink:AnatomicalEntity-biolink:has_part-biolink:CellularComponent:
+      count: 66
+      provided_by:
+        Monarch Ontologies:
+          count: 66
+    biolink:AnatomicalEntity-biolink:has_part-biolink:ChemicalSubstance:
+      count: 32
+      provided_by:
+        Monarch Ontologies:
+          count: 32
+    biolink:AnatomicalEntity-biolink:has_part-biolink:MolecularActivity:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:AnatomicalEntity-biolink:has_part-biolink:OntologyClass:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:AnatomicalEntity-biolink:has_part-biolink:Protein:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:AnatomicalEntity-biolink:has_part-unknown:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:AnatomicalEntity-biolink:homologous_to-biolink:AnatomicalEntity:
+      count: 12
+      provided_by:
+        Monarch Ontologies:
+          count: 12
+    biolink:AnatomicalEntity-biolink:in_taxon-biolink:NamedThing:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:AnatomicalEntity-biolink:in_taxon-biolink:OrganismTaxon:
+      count: 747
+      provided_by:
+        Monarch Ontologies:
+          count: 747
+    biolink:AnatomicalEntity-biolink:located_in-biolink:AnatomicalEntity:
+      count: 539
+      provided_by:
+        Monarch Ontologies:
+          count: 539
+    biolink:AnatomicalEntity-biolink:located_in-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:AnatomicalEntity-biolink:location_of-biolink:AnatomicalEntity:
+      count: 10
+      provided_by:
+        Monarch Ontologies:
+          count: 10
+    biolink:AnatomicalEntity-biolink:occurs_in-biolink:BiologicalProcess:
+      count: 40
+      provided_by:
+        Monarch Ontologies:
+          count: 40
+    biolink:AnatomicalEntity-biolink:occurs_in-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:AnatomicalEntity-biolink:overlaps-biolink:AnatomicalEntity:
+      count: 730
+      provided_by:
+        Monarch Ontologies:
+          count: 730
+    biolink:AnatomicalEntity-biolink:part_of-biolink:AnatomicalEntity:
+      count: 10001
+      provided_by:
+        Monarch Ontologies:
+          count: 10001
+    biolink:AnatomicalEntity-biolink:part_of-biolink:BiologicalProcess:
+      count: 11
+      provided_by:
+        Monarch Ontologies:
+          count: 11
+    biolink:AnatomicalEntity-biolink:part_of-biolink:Cell:
+      count: 7
+      provided_by:
+        Monarch Ontologies:
+          count: 7
+    biolink:AnatomicalEntity-biolink:part_of-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:AnatomicalEntity-biolink:part_of-biolink:OrganismTaxon:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:AnatomicalEntity-biolink:participates_in-biolink:BiologicalProcess:
+      count: 128
+      provided_by:
+        Monarch Ontologies:
+          count: 128
+    biolink:AnatomicalEntity-biolink:participates_in-biolink:OntologyClass:
+      count: 9
+      provided_by:
+        Monarch Ontologies:
+          count: 9
+    biolink:AnatomicalEntity-biolink:preceded_by-biolink:AnatomicalEntity:
+      count: 28
+      provided_by:
+        Monarch Ontologies:
+          count: 28
+    biolink:AnatomicalEntity-biolink:precedes-biolink:AnatomicalEntity:
+      count: 3
+      provided_by:
+        Monarch Ontologies:
+          count: 3
+    biolink:AnatomicalEntity-biolink:produced_by-biolink:AnatomicalEntity:
+      count: 51
+      provided_by:
+        Monarch Ontologies:
+          count: 51
+    biolink:AnatomicalEntity-biolink:produced_by-biolink:Cell:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:AnatomicalEntity-biolink:produced_by-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:AnatomicalEntity-biolink:produces-biolink:AnatomicalEntity:
+      count: 22
+      provided_by:
+        Monarch Ontologies:
+          count: 22
+    biolink:AnatomicalEntity-biolink:produces-biolink:Protein:
+      count: 5
+      provided_by:
+        Monarch Ontologies:
+          count: 5
+    biolink:AnatomicalEntity-biolink:related_to-biolink:AnatomicalEntity:
+      count: 2393
+      provided_by:
+        Monarch Ontologies:
+          count: 2393
+    biolink:AnatomicalEntity-biolink:related_to-biolink:BiologicalProcess:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:AnatomicalEntity-biolink:related_to-biolink:Cell:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:AnatomicalEntity-biolink:related_to-biolink:OntologyClass:
+      count: 8
+      provided_by:
+        Monarch Ontologies:
+          count: 8
+    biolink:AnatomicalEntity-biolink:subclass_of-biolink:AnatomicalEntity:
+      count: 37694
+      provided_by:
+        Monarch Ontologies:
+          count: 37694
+    biolink:AnatomicalEntity-biolink:subclass_of-biolink:Cell:
+      count: 5
+      provided_by:
+        Monarch Ontologies:
+          count: 5
+    biolink:AnatomicalEntity-biolink:subclass_of-biolink:OntologyClass:
+      count: 2002
+      provided_by:
+        Monarch Ontologies:
+          count: 2002
+    biolink:AnatomicalEntity-biolink:temporally_related_to-biolink:AnatomicalEntity:
+      count: 63
+      provided_by:
+        Monarch Ontologies:
+          count: 63
+    biolink:AnatomicalEntity-biolink:temporally_related_to-biolink:BiologicalProcess:
+      count: 11
+      provided_by:
+        Monarch Ontologies:
+          count: 11
+    biolink:BiologicalProcess-biolink:affects-biolink:AnatomicalEntity:
+      count: 48
+      provided_by:
+        Monarch Ontologies:
+          count: 48
+    biolink:BiologicalProcess-biolink:affects-biolink:Cell:
+      count: 91
+      provided_by:
+        Monarch Ontologies:
+          count: 91
+    biolink:BiologicalProcess-biolink:affects-biolink:CellularComponent:
+      count: 211
+      provided_by:
+        Monarch Ontologies:
+          count: 211
+    biolink:BiologicalProcess-biolink:affects-biolink:OntologyClass:
+      count: 9
+      provided_by:
+        Monarch Ontologies:
+          count: 9
+    biolink:BiologicalProcess-biolink:affects_localization_of-biolink:CellularComponent:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:BiologicalProcess-biolink:affects_transport_of-biolink:AnatomicalEntity:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:BiologicalProcess-biolink:affects_transport_of-biolink:BiologicalProcess:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:BiologicalProcess-biolink:affects_transport_of-biolink:Cell:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:BiologicalProcess-biolink:affects_transport_of-biolink:CellularComponent:
+      count: 135
+      provided_by:
+        Monarch Ontologies:
+          count: 135
+    biolink:BiologicalProcess-biolink:affects_transport_of-biolink:ChemicalSubstance:
+      count: 886
+      provided_by:
+        Monarch Ontologies:
+          count: 886
+    biolink:BiologicalProcess-biolink:affects_transport_of-biolink:OntologyClass:
+      count: 33
+      provided_by:
+        Monarch Ontologies:
+          count: 33
+    biolink:BiologicalProcess-biolink:affects_transport_of-biolink:Protein:
+      count: 35
+      provided_by:
+        Monarch Ontologies:
+          count: 35
+    biolink:BiologicalProcess-biolink:affects_transport_of-biolink:SequenceFeature:
+      count: 9
+      provided_by:
+        Monarch Ontologies:
+          count: 9
+    biolink:BiologicalProcess-biolink:caused_by-biolink:AnatomicalEntity:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:BiologicalProcess-biolink:caused_by-biolink:Cell:
+      count: 36
+      provided_by:
+        Monarch Ontologies:
+          count: 36
+    biolink:BiologicalProcess-biolink:caused_by-biolink:CellularComponent:
+      count: 50
+      provided_by:
+        Monarch Ontologies:
+          count: 50
+    biolink:BiologicalProcess-biolink:caused_by-biolink:ChemicalSubstance:
+      count: 22
+      provided_by:
+        Monarch Ontologies:
+          count: 22
+    biolink:BiologicalProcess-biolink:caused_by-biolink:Protein:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:BiologicalProcess-biolink:caused_by-biolink:SequenceFeature:
+      count: 7
+      provided_by:
+        Monarch Ontologies:
+          count: 7
+    biolink:BiologicalProcess-biolink:causes-biolink:BiologicalProcess:
+      count: 9
+      provided_by:
+        Monarch Ontologies:
+          count: 9
+    biolink:BiologicalProcess-biolink:causes-biolink:Cell:
+      count: 302
+      provided_by:
+        Monarch Ontologies:
+          count: 302
+    biolink:BiologicalProcess-biolink:causes-biolink:OntologyClass:
+      count: 33
+      provided_by:
+        Monarch Ontologies:
+          count: 33
+    biolink:BiologicalProcess-biolink:has_input-biolink:AnatomicalEntity:
+      count: 8
+      provided_by:
+        Monarch Ontologies:
+          count: 8
+    biolink:BiologicalProcess-biolink:has_input-biolink:Cell:
+      count: 69
+      provided_by:
+        Monarch Ontologies:
+          count: 69
+    biolink:BiologicalProcess-biolink:has_input-biolink:CellularComponent:
+      count: 99
+      provided_by:
+        Monarch Ontologies:
+          count: 99
+    biolink:BiologicalProcess-biolink:has_input-biolink:ChemicalSubstance:
+      count: 1896
+      provided_by:
+        Monarch Ontologies:
+          count: 1896
+    biolink:BiologicalProcess-biolink:has_input-biolink:OntologyClass:
+      count: 67
+      provided_by:
+        Monarch Ontologies:
+          count: 67
+    biolink:BiologicalProcess-biolink:has_input-biolink:OrganismTaxon:
+      count: 19
+      provided_by:
+        Monarch Ontologies:
+          count: 19
+    biolink:BiologicalProcess-biolink:has_input-biolink:Protein:
+      count: 9
+      provided_by:
+        Monarch Ontologies:
+          count: 9
+    biolink:BiologicalProcess-biolink:has_input-biolink:SequenceFeature:
+      count: 33
+      provided_by:
+        Monarch Ontologies:
+          count: 33
+    biolink:BiologicalProcess-biolink:has_output-biolink:AnatomicalEntity:
+      count: 1162
+      provided_by:
+        Monarch Ontologies:
+          count: 1162
+    biolink:BiologicalProcess-biolink:has_output-biolink:Cell:
+      count: 138
+      provided_by:
+        Monarch Ontologies:
+          count: 138
+    biolink:BiologicalProcess-biolink:has_output-biolink:CellularComponent:
+      count: 355
+      provided_by:
+        Monarch Ontologies:
+          count: 355
+    biolink:BiologicalProcess-biolink:has_output-biolink:ChemicalSubstance:
+      count: 1391
+      provided_by:
+        Monarch Ontologies:
+          count: 1391
+    biolink:BiologicalProcess-biolink:has_output-biolink:OntologyClass:
+      count: 155
+      provided_by:
+        Monarch Ontologies:
+          count: 155
+    biolink:BiologicalProcess-biolink:has_output-biolink:Protein:
+      count: 7
+      provided_by:
+        Monarch Ontologies:
+          count: 7
+    biolink:BiologicalProcess-biolink:has_output-biolink:SequenceFeature:
+      count: 8
+      provided_by:
+        Monarch Ontologies:
+          count: 8
+    biolink:BiologicalProcess-biolink:has_part-biolink:BiologicalProcess:
+      count: 233
+      provided_by:
+        Monarch Ontologies:
+          count: 233
+    biolink:BiologicalProcess-biolink:has_part-biolink:MolecularActivity:
+      count: 174
+      provided_by:
+        Monarch Ontologies:
+          count: 174
+    biolink:BiologicalProcess-biolink:has_participant-biolink:AnatomicalEntity:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:BiologicalProcess-biolink:has_participant-biolink:BiologicalProcess:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:BiologicalProcess-biolink:has_participant-biolink:Cell:
+      count: 28
+      provided_by:
+        Monarch Ontologies:
+          count: 28
+    biolink:BiologicalProcess-biolink:has_participant-biolink:CellularComponent:
+      count: 59
+      provided_by:
+        Monarch Ontologies:
+          count: 59
+    biolink:BiologicalProcess-biolink:has_participant-biolink:ChemicalSubstance:
+      count: 1307
+      provided_by:
+        Monarch Ontologies:
+          count: 1307
+    biolink:BiologicalProcess-biolink:has_participant-biolink:MolecularActivity:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:BiologicalProcess-biolink:has_participant-biolink:OntologyClass:
+      count: 24
+      provided_by:
+        Monarch Ontologies:
+          count: 24
+    biolink:BiologicalProcess-biolink:has_participant-biolink:Protein:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:BiologicalProcess-biolink:has_participant-biolink:SequenceFeature:
+      count: 15
+      provided_by:
+        Monarch Ontologies:
+          count: 15
+    biolink:BiologicalProcess-biolink:has_phenotype-biolink:NamedThing:
+      count: 5
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 5
+    biolink:BiologicalProcess-biolink:has_phenotype-biolink:OntologyClass:
+      count: 5
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 5
+    biolink:BiologicalProcess-biolink:in_taxon-biolink:OrganismTaxon:
+      count: 434
+      provided_by:
+        Monarch Ontologies:
+          count: 434
+    biolink:BiologicalProcess-biolink:increases_degradation_of-biolink:CellularComponent:
+      count: 8
+      provided_by:
+        Monarch Ontologies:
+          count: 8
+    biolink:BiologicalProcess-biolink:negatively_regulates_process_to_process-biolink:BiologicalProcess:
+      count: 2804
+      provided_by:
+        Monarch Ontologies:
+          count: 2804
+    biolink:BiologicalProcess-biolink:negatively_regulates_process_to_process-biolink:MolecularActivity:
+      count: 279
+      provided_by:
+        Monarch Ontologies:
+          count: 279
+    biolink:BiologicalProcess-biolink:negatively_regulates_process_to_process-biolink:OntologyClass:
+      count: 12
+      provided_by:
+        Monarch Ontologies:
+          count: 12
+    biolink:BiologicalProcess-biolink:occurs_in-biolink:AnatomicalEntity:
+      count: 81
+      provided_by:
+        Monarch Ontologies:
+          count: 81
+    biolink:BiologicalProcess-biolink:occurs_in-biolink:Cell:
+      count: 146
+      provided_by:
+        Monarch Ontologies:
+          count: 146
+    biolink:BiologicalProcess-biolink:occurs_in-biolink:CellularComponent:
+      count: 291
+      provided_by:
+        Monarch Ontologies:
+          count: 291
+    biolink:BiologicalProcess-biolink:occurs_in-biolink:OntologyClass:
+      count: 10
+      provided_by:
+        Monarch Ontologies:
+          count: 10
+    biolink:BiologicalProcess-biolink:part_of-biolink:BiologicalProcess:
+      count: 5539
+      provided_by:
+        Monarch Ontologies:
+          count: 5539
+    biolink:BiologicalProcess-biolink:part_of-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:BiologicalProcess-biolink:participates_in-biolink:Cell:
+      count: 106
+      provided_by:
+        Monarch Ontologies:
+          count: 106
+    biolink:BiologicalProcess-biolink:participates_in-biolink:CellularComponent:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:BiologicalProcess-biolink:participates_in-biolink:ChemicalSubstance:
+      count: 89
+      provided_by:
+        Monarch Ontologies:
+          count: 89
+    biolink:BiologicalProcess-biolink:positively_regulates-biolink:Protein:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:BiologicalProcess-biolink:preceded_by-biolink:BiologicalProcess:
+      count: 8
+      provided_by:
+        Monarch Ontologies:
+          count: 8
+    biolink:BiologicalProcess-biolink:precedes-biolink:BiologicalProcess:
+      count: 7
+      provided_by:
+        Monarch Ontologies:
+          count: 7
+    biolink:BiologicalProcess-biolink:regulates-biolink:AnatomicalEntity:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:BiologicalProcess-biolink:regulates-biolink:BiologicalProcess:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:BiologicalProcess-biolink:regulates_process_to_process-biolink:BiologicalProcess:
+      count: 3288
+      provided_by:
+        Monarch Ontologies:
+          count: 3288
+    biolink:BiologicalProcess-biolink:regulates_process_to_process-biolink:MolecularActivity:
+      count: 310
+      provided_by:
+        Monarch Ontologies:
+          count: 310
+    biolink:BiologicalProcess-biolink:regulates_process_to_process-biolink:OntologyClass:
+      count: 82
+      provided_by:
+        Monarch Ontologies:
+          count: 82
+    biolink:BiologicalProcess-biolink:related_to-biolink:AnatomicalEntity:
+      count: 28
+      provided_by:
+        Monarch Ontologies:
+          count: 28
+    biolink:BiologicalProcess-biolink:related_to-biolink:BiologicalProcess:
+      count: 2798
+      provided_by:
+        Monarch Ontologies:
+          count: 2798
+    biolink:BiologicalProcess-biolink:related_to-biolink:Cell:
+      count: 114
+      provided_by:
+        Monarch Ontologies:
+          count: 114
+    biolink:BiologicalProcess-biolink:related_to-biolink:CellularComponent:
+      count: 1294
+      provided_by:
+        Monarch Ontologies:
+          count: 1294
+    biolink:BiologicalProcess-biolink:related_to-biolink:ChemicalSubstance:
+      count: 101
+      provided_by:
+        Monarch Ontologies:
+          count: 101
+    biolink:BiologicalProcess-biolink:related_to-biolink:MolecularActivity:
+      count: 278
+      provided_by:
+        Monarch Ontologies:
+          count: 278
+    biolink:BiologicalProcess-biolink:related_to-biolink:OntologyClass:
+      count: 44
+      provided_by:
+        Monarch Ontologies:
+          count: 44
+    biolink:BiologicalProcess-biolink:subclass_of-biolink:BiologicalProcess:
+      count: 75862
+      provided_by:
+        Monarch Ontologies:
+          count: 75862
+    biolink:BiologicalProcess-biolink:subclass_of-biolink:OntologyClass:
+      count: 1822
+      provided_by:
+        Monarch Ontologies:
+          count: 1822
+    biolink:BiologicalProcess-biolink:temporally_related_to-biolink:BiologicalProcess:
+      count: 57
+      provided_by:
+        Monarch Ontologies:
+          count: 57
+    biolink:BiologicalProcess-biolink:temporally_related_to-biolink:MolecularActivity:
+      count: 67
+      provided_by:
+        Monarch Ontologies:
+          count: 67
+    biolink:BiologicalProcess-biolink:temporally_related_to-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Cell-biolink:affects-biolink:Cell:
+      count: 943
+      provided_by:
+        Monarch Ontologies:
+          count: 943
+    biolink:Cell-biolink:capable_of-biolink:BiologicalProcess:
+      count: 353
+      provided_by:
+        Monarch Ontologies:
+          count: 353
+    biolink:Cell-biolink:capable_of-biolink:MolecularActivity:
+      count: 8
+      provided_by:
+        Monarch Ontologies:
+          count: 8
+    biolink:Cell-biolink:capable_of-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Cell-biolink:coexists_with-biolink:AnatomicalEntity:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:Cell-biolink:derives_from-biolink:Cell:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Cell-biolink:develops_from-biolink:Cell:
+      count: 411
+      provided_by:
+        Monarch Ontologies:
+          count: 411
+    biolink:Cell-biolink:has_part-biolink:Cell:
+      count: 26
+      provided_by:
+        Monarch Ontologies:
+          count: 26
+    biolink:Cell-biolink:has_part-biolink:CellularComponent:
+      count: 119
+      provided_by:
+        Monarch Ontologies:
+          count: 119
+    biolink:Cell-biolink:has_part-biolink:ChemicalSubstance:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Cell-biolink:has_part-biolink:OntologyClass:
+      count: 3
+      provided_by:
+        Monarch Ontologies:
+          count: 3
+    biolink:Cell-biolink:has_part-biolink:Protein:
+      count: 665
+      provided_by:
+        Monarch Ontologies:
+          count: 665
+    biolink:Cell-biolink:has_part-unknown:
+      count: 67
+      provided_by:
+        Monarch Ontologies:
+          count: 67
+    biolink:Cell-biolink:in_taxon-biolink:NamedThing:
+      count: 18
+      provided_by:
+        Monarch Ontologies:
+          count: 18
+    biolink:Cell-biolink:in_taxon-biolink:OrganismTaxon:
+      count: 15
+      provided_by:
+        Monarch Ontologies:
+          count: 15
+    biolink:Cell-biolink:interacts_with-biolink:Cell:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:Cell-biolink:located_in-biolink:AnatomicalEntity:
+      count: 12
+      provided_by:
+        Monarch Ontologies:
+          count: 12
+    biolink:Cell-biolink:overlaps-biolink:AnatomicalEntity:
+      count: 8
+      provided_by:
+        Monarch Ontologies:
+          count: 8
+    biolink:Cell-biolink:part_of-biolink:AnatomicalEntity:
+      count: 888
+      provided_by:
+        Monarch Ontologies:
+          count: 888
+    biolink:Cell-biolink:participates_in-biolink:BiologicalProcess:
+      count: 20
+      provided_by:
+        Monarch Ontologies:
+          count: 20
+    biolink:Cell-biolink:produces-biolink:AnatomicalEntity:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:Cell-biolink:produces-biolink:CellularComponent:
+      count: 15
+      provided_by:
+        Monarch Ontologies:
+          count: 15
+    biolink:Cell-biolink:related_to-biolink:AnatomicalEntity:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Cell-biolink:related_to-biolink:BiologicalProcess:
+      count: 47
+      provided_by:
+        Monarch Ontologies:
+          count: 47
+    biolink:Cell-biolink:related_to-biolink:CellularComponent:
+      count: 64
+      provided_by:
+        Monarch Ontologies:
+          count: 64
+    biolink:Cell-biolink:related_to-biolink:OntologyClass:
+      count: 79
+      provided_by:
+        Monarch Ontologies:
+          count: 79
+    biolink:Cell-biolink:related_to-biolink:Protein:
+      count: 574
+      provided_by:
+        Monarch Ontologies:
+          count: 574
+    biolink:Cell-biolink:related_to-unknown:
+      count: 12
+      provided_by:
+        Monarch Ontologies:
+          count: 12
+    biolink:Cell-biolink:subclass_of-biolink:AnatomicalEntity:
+      count: 238
+      provided_by:
+        Monarch Ontologies:
+          count: 238
+    biolink:Cell-biolink:subclass_of-biolink:Cell:
+      count: 5024
+      provided_by:
+        Monarch Ontologies:
+          count: 5024
+    biolink:Cell-biolink:subclass_of-biolink:CellularComponent:
+      count: 53
+      provided_by:
+        Monarch Ontologies:
+          count: 53
+    biolink:Cell-biolink:subclass_of-biolink:OntologyClass:
+      count: 254
+      provided_by:
+        Monarch Ontologies:
+          count: 254
+    biolink:CellularComponent-biolink:capable_of-biolink:BiologicalProcess:
+      count: 37
+      provided_by:
+        Monarch Ontologies:
+          count: 37
+    biolink:CellularComponent-biolink:capable_of-biolink:MolecularActivity:
+      count: 467
+      provided_by:
+        Monarch Ontologies:
+          count: 467
+    biolink:CellularComponent-biolink:coexists_with-biolink:CellularComponent:
+      count: 40
+      provided_by:
+        Monarch Ontologies:
+          count: 40
+    biolink:CellularComponent-biolink:has_part-biolink:CellularComponent:
+      count: 179
+      provided_by:
+        Monarch Ontologies:
+          count: 179
+    biolink:CellularComponent-biolink:has_part-biolink:ChemicalSubstance:
+      count: 16
+      provided_by:
+        Monarch Ontologies:
+          count: 16
+    biolink:CellularComponent-biolink:has_part-biolink:Protein:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:CellularComponent-biolink:has_phenotype-biolink:NamedThing:
+      count: 1
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 1
+    biolink:CellularComponent-biolink:has_phenotype-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 1
+    biolink:CellularComponent-biolink:in_taxon-biolink:OrganismTaxon:
+      count: 240
+      provided_by:
+        Monarch Ontologies:
+          count: 240
+    biolink:CellularComponent-biolink:overlaps-biolink:Cell:
+      count: 27
+      provided_by:
+        Monarch Ontologies:
+          count: 27
+    biolink:CellularComponent-biolink:overlaps-biolink:CellularComponent:
+      count: 24
+      provided_by:
+        Monarch Ontologies:
+          count: 24
+    biolink:CellularComponent-biolink:part_of-biolink:Cell:
+      count: 154
+      provided_by:
+        Monarch Ontologies:
+          count: 154
+    biolink:CellularComponent-biolink:part_of-biolink:CellularComponent:
+      count: 2196
+      provided_by:
+        Monarch Ontologies:
+          count: 2196
+    biolink:CellularComponent-biolink:part_of-biolink:OntologyClass:
+      count: 12
+      provided_by:
+        Monarch Ontologies:
+          count: 12
+    biolink:CellularComponent-biolink:participates_in-biolink:BiologicalProcess:
+      count: 293
+      provided_by:
+        Monarch Ontologies:
+          count: 293
+    biolink:CellularComponent-biolink:participates_in-biolink:MolecularActivity:
+      count: 8
+      provided_by:
+        Monarch Ontologies:
+          count: 8
+    biolink:CellularComponent-biolink:related_to-biolink:OntologyClass:
+      count: 5
+      provided_by:
+        Monarch Ontologies:
+          count: 5
+    biolink:CellularComponent-biolink:related_to-biolink:SequenceFeature:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:CellularComponent-biolink:subclass_of-biolink:AnatomicalEntity:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:CellularComponent-biolink:subclass_of-biolink:CellularComponent:
+      count: 5526
+      provided_by:
+        Monarch Ontologies:
+          count: 5526
+    biolink:CellularComponent-biolink:subclass_of-biolink:OntologyClass:
+      count: 310
+      provided_by:
+        Monarch Ontologies:
+          count: 310
+    biolink:CellularComponent-biolink:subclass_of-biolink:OrganismTaxon:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:ChemicalSubstance-biolink:actively_involved_in-biolink:NamedThing:
+      count: 88213
+      provided_by:
+        Reactome (Monarch version 202012):
+          count: 88213
+    biolink:ChemicalSubstance-biolink:has_attribute-biolink:ChemicalSubstance:
+      count: 39676
+      provided_by:
+        ChEBI:
+          count: 39674
+        Monarch Ontologies:
+          count: 10199
+    biolink:ChemicalSubstance-biolink:has_part-biolink:ChemicalSubstance:
+      count: 3795
+      provided_by:
+        ChEBI:
+          count: 3795
+        Monarch Ontologies:
+          count: 290
+    biolink:ChemicalSubstance-biolink:has_phenotype-biolink:NamedThing:
+      count: 9
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 9
+    biolink:ChemicalSubstance-biolink:has_phenotype-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 1
+    biolink:ChemicalSubstance-biolink:related_to-biolink:ChemicalSubstance:
+      count: 40622
+      provided_by:
+        ChEBI:
+          count: 40612
+        Monarch Ontologies:
+          count: 1575
+    biolink:ChemicalSubstance-biolink:subclass_of-biolink:ChemicalSubstance:
+      count: 192272
+      provided_by:
+        ChEBI:
+          count: 192215
+        Monarch Ontologies:
+          count: 36013
+    biolink:ChemicalSubstance-biolink:subclass_of-biolink:NamedThing:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:ChemicalSubstance-biolink:subclass_of-biolink:OntologyClass:
+      count: 33
+      provided_by:
+        Monarch Ontologies:
+          count: 33
+    biolink:ChemicalSubstance-biolink:subclass_of-biolink:Protein:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:ChemicalSubstance-biolink:subclass_of-biolink:SequenceFeature:
+      count: 25
+      provided_by:
+        Monarch Ontologies:
+          count: 25
+    biolink:Disease-biolink:caused_by-biolink:AnatomicalEntity:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Disease-biolink:caused_by-biolink:BiologicalProcess:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:Disease-biolink:caused_by-biolink:Cell:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:Disease-biolink:caused_by-biolink:CellularComponent:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Disease-biolink:caused_by-biolink:ChemicalSubstance:
+      count: 31
+      provided_by:
+        Monarch Ontologies:
+          count: 31
+    biolink:Disease-biolink:caused_by-biolink:OntologyClass:
+      count: 74
+      provided_by:
+        Monarch Ontologies:
+          count: 74
+    biolink:Disease-biolink:caused_by-biolink:OrganismTaxon:
+      count: 594
+      provided_by:
+        Monarch Ontologies:
+          count: 594
+    biolink:Disease-biolink:caused_by-unknown:
+      count: 19
+      provided_by:
+        Monarch Ontologies:
+          count: 19
+    biolink:Disease-biolink:causes-biolink:OntologyClass:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:Disease-biolink:correlated_with-biolink:Disease:
+      count: 306
+      provided_by:
+        Monarch Ontologies:
+          count: 306
+    biolink:Disease-biolink:correlated_with-biolink:PhenotypicFeature:
+      count: 755
+      provided_by:
+        Monarch Ontologies:
+          count: 755
+    biolink:Disease-biolink:correlated_with-unknown:
+      count: 35
+      provided_by:
+        Monarch Ontologies:
+          count: 35
+    biolink:Disease-biolink:disrupts-biolink:AnatomicalEntity:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:Disease-biolink:disrupts-biolink:BiologicalProcess:
+      count: 85
+      provided_by:
+        Monarch Ontologies:
+          count: 85
+    biolink:Disease-biolink:disrupts-biolink:Cell:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:Disease-biolink:disrupts-biolink:MolecularActivity:
+      count: 10
+      provided_by:
+        Monarch Ontologies:
+          count: 10
+    biolink:Disease-biolink:disrupts-biolink:OntologyClass:
+      count: 10
+      provided_by:
+        Monarch Ontologies:
+          count: 10
+    biolink:Disease-biolink:disrupts-unknown:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Disease-biolink:has_participant-biolink:BiologicalProcess:
+      count: 209
+      provided_by:
+        Monarch Ontologies:
+          count: 209
+    biolink:Disease-biolink:has_participant-biolink:CellularComponent:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:Disease-biolink:has_participant-biolink:MolecularActivity:
+      count: 99
+      provided_by:
+        Monarch Ontologies:
+          count: 99
+    biolink:Disease-biolink:has_participant-biolink:OntologyClass:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:Disease-biolink:has_phenotype-biolink:Disease:
+      count: 80
+      provided_by:
+        Monarch Ontologies:
+          count: 80
+    biolink:Disease-biolink:has_phenotype-biolink:PhenotypicFeature:
+      count: 70
+      provided_by:
+        Monarch Ontologies:
+          count: 70
+    biolink:Disease-biolink:in_taxon-biolink:OrganismTaxon:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Disease-biolink:related_to-biolink:AnatomicalEntity:
+      count: 3043
+      provided_by:
+        Monarch Ontologies:
+          count: 3043
+    biolink:Disease-biolink:related_to-biolink:BiologicalProcess:
+      count: 16
+      provided_by:
+        Monarch Ontologies:
+          count: 16
+    biolink:Disease-biolink:related_to-biolink:Cell:
+      count: 122
+      provided_by:
+        Monarch Ontologies:
+          count: 122
+    biolink:Disease-biolink:related_to-biolink:CellularComponent:
+      count: 41
+      provided_by:
+        Monarch Ontologies:
+          count: 41
+    biolink:Disease-biolink:related_to-biolink:ChemicalSubstance:
+      count: 15
+      provided_by:
+        Monarch Ontologies:
+          count: 15
+    biolink:Disease-biolink:related_to-biolink:Disease:
+      count: 1361
+      provided_by:
+        Monarch Ontologies:
+          count: 1361
+    biolink:Disease-biolink:related_to-biolink:Gene:
+      count: 118
+      provided_by:
+        Monarch Ontologies:
+          count: 118
+    biolink:Disease-biolink:related_to-biolink:NamedThing:
+      count: 12
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 10
+    biolink:Disease-biolink:related_to-biolink:OntologyClass:
+      count: 4623
+      provided_by:
+        Monarch Ontologies:
+          count: 4623
+    biolink:Disease-biolink:related_to-biolink:OrganismTaxon:
+      count: 73
+      provided_by:
+        Monarch Ontologies:
+          count: 73
+    biolink:Disease-biolink:related_to-biolink:PhenotypicFeature:
+      count: 540
+      provided_by:
+        Monarch Ontologies:
+          count: 540
+    biolink:Disease-biolink:related_to-biolink:Protein:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:Disease-biolink:related_to-biolink:SequenceFeature:
+      count: 21
+      provided_by:
+        Monarch Ontologies:
+          count: 21
+    biolink:Disease-biolink:related_to-unknown:
+      count: 28
+      provided_by:
+        Monarch Ontologies:
+          count: 28
+    biolink:Disease-biolink:same_as-biolink:NamedThing:
+      count: 897
+      provided_by:
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 897
+    biolink:Disease-biolink:subclass_of-biolink:Disease:
+      count: 40982
+      provided_by:
+        Monarch Ontologies:
+          count: 40980
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 2
+    biolink:Disease-biolink:subclass_of-biolink:NamedThing:
+      count: 29
+      provided_by:
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 29
+    biolink:Disease-biolink:subclass_of-biolink:OntologyClass:
+      count: 2125
+      provided_by:
+        Monarch Ontologies:
+          count: 2125
+    biolink:Disease-biolink:subclass_of-biolink:PhenotypicFeature:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Disease-biolink:subclass_of-unknown:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Gene-biolink:in_taxon-biolink:NamedThing:
+      count: 226
+      provided_by:
+        Monarch Ontologies:
+          count: 226
+    biolink:Gene-biolink:same_as-biolink:NamedThing:
+      count: 22393
+      provided_by:
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 22393
+    biolink:Gene-biolink:subclass_of-biolink:NamedThing:
+      count: 226
+      provided_by:
+        Monarch Ontologies:
+          count: 226
+    biolink:Gene-biolink:subclass_of-biolink:OntologyClass:
+      count: 224
+      provided_by:
+        Monarch Ontologies:
+          count: 224
+    biolink:Gene-biolink:subclass_of-biolink:SequenceFeature:
+      count: 22393
+      provided_by:
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 22393
+    biolink:GenomicEntity-biolink:related_to-biolink:OntologyClass:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:GenomicEntity-biolink:subclass_of-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:InformationContentEntity-biolink:related_to-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:InformationContentEntity-biolink:subclass_of-biolink:OntologyClass:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:MolecularActivity-biolink:affects_transport_of-biolink:BiologicalProcess:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:MolecularActivity-biolink:affects_transport_of-biolink:ChemicalSubstance:
+      count: 896
+      provided_by:
+        Monarch Ontologies:
+          count: 896
+    biolink:MolecularActivity-biolink:affects_transport_of-biolink:OntologyClass:
+      count: 10
+      provided_by:
+        Monarch Ontologies:
+          count: 10
+    biolink:MolecularActivity-biolink:affects_transport_of-biolink:Protein:
+      count: 5
+      provided_by:
+        Monarch Ontologies:
+          count: 5
+    biolink:MolecularActivity-biolink:has_input-biolink:CellularComponent:
+      count: 99
+      provided_by:
+        Monarch Ontologies:
+          count: 99
+    biolink:MolecularActivity-biolink:has_input-biolink:ChemicalSubstance:
+      count: 534
+      provided_by:
+        Monarch Ontologies:
+          count: 534
+    biolink:MolecularActivity-biolink:has_input-biolink:MolecularActivity:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:MolecularActivity-biolink:has_input-biolink:OntologyClass:
+      count: 17
+      provided_by:
+        Monarch Ontologies:
+          count: 17
+    biolink:MolecularActivity-biolink:has_input-biolink:Protein:
+      count: 293
+      provided_by:
+        Monarch Ontologies:
+          count: 293
+    biolink:MolecularActivity-biolink:has_input-biolink:SequenceFeature:
+      count: 7
+      provided_by:
+        Monarch Ontologies:
+          count: 7
+    biolink:MolecularActivity-biolink:has_output-biolink:ChemicalSubstance:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:MolecularActivity-biolink:has_part-biolink:MolecularActivity:
+      count: 221
+      provided_by:
+        Monarch Ontologies:
+          count: 221
+    biolink:MolecularActivity-biolink:has_participant-biolink:ChemicalSubstance:
+      count: 3
+      provided_by:
+        Monarch Ontologies:
+          count: 3
+    biolink:MolecularActivity-biolink:has_participant-biolink:Protein:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:MolecularActivity-biolink:has_phenotype-biolink:NamedThing:
+      count: 5
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 5
+    biolink:MolecularActivity-biolink:has_phenotype-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 1
+    biolink:MolecularActivity-biolink:in_taxon-biolink:OrganismTaxon:
+      count: 38
+      provided_by:
+        Monarch Ontologies:
+          count: 38
+    biolink:MolecularActivity-biolink:negatively_regulates-biolink:MolecularActivity:
+      count: 19
+      provided_by:
+        Monarch Ontologies:
+          count: 19
+    biolink:MolecularActivity-biolink:negatively_regulates_process_to_process-biolink:MolecularActivity:
+      count: 42
+      provided_by:
+        Monarch Ontologies:
+          count: 42
+    biolink:MolecularActivity-biolink:occurs_in-biolink:AnatomicalEntity:
+      count: 9
+      provided_by:
+        Monarch Ontologies:
+          count: 9
+    biolink:MolecularActivity-biolink:occurs_in-biolink:CellularComponent:
+      count: 42
+      provided_by:
+        Monarch Ontologies:
+          count: 42
+    biolink:MolecularActivity-biolink:part_of-biolink:BiologicalProcess:
+      count: 1093
+      provided_by:
+        Monarch Ontologies:
+          count: 1093
+    biolink:MolecularActivity-biolink:part_of-biolink:MolecularActivity:
+      count: 11
+      provided_by:
+        Monarch Ontologies:
+          count: 11
+    biolink:MolecularActivity-biolink:positively_regulates-biolink:MolecularActivity:
+      count: 19
+      provided_by:
+        Monarch Ontologies:
+          count: 19
+    biolink:MolecularActivity-biolink:positively_regulates-biolink:Protein:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:MolecularActivity-biolink:regulates-biolink:MolecularActivity:
+      count: 30
+      provided_by:
+        Monarch Ontologies:
+          count: 30
+    biolink:MolecularActivity-biolink:regulates_process_to_process-biolink:BiologicalProcess:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:MolecularActivity-biolink:regulates_process_to_process-biolink:MolecularActivity:
+      count: 30
+      provided_by:
+        Monarch Ontologies:
+          count: 30
+    biolink:MolecularActivity-biolink:related_to-biolink:CellularComponent:
+      count: 45
+      provided_by:
+        Monarch Ontologies:
+          count: 45
+    biolink:MolecularActivity-biolink:related_to-biolink:MolecularActivity:
+      count: 27
+      provided_by:
+        Monarch Ontologies:
+          count: 27
+    biolink:MolecularActivity-biolink:subclass_of-biolink:BiologicalProcess:
+      count: 3
+      provided_by:
+        Monarch Ontologies:
+          count: 3
+    biolink:MolecularActivity-biolink:subclass_of-biolink:MolecularActivity:
+      count: 15111
+      provided_by:
+        Monarch Ontologies:
+          count: 15111
+    biolink:MolecularActivity-biolink:subclass_of-biolink:OntologyClass:
+      count: 1256
+      provided_by:
+        Monarch Ontologies:
+          count: 1256
+    biolink:NamedThing-biolink:actively_involved_in-biolink:BiologicalProcess:
+      count: 1164263
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 1164263
+    biolink:NamedThing-biolink:actively_involved_in-biolink:NamedThing:
+      count: 1012199
+      provided_by:
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 84200
+        Reactome (Monarch version 202012):
+          count: 927999
+    biolink:NamedThing-biolink:actively_involved_in-biolink:OntologyClass:
+      count: 54
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 54
+    biolink:NamedThing-biolink:biomarker_for-biolink:Disease:
+      count: 5
+      provided_by:
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 4
+        Orphanet (Monarch version 202012):
+          count: 1
+    biolink:NamedThing-biolink:biomarker_for-biolink:DiseaseOrPhenotypicFeature:
+      count: 480
+      provided_by:
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 480
+    biolink:NamedThing-biolink:biomarker_for-biolink:NamedThing:
+      count: 631207
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 566847
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 64110
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 198
+        Orphanet (Monarch version 202012):
+          count: 52
+    biolink:NamedThing-biolink:biomarker_for-biolink:OntologyClass:
+      count: 366
+      provided_by:
+        Orphanet (Monarch version 202012):
+          count: 366
+    biolink:NamedThing-biolink:biomarker_for-biolink:PhenotypicFeature:
+      count: 19284
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 19284
+    biolink:NamedThing-biolink:contributes_to-biolink:BiologicalProcess:
+      count: 5543
+      provided_by:
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 5543
+    biolink:NamedThing-biolink:contributes_to-biolink:Disease:
+      count: 273
+      provided_by:
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 244
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 29
+    biolink:NamedThing-biolink:contributes_to-biolink:NamedThing:
+      count: 138671
+      provided_by:
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 133561
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 5106
+        Orphanet (Monarch version 202012):
+          count: 4
+    biolink:NamedThing-biolink:contributes_to-biolink:OntologyClass:
+      count: 1635
+      provided_by:
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 1175
+        Orphanet (Monarch version 202012):
+          count: 460
+    biolink:NamedThing-biolink:contributes_to-biolink:PhenotypicFeature:
+      count: 53651
+      provided_by:
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 53651
+    biolink:NamedThing-biolink:derives_from-biolink:Cell:
+      count: 30568
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 30568
+    biolink:NamedThing-biolink:derives_from-biolink:NamedThing:
+      count: 30805
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 30805
+    biolink:NamedThing-biolink:derives_from-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 1
+    biolink:NamedThing-biolink:enables-biolink:MolecularActivity:
+      count: 766334
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 766334
+    biolink:NamedThing-biolink:enables-biolink:OntologyClass:
+      count: 154
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 154
+    biolink:NamedThing-biolink:expressed_in-biolink:AnatomicalEntity:
+      count: 2422321
+      provided_by:
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 2422321
+    biolink:NamedThing-biolink:expressed_in-biolink:Cell:
+      count: 67683
+      provided_by:
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 67683
+    biolink:NamedThing-biolink:expressed_in-biolink:NamedThing:
+      count: 7511
+      provided_by:
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 7511
+    biolink:NamedThing-biolink:expressed_in-biolink:OntologyClass:
+      count: 112250
+      provided_by:
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 112250
+    biolink:NamedThing-biolink:gene_associated_with_condition-biolink:Disease:
+      count: 22886
+      provided_by:
+        ClinVar (Monarch version 202012):
+          count: 22886
+    biolink:NamedThing-biolink:gene_associated_with_condition-biolink:NamedThing:
+      count: 179657
+      provided_by:
+        ClinVar (Monarch version 202012):
+          count: 179657
+    biolink:NamedThing-biolink:gene_associated_with_condition-biolink:OntologyClass:
+      count: 4562
+      provided_by:
+        ClinVar (Monarch version 202012):
+          count: 4562
+    biolink:NamedThing-biolink:genetically_interacts_with-biolink:NamedThing:
+      count: 26202
+      provided_by:
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 26202
+    biolink:NamedThing-biolink:has_attribute-biolink:SequenceFeature:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:NamedThing-biolink:has_gene_product-biolink:NamedThing:
+      count: 369441
+      provided_by:
+        ENSEMBL (Monarch version 202012):
+          count: 345239
+        Gene Ontology (Monarch version 202012):
+          count: 11398
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 12847
+    biolink:NamedThing-biolink:has_output-biolink:NamedThing:
+      count: 136147
+      provided_by:
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 136147
+    biolink:NamedThing-biolink:has_part-biolink:Gene:
+      count: 1
+      provided_by:
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 1
+    biolink:NamedThing-biolink:has_part-biolink:NamedThing:
+      count: 512011
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 313
+        ClinVar (Monarch version 202012):
+          count: 50
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 30687
+        HGNC (Monarch version 202012):
+          count: 42099
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 67138
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 22
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 17204
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 318424
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 26662
+        WormBase (Monarch version 202012):
+          count: 7
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 9405
+    biolink:NamedThing-biolink:has_phenotype-biolink:AnatomicalEntity:
+      count: 18
+      provided_by:
+        The Monarch Initiative (Monarch version 202012):
+          count: 18
+    biolink:NamedThing-biolink:has_phenotype-biolink:Cell:
+      count: 3
+      provided_by:
+        The Monarch Initiative (Monarch version 202012):
+          count: 3
+    biolink:NamedThing-biolink:has_phenotype-biolink:Disease:
+      count: 31
+      provided_by:
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 31
+    biolink:NamedThing-biolink:has_phenotype-biolink:NamedThing:
+      count: 98114
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 13206
+        FlyBase (Monarch version 202012):
+          count: 88
+        Gene Ontology (Monarch version 202012):
+          count: 9739
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 3755
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1687
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 934
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 68675
+        The Monarch Initiative (Monarch version 202012):
+          count: 30
+    biolink:NamedThing-biolink:has_phenotype-biolink:OntologyClass:
+      count: 1221817
+      provided_by:
+        FlyBase (Monarch version 202012):
+          count: 149987
+        Gene Ontology (Monarch version 202012):
+          count: 32928
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 48964
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 247943
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 337471
+        Mouse Phenome Database (Monarch version 202012):
+          count: 12999
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 273
+        Rat Genome Database (Monarch version 202012):
+          count: 1083
+        Simplified ZFIN (Monarch version 202012):
+          count: 69738
+        The Monarch Initiative (Monarch version 202012):
+          count: 1603
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 38
+        WormBase (Monarch version 202012):
+          count: 196830
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 121960
+    biolink:NamedThing-biolink:has_phenotype-biolink:PhenotypicFeature:
+      count: 103276
+      provided_by:
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 101935
+        The Monarch Initiative (Monarch version 202012):
+          count: 259
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 1082
+    biolink:NamedThing-biolink:has_sequence_location-biolink:NamedThing:
+      count: 1869976
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 418752
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 2825
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 303013
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 134623
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 17180
+        WormBase (Monarch version 202012):
+          count: 974712
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 18871
+    biolink:NamedThing-biolink:has_variant_part-biolink:NamedThing:
+      count: 1260444
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 5701
+        ClinVar (Monarch version 202012):
+          count: 1137
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 6967
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 46566
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 645944
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 395010
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 13177
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 112
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 145830
+    biolink:NamedThing-biolink:in_taxon-biolink:NamedThing:
+      count: 225
+      provided_by:
+        Monarch Ontologies:
+          count: 225
+    biolink:NamedThing-biolink:interacts_with-biolink:NamedThing:
+      count: 2130398
+      provided_by:
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 596975
+        Known and predicted protein-protein interactions (Monarch version 202012):
+          count: 1571731
+    biolink:NamedThing-biolink:model_of-biolink:Disease:
+      count: 60
+      provided_by:
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 60
+    biolink:NamedThing-biolink:model_of-biolink:NamedThing:
+      count: 16236
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 13206
+        FlyBase (Monarch version 202012):
+          count: 80
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 56
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 889
+        WormBase (Monarch version 202012):
+          count: 1966
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 39
+    biolink:NamedThing-biolink:model_of-biolink:OntologyClass:
+      count: 21269
+      provided_by:
+        FlyBase (Monarch version 202012):
+          count: 1575
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 8322
+        WormBase (Monarch version 202012):
+          count: 10134
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 1238
+    biolink:NamedThing-biolink:orthologous_to-biolink:Gene:
+      count: 111
+      provided_by:
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 111
+    biolink:NamedThing-biolink:orthologous_to-biolink:NamedThing:
+      count: 1957735
+      provided_by:
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 1941026
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 16709
+    biolink:NamedThing-biolink:part_of-biolink:CellularComponent:
+      count: 695183
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 695183
+    biolink:NamedThing-biolink:part_of-biolink:NamedThing:
+      count: 665653
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 313
+        ClinVar (Monarch version 202012):
+          count: 597529
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 67301
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 22
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 24
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 281
+        WormBase (Monarch version 202012):
+          count: 7
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 176
+    biolink:NamedThing-biolink:part_of-biolink:OntologyClass:
+      count: 102
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 102
+    biolink:NamedThing-biolink:part_of-biolink:PopulationOfIndividualOrganisms:
+      count: 23072
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 23072
+    biolink:NamedThing-biolink:related_to-biolink:Disease:
+      count: 38991
+      provided_by:
+        ClinVar (Monarch version 202012):
+          count: 35111
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 3840
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 9
+        Orphanet (Monarch version 202012):
+          count: 31
+    biolink:NamedThing-biolink:related_to-biolink:Gene:
+      count: 13
+      provided_by:
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 13
+    biolink:NamedThing-biolink:related_to-biolink:NamedThing:
+      count: 15731616
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 166294
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 94780
+        ClinVar (Monarch version 202012):
+          count: 3697223
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 4791
+        Elements of Morphology (Monarch version 202012):
+          count: 1178
+        FlyBase (Monarch version 202012):
+          count: 201821
+        Gene Ontology (Monarch version 202012):
+          count: 10644
+        Gene Reviews (Monarch version 202012):
+          count: 31173
+        HGNC (Monarch version 202012):
+          count: 74410
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 404775
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 6956
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1876641
+        Mouse Phenome Database (Monarch version 202012):
+          count: 2915
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 139242
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 330774
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 5604842
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 4107
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 164451
+        Orphanet (Monarch version 202012):
+          count: 225
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 1602155
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 57184
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 136
+        WormBase (Monarch version 202012):
+          count: 1120868
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 162046
+    biolink:NamedThing-biolink:related_to-biolink:OntologyClass:
+      count: 201602
+      provided_by:
+        ClinVar (Monarch version 202012):
+          count: 3727
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 545
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 14308
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 108438
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 45920
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1033
+        Orphanet (Monarch version 202012):
+          count: 6668
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 20963
+    biolink:NamedThing-biolink:related_to-biolink:PhenotypicFeature:
+      count: 10692
+      provided_by:
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 10664
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 28
+    biolink:NamedThing-biolink:related_to-biolink:PopulationOfIndividualOrganisms:
+      count: 1781
+      provided_by:
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1781
+    biolink:NamedThing-biolink:related_to-biolink:SequenceFeature:
+      count: 7
+      provided_by:
+        Monarch Ontologies:
+          count: 7
+    biolink:NamedThing-biolink:same_as-biolink:Gene:
+      count: 8049
+      provided_by:
+        Orphanet (Monarch version 202012):
+          count: 8049
+    biolink:NamedThing-biolink:same_as-biolink:NamedThing:
+      count: 2069958
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 1
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 260964
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 7396
+        ENSEMBL (Monarch version 202012):
+          count: 106691
+        FlyBase (Monarch version 202012):
+          count: 19843
+        HGNC (Monarch version 202012):
+          count: 97910
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 16
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 945315
+        Mouse Phenome Database (Monarch version 202012):
+          count: 2334
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 497293
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 17320
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 43135
+        Orphanet (Monarch version 202012):
+          count: 12100
+        Rat Genome Database (Monarch version 202012):
+          count: 222
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 5940
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 23
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 60
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 61594
+    biolink:NamedThing-biolink:same_as-biolink:OntologyClass:
+      count: 1473
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 1428
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 45
+    biolink:NamedThing-biolink:same_as-biolink:PhenotypicFeature:
+      count: 400
+      provided_by:
+        Elements of Morphology (Monarch version 202012):
+          count: 400
+    biolink:NamedThing-biolink:subPropertyOf-biolink:OntologyClass:
+      count: 5
+      provided_by:
+        Monarch Ontologies:
+          count: 5
+    biolink:NamedThing-biolink:subclass_of-biolink:BiologicalProcess:
+      count: 16335
+      provided_by:
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 541
+        Reactome (Monarch version 202012):
+          count: 15794
+    biolink:NamedThing-biolink:subclass_of-biolink:Disease:
+      count: 2553
+      provided_by:
+        Gene Reviews (Monarch version 202012):
+          count: 742
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1811
+    biolink:NamedThing-biolink:subclass_of-biolink:GenomicEntity:
+      count: 225
+      provided_by:
+        HGNC (Monarch version 202012):
+          count: 224
+        Monarch Ontologies:
+          count: 1
+    biolink:NamedThing-biolink:subclass_of-biolink:NamedThing:
+      count: 1008265
+      provided_by:
+        ENSEMBL (Monarch version 202012):
+          count: 109381
+        Elements of Morphology (Monarch version 202012):
+          count: 400
+        HGNC (Monarch version 202012):
+          count: 34110
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 23872
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 6205
+        Monarch Ontologies:
+          count: 211
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 15869
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 758612
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 3932
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 4045
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 291
+        WormBase (Monarch version 202012):
+          count: 31841
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 20151
+    biolink:NamedThing-biolink:subclass_of-biolink:OntologyClass:
+      count: 2843
+      provided_by:
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 344
+        Monarch Ontologies:
+          count: 203
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 347
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 32
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 635
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 1526
+    biolink:NamedThing-biolink:subclass_of-biolink:OrganismTaxon:
+      count: 23
+      provided_by:
+        Monarch Ontologies:
+          count: 23
+    biolink:NamedThing-biolink:subclass_of-biolink:Pathway:
+      count: 16335
+      provided_by:
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 541
+        Reactome (Monarch version 202012):
+          count: 15794
+    biolink:NamedThing-biolink:subclass_of-biolink:SequenceFeature:
+      count: 229176
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 3667
+        ENSEMBL (Monarch version 202012):
+          count: 1423
+        FlyBase (Monarch version 202012):
+          count: 28228
+        HGNC (Monarch version 202012):
+          count: 8006
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 6008
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 16
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 1836
+        Monarch Ontologies:
+          count: 6
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 59223
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 22817
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 16418
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 404
+        WormBase (Monarch version 202012):
+          count: 68265
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 41145
+    biolink:NamedThing-biolink:temporally_related_to-biolink:NamedThing:
+      count: 277
+      provided_by:
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 277
+    biolink:NamedThing-biolink:treats-biolink:DiseaseOrPhenotypicFeature:
+      count: 292
+      provided_by:
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 292
+    biolink:NamedThing-biolink:treats-biolink:NamedThing:
+      count: 35845
+      provided_by:
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 35845
+    biolink:NamedThing-owl:onProperty-biolink:NamedThing:
+      count: 976
+      provided_by:
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 743
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 233
+    biolink:NamedThing-owl:onProperty-biolink:OntologyClass:
+      count: 2190
+      provided_by:
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 2190
+    biolink:NamedThing-owl:someValuesFrom-biolink:NamedThing:
+      count: 3001
+      provided_by:
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 2922
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 79
+    biolink:NamedThing-owl:someValuesFrom-biolink:OrganismTaxon:
+      count: 155
+      provided_by:
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 154
+    biolink:NamedThing-owl:someValuesFrom-biolink:SequenceFeature:
+      count: 1
+      provided_by:
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 1
+    biolink:NamedThing-owl:versionIRI-biolink:NamedThing:
+      count: 1
+      provided_by:
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 1
+    biolink:OntologyClass-biolink:actively_involved_in-biolink:AnatomicalEntity:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:OntologyClass-biolink:actively_involved_in-biolink:BiologicalProcess:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:actively_involved_in-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:affects-biolink:BiologicalProcess:
+      count: 4891
+      provided_by:
+        Monarch Ontologies:
+          count: 4891
+    biolink:OntologyClass-biolink:affects-biolink:CellularComponent:
+      count: 604
+      provided_by:
+        Monarch Ontologies:
+          count: 604
+    biolink:OntologyClass-biolink:affects-biolink:MolecularActivity:
+      count: 405
+      provided_by:
+        Monarch Ontologies:
+          count: 405
+    biolink:OntologyClass-biolink:affects-biolink:OntologyClass:
+      count: 9037
+      provided_by:
+        Monarch Ontologies:
+          count: 9037
+    biolink:OntologyClass-biolink:capable_of-biolink:BiologicalProcess:
+      count: 428
+      provided_by:
+        Monarch Ontologies:
+          count: 428
+    biolink:OntologyClass-biolink:capable_of-biolink:OntologyClass:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:OntologyClass-biolink:caused_by-biolink:NamedThing:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:OntologyClass-biolink:caused_by-biolink:OntologyClass:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:OntologyClass-biolink:causes-biolink:AnatomicalEntity:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:causes-biolink:BiologicalProcess:
+      count: 12
+      provided_by:
+        Monarch Ontologies:
+          count: 12
+    biolink:OntologyClass-biolink:causes-biolink:OntologyClass:
+      count: 25
+      provided_by:
+        Monarch Ontologies:
+          count: 25
+    biolink:OntologyClass-biolink:causes-biolink:OrganismTaxon:
+      count: 3
+      provided_by:
+        Monarch Ontologies:
+          count: 3
+    biolink:OntologyClass-biolink:coexists_with-biolink:OntologyClass:
+      count: 57
+      provided_by:
+        Monarch Ontologies:
+          count: 57
+    biolink:OntologyClass-biolink:derives_from-biolink:AnatomicalEntity:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:OntologyClass-biolink:derives_from-biolink:Cell:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:OntologyClass-biolink:derives_from-biolink:ChemicalSubstance:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:derives_from-biolink:OntologyClass:
+      count: 38
+      provided_by:
+        Monarch Ontologies:
+          count: 38
+    biolink:OntologyClass-biolink:develops_from-biolink:OntologyClass:
+      count: 1917
+      provided_by:
+        Monarch Ontologies:
+          count: 1917
+    biolink:OntologyClass-biolink:expresses-biolink:OntologyClass:
+      count: 198
+      provided_by:
+        Monarch Ontologies:
+          count: 198
+    biolink:OntologyClass-biolink:has_attribute-biolink:ChemicalSubstance:
+      count: 5
+      provided_by:
+        Monarch Ontologies:
+          count: 5
+    biolink:OntologyClass-biolink:has_attribute-biolink:OntologyClass:
+      count: 56
+      provided_by:
+        Monarch Ontologies:
+          count: 56
+    biolink:OntologyClass-biolink:has_attribute-unknown:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:has_input-biolink:OntologyClass:
+      count: 11
+      provided_by:
+        Monarch Ontologies:
+          count: 11
+    biolink:OntologyClass-biolink:has_output-biolink:BiologicalProcess:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:has_output-biolink:Cell:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:has_output-biolink:ChemicalSubstance:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:OntologyClass-biolink:has_output-biolink:OntologyClass:
+      count: 78
+      provided_by:
+        Monarch Ontologies:
+          count: 78
+    biolink:OntologyClass-biolink:has_part-biolink:Cell:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:has_part-biolink:ChemicalSubstance:
+      count: 16
+      provided_by:
+        Monarch Ontologies:
+          count: 16
+    biolink:OntologyClass-biolink:has_part-biolink:GenomicEntity:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:has_part-biolink:NamedThing:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:OntologyClass-biolink:has_part-biolink:OntologyClass:
+      count: 214
+      provided_by:
+        Monarch Ontologies:
+          count: 214
+    biolink:OntologyClass-biolink:has_part-biolink:OrganismTaxon:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:OntologyClass-biolink:has_part-unknown:
+      count: 3
+      provided_by:
+        Monarch Ontologies:
+          count: 3
+    biolink:OntologyClass-biolink:has_participant-biolink:AnatomicalEntity:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:OntologyClass-biolink:has_participant-biolink:Cell:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:OntologyClass-biolink:has_participant-biolink:CellularComponent:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:OntologyClass-biolink:has_participant-biolink:ChemicalSubstance:
+      count: 16
+      provided_by:
+        Monarch Ontologies:
+          count: 16
+    biolink:OntologyClass-biolink:has_participant-biolink:InformationContentEntity:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:has_participant-biolink:OntologyClass:
+      count: 89
+      provided_by:
+        Monarch Ontologies:
+          count: 89
+    biolink:OntologyClass-biolink:has_participant-biolink:Protein:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:has_phenotype-biolink:PhenotypicFeature:
+      count: 99780
+      provided_by:
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 99780
+    biolink:OntologyClass-biolink:has_unit-biolink:OntologyClass:
+      count: 5
+      provided_by:
+        Monarch Ontologies:
+          count: 5
+    biolink:OntologyClass-biolink:has_variant_part-biolink:OntologyClass:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:OntologyClass-biolink:has_variant_part-biolink:SequenceFeature:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:OntologyClass-biolink:in_taxon-biolink:NamedThing:
+      count: 8
+      provided_by:
+        Monarch Ontologies:
+          count: 8
+    biolink:OntologyClass-biolink:in_taxon-biolink:OntologyClass:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:OntologyClass-biolink:in_taxon-biolink:OrganismTaxon:
+      count: 7
+      provided_by:
+        Monarch Ontologies:
+          count: 7
+    biolink:OntologyClass-biolink:interacts_with-biolink:OntologyClass:
+      count: 728
+      provided_by:
+        Monarch Ontologies:
+          count: 728
+    biolink:OntologyClass-biolink:inverseOf-biolink:NamedThing:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:OntologyClass-biolink:inverseOf-biolink:OntologyClass:
+      count: 145
+      provided_by:
+        ChEBI:
+          count: 1
+        Monarch Ontologies:
+          count: 145
+    biolink:OntologyClass-biolink:inverseOf-biolink:Protein:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:OntologyClass-biolink:located_in-biolink:OntologyClass:
+      count: 8
+      provided_by:
+        Monarch Ontologies:
+          count: 8
+    biolink:OntologyClass-biolink:model_of-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:negatively_regulates_process_to_process-biolink:OntologyClass:
+      count: 3
+      provided_by:
+        Monarch Ontologies:
+          count: 3
+    biolink:OntologyClass-biolink:object-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:occurs_in-biolink:OntologyClass:
+      count: 18
+      provided_by:
+        Monarch Ontologies:
+          count: 18
+    biolink:OntologyClass-biolink:overlaps-biolink:OntologyClass:
+      count: 1874
+      provided_by:
+        Monarch Ontologies:
+          count: 1874
+    biolink:OntologyClass-biolink:part_of-biolink:BiologicalProcess:
+      count: 5
+      provided_by:
+        Monarch Ontologies:
+          count: 5
+    biolink:OntologyClass-biolink:part_of-biolink:NamedThing:
+      count: 10053
+      provided_by:
+        Monarch Ontologies:
+          count: 10053
+    biolink:OntologyClass-biolink:part_of-biolink:OntologyClass:
+      count: 8783
+      provided_by:
+        Monarch Ontologies:
+          count: 8783
+    biolink:OntologyClass-biolink:part_of-biolink:OrganismTaxon:
+      count: 2564
+      provided_by:
+        Monarch Ontologies:
+          count: 2564
+    biolink:OntologyClass-biolink:part_of-biolink:SequenceFeature:
+      count: 3
+      provided_by:
+        Monarch Ontologies:
+          count: 3
+    biolink:OntologyClass-biolink:participates_in-biolink:OntologyClass:
+      count: 9
+      provided_by:
+        Monarch Ontologies:
+          count: 9
+    biolink:OntologyClass-biolink:preceded_by-biolink:OntologyClass:
+      count: 213
+      provided_by:
+        Monarch Ontologies:
+          count: 213
+    biolink:OntologyClass-biolink:precedes-biolink:OntologyClass:
+      count: 20
+      provided_by:
+        Monarch Ontologies:
+          count: 20
+    biolink:OntologyClass-biolink:produced_by-biolink:NamedThing:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:produced_by-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:produced_by-biolink:OrganismTaxon:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:regulates_process_to_process-biolink:OntologyClass:
+      count: 53
+      provided_by:
+        Monarch Ontologies:
+          count: 53
+    biolink:OntologyClass-biolink:related_to-biolink:BiologicalProcess:
+      count: 90
+      provided_by:
+        Monarch Ontologies:
+          count: 90
+    biolink:OntologyClass-biolink:related_to-biolink:Cell:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:related_to-biolink:ChemicalSubstance:
+      count: 124
+      provided_by:
+        Monarch Ontologies:
+          count: 124
+    biolink:OntologyClass-biolink:related_to-biolink:MolecularActivity:
+      count: 23
+      provided_by:
+        Monarch Ontologies:
+          count: 23
+    biolink:OntologyClass-biolink:related_to-biolink:NamedThing:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:related_to-biolink:OntologyClass:
+      count: 4195
+      provided_by:
+        Monarch Ontologies:
+          count: 4195
+    biolink:OntologyClass-biolink:related_to-biolink:OrganismTaxon:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:related_to-biolink:PhenotypicFeature:
+      count: 67
+      provided_by:
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 67
+    biolink:OntologyClass-biolink:related_to-biolink:SequenceFeature:
+      count: 5
+      provided_by:
+        Monarch Ontologies:
+          count: 5
+    biolink:OntologyClass-biolink:subPropertyOf-biolink:NamedThing:
+      count: 18
+      provided_by:
+        Monarch Ontologies:
+          count: 18
+    biolink:OntologyClass-biolink:subPropertyOf-biolink:OntologyClass:
+      count: 810
+      provided_by:
+        Monarch Ontologies:
+          count: 810
+    biolink:OntologyClass-biolink:subPropertyOf-biolink:Protein:
+      count: 16
+      provided_by:
+        Monarch Ontologies:
+          count: 16
+    biolink:OntologyClass-biolink:subPropertyOf-unknown:
+      count: 18
+      provided_by:
+        Monarch Ontologies:
+          count: 18
+    biolink:OntologyClass-biolink:subclass_of-biolink:AnatomicalEntity:
+      count: 21272
+      provided_by:
+        Monarch Ontologies:
+          count: 21272
+    biolink:OntologyClass-biolink:subclass_of-biolink:BiologicalProcess:
+      count: 53
+      provided_by:
+        Monarch Ontologies:
+          count: 53
+    biolink:OntologyClass-biolink:subclass_of-biolink:Cell:
+      count: 4904
+      provided_by:
+        Monarch Ontologies:
+          count: 4904
+    biolink:OntologyClass-biolink:subclass_of-biolink:CellularComponent:
+      count: 7
+      provided_by:
+        Monarch Ontologies:
+          count: 7
+    biolink:OntologyClass-biolink:subclass_of-biolink:ChemicalSubstance:
+      count: 28
+      provided_by:
+        Monarch Ontologies:
+          count: 28
+    biolink:OntologyClass-biolink:subclass_of-biolink:GenomicEntity:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:OntologyClass-biolink:subclass_of-biolink:MolecularActivity:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:OntologyClass-biolink:subclass_of-biolink:NamedThing:
+      count: 5
+      provided_by:
+        Monarch Ontologies:
+          count: 5
+    biolink:OntologyClass-biolink:subclass_of-biolink:OntologyClass:
+      count: 212188
+      provided_by:
+        Monarch Ontologies:
+          count: 212188
+    biolink:OntologyClass-biolink:subclass_of-biolink:OrganismTaxon:
+      count: 5
+      provided_by:
+        Monarch Ontologies:
+          count: 5
+    biolink:OntologyClass-biolink:subclass_of-biolink:PhenotypicFeature:
+      count: 12315
+      provided_by:
+        Monarch Ontologies:
+          count: 12315
+    biolink:OntologyClass-biolink:subclass_of-biolink:Protein:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:OntologyClass-biolink:subclass_of-biolink:SequenceFeature:
+      count: 3701
+      provided_by:
+        Monarch Ontologies:
+          count: 3701
+    biolink:OntologyClass-biolink:subclass_of-unknown:
+      count: 13
+      provided_by:
+        Monarch Ontologies:
+          count: 13
+    biolink:OntologyClass-biolink:temporally_related_to-biolink:OntologyClass:
+      count: 6089
+      provided_by:
+        Monarch Ontologies:
+          count: 6089
+    biolink:OntologyClass-biolink:type-biolink:OntologyClass:
+      count: 69
+      provided_by:
+        Monarch Ontologies:
+          count: 69
+    biolink:OrganismTaxon-biolink:in_taxon-biolink:OrganismTaxon:
+      count: 492
+      provided_by:
+        Monarch Ontologies:
+          count: 492
+    biolink:OrganismTaxon-biolink:subclass_of-biolink:CellularComponent:
+      count: 46
+      provided_by:
+        Monarch Ontologies:
+          count: 46
+    biolink:OrganismTaxon-biolink:subclass_of-biolink:NamedThing:
+      count: 15
+      provided_by:
+        Monarch Ontologies:
+          count: 15
+    biolink:OrganismTaxon-biolink:subclass_of-biolink:OntologyClass:
+      count: 179
+      provided_by:
+        Monarch Ontologies:
+          count: 179
+    biolink:OrganismTaxon-biolink:subclass_of-biolink:OrganismTaxon:
+      count: 14504
+      provided_by:
+        Monarch Ontologies:
+          count: 14504
+    biolink:Pathway-biolink:related_to-biolink:Pathway:
+      count: 136
+      provided_by:
+        Monarch Ontologies:
+          count: 136
+    biolink:Pathway-biolink:subclass_of-biolink:OntologyClass:
+      count: 99
+      provided_by:
+        Monarch Ontologies:
+          count: 99
+    biolink:Pathway-biolink:subclass_of-biolink:Pathway:
+      count: 3117
+      provided_by:
+        Monarch Ontologies:
+          count: 3117
+    biolink:PhenotypicFeature-biolink:subclass_of-biolink:AnatomicalEntity:
+      count: 1390
+      provided_by:
+        Monarch Ontologies:
+          count: 1390
+    biolink:PhenotypicFeature-biolink:subclass_of-biolink:Cell:
+      count: 116
+      provided_by:
+        Monarch Ontologies:
+          count: 116
+    biolink:PhenotypicFeature-biolink:subclass_of-biolink:NamedThing:
+      count: 3488
+      provided_by:
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 3488
+    biolink:PhenotypicFeature-biolink:subclass_of-biolink:OntologyClass:
+      count: 12253
+      provided_by:
+        Monarch Ontologies:
+          count: 10410
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 1843
+    biolink:PhenotypicFeature-biolink:subclass_of-biolink:PhenotypicFeature:
+      count: 20774
+      provided_by:
+        Monarch Ontologies:
+          count: 20774
+    biolink:PhenotypicFeature-biolink:temporally_related_to-biolink:OntologyClass:
+      count: 10
+      provided_by:
+        Monarch Ontologies:
+          count: 10
+    biolink:Protein-biolink:capable_of-biolink:MolecularActivity:
+      count: 14
+      provided_by:
+        Monarch Ontologies:
+          count: 14
+    biolink:Protein-biolink:derives_from-biolink:ChemicalSubstance:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Protein-biolink:derives_from-biolink:Protein:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:Protein-biolink:has_output-biolink:BiologicalProcess:
+      count: 89
+      provided_by:
+        Monarch Ontologies:
+          count: 89
+    biolink:Protein-biolink:has_part-biolink:ChemicalSubstance:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Protein-biolink:has_part-biolink:OntologyClass:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:Protein-biolink:has_part-biolink:Protein:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+    biolink:Protein-biolink:has_part-unknown:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Protein-biolink:in_taxon-biolink:NamedThing:
+      count: 543
+      provided_by:
+        Monarch Ontologies:
+          count: 543
+    biolink:Protein-biolink:in_taxon-biolink:OrganismTaxon:
+      count: 7
+      provided_by:
+        Monarch Ontologies:
+          count: 7
+    biolink:Protein-biolink:inverseOf-biolink:OntologyClass:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:Protein-biolink:part_of-biolink:Protein:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Protein-biolink:related_to-biolink:Gene:
+      count: 226
+      provided_by:
+        Monarch Ontologies:
+          count: 226
+    biolink:Protein-biolink:related_to-biolink:NamedThing:
+      count: 206
+      provided_by:
+        Monarch Ontologies:
+          count: 206
+    biolink:Protein-biolink:related_to-biolink:Protein:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Protein-biolink:related_to-biolink:SequenceFeature:
+      count: 183
+      provided_by:
+        Monarch Ontologies:
+          count: 183
+    biolink:Protein-biolink:subPropertyOf-biolink:NamedThing:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Protein-biolink:subPropertyOf-biolink:OntologyClass:
+      count: 8
+      provided_by:
+        Monarch Ontologies:
+          count: 8
+    biolink:Protein-biolink:subPropertyOf-biolink:Protein:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:Protein-biolink:subclass_of-biolink:CellularComponent:
+      count: 7
+      provided_by:
+        Monarch Ontologies:
+          count: 7
+    biolink:Protein-biolink:subclass_of-biolink:ChemicalSubstance:
+      count: 344
+      provided_by:
+        Monarch Ontologies:
+          count: 344
+    biolink:Protein-biolink:subclass_of-biolink:OntologyClass:
+      count: 5
+      provided_by:
+        Monarch Ontologies:
+          count: 5
+    biolink:Protein-biolink:subclass_of-biolink:Protein:
+      count: 1922
+      provided_by:
+        Monarch Ontologies:
+          count: 1922
+    biolink:SequenceFeature-biolink:has_part-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:SequenceFeature-biolink:part_of-biolink:OntologyClass:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:SequenceFeature-biolink:part_of-biolink:SequenceFeature:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    biolink:SequenceFeature-biolink:related_to-biolink:NamedThing:
+      count: 6
+      provided_by:
+        Monarch Ontologies:
+          count: 6
+    biolink:SequenceFeature-biolink:related_to-biolink:OntologyClass:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:SequenceFeature-biolink:related_to-biolink:SequenceFeature:
+      count: 615
+      provided_by:
+        Monarch Ontologies:
+          count: 615
+    biolink:SequenceFeature-biolink:subclass_of-biolink:ChemicalSubstance:
+      count: 43
+      provided_by:
+        Monarch Ontologies:
+          count: 43
+    biolink:SequenceFeature-biolink:subclass_of-biolink:GenomicEntity:
+      count: 3
+      provided_by:
+        Monarch Ontologies:
+          count: 3
+    biolink:SequenceFeature-biolink:subclass_of-biolink:NamedThing:
+      count: 54
+      provided_by:
+        Monarch Ontologies:
+          count: 54
+    biolink:SequenceFeature-biolink:subclass_of-biolink:OntologyClass:
+      count: 257
+      provided_by:
+        Monarch Ontologies:
+          count: 257
+    biolink:SequenceFeature-biolink:subclass_of-biolink:Protein:
+      count: 2
+      provided_by:
+        Monarch Ontologies:
+          count: 2
+    biolink:SequenceFeature-biolink:subclass_of-biolink:SequenceFeature:
+      count: 2393
+      provided_by:
+        Monarch Ontologies:
+          count: 2393
+    unknown-biolink:subPropertyOf-biolink:NamedThing:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+    unknown-biolink:subclass_of-biolink:OntologyClass:
+      count: 233
+      provided_by:
+        Monarch Ontologies:
+          count: 233
+    unknown-biolink:subclass_of-unknown:
+      count: 4
+      provided_by:
+        Monarch Ontologies:
+          count: 4
+  predicates:
+  - biolink:actively_involved_in
+  - biolink:affects
+  - biolink:affects_localization_of
+  - biolink:affects_transport_of
+  - biolink:biomarker_for
+  - biolink:capable_of
+  - biolink:caused_by
+  - biolink:causes
+  - biolink:coexists_with
+  - biolink:contributes_to
+  - biolink:correlated_with
+  - biolink:derives_from
+  - biolink:develops_from
+  - biolink:disrupts
+  - biolink:enables
+  - biolink:expressed_in
+  - biolink:expresses
+  - biolink:gene_associated_with_condition
+  - biolink:genetically_interacts_with
+  - biolink:has_attribute
+  - biolink:has_gene_product
+  - biolink:has_input
+  - biolink:has_output
+  - biolink:has_part
+  - biolink:has_participant
+  - biolink:has_phenotype
+  - biolink:has_sequence_location
+  - biolink:has_unit
+  - biolink:has_variant_part
+  - biolink:homologous_to
+  - biolink:in_taxon
+  - biolink:increases_degradation_of
+  - biolink:interacts_with
+  - biolink:inverseOf
+  - biolink:located_in
+  - biolink:location_of
+  - biolink:model_of
+  - biolink:negatively_regulates
+  - biolink:negatively_regulates_process_to_process
+  - biolink:object
+  - biolink:occurs_in
+  - biolink:orthologous_to
+  - biolink:overlaps
+  - biolink:part_of
+  - biolink:participates_in
+  - biolink:positively_regulates
+  - biolink:preceded_by
+  - biolink:precedes
+  - biolink:produced_by
+  - biolink:produces
+  - biolink:regulates
+  - biolink:regulates_process_to_process
+  - biolink:related_to
+  - biolink:same_as
+  - biolink:subPropertyOf
+  - biolink:subclass_of
+  - biolink:temporally_related_to
+  - biolink:treats
+  - biolink:type
+  - owl:onProperty
+  - owl:someValuesFrom
+  - owl:versionIRI
+  provided_by:
+  - Animal QTL db (Monarch version 202012)
+  - Bgee Gene expression data in animals (Monarch version 202012)
+  - Biological General Repository for Interaction Datasets (Monarch version 202012)
+  - ChEBI
+  - ClinVar (Monarch version 202012)
+  - Comparative Toxicogenomics Database (Monarch version 202012)
+  - Coriell Institute for Medical Research (Monarch version 202012)
+  - ENSEMBL (Monarch version 202012)
+  - Elements of Morphology (Monarch version 202012)
+  - FlyBase (Monarch version 202012)
+  - Gene Ontology (Monarch version 202012)
+  - Gene Reviews (Monarch version 202012)
+  - HGNC (Monarch version 202012)
+  - Human Phenotype Ontology (Monarch version 202012)
+  - International Mouse Phenotyping Consortium (Monarch version 202012)
+  - Known and predicted protein-protein interactions (Monarch version 202012)
+  - Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012)
+  - Monarch Chromosome Ontology (Monarch version 202012)
+  - Monarch Ontologies
+  - MonarchArchive:mgislim (Monarch version 202012)
+  - Mouse Genome Informatics (Monarch version 202012)
+  - Mouse Phenome Database (Monarch version 202012)
+  - Mutant Mouse Regional Resource Centers (Monarch version 202012)
+  - NHGRI-EBI Catalog of published genome-wide association studies (Monarch version
+    202012)
+  - National Center for Biotechnology Information (Monarch version 202012)
+  - Online Mendelian Inheritance in Animals (Monarch version 202012)
+  - Online Mendelian Inheritance in Man (Monarch version 202012)
+  - Orphanet (Monarch version 202012)
+  - Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012)
+  - Rat Genome Database (Monarch version 202012)
+  - Reactome (Monarch version 202012)
+  - Saccharomyces Genome Database (Monarch version 202012)
+  - Simplified ZFIN (Monarch version 202012)
+  - The Monarch Initiative (Monarch version 202012)
+  - UCSC Cytogenic Bands (Monarch version 202012)
+  - Undiagnosed Disease Program (Monarch version 201803)
+  - WormBase (Monarch version 202012)
+  - Zebra Fish Information Network (Monarch version 202012)
+  total_edges: 38313320
+graph_name: SRI Reference KG 0.4.0
+node_stats:
+  count_by_category:
+    biolink:AnatomicalEntity:
+      count: 67413
+      provided_by:
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 3926
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 12
+        Monarch Ontologies:
+          count: 24800
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 4
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 42614
+        The Monarch Initiative (Monarch version 202012):
+          count: 14
+    biolink:BiologicalProcess:
+      count: 47330
+      provided_by:
+        FlyBase (Monarch version 202012):
+          count: 4
+        Gene Ontology (Monarch version 202012):
+          count: 17401
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 542
+        Monarch Ontologies:
+          count: 30718
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 69
+        Reactome (Monarch version 202012):
+          count: 15795
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 278
+    biolink:BiologicalSex:
+      count: 6
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 1
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 2
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 4
+        Monarch Ontologies:
+          count: 6
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 3
+        Mouse Phenome Database (Monarch version 202012):
+          count: 4
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 1
+    biolink:Cell:
+      count: 46396
+      provided_by:
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 566
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 12
+        Monarch Ontologies:
+          count: 3783
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 4
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 42614
+        The Monarch Initiative (Monarch version 202012):
+          count: 3
+    biolink:CellLine:
+      count: 38084
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 38084
+        Monarch Ontologies:
+          count: 1
+    biolink:CellularComponent:
+      count: 4467
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 2321
+        Monarch Ontologies:
+          count: 4467
+    biolink:ChemicalSubstance:
+      count: 154569
+      provided_by:
+        ChEBI:
+          count: 144649
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 9916
+        Gene Ontology (Monarch version 202012):
+          count: 10
+        Monarch Ontologies:
+          count: 23627
+        Reactome (Monarch version 202012):
+          count: 2128
+        monarch-ontologies:
+          count: 13
+    biolink:Disease:
+      count: 56709
+      provided_by:
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 2
+        ClinVar (Monarch version 202012):
+          count: 6685
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 2081
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 610
+        FlyBase (Monarch version 202012):
+          count: 282
+        Gene Reviews (Monarch version 202012):
+          count: 743
+        HGNC (Monarch version 202012):
+          count: 97
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 11911
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 3338
+        Monarch Ontologies:
+          count: 39289
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 3
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1637
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 508
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 97
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 2972
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 20369
+        Orphanet (Monarch version 202012):
+          count: 3934
+        Rat Genome Database (Monarch version 202012):
+          count: 1
+        The Monarch Initiative (Monarch version 202012):
+          count: 1
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 1957
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 441
+    biolink:DiseaseOrPhenotypicFeature:
+      count: 3253
+      provided_by:
+        ClinVar (Monarch version 202012):
+          count: 3
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 3253
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 3
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 8
+    biolink:Drug:
+      count: 1
+      provided_by:
+        ChEBI:
+          count: 1
+        Monarch Ontologies:
+          count: 1
+        Reactome (Monarch version 202012):
+          count: 1
+    biolink:EnvironmentalProcess:
+      count: 5294
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 5278
+        Monarch Ontologies:
+          count: 5294
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 25
+    biolink:EvidenceType:
+      count: 808544
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 1
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 12
+        ClinVar (Monarch version 202012):
+          count: 750339
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 1
+        Gene Ontology (Monarch version 202012):
+          count: 23
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 3
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 58154
+        Monarch Ontologies:
+          count: 54
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 1
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 4
+        Mouse Phenome Database (Monarch version 202012):
+          count: 1
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 3
+        Orphanet (Monarch version 202012):
+          count: 2
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 1
+        Rat Genome Database (Monarch version 202012):
+          count: 4
+        Reactome (Monarch version 202012):
+          count: 2
+        Simplified ZFIN (Monarch version 202012):
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 3
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 7
+    biolink:Gene:
+      count: 2059798
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 3668
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 224159
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 199384
+        ClinVar (Monarch version 202012):
+          count: 21823
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 176
+        ENSEMBL (Monarch version 202012):
+          count: 569122
+        FlyBase (Monarch version 202012):
+          count: 49750
+        Gene Ontology (Monarch version 202012):
+          count: 370428
+        HGNC (Monarch version 202012):
+          count: 105216
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 13
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 6009
+        Known and predicted protein-protein interactions (Monarch version 202012):
+          count: 78008
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 44821
+        Monarch Ontologies:
+          count: 463
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 20014
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 162589
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 23059
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 29567
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 998815
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 837
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 32561
+        Orphanet (Monarch version 202012):
+          count: 24278
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 318426
+        Rat Genome Database (Monarch version 202012):
+          count: 174
+        Reactome (Monarch version 202012):
+          count: 127810
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 5175
+        Simplified ZFIN (Monarch version 202012):
+          count: 6834
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 74
+        WormBase (Monarch version 202012):
+          count: 52098
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 66547
+    biolink:GeneFamily:
+      count: 7901
+      provided_by:
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 7901
+    biolink:Genome:
+      count: 97
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 12
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 10
+        Monarch Ontologies:
+          count: 2
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 24
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 2
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 48
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 10
+    biolink:GenomeBuild:
+      count: 65
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 11
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 1
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 46
+        WormBase (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 7
+    biolink:GenomicEntity:
+      count: 8087518
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 376848
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 224159
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 266703
+        ChEBI:
+          count: 24
+        ClinVar (Monarch version 202012):
+          count: 480418
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 6536
+        ENSEMBL (Monarch version 202012):
+          count: 569311
+        FlyBase (Monarch version 202012):
+          count: 251455
+        Gene Ontology (Monarch version 202012):
+          count: 388799
+        HGNC (Monarch version 202012):
+          count: 139864
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 12
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 42858
+        Known and predicted protein-protein interactions (Monarch version 202012):
+          count: 78008
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 44821
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 2438
+        Monarch Ontologies:
+          count: 352
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 20014
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 2431420
+        Mouse Phenome Database (Monarch version 202012):
+          count: 3933
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 180002
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 302209
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 1104441
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1567
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 108224
+        Orphanet (Monarch version 202012):
+          count: 22428
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 318426
+        Rat Genome Database (Monarch version 202012):
+          count: 174
+        Reactome (Monarch version 202012):
+          count: 127851
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 5175
+        Simplified ZFIN (Monarch version 202012):
+          count: 6834
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 30794
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 279
+        WormBase (Monarch version 202012):
+          count: 2027295
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 247929
+    biolink:Genotype:
+      count: 360725
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 6165
+        Gene Ontology (Monarch version 202012):
+          count: 3135
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 31073
+        Monarch Ontologies:
+          count: 9
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 116678
+        Mouse Phenome Database (Monarch version 202012):
+          count: 3933
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 102908
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 34
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 101654
+    biolink:GrossAnatomicalStructure:
+      count: 2436
+      provided_by:
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 2436
+        Monarch Ontologies:
+          count: 2436
+    biolink:Haplotype:
+      count: 2276
+      provided_by:
+        ClinVar (Monarch version 202012):
+          count: 337
+        Monarch Ontologies:
+          count: 1
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 1940
+    biolink:InformationContentEntity:
+      count: 3696504
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 2333
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 12
+        ClinVar (Monarch version 202012):
+          count: 814824
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 79047
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 11890
+        FlyBase (Monarch version 202012):
+          count: 1613
+        Gene Ontology (Monarch version 202012):
+          count: 219560
+        Gene Reviews (Monarch version 202012):
+          count: 28626
+        HGNC (Monarch version 202012):
+          count: 20192
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 2375
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 254563
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 5983
+        Monarch Ontologies:
+          count: 43
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 29690
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1185188
+        Mouse Phenome Database (Monarch version 202012):
+          count: 3934
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 105176
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 4211
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 1176452
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 42266
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 150969
+        Rat Genome Database (Monarch version 202012):
+          count: 447
+        Reactome (Monarch version 202012):
+          count: 671
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 11896
+        Simplified ZFIN (Monarch version 202012):
+          count: 5773
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 34
+        WormBase (Monarch version 202012):
+          count: 3746
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 179136
+    biolink:Inheritance:
+      count: 34
+      provided_by:
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 26
+        Monarch Ontologies:
+          count: 34
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 8
+    biolink:LifeStage:
+      count: 90
+      provided_by:
+        Monarch Ontologies:
+          count: 45
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 90
+    biolink:MolecularActivity:
+      count: 12255
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 5593
+        Monarch Ontologies:
+          count: 12255
+    biolink:NamedThing:
+      count: 16277337
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 510197
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 228911
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 395681
+        ChEBI:
+          count: 2143
+        ClinVar (Monarch version 202012):
+          count: 2813388
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 92225
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 93940
+        ENSEMBL (Monarch version 202012):
+          count: 569450
+        Elements of Morphology (Monarch version 202012):
+          count: 1962
+        FlyBase (Monarch version 202012):
+          count: 261473
+        Gene Ontology (Monarch version 202012):
+          count: 650261
+        Gene Reviews (Monarch version 202012):
+          count: 29377
+        HGNC (Monarch version 202012):
+          count: 161518
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 23961
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 358039
+        Known and predicted protein-protein interactions (Monarch version 202012):
+          count: 78013
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 92717
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 5400
+        Monarch Ontologies:
+          count: 99848
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 60055
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 4227780
+        Mouse Phenome Database (Monarch version 202012):
+          count: 12473
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 293410
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 449946
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 2651582
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 51747
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 364421
+        Orphanet (Monarch version 202012):
+          count: 28193
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 326358
+        Rat Genome Database (Monarch version 202012):
+          count: 1182
+        Reactome (Monarch version 202012):
+          count: 293598
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 17755
+        Simplified ZFIN (Monarch version 202012):
+          count: 34301
+        The Monarch Initiative (Monarch version 202012):
+          count: 1369
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 85538
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 1015
+        WormBase (Monarch version 202012):
+          count: 2982090
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 478978
+    biolink:Occurrent:
+      count: 821635
+      provided_by:
+        ClinVar (Monarch version 202012):
+          count: 746931
+        FlyBase (Monarch version 202012):
+          count: 60
+        Gene Ontology (Monarch version 202012):
+          count: 22764
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 33570
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 542
+        Monarch Ontologies:
+          count: 22192
+        Mouse Phenome Database (Monarch version 202012):
+          count: 2341
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 69
+        Reactome (Monarch version 202012):
+          count: 15795
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 278
+    biolink:Onset:
+      count: 13
+      provided_by:
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 13
+        Monarch Ontologies:
+          count: 13
+    biolink:OntologyClass:
+      count: 232134
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 488
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 1029
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 17
+        ChEBI:
+          count: 25
+        ClinVar (Monarch version 202012):
+          count: 196
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 7
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 26
+        ENSEMBL (Monarch version 202012):
+          count: 6
+        Elements of Morphology (Monarch version 202012):
+          count: 7
+        FlyBase (Monarch version 202012):
+          count: 541
+        Gene Ontology (Monarch version 202012):
+          count: 2964
+        Gene Reviews (Monarch version 202012):
+          count: 6
+        HGNC (Monarch version 202012):
+          count: 7
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 4018
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 785
+        Known and predicted protein-protein interactions (Monarch version 202012):
+          count: 2
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 10
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 11
+        Monarch Ontologies:
+          count: 232133
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 10349
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 12176
+        Mouse Phenome Database (Monarch version 202012):
+          count: 705
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 18
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 71
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 11
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 179
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 10572
+        Orphanet (Monarch version 202012):
+          count: 3744
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 5
+        Rat Genome Database (Monarch version 202012):
+          count: 478
+        Reactome (Monarch version 202012):
+          count: 5
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 7
+        Simplified ZFIN (Monarch version 202012):
+          count: 21693
+        The Monarch Initiative (Monarch version 202012):
+          count: 634
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 23
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 9
+        WormBase (Monarch version 202012):
+          count: 4066
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 28091
+    biolink:OrganismTaxon:
+      count: 14702
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 6
+        ClinVar (Monarch version 202012):
+          count: 1
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 29
+        ENSEMBL (Monarch version 202012):
+          count: 5
+        FlyBase (Monarch version 202012):
+          count: 92
+        Gene Ontology (Monarch version 202012):
+          count: 25
+        HGNC (Monarch version 202012):
+          count: 1
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 1
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 9
+        Monarch Ontologies:
+          count: 14702
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 1
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 19
+        Mouse Phenome Database (Monarch version 202012):
+          count: 1
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 1
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 1
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 23
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 175
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 1
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 23
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 10
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 1
+    biolink:OrganismalEntity:
+      count: 125688
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 6
+        ClinVar (Monarch version 202012):
+          count: 1
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 29
+        ENSEMBL (Monarch version 202012):
+          count: 5
+        FlyBase (Monarch version 202012):
+          count: 92
+        Gene Ontology (Monarch version 202012):
+          count: 30
+        HGNC (Monarch version 202012):
+          count: 1
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 23
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 9
+        Monarch Ontologies:
+          count: 318
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 1
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 117029
+        Mouse Phenome Database (Monarch version 202012):
+          count: 6510
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 17404
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 1
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 23
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1137
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 1
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 23
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 10
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 991
+    biolink:Pathway:
+      count: 19471
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 1172
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 542
+        Monarch Ontologies:
+          count: 3136
+        Reactome (Monarch version 202012):
+          count: 15795
+    biolink:PhenotypicFeature:
+      count: 68156
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 2112
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 10
+        ClinVar (Monarch version 202012):
+          count: 217
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 3
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 3
+        Elements of Morphology (Monarch version 202012):
+          count: 794
+        FlyBase (Monarch version 202012):
+          count: 191
+        Gene Ontology (Monarch version 202012):
+          count: 2907
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 9548
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 747
+        Monarch Ontologies:
+          count: 59226
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 10343
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 10500
+        Mouse Phenome Database (Monarch version 202012):
+          count: 364
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 1
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 2275
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 1398
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 3524
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 16
+        Orphanet (Monarch version 202012):
+          count: 4
+        Rat Genome Database (Monarch version 202012):
+          count: 470
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 636
+        Simplified ZFIN (Monarch version 202012):
+          count: 21684
+        The Monarch Initiative (Monarch version 202012):
+          count: 1330
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 683
+        WormBase (Monarch version 202012):
+          count: 2085
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 27545
+    biolink:PopulationOfIndividualOrganisms:
+      count: 9235
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 8267
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 968
+    biolink:Protein:
+      count: 1332
+      provided_by:
+        ChEBI:
+          count: 5
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 1
+        Gene Ontology (Monarch version 202012):
+          count: 1
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1332
+        Reactome (Monarch version 202012):
+          count: 5
+    biolink:Publication:
+      count: 1785501
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 2278
+        ClinVar (Monarch version 202012):
+          count: 64870
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 79047
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 5725
+        Gene Ontology (Monarch version 202012):
+          count: 131645
+        Gene Reviews (Monarch version 202012):
+          count: 28626
+        HGNC (Monarch version 202012):
+          count: 20192
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 2374
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 5983
+        Monarch Ontologies:
+          count: 2
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 29689
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 566070
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 2268
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 4211
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 1176452
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 42266
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 135733
+        Rat Genome Database (Monarch version 202012):
+          count: 445
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 11896
+        Simplified ZFIN (Monarch version 202012):
+          count: 5752
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 76745
+    biolink:RNAProduct:
+      count: 8814
+      provided_by:
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 3102
+        ChEBI:
+          count: 53
+        ENSEMBL (Monarch version 202012):
+          count: 127
+        FlyBase (Monarch version 202012):
+          count: 7
+        Gene Ontology (Monarch version 202012):
+          count: 66
+        HGNC (Monarch version 202012):
+          count: 5190
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 62
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 9
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 307
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 74
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 76
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 8640
+        Orphanet (Monarch version 202012):
+          count: 14
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 22
+        Reactome (Monarch version 202012):
+          count: 53
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 55
+    biolink:ReagentTargetedGene:
+      count: 107846
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 5479
+        Monarch Ontologies:
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 98679
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 8259
+    biolink:SequenceFeature:
+      count: 2579
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 5
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 1
+        ClinVar (Monarch version 202012):
+          count: 14
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 1
+        ENSEMBL (Monarch version 202012):
+          count: 11
+        FlyBase (Monarch version 202012):
+          count: 2
+        Gene Ontology (Monarch version 202012):
+          count: 1
+        HGNC (Monarch version 202012):
+          count: 21
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 2
+        Known and predicted protein-protein interactions (Monarch version 202012):
+          count: 1
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 1
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 5
+        Monarch Ontologies:
+          count: 2579
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 1
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 53
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 1
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 24
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 13
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 2
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 4
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 1
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 7
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 25
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 29
+    biolink:SequenceVariant:
+      count: 3296427
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 88893
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 1134
+        ClinVar (Monarch version 202012):
+          count: 450750
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 3358
+        Gene Ontology (Monarch version 202012):
+          count: 7809
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 12474
+        Monarch Ontologies:
+          count: 46
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 2809
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1525144
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 45921
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 138090
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 1134
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 56650
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 171
+        WormBase (Monarch version 202012):
+          count: 925424
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 79491
+    biolink:Snv:
+      count: 1435913
+      provided_by:
+        ClinVar (Monarch version 202012):
+          count: 366144
+        Gene Ontology (Monarch version 202012):
+          count: 686
+        Monarch Ontologies:
+          count: 3
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 3535
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 138068
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 318
+        WormBase (Monarch version 202012):
+          count: 889756
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 38412
+    biolink:Transcript:
+      count: 8649
+      provided_by:
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 2990
+        ChEBI:
+          count: 24
+        ENSEMBL (Monarch version 202012):
+          count: 10
+        FlyBase (Monarch version 202012):
+          count: 7
+        Gene Ontology (Monarch version 202012):
+          count: 66
+        HGNC (Monarch version 202012):
+          count: 5054
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 32
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 9
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 307
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 74
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 76
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 8505
+        Orphanet (Monarch version 202012):
+          count: 14
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 11
+        Reactome (Monarch version 202012):
+          count: 24
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 55
+    biolink:Zygosity:
+      count: 222
+      provided_by:
+        ClinVar (Monarch version 202012):
+          count: 214
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 1
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 4
+        Monarch Ontologies:
+          count: 9
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 7
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 5
+    biolink:actively_involved_in:
+      count: 1
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 1
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+        Reactome (Monarch version 202012):
+          count: 1
+    biolink:biomarker_for:
+      count: 1
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 1
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 1
+        Orphanet (Monarch version 202012):
+          count: 1
+    biolink:contributes_to:
+      count: 1
+      provided_by:
+        Monarch Ontologies:
+          count: 1
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 1
+    biolink:derives_from:
+      count: 1
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+    biolink:description:
+      count: 2
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 1
+        ChEBI:
+          count: 1
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 1
+        ENSEMBL (Monarch version 202012):
+          count: 1
+        Elements of Morphology (Monarch version 202012):
+          count: 1
+        FlyBase (Monarch version 202012):
+          count: 1
+        Gene Ontology (Monarch version 202012):
+          count: 1
+        Gene Reviews (Monarch version 202012):
+          count: 1
+        HGNC (Monarch version 202012):
+          count: 1
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 1
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 2
+        Monarch Ontologies:
+          count: 2
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1
+        Mouse Phenome Database (Monarch version 202012):
+          count: 1
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 1
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 1
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 1
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 1
+        The Monarch Initiative (Monarch version 202012):
+          count: 1
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 1
+    biolink:expressed_in:
+      count: 1
+      provided_by:
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+    biolink:genetically_interacts_with:
+      count: 1
+      provided_by:
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+    biolink:has_evidence:
+      count: 1
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 1
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 1
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 1
+        Gene Ontology (Monarch version 202012):
+          count: 1
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 1
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 1
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1
+        Mouse Phenome Database (Monarch version 202012):
+          count: 1
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 1
+        Orphanet (Monarch version 202012):
+          count: 1
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 1
+        Rat Genome Database (Monarch version 202012):
+          count: 1
+        Reactome (Monarch version 202012):
+          count: 1
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 1
+        Simplified ZFIN (Monarch version 202012):
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 1
+    biolink:has_gene_product:
+      count: 1
+      provided_by:
+        ENSEMBL (Monarch version 202012):
+          count: 1
+        Gene Ontology (Monarch version 202012):
+          count: 1
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+    biolink:has_part:
+      count: 1
+      provided_by:
+        ChEBI:
+          count: 1
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 1
+    biolink:has_phenotype:
+      count: 1
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 1
+        FlyBase (Monarch version 202012):
+          count: 1
+        Gene Ontology (Monarch version 202012):
+          count: 1
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 1
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 1
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1
+        Mouse Phenome Database (Monarch version 202012):
+          count: 1
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 1
+        Rat Genome Database (Monarch version 202012):
+          count: 1
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 1
+        Simplified ZFIN (Monarch version 202012):
+          count: 1
+        The Monarch Initiative (Monarch version 202012):
+          count: 1
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 1
+    biolink:in_taxon:
+      count: 1
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 1
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 1
+        ENSEMBL (Monarch version 202012):
+          count: 1
+        FlyBase (Monarch version 202012):
+          count: 1
+        Gene Ontology (Monarch version 202012):
+          count: 1
+        HGNC (Monarch version 202012):
+          count: 1
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 1
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 1
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 1
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 1
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 1
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 1
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 1
+    biolink:interacts_with:
+      count: 1
+      provided_by:
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 1
+        Known and predicted protein-protein interactions (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+    biolink:model_of:
+      count: 1
+      provided_by:
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 1
+        FlyBase (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 1
+    biolink:name:
+      count: 1
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 1
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 1
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 1
+        ENSEMBL (Monarch version 202012):
+          count: 1
+        Elements of Morphology (Monarch version 202012):
+          count: 1
+        FlyBase (Monarch version 202012):
+          count: 1
+        Gene Ontology (Monarch version 202012):
+          count: 1
+        Gene Reviews (Monarch version 202012):
+          count: 1
+        HGNC (Monarch version 202012):
+          count: 1
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 1
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 1
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1
+        Mouse Phenome Database (Monarch version 202012):
+          count: 1
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 1
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 1
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 1
+        Orphanet (Monarch version 202012):
+          count: 1
+        Reactome (Monarch version 202012):
+          count: 1
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 1
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 1
+        Undiagnosed Disease Program (Monarch version 201803):
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 1
+    biolink:p_value:
+      count: 58185
+      provided_by:
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 58185
+        Monarch Ontologies:
+          count: 1
+    biolink:part_of:
+      count: 1
+      provided_by:
+        Gene Ontology (Monarch version 202012):
+          count: 1
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+    biolink:source_data_file:
+      count: 1
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 1
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 1
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 1
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 1
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 1
+        ENSEMBL (Monarch version 202012):
+          count: 1
+        Elements of Morphology (Monarch version 202012):
+          count: 1
+        FlyBase (Monarch version 202012):
+          count: 1
+        Gene Ontology (Monarch version 202012):
+          count: 1
+        Gene Reviews (Monarch version 202012):
+          count: 1
+        HGNC (Monarch version 202012):
+          count: 1
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 1
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 1
+        Known and predicted protein-protein interactions (Monarch version 202012):
+          count: 1
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 1
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 1
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1
+        Mouse Phenome Database (Monarch version 202012):
+          count: 1
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 1
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 1
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 1
+        Orphanet (Monarch version 202012):
+          count: 1
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 1
+        Rat Genome Database (Monarch version 202012):
+          count: 1
+        Reactome (Monarch version 202012):
+          count: 1
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 1
+        Simplified ZFIN (Monarch version 202012):
+          count: 1
+        The Monarch Initiative (Monarch version 202012):
+          count: 1
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 1
+    biolink:source_web_page:
+      count: 1
+      provided_by:
+        Animal QTL db (Monarch version 202012):
+          count: 1
+        Bgee Gene expression data in animals (Monarch version 202012):
+          count: 1
+        Biological General Repository for Interaction Datasets (Monarch version 202012):
+          count: 1
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 1
+        Coriell Institute for Medical Research (Monarch version 202012):
+          count: 1
+        ENSEMBL (Monarch version 202012):
+          count: 1
+        Elements of Morphology (Monarch version 202012):
+          count: 1
+        FlyBase (Monarch version 202012):
+          count: 1
+        Gene Ontology (Monarch version 202012):
+          count: 1
+        Gene Reviews (Monarch version 202012):
+          count: 1
+        HGNC (Monarch version 202012):
+          count: 1
+        Human Phenotype Ontology (Monarch version 202012):
+          count: 1
+        International Mouse Phenotyping Consortium (Monarch version 202012):
+          count: 1
+        Known and predicted protein-protein interactions (Monarch version 202012):
+          count: 1
+        Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012):
+          count: 1
+        Monarch Chromosome Ontology (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+        MonarchArchive:mgislim (Monarch version 202012):
+          count: 1
+        Mouse Genome Informatics (Monarch version 202012):
+          count: 1
+        Mouse Phenome Database (Monarch version 202012):
+          count: 1
+        Mutant Mouse Regional Resource Centers (Monarch version 202012):
+          count: 1
+        NHGRI-EBI Catalog of published genome-wide association studies (Monarch version 202012):
+          count: 1
+        National Center for Biotechnology Information (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 1
+        Orphanet (Monarch version 202012):
+          count: 1
+        Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012):
+          count: 1
+        Rat Genome Database (Monarch version 202012):
+          count: 1
+        Reactome (Monarch version 202012):
+          count: 1
+        Saccharomyces Genome Database (Monarch version 202012):
+          count: 1
+        Simplified ZFIN (Monarch version 202012):
+          count: 1
+        The Monarch Initiative (Monarch version 202012):
+          count: 1
+        UCSC Cytogenic Bands (Monarch version 202012):
+          count: 1
+        WormBase (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 1
+    biolink:title:
+      count: 1
+      provided_by:
+        FlyBase (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+        Online Mendelian Inheritance in Animals (Monarch version 202012):
+          count: 1
+        Online Mendelian Inheritance in Man (Monarch version 202012):
+          count: 1
+        Zebra Fish Information Network (Monarch version 202012):
+          count: 1
+    biolink:treats:
+      count: 1
+      provided_by:
+        Comparative Toxicogenomics Database (Monarch version 202012):
+          count: 1
+        Monarch Ontologies:
+          count: 1
+    unknown:
+      count: 225
+  node_categories:
+  - biolink:AnatomicalEntity
+  - biolink:BiologicalProcess
+  - biolink:BiologicalSex
+  - biolink:Cell
+  - biolink:CellLine
+  - biolink:CellularComponent
+  - biolink:ChemicalSubstance
+  - biolink:Disease
+  - biolink:DiseaseOrPhenotypicFeature
+  - biolink:Drug
+  - biolink:EnvironmentalProcess
+  - biolink:EvidenceType
+  - biolink:Gene
+  - biolink:GeneFamily
+  - biolink:Genome
+  - biolink:GenomeBuild
+  - biolink:GenomicEntity
+  - biolink:Genotype
+  - biolink:GrossAnatomicalStructure
+  - biolink:Haplotype
+  - biolink:InformationContentEntity
+  - biolink:Inheritance
+  - biolink:LifeStage
+  - biolink:MolecularActivity
+  - biolink:NamedThing
+  - biolink:Occurrent
+  - biolink:Onset
+  - biolink:OntologyClass
+  - biolink:OrganismTaxon
+  - biolink:OrganismalEntity
+  - biolink:Pathway
+  - biolink:PhenotypicFeature
+  - biolink:PopulationOfIndividualOrganisms
+  - biolink:Protein
+  - biolink:Publication
+  - biolink:RNAProduct
+  - biolink:ReagentTargetedGene
+  - biolink:SequenceFeature
+  - biolink:SequenceVariant
+  - biolink:Snv
+  - biolink:Transcript
+  - biolink:Zygosity
+  - biolink:actively_involved_in
+  - biolink:biomarker_for
+  - biolink:contributes_to
+  - biolink:derives_from
+  - biolink:description
+  - biolink:expressed_in
+  - biolink:genetically_interacts_with
+  - biolink:has_evidence
+  - biolink:has_gene_product
+  - biolink:has_part
+  - biolink:has_phenotype
+  - biolink:in_taxon
+  - biolink:interacts_with
+  - biolink:model_of
+  - biolink:name
+  - biolink:p_value
+  - biolink:part_of
+  - biolink:source_data_file
+  - biolink:source_web_page
+  - biolink:title
+  - biolink:treats
+  provided_by:
+  - Animal QTL db (Monarch version 202012)
+  - Bgee Gene expression data in animals (Monarch version 202012)
+  - Biological General Repository for Interaction Datasets (Monarch version 202012)
+  - ChEBI
+  - ClinVar (Monarch version 202012)
+  - Comparative Toxicogenomics Database (Monarch version 202012)
+  - Coriell Institute for Medical Research (Monarch version 202012)
+  - ENSEMBL (Monarch version 202012)
+  - Elements of Morphology (Monarch version 202012)
+  - FlyBase (Monarch version 202012)
+  - Gene Ontology (Monarch version 202012)
+  - Gene Reviews (Monarch version 202012)
+  - HGNC (Monarch version 202012)
+  - Human Phenotype Ontology (Monarch version 202012)
+  - International Mouse Phenotyping Consortium (Monarch version 202012)
+  - Known and predicted protein-protein interactions (Monarch version 202012)
+  - Kyoto Encyclopedia of Genes and Genomes (Monarch version 202012)
+  - Monarch Chromosome Ontology (Monarch version 202012)
+  - Monarch Ontologies
+  - MonarchArchive:mgislim (Monarch version 202012)
+  - Mouse Genome Informatics (Monarch version 202012)
+  - Mouse Phenome Database (Monarch version 202012)
+  - Mutant Mouse Regional Resource Centers (Monarch version 202012)
+  - NHGRI-EBI Catalog of published genome-wide association studies (Monarch version
+    202012)
+  - National Center for Biotechnology Information (Monarch version 202012)
+  - Online Mendelian Inheritance in Animals (Monarch version 202012)
+  - Online Mendelian Inheritance in Man (Monarch version 202012)
+  - Orphanet (Monarch version 202012)
+  - Protein ANalysis THrough Evolutionary Relationships (Monarch version 202012)
+  - Rat Genome Database (Monarch version 202012)
+  - Reactome (Monarch version 202012)
+  - Saccharomyces Genome Database (Monarch version 202012)
+  - Simplified ZFIN (Monarch version 202012)
+  - The Monarch Initiative (Monarch version 202012)
+  - UCSC Cytogenic Bands (Monarch version 202012)
+  - Undiagnosed Disease Program (Monarch version 201803)
+  - WormBase (Monarch version 202012)
+  - Zebra Fish Information Network (Monarch version 202012)
+  - monarch-ontologies
+  total_nodes: 16689891

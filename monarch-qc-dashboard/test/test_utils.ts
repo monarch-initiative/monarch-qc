@@ -29,6 +29,8 @@ const base_urls = [
   "https://data.monarchinitiative.org/monarch-kg-dev/",
   "https://data.monarchinitiative.org/monarch-kg-dev/2022-02-10/index.html",
   "https://data.monarchinitiative.org/monarch-kg-dev/kgx/index.html",
+  "https://data.monarchinitiative.org/monarch-kg/2023-11-16/merged_graph_stats.yaml",
+  "https://data.monarchinitiative.org/sri-reference-kg/sri-reference-kg-0.4.0/merged_graph_stats.yaml",
 ]
 
 const dev_urls = createURLS(

@@ -54,9 +54,9 @@ export interface StatCount {
 export interface EdgeStatPart {
   count_by_predicates: { [key: string]: StatCount }
   count_by_spo: { [key: string]: StatCount }
-  predicates: string[]
-  provided_by: string[]
-  total_edges: number
+  predicates?: string[]
+  provided_by?: string[]
+  total_edges?: number
 }
 
 export function isEdgeStatPart(i: object | string): i is EdgeStatPart {
@@ -109,7 +109,9 @@ export function getNamespaces(qcparts: qc.SubReport[] | undefined): string[] {
   let allNamespaces: string[] = []
   for (const item of qcparts) {
     const qcpart = qc.toSubReport(item)
-    allNamespaces = allNamespaces.concat(qcpart.namespaces ?? [])
+    // qc.toSubReport(item) guarantees namespaces is not undefined or null
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    allNamespaces = allNamespaces.concat(qcpart.namespaces!)
   }
   return allNamespaces
 }
