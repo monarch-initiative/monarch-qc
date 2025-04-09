@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@duckdb/duckdb-wasm": "^1.29.1-dev132.0",
+    "@observablehq/runtime": "^6.0.0"
+  }
+}

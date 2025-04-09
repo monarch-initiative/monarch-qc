@@ -6,6 +6,7 @@
     <div>
       <button @click="selectSection('monarch')">Monarch-QC</button>
       <button @click="selectSection('sri')">SRI-Reference Comparison</button>
+      <button @click="selectSection('missing-nodes'); updateUrlHash('missing-nodes')">Missing Nodes</button>
       <UploadReport />
     </div>
     <div v-if="selectedSection === 'monarch'">
@@ -41,6 +42,7 @@
         label="Ingest"
         :colorCols="['edges']"
         :data="dashboardDataGroup.edges"
+        @navigate-to-missing-nodes="navigateToMissingNodesPage"
       />
       <LineChart
         :data="edgesTimeSeriesData"
@@ -140,11 +142,20 @@
         </div>
       </div>
     </div>
+    <div v-if="selectedSection === 'missing-nodes'">
+      <img src="/src/global/monarch.png" class="logo" alt="Monarch Logo" />
+      <h1>Missing Nodes Explorer</h1>
+      <MissingNodes 
+        :initialIngest="selectedMissingNodesIngest" 
+        :dataSet="selectedData"
+        :kgVersion="selectedReport"
+      />
+    </div>
   </main>
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from "vue"
+  import { computed, ref, onMounted, watch } from "vue"
   import {
     globalReports,
     dataNames,
@@ -164,6 +175,7 @@
   import SelectReport from "./components/SelectReport.vue"
   import LineChart from "./components/LineChart.vue"
   import UploadReport from "./components/UploadReport.vue"
+  import MissingNodes from "./components/MissingNodes.vue"
 
   function isDarkMode() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -174,9 +186,110 @@
   })
 
   const selectedSection = ref("monarch")
+  const selectedMissingNodesIngest = ref("")
 
+  // Set up URL hash-based routing
+  const updateUrlHash = (section: string, params: Record<string, string> = {}) => {
+    let hash = `#${section}`;
+    
+    // Add parameters to hash if they exist
+    const paramEntries = Object.entries(params).filter(([_, value]) => value);
+    if (paramEntries.length > 0) {
+      const paramString = paramEntries
+        .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+        .join('&');
+      hash += `?${paramString}`;
+    }
+    
+    window.location.hash = hash;
+  };
+  
   const selectSection = (section: string) => {
-    selectedSection.value = section
-    getSRICompareData()
-  }
+    selectedSection.value = section;
+    updateUrlHash(section);
+    getSRICompareData();
+  };
+  
+  // Navigate to the missing nodes page with the specified ingest
+  const navigateToMissingNodesPage = (ingest: string) => {
+    selectedMissingNodesIngest.value = ingest;
+    selectedSection.value = "missing-nodes";
+    updateUrlHash("missing-nodes", { 
+      ingest: ingest, 
+      dataset: selectedData.value,
+      kgVersion: selectedReport.value
+    });
+  };
+  
+  // Handle hash changes (browser back/forward)
+  onMounted(() => {
+    // Check if there's an initial hash to parse
+    if (window.location.hash) {
+      handleHashChange();
+    } else {
+      // Set initial hash for monarch section
+      updateUrlHash('monarch');
+    }
+    
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+  });
+  
+  // Watch for changes to selectedData and selectedReport
+  // and update the URL hash if we're on the monarch page
+  watch([selectedData, selectedReport], () => {
+    if (selectedSection.value === 'monarch') {
+      updateUrlHash('monarch', {
+        dataset: selectedData.value,
+        kgVersion: selectedReport.value
+      });
+    }
+  });
+  
+  // Parse URL hash and update app state accordingly
+  const handleHashChange = () => {
+    const hash = window.location.hash.substring(1); // Remove the # symbol
+    
+    // If hash is empty, default to monarch section
+    if (!hash) {
+      selectedSection.value = "monarch";
+      return;
+    }
+    
+    // Split the hash into section and params
+    const [section, paramString] = hash.split('?');
+    selectedSection.value = section;
+    
+    // Parse params if they exist
+    if (paramString) {
+      const params = new URLSearchParams(paramString);
+      
+      // Handle shared params for any section
+      const dataset = params.get('dataset');
+      if (dataset && dataNames.value.includes(dataset)) {
+        selectedData.value = dataset;
+      }
+      
+      // Section-specific parameters
+      if (section === "missing-nodes") {
+        const ingest = params.get('ingest');
+        if (ingest) {
+          selectedMissingNodesIngest.value = ingest;
+        }
+      }
+      
+      // If we're on the monarch page, we may need to update the selected report
+      if (section === "monarch") {
+        const kgVersion = params.get('kgVersion');
+        if (kgVersion && globalReports.value.has(kgVersion)) {
+          selectedReport.value = kgVersion;
+        }
+      }
+    }
+    
+    // Make sure we load the SRI comparison data if we're on that page
+    if (section === 'sri') {
+      getSRICompareData();
+    }
+  };
 </script>

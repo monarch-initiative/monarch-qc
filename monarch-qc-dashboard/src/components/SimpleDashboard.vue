@@ -26,7 +26,20 @@
           <td>{{ label }}</td>
           <template v-for="field in fields" :key="field">
             <td style="padding: 0 10px 0 10px">
-              {{ (data[field].value.get(label) ?? 0).toLocaleString("en-US") }}
+              <!-- Show as link to missing nodes page if this is a dangling_edges field -->
+              <template v-if="field === 'dangling_edges' && label !== 'Total Number'">
+                <a 
+                  href="#" 
+                  @click.prevent="navigateToMissingNodes(label)"
+                  class="missing-nodes-link"
+                >
+                  {{ (data[field].value.get(label) ?? 0).toLocaleString("en-US") }}
+                </a>
+              </template>
+              <template v-else>
+                {{ (data[field].value.get(label) ?? 0).toLocaleString("en-US") }}
+              </template>
+              
               <template v-if="colorCols.includes(field)">
                 <span
                   v-if="data[field].diff.has(label) && (data[field].diff.get(label) ?? 0) > 0"
@@ -63,6 +76,9 @@
   import { DashboardData, getAllVisualDiffs, getDataLabels, getNextField } from "./SimpleDashboard"
   import { getRowStyle, titleFormat } from "../style"
   import { computed } from "vue"
+  
+  const emit = defineEmits(['navigate-to-missing-nodes']);
+  
   const { data, field_names } = defineProps<{
     title: string
     label: string
@@ -70,8 +86,26 @@
     data: DashboardData
     field_names?: string[]
   }>()
+  
   const fields = computed(() => Object.keys(data))
   const field_labels = computed(() => field_names ?? fields.value)
   const labels = computed(() => getDataLabels(data))
   const visualDiffs = computed(() => getAllVisualDiffs(data))
+  
+  // Function to navigate to missing nodes page with the selected ingest
+  function navigateToMissingNodes(ingest: string) {
+    emit('navigate-to-missing-nodes', ingest);
+  }
 </script>
+
+<style>
+.missing-nodes-link {
+  color: #3399cc;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.missing-nodes-link:hover {
+  text-decoration: none;
+}
+</style>
