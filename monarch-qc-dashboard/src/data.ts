@@ -620,7 +620,7 @@ export async function loadMissingNodesData(
       // Escape single quotes to prevent SQL injection
       const safeIngest = ingest.replace(/'/g, "''");
       const result = await conn.query(`
-        SELECT missing_node, edge_ingest, edge_primary_knowledge_source
+        SELECT DISTINCT missing_node, edge_ingest, edge_primary_knowledge_source
         FROM missing_nodes
         WHERE edge_ingest = '${safeIngest}'
         LIMIT 100

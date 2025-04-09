@@ -28,11 +28,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(node, index) in missingNodes" :key="index">            
+            <tr v-for="node in missingNodes" :key="node.missing_node">
             <td>{{ node.missing_node }}</td>
             <td>{{ node.edge_ingest }}</td>
             <td>{{ node.edge_primary_knowledge_source }}</td>
-          </tr>
+            </tr>
         </tbody>
       </table>
     </div>
