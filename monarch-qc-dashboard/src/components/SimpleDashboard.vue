@@ -27,7 +27,7 @@
           <template v-for="field in fields" :key="field">
             <td style="padding: 0 10px 0 10px">
               <!-- Show as link to missing nodes page if this is a dangling_edges field -->
-              <template v-if="field === 'dangling_edges' && label !== 'Total Number'">
+              <template v-if="field === 'dangling_edges' && label !== 'Total Number' && (data[field].value?.get(label) ?? 0) > 0">
                 <a 
                   href="#" 
                   @click.prevent="navigateToMissingNodes(label)"
