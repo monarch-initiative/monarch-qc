@@ -1,6 +1,7 @@
 import { reactive, ref } from "vue"
 import YAML from "yaml"
 import DOMPurify from "isomorphic-dompurify"
+import * as duckdb from '@duckdb/duckdb-wasm'
 
 import * as qc_utils from "./qc_utils"
 import * as qc from "./schema/monarch_kg_qc_schema"
@@ -521,4 +522,122 @@ function setEdgesTimeSeriesData(
   }
 
   data.chartSeries = chartSeries
+}
+
+// URLs for DuckDB WASM assets
+const DUCKDB_BUNDLES: duckdb.DuckDBBundles = {
+  mvp: {
+    mainModule: new URL('/node_modules/@duckdb/duckdb-wasm/dist/duckdb-mvp.wasm', import.meta.url).href,
+    mainWorker: new URL('/node_modules/@duckdb/duckdb-wasm/dist/duckdb-browser-mvp.worker.js', import.meta.url).href,
+  },
+  eh: {
+    mainModule: new URL('/node_modules/@duckdb/duckdb-wasm/dist/duckdb-eh.wasm', import.meta.url).href,
+    mainWorker: new URL('/node_modules/@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js', import.meta.url).href,
+  },
+};
+
+// DuckDB instance cache
+let duckDbInstance: duckdb.AsyncDuckDB | null = null;
+let duckDbInstancePromise: Promise<duckdb.AsyncDuckDB> | null = null;
+
+/**
+ * Initialize DuckDB WASM instance
+ */
+async function initDuckDB(): Promise<duckdb.AsyncDuckDB> {
+  if (duckDbInstance) return duckDbInstance;
+  if (duckDbInstancePromise) return duckDbInstancePromise;
+
+  duckDbInstancePromise = (async () => {
+    // Create a DuckDB instance
+    const worker = new Worker(DUCKDB_BUNDLES.mvp.mainWorker);
+    const logger = new duckdb.ConsoleLogger();
+    const db = new duckdb.AsyncDuckDB(logger, worker);
+    await db.instantiate(DUCKDB_BUNDLES.mvp.mainModule);
+    duckDbInstance = db;
+    return db;
+  })();
+
+  return duckDbInstancePromise;
+}
+
+/**
+ * Load missing nodes data from Parquet file
+ * 
+ * @param ingest - The ingest name to filter by, or null to return all available ingests
+ * @param dataSet - The data set to use (Released or Development), defaults to selectedData.value
+ * @param kgVersion - Specific KG version to use, defaults to "latest" 
+ * @returns Array of missing nodes data or array of ingest names if ingest is null
+ */
+export async function loadMissingNodesData(
+  ingest: string | null, 
+  dataSet?: string,
+  kgVersion?: string
+): Promise<string[] | Array<{ missing_node: string; edge_ingest: string }>> {
+  try {
+    const db = await initDuckDB();
+
+    // Create a connection
+    const conn = await db.connect();
+
+    // Determine which dataset to use
+    const dataset = dataSet || selectedData.value;
+    const dataSite = qcdata.get(dataset) || "monarch-kg/";
+    
+    // Use provided KG version or default to latest
+    const version = kgVersion || "latest";
+    
+    // Build the URL based on the selected dataset and version
+    const parquetUrl = `https://data.monarchinitiative.org/${dataSite}${version}/qc/missing_nodes.parquet`;
+    
+    // Register the Parquet file as a table
+    try {
+      await conn.query(`
+        CREATE OR REPLACE TABLE missing_nodes AS 
+        SELECT * FROM parquet_scan('${parquetUrl}')
+      `);
+    } catch (error) {
+      console.error('Error registering parquet file:', error);
+      await conn.close();
+      throw error;
+    }
+
+    if (ingest === null) {
+      // Get all unique ingest names
+      const result = await conn.query(`
+        SELECT DISTINCT edge_ingest 
+        FROM missing_nodes 
+        ORDER BY edge_ingest
+      `);
+      
+      // Convert to plain strings before returning
+      const plainResults = result.toArray().map(row => String(row.edge_ingest));
+      
+      await conn.close();
+      return plainResults;
+    } else {
+      // Get up to 100 examples for the specified ingest
+      // DuckDB WASM doesn't support parameterized queries in the same way as other DBs
+      // Escape single quotes to prevent SQL injection
+      const safeIngest = ingest.replace(/'/g, "''");
+      const result = await conn.query(`
+        SELECT DISTINCT missing_node, edge_ingest, edge_primary_knowledge_source
+        FROM missing_nodes
+        WHERE edge_ingest = '${safeIngest}'
+        LIMIT 100
+      `);
+      
+      // Convert to plain objects before returning
+      const plainResults = result.toArray().map(row => ({
+        missing_node: String(row.missing_node),
+        edge_ingest: String(row.edge_ingest),
+        edge_primary_knowledge_source: String(row.edge_primary_knowledge_source),
+      }));
+      
+      await conn.close();
+      return plainResults;
+    }
+  } catch (error) {
+    console.error('Error in loadMissingNodesData:', error);
+    throw error;
+  }
 }
