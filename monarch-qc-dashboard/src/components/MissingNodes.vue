@@ -149,7 +149,6 @@ th, td {
 }
 
 th {
-  background-color: #f2f2f2;
   position: sticky;
   top: 0;
 }
