@@ -5,6 +5,7 @@
   <main>
     <div>
       <button @click="selectSection('monarch')">Monarch-QC</button>
+      <button @click="selectSection('source-versions'); updateUrlHash('source-versions')">Source Versions</button>
       <button @click="selectSection('sri')">SRI-Reference Comparison</button>
       <button @click="selectSection('missing-nodes'); updateUrlHash('missing-nodes')">Missing Nodes</button>
       <UploadReport />
@@ -142,11 +143,37 @@
         </div>
       </div>
     </div>
+    <div v-if="selectedSection === 'source-versions'">
+      <img src="/src/global/monarch.png" class="logo" alt="Monarch Logo" />
+      <SelectReport
+        id="selectDataSetSources"
+        label=""
+        :reportNames="dataNames"
+        v-model="selectedData"
+        :onChange="updateData"
+      />
+      <SelectReport
+        id="selectCompareReportSources"
+        label="Compare to:"
+        :reportNames="compareNames"
+        v-model="selectedCompare"
+        :onChange="processReports"
+        :removeFrom="selectedReport"
+      />
+      <SelectReport
+        id="selectReportSources"
+        label="KG Release:"
+        :reportNames="[...globalReports.keys()]"
+        v-model="selectedReport"
+        :onChange="processReports"
+      />
+      <SourcesPage />
+    </div>
     <div v-if="selectedSection === 'missing-nodes'">
       <img src="/src/global/monarch.png" class="logo" alt="Monarch Logo" />
       <h1>Missing Nodes Explorer</h1>
-      <MissingNodes 
-        :initialIngest="selectedMissingNodesIngest" 
+      <MissingNodes
+        :initialIngest="selectedMissingNodesIngest"
         :dataSet="selectedData"
         :kgVersion="selectedReport"
       />
@@ -176,6 +203,7 @@
   import LineChart from "./components/LineChart.vue"
   import UploadReport from "./components/UploadReport.vue"
   import MissingNodes from "./components/MissingNodes.vue"
+  import SourcesPage from "./components/SourcesPage.vue"
 
   function isDarkMode() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches
