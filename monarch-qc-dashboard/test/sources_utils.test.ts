@@ -3,6 +3,7 @@ import {
   flattenSources,
   flattenByIngest,
   compareSources,
+  groupBy,
   Release,
   SourceRow,
 } from "../src/sources_utils"
@@ -167,5 +168,71 @@ describe("flattenByIngest", () => {
     expect(flattenByIngest(undefined)).toEqual([])
     const legacy = { "kg-version": "x", packages: {} } as unknown as Release
     expect(flattenByIngest(legacy)).toEqual([])
+  })
+})
+
+describe("flattenSources collapsing", () => {
+  it("collapses 3+ ingests at the same (infores, version) into one row", () => {
+    const r: Release = {
+      id: "monarch-kg",
+      sources: [
+        { id: "a-ingest", sources: [{ id: "infores:foo", version: "1" }] },
+        { id: "b-ingest", sources: [{ id: "infores:foo", version: "1" }] },
+        { id: "c-ingest", sources: [{ id: "infores:foo", version: "1" }] },
+      ],
+    }
+    const rows = flattenSources(r)
+    expect(rows).toHaveLength(1)
+    expect(rows[0].consumed_by.sort()).toEqual(["a-ingest", "b-ingest", "c-ingest"])
+  })
+})
+
+describe("compareSources contract", () => {
+  it("emits no add/remove markers when previous is null (all unchanged)", () => {
+    const cur = [row({ infores: "infores:hgnc", version: "v1" })]
+    const out = compareSources(cur, null)
+    expect(out.every((r) => r.status === "unchanged")).toBe(true)
+  })
+
+  it("a version bump produces exactly one removed + one added row, clustered by infores", () => {
+    const cur = [
+      row({ infores: "infores:other", version: "1" }),
+      row({ infores: "infores:hgnc", version: "v2" }),
+    ]
+    const prev = [
+      row({ infores: "infores:other", version: "1" }),
+      row({ infores: "infores:hgnc", version: "v1" }),
+    ]
+    const out = compareSources(cur, prev)
+    const hgnc = out.filter((r) => r.infores === "infores:hgnc")
+    expect(hgnc.map((r) => `${r.version}:${r.status}`)).toEqual([
+      "v1:removed",
+      "v2:added",
+    ])
+    // Clustered: the two hgnc rows are adjacent in the output.
+    const idxs = out.map((r) => r.infores)
+    expect(idxs.indexOf("infores:hgnc") + 1).toBe(idxs.lastIndexOf("infores:hgnc"))
+  })
+})
+
+describe("groupBy", () => {
+  it("marks first row of each contiguous group with groupSize", () => {
+    const data = [
+      { k: "a", v: 1 }, { k: "a", v: 2 }, { k: "b", v: 1 }, { k: "c", v: 1 }, { k: "c", v: 2 }, { k: "c", v: 3 },
+    ]
+    const grouped = groupBy(data, (r) => r.k)
+    expect(grouped.map((r) => `${r.k}:${r.groupStart}:${r.groupSize}`)).toEqual([
+      "a:true:2", "a:false:1",
+      "b:true:1",
+      "c:true:3", "c:false:1", "c:false:1",
+    ])
+  })
+
+  it("sorts so non-contiguous keys still group correctly", () => {
+    const data = [{ k: "a" }, { k: "b" }, { k: "a" }]
+    const grouped = groupBy(data, (r) => r.k)
+    expect(grouped.map((r) => `${r.k}:${r.groupStart}:${r.groupSize}`)).toEqual([
+      "a:true:2", "a:false:1", "b:true:1",
+    ])
   })
 })

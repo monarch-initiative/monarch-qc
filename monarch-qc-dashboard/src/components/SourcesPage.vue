@@ -90,6 +90,10 @@
       </tbody>
     </table>
 
+    <div v-if="view === 'ingest' && current && !byIngestGrouped.length" class="empty">
+      Receipt has no per-ingest builds with upstream sources.
+    </div>
+
     <table v-if="view === 'ingest' && byIngestGrouped.length">
       <thead>
         <tr>
@@ -131,9 +135,11 @@ import YAML from "yaml"
 import { globalMetadata, selectedReport, selectedCompare } from "../data"
 import {
   Release,
+  Disagreement,
   flattenSources,
   flattenByIngest,
   compareSources,
+  groupBy,
   ComparedRow,
   IngestSourceRow,
 } from "../sources_utils"
@@ -146,11 +152,18 @@ const view = ref<"source" | "ingest">("source")
 const currentVersion = computed(() => current.value?.version ?? "")
 const compareVersion = computed(() => previous.value?.version ?? "")
 
-const receiptDisagreements = computed(() => current.value?.disagreements ?? [])
-const receiptDrift = computed(() => current.value?.version_drift ?? [])
-const previousIsLegacy = computed(
-  () => previous.value !== null && !(previous.value.sources && previous.value.sources.length)
+function sortByIngest(d: Disagreement): Disagreement {
+  return { ...d, by_ingest: Object.fromEntries(Object.entries(d.by_ingest).sort(([a], [b]) => a.localeCompare(b))) }
+}
+
+const receiptDisagreements = computed(
+  () => (current.value?.disagreements ?? []).map(sortByIngest)
 )
+const receiptDrift = computed(
+  () => (current.value?.version_drift ?? []).map(sortByIngest)
+)
+// A new-format receipt always has a top-level `id`; legacy receipts don't.
+const previousIsLegacy = computed(() => previous.value !== null && !previous.value.id)
 
 interface BySourceGroupedRow extends ComparedRow {
   groupStart: boolean
@@ -176,27 +189,6 @@ const byIngestGrouped = computed<ByIngestGroupedRow[]>(() => {
   return groupBy(rows, (r) => r.ingest)
 })
 
-function groupBy<T extends object>(
-  rows: T[],
-  key: (r: T) => string
-): (T & { groupStart: boolean; groupSize: number })[] {
-  const out: (T & { groupStart: boolean; groupSize: number })[] = []
-  let lastKey: string | null = null
-  let startIdx = -1
-  for (const row of rows) {
-    const k = key(row)
-    if (k !== lastKey) {
-      out.push({ ...row, groupStart: true, groupSize: 1 })
-      lastKey = k
-      startIdx = out.length - 1
-    } else {
-      out[startIdx].groupSize++
-      out.push({ ...row, groupStart: false, groupSize: 1 })
-    }
-  }
-  return out
-}
-
 async function loadReceipt(name: string): Promise<Release | null> {
   const promise = globalMetadata.value.get(name)
   if (!promise) return null
@@ -209,7 +201,11 @@ async function loadReceipt(name: string): Promise<Release | null> {
   }
 }
 
+// Token-based race protection: rapid changes to selectedReport / selectedCompare
+// can fire overlapping refreshes; only the most recent one is allowed to commit.
+let refreshToken = 0
 async function refresh() {
+  const my = ++refreshToken
   if (!selectedReport.value) {
     current.value = null
     previous.value = null
@@ -221,10 +217,11 @@ async function refresh() {
       loadReceipt(selectedReport.value),
       selectedCompare.value ? loadReceipt(selectedCompare.value) : Promise.resolve(null),
     ])
+    if (my !== refreshToken) return
     current.value = cur
     previous.value = prev
   } finally {
-    loading.value = false
+    if (my === refreshToken) loading.value = false
   }
 }
 
@@ -232,34 +229,58 @@ watch([selectedReport, selectedCompare, globalMetadata], refresh, { immediate: t
 </script>
 
 <style scoped>
+/* Status / alert tints use semitransparent overlays so they read on either
+   the light or dark global background (default is dark; @media light in
+   style.css flips it). */
 .sources-page { padding: 1rem; }
-.subtitle { color: #666; margin-top: 0; }
+.subtitle { opacity: 0.7; margin-top: 0; }
+
 .view-toggle { margin: 1rem 0; }
 .view-toggle button {
-  border: 1px solid #ccc; background: #fff; padding: 0.4rem 0.9rem; cursor: pointer;
+  border: 1px solid currentColor;
+  opacity: 0.6;
+  background: transparent;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
   border-radius: 0;
 }
 .view-toggle button:first-child { border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
 .view-toggle button:last-child { border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-left: none; }
-.view-toggle button.active { background: #2c3e50; color: #fff; border-color: #2c3e50; }
+.view-toggle button.active { opacity: 1; background: rgba(127, 127, 127, 0.2); }
 
 .alerts { margin: 1rem 0; }
-.alert { padding: 0.5rem 0.75rem; border-radius: 4px; margin-bottom: 0.5rem; }
-.alert.disagreement { background: #fde8e8; border: 1px solid #f5a3a3; }
-.alert.drift { background: #fff7e8; border: 1px solid #f0d089; }
+.alert {
+  padding: 0.5rem 0.75rem; border-radius: 4px; margin-bottom: 0.5rem;
+  border: 1px solid currentColor;
+}
+.alert.disagreement { background: rgba(220, 80, 80, 0.18); }
+.alert.drift { background: rgba(220, 160, 60, 0.18); }
 .alert summary { cursor: pointer; }
 .badge { display: inline-block; margin-left: 0.5em; font-size: 0.9em; }
 
 table { border-collapse: collapse; width: 100%; font-size: 0.95em; }
-th, td { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid #ddd; vertical-align: top; }
-th { background: #f5f5f5; }
+th, td {
+  text-align: left; padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+  vertical-align: top;
+}
+th { background: rgba(127, 127, 127, 0.15); }
 td.version { white-space: nowrap; }
 /* Strong divider at the top of each group so repeated rows feel attached. */
-tr.group-start > td { border-top: 2px solid #cfd6dd; }
-tr:not(.group-start) > td { border-bottom: 1px solid #eee; }
-tr.added { background: #e8f5e9; }
-tr.removed { background: #ffebee; opacity: 0.75; }
-.muted { color: #999; }
-.empty, .loading { padding: 1rem; color: #666; }
-.legacy-note { padding: 0.5rem 0.75rem; margin-bottom: 0.75rem; background: #eef4ff; border: 1px solid #b9cdf0; border-radius: 4px; font-size: 0.95em; }
+tr.group-start > td { border-top: 2px solid rgba(127, 127, 127, 0.45); }
+tr:not(.group-start) > td { border-bottom: 1px solid rgba(127, 127, 127, 0.12); }
+/* Status: tint background and (for removed) strike through the version cell —
+   stronger accessibility than reduced opacity. */
+tr.added { background: rgba(80, 180, 100, 0.18); }
+tr.removed { background: rgba(220, 80, 80, 0.18); }
+tr.removed td.version code { text-decoration: line-through; }
+
+.muted { opacity: 0.5; }
+.empty, .loading { padding: 1rem; opacity: 0.7; }
+.legacy-note {
+  padding: 0.5rem 0.75rem; margin-bottom: 0.75rem;
+  background: rgba(80, 130, 220, 0.18);
+  border: 1px solid currentColor;
+  border-radius: 4px; font-size: 0.95em;
+}
 </style>

@@ -173,6 +173,34 @@ function pairKey(r: SourceRow): string {
   return `${r.infores}|${r.version}`
 }
 
+/**
+ * Bucket consecutive rows that share a key. Sorts by `key()` first so the
+ * grouping doesn't depend on the caller's order; the resulting first-of-group
+ * row carries `groupSize` for use as a `rowspan`.
+ */
+export function groupBy<T extends object>(
+  rows: T[],
+  key: (r: T) => string
+): (T & { groupStart: boolean; groupSize: number })[] {
+  const sorted = [...rows].sort((a, b) => key(a).localeCompare(key(b)))
+  const out: (T & { groupStart: boolean; groupSize: number })[] = []
+  let lastKey: string | null = null
+  let startIdx = -1
+  for (const row of sorted) {
+    const k = key(row)
+    if (k !== lastKey) {
+      out.push({ ...row, groupStart: true, groupSize: 1 })
+      lastKey = k
+      startIdx = out.length - 1
+    } else {
+      out[startIdx].groupSize++
+      out.push({ ...row, groupStart: false, groupSize: 1 })
+    }
+  }
+  return out
+}
+
+
 export function compareSources(
   current: SourceRow[],
   previous: SourceRow[] | null
