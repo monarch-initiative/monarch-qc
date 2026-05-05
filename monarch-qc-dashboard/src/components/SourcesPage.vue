@@ -101,6 +101,7 @@
           <th>Ingest version</th>
           <th>Transform</th>
           <th>Biolink</th>
+          <th>Via</th>
           <th>Source</th>
           <th>Name</th>
           <th>Version</th>
@@ -111,13 +112,17 @@
       <tbody>
         <tr
           v-for="row in byIngestGrouped"
-          :key="`${row.ingest}|${row.infores}|${row.version}`"
+          :key="`${row.ingest}|${row.via}|${row.infores}|${row.version}`"
           :class="{ 'group-start': row.groupStart }"
         >
           <td v-if="row.groupStart" :rowspan="row.groupSize"><code>{{ row.ingest }}</code></td>
           <td v-if="row.groupStart" :rowspan="row.groupSize" class="version"><code>{{ row.ingest_version }}</code></td>
           <td v-if="row.groupStart" :rowspan="row.groupSize"><code>{{ row.transform_version }}</code></td>
           <td v-if="row.groupStart" :rowspan="row.groupSize"><code>{{ row.biolink_version }}</code></td>
+          <td>
+            <code v-if="row.via">{{ row.via }}</code>
+            <span v-else class="muted">—</span>
+          </td>
           <td><code>{{ row.infores }}</code></td>
           <td>{{ row.name }}</td>
           <td class="version"><code>{{ row.version }}</code></td>

@@ -171,6 +171,66 @@ describe("flattenByIngest", () => {
   })
 })
 
+const threeDeep: Release = {
+  id: "monarch-kg",
+  version: "2026-05-05",
+  sources: [
+    { id: "alliance-ingest", sources: [{ id: "infores:agr", version: "8.3.0" }] },
+    {
+      id: "kg-phenio",
+      version: "v2026-04-14",
+      sources: [
+        {
+          id: "phenio",
+          version: "v2026-04-14",
+          sources: [
+            { id: "infores:hp", version: "2026-04-15" },
+            { id: "infores:chebi", version: "2026-04-20" },
+          ],
+        },
+        { id: "infores:upheno-cross-species", version: "2026-05-03" },
+      ],
+    },
+  ],
+}
+
+describe("flattenSources path tracking", () => {
+  it("emits slash-separated ancestor path in consumed_by for nested leaves", () => {
+    const rows = flattenSources(threeDeep)
+    const hp = rows.find((r) => r.infores === "infores:hp")!
+    expect(hp.consumed_by).toEqual(["kg-phenio/phenio"])
+  })
+
+  it("preserves single-element consumed_by for direct (2-deep) leaves", () => {
+    const rows = flattenSources(threeDeep)
+    const agr = rows.find((r) => r.infores === "infores:agr")!
+    expect(agr.consumed_by).toEqual(["alliance-ingest"])
+  })
+
+  it("treats peer leaves under the same ingest as same depth (no via path)", () => {
+    const rows = flattenSources(threeDeep)
+    const upheno = rows.find((r) => r.infores === "infores:upheno-cross-species")!
+    expect(upheno.consumed_by).toEqual(["kg-phenio"])
+  })
+})
+
+describe("flattenByIngest 3-deep", () => {
+  it("descends past intermediate builds; via captures the intermediate id", () => {
+    const rows = flattenByIngest(threeDeep)
+    const hp = rows.find((r) => r.infores === "infores:hp")!
+    expect(hp.ingest).toBe("kg-phenio")
+    expect(hp.via).toBe("phenio")
+  })
+
+  it("via is empty for direct-leaf cases", () => {
+    const rows = flattenByIngest(threeDeep)
+    const agr = rows.find((r) => r.infores === "infores:agr")!
+    expect(agr.via).toBe("")
+    const upheno = rows.find((r) => r.infores === "infores:upheno-cross-species")!
+    expect(upheno.via).toBe("")
+  })
+})
+
 describe("flattenSources collapsing", () => {
   it("collapses 3+ ingests at the same (infores, version) into one row", () => {
     const r: Release = {

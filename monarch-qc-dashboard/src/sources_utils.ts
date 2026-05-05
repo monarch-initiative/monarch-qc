@@ -62,21 +62,25 @@ export function flattenSources(receipt: Release | null | undefined): SourceRow[]
   if (!receipt) return []
   const byPair = new Map<string, SourceRow>()
 
-  function visit(node: Release, ancestorIngest: string | null) {
+  // ancestorPath is the chain of non-leaf ancestor IDs from the root down,
+  // including the root itself. The leaf's `consumed_by` is the path with the
+  // root sliced off (it's the same for every leaf), joined with "/" so a
+  // 3-deep leaf reads as e.g. "kg-phenio/phenio".
+  function visit(node: Release, ancestorPath: string[]) {
     const childSources = node.sources ?? []
     const isBuild = childSources.length > 0
-    // The closest non-leaf ancestor is the contributing ingest.
-    const ingestForChildren = isBuild ? node.id : ancestorIngest
+    const newPath = isBuild && node.id ? [...ancestorPath, node.id] : ancestorPath
     if (!isBuild) {
       // Legacy receipts (`kg-version`/`packages`/`data:` shape) have no `id`
       // and no nested sources — skip rather than emit an undefined-keyed row.
       if (!node.id) return
       const ver = node.version ?? ""
       const key = `${node.id}|${ver}`
+      const pathStr = ancestorPath.slice(1).join("/")
       const existing = byPair.get(key)
       if (existing) {
-        if (ancestorIngest && !existing.consumed_by.includes(ancestorIngest)) {
-          existing.consumed_by.push(ancestorIngest)
+        if (pathStr && !existing.consumed_by.includes(pathStr)) {
+          existing.consumed_by.push(pathStr)
         }
       } else {
         byPair.set(key, {
@@ -86,15 +90,15 @@ export function flattenSources(receipt: Release | null | undefined): SourceRow[]
           version_method: node.version_method ?? "",
           retrieved_at: node.retrieved_at ?? "",
           urls: node.urls ?? [],
-          consumed_by: ancestorIngest ? [ancestorIngest] : [],
+          consumed_by: pathStr ? [pathStr] : [],
         })
       }
       return
     }
-    for (const child of childSources) visit(child, ingestForChildren)
+    for (const child of childSources) visit(child, newPath)
   }
 
-  visit(receipt, null)
+  visit(receipt, [])
   return [...byPair.values()].sort(
     (a, b) =>
       (a.infores ?? "").localeCompare(b.infores ?? "") ||
@@ -110,6 +114,10 @@ export interface IngestSourceRow {
   biolink_version: string
   build_version: string
   generated_at: string
+  // For sources reached through intermediate builds (e.g. an ontology under
+  // phenio under kg-phenio), the slash-separated path of intermediate build
+  // ids — empty for direct-leaf cases. e.g. "phenio".
+  via: string
   infores: string
   name: string
   version: string
@@ -119,8 +127,10 @@ export interface IngestSourceRow {
 }
 
 /**
- * Flatten the receipt to per-ingest rows. Each immediate child of the root is
- * a per-ingest build; for each, emit one row per leaf upstream source.
+ * Flatten the receipt to per-ingest rows. The "ingest" is the immediate child
+ * of the root. Each subtree under it is walked recursively, and every terminal
+ * leaf (no nested sources) becomes a row, with `via` capturing any intermediate
+ * builds traversed (e.g. "phenio" for an ontology under kg-phenio).
  */
 export function flattenByIngest(
   receipt: Release | null | undefined
@@ -129,29 +139,37 @@ export function flattenByIngest(
   const rows: IngestSourceRow[] = []
   for (const build of receipt.sources ?? []) {
     if (!build.id) continue
-    const leaves = build.sources ?? []
-    if (leaves.length === 0) continue
-    for (const leaf of leaves) {
-      if (!leaf.id) continue
-      rows.push({
-        ingest: build.id,
-        ingest_version: build.version ?? "",
-        transform_version: build.transform_version ?? "",
-        biolink_version: build.biolink_version ?? "",
-        build_version: build.build_version ?? "",
-        generated_at: build.generated_at ?? "",
-        infores: leaf.id,
-        name: leaf.name ?? "",
-        version: leaf.version ?? "",
-        version_method: leaf.version_method ?? "",
-        retrieved_at: leaf.retrieved_at ?? "",
-        urls: leaf.urls ?? [],
-      })
+    const collectLeaves = (node: Release, viaPath: string[]) => {
+      const sub = node.sources ?? []
+      if (sub.length === 0) {
+        if (!node.id) return
+        rows.push({
+          ingest: build.id!,
+          ingest_version: build.version ?? "",
+          transform_version: build.transform_version ?? "",
+          biolink_version: build.biolink_version ?? "",
+          build_version: build.build_version ?? "",
+          generated_at: build.generated_at ?? "",
+          via: viaPath.join("/"),
+          infores: node.id,
+          name: node.name ?? "",
+          version: node.version ?? "",
+          version_method: node.version_method ?? "",
+          retrieved_at: node.retrieved_at ?? "",
+          urls: node.urls ?? [],
+        })
+        return
+      }
+      // Each level deeper than the immediate build becomes part of the via path.
+      const nextVia = node === build ? viaPath : (node.id ? [...viaPath, node.id] : viaPath)
+      for (const child of sub) collectLeaves(child, nextVia)
     }
+    collectLeaves(build, [])
   }
   return rows.sort(
     (a, b) =>
       a.ingest.localeCompare(b.ingest) ||
+      a.via.localeCompare(b.via) ||
       a.infores.localeCompare(b.infores) ||
       a.version.localeCompare(b.version)
   )
