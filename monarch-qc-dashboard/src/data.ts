@@ -10,6 +10,7 @@ import { LineChartData } from "./components/LineChart"
 
 export const globalReports = ref<Map<string, Promise<string>>>(new Map())
 export const globalStats = ref<Map<string, Promise<string>>>(new Map())
+export const globalMetadata = ref<Map<string, Promise<string>>>(new Map())
 
 export const sriFetched = ref<boolean>(false)
 export const v3Stats = ref<Promise<string>>()
@@ -193,12 +194,19 @@ export async function updateData() {
 
   const qcsite = qcbase + qcdata.get(selectedData.value)
   const qctext: string = await fetchData(qcsite)
-  globalReports.value = await fetchQCReports(qctext, "qc_report.yaml")
-  globalStats.value = await fetchQCReports(qctext, "merged_graph_stats.yaml")
+  const [reports, stats, metadata] = await Promise.all([
+    fetchQCReports(qctext, "qc_report.yaml"),
+    fetchQCReports(qctext, "merged_graph_stats.yaml"),
+    fetchQCReports(qctext, "metadata.yaml"),
+  ])
+  globalReports.value = reports
+  globalStats.value = stats
+  globalMetadata.value = metadata
 
   // remove "latest" from qcReports, since it's always a duplicate of the most recent release
   globalReports.value.delete("latest")
   globalStats.value.delete("latest")
+  globalMetadata.value.delete("latest")
 
   selectedReport.value = [...globalReports.value.keys()].slice(-1)[0] ?? ""
   dataNames.value = [...qcdata.keys()]
